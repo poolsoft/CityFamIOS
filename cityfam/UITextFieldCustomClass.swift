@@ -34,12 +34,4 @@ import UIKit
         set { layer.borderColor = newValue.cgColor }
     }
     
-    override func editingRect(forBounds bounds: CGRect) -> CGRect {
-        return bounds.insetBy(dx: 10, dy: 0)
-    }
-    
-    override func textRect(forBounds bounds: CGRect) -> CGRect {
-        return bounds.insetBy(dx: 10, dy: 0)
-    }
-
 }

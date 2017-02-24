@@ -27,6 +27,7 @@
 		0700D9401E556E2100DC9928 /* AlamofireIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0700D93F1E556E2100DC9928 /* AlamofireIntegration.swift */; };
 		0700D9431E556EF300DC9928 /* FacebookIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0700D9411E556EF300DC9928 /* FacebookIntegration.swift */; };
 		0700D9441E556EF300DC9928 /* GoogleSignInIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0700D9421E556EF300DC9928 /* GoogleSignInIntegration.swift */; };
+		07F7A1141E60692D00448FFF /* homePic.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F7A1131E60692D00448FFF /* homePic.png */; };
 		4DBC018DAEB12F70CCFCCFC7 /* Pods_cityfam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB705ACBA8A558DB8BB929BF /* Pods_cityfam.framework */; };
 		C713ABEF1FCA1145E03B12AE /* Pods_cityfamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA53D3085126ABA04058E83 /* Pods_cityfamTests.framework */; };
 		E8995F75844FEAEA759543F2 /* Pods_cityfamUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0A00B5EC1AAE01FA57C8022 /* Pods_cityfamUITests.framework */; };
@@ -77,6 +78,10 @@
 		0700D9411E556EF300DC9928 /* FacebookIntegration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookIntegration.swift; sourceTree = "<group>"; };
 		0700D9421E556EF300DC9928 /* GoogleSignInIntegration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleSignInIntegration.swift; sourceTree = "<group>"; };
 		0700D9451E55725C00DC9928 /* cityfam-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "cityfam-Bridging-Header.h"; sourceTree = "<group>"; };
+		07F7A10F1E60493F00448FFF /* Mark Simonson - Proxima Nova Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mark Simonson - Proxima Nova Regular.otf"; sourceTree = "<group>"; };
+		07F7A1101E60493F00448FFF /* ProximaNova-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Bold.otf"; sourceTree = "<group>"; };
+		07F7A1111E60493F00448FFF /* ufonts.com_gotham-medium_0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ufonts.com_gotham-medium_0.ttf"; sourceTree = "<group>"; };
+		07F7A1131E60692D00448FFF /* homePic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homePic.png; sourceTree = "<group>"; };
 		2CC3B0BCFDD11F21F62E4FF4 /* Pods-cityfamUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cityfamUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cityfamUITests/Pods-cityfamUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4F17D8FEDE7F00ED7824DE5C /* Pods-cityfamUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cityfamUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-cityfamUITests/Pods-cityfamUITests.release.xcconfig"; sourceTree = "<group>"; };
 		643E1FBFA6054261D01F45A5 /* Pods-cityfam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cityfam.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cityfam/Pods-cityfam.debug.xcconfig"; sourceTree = "<group>"; };
@@ -141,7 +146,9 @@
 		0700D8F81E556D2200DC9928 /* cityfam */ = {
 			isa = PBXGroup;
 			children = (
+				07F7A1131E60692D00448FFF /* homePic.png */,
 				0700D8F91E556D2200DC9928 /* AppDelegate.swift */,
+				07F7A1121E60495000448FFF /* Fonts */,
 				0700D93E1E556E0500DC9928 /* Wrappers */,
 				0700D93C1E556DD000DC9928 /* LiveRenderingClasses */,
 				0700D92F1E556DA000DC9928 /* UIObjectsFontSizeClasses */,
@@ -213,6 +220,16 @@
 				0700D9421E556EF300DC9928 /* GoogleSignInIntegration.swift */,
 			);
 			name = Wrappers;
+			sourceTree = "<group>";
+		};
+		07F7A1121E60495000448FFF /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				07F7A10F1E60493F00448FFF /* Mark Simonson - Proxima Nova Regular.otf */,
+				07F7A1101E60493F00448FFF /* ProximaNova-Bold.otf */,
+				07F7A1111E60493F00448FFF /* ufonts.com_gotham-medium_0.ttf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 		2107714A2BAF8F23F11DB78A /* Frameworks */ = {
@@ -357,6 +374,7 @@
 			files = (
 				0700D9041E556D2200DC9928 /* LaunchScreen.storyboard in Resources */,
 				0700D9011E556D2200DC9928 /* Assets.xcassets in Resources */,
+				07F7A1141E60692D00448FFF /* homePic.png in Resources */,
 				0700D8FF1E556D2200DC9928 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
