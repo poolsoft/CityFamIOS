@@ -17,16 +17,15 @@
 		0700D92B1E556D9300DC9928 /* UIButtonFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0700D9271E556D9300DC9928 /* UIButtonFontSize.swift */; };
 		0700D92C1E556D9300DC9928 /* UILabelFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0700D9281E556D9300DC9928 /* UILabelFontSize.swift */; };
 		0700D92D1E556D9300DC9928 /* UITextFieldFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0700D9291E556D9300DC9928 /* UITextFieldFontSize.swift */; };
-		0700D92E1E556D9300DC9928 /* UITextViewFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0700D92A1E556D9300DC9928 /* UITextViewFontSize.swift */; };
 		0700D9361E556DC900DC9928 /* UIButtonCustomClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0700D9301E556DC900DC9928 /* UIButtonCustomClass.swift */; };
 		0700D9371E556DC900DC9928 /* UILabelCustomClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0700D9311E556DC900DC9928 /* UILabelCustomClass.swift */; };
 		0700D9381E556DC900DC9928 /* UIViewCustomClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0700D9321E556DC900DC9928 /* UIViewCustomClass.swift */; };
 		0700D9391E556DC900DC9928 /* UIImageViewCustomClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0700D9331E556DC900DC9928 /* UIImageViewCustomClass.swift */; };
 		0700D93A1E556DC900DC9928 /* UITextFieldCustomClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0700D9341E556DC900DC9928 /* UITextFieldCustomClass.swift */; };
-		0700D93B1E556DC900DC9928 /* UITextViewCustomClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0700D9351E556DC900DC9928 /* UITextViewCustomClass.swift */; };
 		0700D9401E556E2100DC9928 /* AlamofireIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0700D93F1E556E2100DC9928 /* AlamofireIntegration.swift */; };
 		0700D9431E556EF300DC9928 /* FacebookIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0700D9411E556EF300DC9928 /* FacebookIntegration.swift */; };
 		0700D9441E556EF300DC9928 /* GoogleSignInIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0700D9421E556EF300DC9928 /* GoogleSignInIntegration.swift */; };
+		07D461561E64353C00691B46 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 07D461551E64353C00691B46 /* user.png */; };
 		07F7A1141E60692D00448FFF /* homePic.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F7A1131E60692D00448FFF /* homePic.png */; };
 		4DBC018DAEB12F70CCFCCFC7 /* Pods_cityfam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB705ACBA8A558DB8BB929BF /* Pods_cityfam.framework */; };
 		C713ABEF1FCA1145E03B12AE /* Pods_cityfamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA53D3085126ABA04058E83 /* Pods_cityfamTests.framework */; };
@@ -67,17 +66,16 @@
 		0700D9271E556D9300DC9928 /* UIButtonFontSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonFontSize.swift; sourceTree = "<group>"; };
 		0700D9281E556D9300DC9928 /* UILabelFontSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelFontSize.swift; sourceTree = "<group>"; };
 		0700D9291E556D9300DC9928 /* UITextFieldFontSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldFontSize.swift; sourceTree = "<group>"; };
-		0700D92A1E556D9300DC9928 /* UITextViewFontSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextViewFontSize.swift; sourceTree = "<group>"; };
 		0700D9301E556DC900DC9928 /* UIButtonCustomClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonCustomClass.swift; sourceTree = "<group>"; };
 		0700D9311E556DC900DC9928 /* UILabelCustomClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelCustomClass.swift; sourceTree = "<group>"; };
 		0700D9321E556DC900DC9928 /* UIViewCustomClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewCustomClass.swift; sourceTree = "<group>"; };
 		0700D9331E556DC900DC9928 /* UIImageViewCustomClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewCustomClass.swift; sourceTree = "<group>"; };
 		0700D9341E556DC900DC9928 /* UITextFieldCustomClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldCustomClass.swift; sourceTree = "<group>"; };
-		0700D9351E556DC900DC9928 /* UITextViewCustomClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextViewCustomClass.swift; sourceTree = "<group>"; };
 		0700D93F1E556E2100DC9928 /* AlamofireIntegration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireIntegration.swift; sourceTree = "<group>"; };
 		0700D9411E556EF300DC9928 /* FacebookIntegration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookIntegration.swift; sourceTree = "<group>"; };
 		0700D9421E556EF300DC9928 /* GoogleSignInIntegration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleSignInIntegration.swift; sourceTree = "<group>"; };
 		0700D9451E55725C00DC9928 /* cityfam-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "cityfam-Bridging-Header.h"; sourceTree = "<group>"; };
+		07D461551E64353C00691B46 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
 		07F7A10F1E60493F00448FFF /* Mark Simonson - Proxima Nova Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mark Simonson - Proxima Nova Regular.otf"; sourceTree = "<group>"; };
 		07F7A1101E60493F00448FFF /* ProximaNova-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Bold.otf"; sourceTree = "<group>"; };
 		07F7A1111E60493F00448FFF /* ufonts.com_gotham-medium_0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ufonts.com_gotham-medium_0.ttf"; sourceTree = "<group>"; };
@@ -147,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				07F7A1131E60692D00448FFF /* homePic.png */,
+				07D461551E64353C00691B46 /* user.png */,
 				0700D8F91E556D2200DC9928 /* AppDelegate.swift */,
 				07F7A1121E60495000448FFF /* Fonts */,
 				0700D93E1E556E0500DC9928 /* Wrappers */,
@@ -186,7 +185,6 @@
 				0700D9271E556D9300DC9928 /* UIButtonFontSize.swift */,
 				0700D9281E556D9300DC9928 /* UILabelFontSize.swift */,
 				0700D9291E556D9300DC9928 /* UITextFieldFontSize.swift */,
-				0700D92A1E556D9300DC9928 /* UITextViewFontSize.swift */,
 			);
 			name = UIObjectsFontSizeClasses;
 			sourceTree = "<group>";
@@ -199,7 +197,6 @@
 				0700D9321E556DC900DC9928 /* UIViewCustomClass.swift */,
 				0700D9331E556DC900DC9928 /* UIImageViewCustomClass.swift */,
 				0700D9341E556DC900DC9928 /* UITextFieldCustomClass.swift */,
-				0700D9351E556DC900DC9928 /* UITextViewCustomClass.swift */,
 			);
 			name = LiveRenderingClasses;
 			sourceTree = "<group>";
@@ -332,16 +329,19 @@
 				TargetAttributes = {
 					0700D8F51E556D2200DC9928 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 854539W674;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Manual;
 					};
 					0700D9091E556D2300DC9928 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 854539W674;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 0700D8F51E556D2200DC9928;
 					};
 					0700D9141E556D2300DC9928 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 854539W674;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 0700D8F51E556D2200DC9928;
 					};
@@ -373,6 +373,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0700D9041E556D2200DC9928 /* LaunchScreen.storyboard in Resources */,
+				07D461561E64353C00691B46 /* user.png in Resources */,
 				0700D9011E556D2200DC9928 /* Assets.xcassets in Resources */,
 				07F7A1141E60692D00448FFF /* homePic.png in Resources */,
 				0700D8FF1E556D2200DC9928 /* Main.storyboard in Resources */,
@@ -539,9 +540,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0700D92C1E556D9300DC9928 /* UILabelFontSize.swift in Sources */,
-				0700D93B1E556DC900DC9928 /* UITextViewCustomClass.swift in Sources */,
 				0700D93A1E556DC900DC9928 /* UITextFieldCustomClass.swift in Sources */,
-				0700D92E1E556D9300DC9928 /* UITextViewFontSize.swift in Sources */,
 				0700D9371E556DC900DC9928 /* UILabelCustomClass.swift in Sources */,
 				0700D8FC1E556D2200DC9928 /* LogInVC.swift in Sources */,
 				0700D9441E556EF300DC9928 /* GoogleSignInIntegration.swift in Sources */,
@@ -628,9 +627,11 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Piyush Gupta (52M6T9CGB9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Piyush Gupta (52M6T9CGB9)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 854539W674;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -650,6 +651,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "deb9a6fd-b99a-4033-9844-5691c3d1a0cb";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -677,9 +679,11 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Piyush Gupta (52M6T9CGB9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Piyush Gupta (52M6T9CGB9)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 854539W674;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -692,6 +696,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "deb9a6fd-b99a-4033-9844-5691c3d1a0cb";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
@@ -704,11 +709,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Piyush Gupta (52M6T9CGB9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Piyush Gupta (52M6T9CGB9)";
+				DEVELOPMENT_TEAM = 854539W674;
 				INFOPLIST_FILE = cityfam/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.PiyushGupta.cityfam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = GENDevProfile;
 				SWIFT_OBJC_BRIDGING_HEADER = "cityfam/cityfam-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -721,11 +729,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Piyush Gupta (52M6T9CGB9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Piyush Gupta (52M6T9CGB9)";
+				DEVELOPMENT_TEAM = 854539W674;
 				INFOPLIST_FILE = cityfam/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.PiyushGupta.cityfam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = GENDevProfile;
 				SWIFT_OBJC_BRIDGING_HEADER = "cityfam/cityfam-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
