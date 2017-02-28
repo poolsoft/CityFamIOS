@@ -17,6 +17,11 @@ class LogInVC: UIViewController, loginServiceAlamofire, GoogleSignInService, Fac
     }
     
      //MARK: UIButton actions
+    
+    @IBAction func loginButtonAction(_ sender: Any) {
+        let tabBarControllerVcObj = self.storyboard?.instantiateViewController(withIdentifier: "tabBarControllerVc") as! TabBarControllerVC
+        self.navigationController?.pushViewController(tabBarControllerVcObj, animated: true)
+    }
 
     @IBAction func googleButtonAction(_ sender: Any) {
         GoogleSignInIntegration.sharedInstance.delegate = self

@@ -9,6 +9,8 @@
 import UIKit
 
 @IBDesignable class UITextFieldCustomClass: UITextFieldFontSize {
+    
+    @IBInspectable var horizontalInset: CGFloat = 0
 
     @IBInspectable var placeholderColor: UIColor = UIColor.black {
         didSet {
@@ -32,6 +34,14 @@ import UIKit
     @IBInspectable var borderColor:UIColor {
         get { return UIColor(cgColor: layer.borderColor!) }
         set { layer.borderColor = newValue.cgColor }
+    }
+    
+    override func editingRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.insetBy(dx: horizontalInset, dy: 0)
+    }
+    
+    override func textRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.insetBy(dx: horizontalInset, dy: 0)
     }
     
 }

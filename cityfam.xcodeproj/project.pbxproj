@@ -25,6 +25,13 @@
 		0700D9401E556E2100DC9928 /* AlamofireIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0700D93F1E556E2100DC9928 /* AlamofireIntegration.swift */; };
 		0700D9431E556EF300DC9928 /* FacebookIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0700D9411E556EF300DC9928 /* FacebookIntegration.swift */; };
 		0700D9441E556EF300DC9928 /* GoogleSignInIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0700D9421E556EF300DC9928 /* GoogleSignInIntegration.swift */; };
+		078633EB1E65680C00680A1C /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078633EA1E65680C00680A1C /* SignupVC.swift */; };
+		078633ED1E65688400680A1C /* TabBarControllerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078633EC1E65688400680A1C /* TabBarControllerVC.swift */; };
+		078633EF1E6568B800680A1C /* HomePageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078633EE1E6568B800680A1C /* HomePageVC.swift */; };
+		078633F11E6568D500680A1C /* ActivityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078633F01E6568D500680A1C /* ActivityVC.swift */; };
+		078633F31E6568ED00680A1C /* CreateEventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078633F21E6568ED00680A1C /* CreateEventVC.swift */; };
+		078633F51E65690B00680A1C /* FriendsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078633F41E65690B00680A1C /* FriendsVC.swift */; };
+		078633F71E656EAE00680A1C /* InvitationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078633F61E656EAE00680A1C /* InvitationsVC.swift */; };
 		07D461561E64353C00691B46 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 07D461551E64353C00691B46 /* user.png */; };
 		07F7A1141E60692D00448FFF /* homePic.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F7A1131E60692D00448FFF /* homePic.png */; };
 		4DBC018DAEB12F70CCFCCFC7 /* Pods_cityfam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB705ACBA8A558DB8BB929BF /* Pods_cityfam.framework */; };
@@ -75,6 +82,14 @@
 		0700D9411E556EF300DC9928 /* FacebookIntegration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookIntegration.swift; sourceTree = "<group>"; };
 		0700D9421E556EF300DC9928 /* GoogleSignInIntegration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleSignInIntegration.swift; sourceTree = "<group>"; };
 		0700D9451E55725C00DC9928 /* cityfam-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "cityfam-Bridging-Header.h"; sourceTree = "<group>"; };
+		078633E91E653B7600680A1C /* icomoon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = icomoon.ttf; sourceTree = "<group>"; };
+		078633EA1E65680C00680A1C /* SignupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
+		078633EC1E65688400680A1C /* TabBarControllerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarControllerVC.swift; sourceTree = "<group>"; };
+		078633EE1E6568B800680A1C /* HomePageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageVC.swift; sourceTree = "<group>"; };
+		078633F01E6568D500680A1C /* ActivityVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityVC.swift; sourceTree = "<group>"; };
+		078633F21E6568ED00680A1C /* CreateEventVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventVC.swift; sourceTree = "<group>"; };
+		078633F41E65690B00680A1C /* FriendsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsVC.swift; sourceTree = "<group>"; };
+		078633F61E656EAE00680A1C /* InvitationsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvitationsVC.swift; sourceTree = "<group>"; };
 		07D461551E64353C00691B46 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
 		07F7A10F1E60493F00448FFF /* Mark Simonson - Proxima Nova Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mark Simonson - Proxima Nova Regular.otf"; sourceTree = "<group>"; };
 		07F7A1101E60493F00448FFF /* ProximaNova-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Bold.otf"; sourceTree = "<group>"; };
@@ -205,6 +220,13 @@
 			isa = PBXGroup;
 			children = (
 				0700D8FB1E556D2200DC9928 /* LogInVC.swift */,
+				078633EA1E65680C00680A1C /* SignupVC.swift */,
+				078633EC1E65688400680A1C /* TabBarControllerVC.swift */,
+				078633EE1E6568B800680A1C /* HomePageVC.swift */,
+				078633F01E6568D500680A1C /* ActivityVC.swift */,
+				078633F21E6568ED00680A1C /* CreateEventVC.swift */,
+				078633F41E65690B00680A1C /* FriendsVC.swift */,
+				078633F61E656EAE00680A1C /* InvitationsVC.swift */,
 			);
 			name = ViewControllerClasses;
 			sourceTree = "<group>";
@@ -222,6 +244,7 @@
 		07F7A1121E60495000448FFF /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				078633E91E653B7600680A1C /* icomoon.ttf */,
 				07F7A10F1E60493F00448FFF /* Mark Simonson - Proxima Nova Regular.otf */,
 				07F7A1101E60493F00448FFF /* ProximaNova-Bold.otf */,
 				07F7A1111E60493F00448FFF /* ufonts.com_gotham-medium_0.ttf */,
@@ -540,14 +563,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				0700D92C1E556D9300DC9928 /* UILabelFontSize.swift in Sources */,
+				078633F51E65690B00680A1C /* FriendsVC.swift in Sources */,
 				0700D93A1E556DC900DC9928 /* UITextFieldCustomClass.swift in Sources */,
 				0700D9371E556DC900DC9928 /* UILabelCustomClass.swift in Sources */,
+				078633F31E6568ED00680A1C /* CreateEventVC.swift in Sources */,
 				0700D8FC1E556D2200DC9928 /* LogInVC.swift in Sources */,
 				0700D9441E556EF300DC9928 /* GoogleSignInIntegration.swift in Sources */,
 				0700D92B1E556D9300DC9928 /* UIButtonFontSize.swift in Sources */,
+				078633F11E6568D500680A1C /* ActivityVC.swift in Sources */,
 				0700D8FA1E556D2200DC9928 /* AppDelegate.swift in Sources */,
+				078633ED1E65688400680A1C /* TabBarControllerVC.swift in Sources */,
 				0700D92D1E556D9300DC9928 /* UITextFieldFontSize.swift in Sources */,
+				078633EB1E65680C00680A1C /* SignupVC.swift in Sources */,
+				078633EF1E6568B800680A1C /* HomePageVC.swift in Sources */,
 				0700D9401E556E2100DC9928 /* AlamofireIntegration.swift in Sources */,
+				078633F71E656EAE00680A1C /* InvitationsVC.swift in Sources */,
 				0700D9361E556DC900DC9928 /* UIButtonCustomClass.swift in Sources */,
 				0700D9391E556DC900DC9928 /* UIImageViewCustomClass.swift in Sources */,
 				0700D9431E556EF300DC9928 /* FacebookIntegration.swift in Sources */,
