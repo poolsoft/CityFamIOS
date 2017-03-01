@@ -1,21 +1,28 @@
 //
-//  InvitationsVC.swift
+//  InvitedVC.swift
 //  cityfam
 //
-//  Created by Piyush Gupta on 2/28/17.
+//  Created by Piyush Gupta on 3/1/17.
 //  Copyright © 2017 Piyush Gupta. All rights reserved.
 //
 
 import UIKit
 
-class InvitationsVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class InvitedVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
 
+    @IBOutlet var invitedTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        invitedTableView.tableFooterView = UIView()
     }
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
+    }
+    
+    @IBAction func backButtonAction(_ sender: Any) {
+        _ = self.navigationController?.popViewController(animated: true)
     }
     
     //MARK: UITableView Functions
@@ -31,6 +38,5 @@ class InvitationsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
-
 
 }

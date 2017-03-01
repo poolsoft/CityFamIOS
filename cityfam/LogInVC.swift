@@ -33,6 +33,12 @@ class LogInVC: UIViewController, loginServiceAlamofire, GoogleSignInService, Fac
         FacebookIntegration.sharedInstance.fbLogin(self)
     }
     
+    @IBAction func createAccountButtonAction(_ sender: Any) {
+        let signupVcObj = self.storyboard?.instantiateViewController(withIdentifier: "signupVc") as! SignupVC
+        self.navigationController?.pushViewController(signupVcObj, animated: true)
+
+    }
+    
     //MARK: Google sign in result
     
     func googleSignInData(_ result:NSDictionary){

@@ -21,4 +21,7 @@ class SignupVC: UIViewController {
         self.navigationController?.pushViewController(tabBarControllerVcObj, animated: true)
     }
 
+    @IBAction func alreadyAccountButtonAction(_ sender: Any) {
+        _ = self.navigationController?.popViewController(animated: true)
+    }
 }

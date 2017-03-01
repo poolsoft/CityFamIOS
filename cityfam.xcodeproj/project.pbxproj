@@ -25,6 +25,7 @@
 		0700D9401E556E2100DC9928 /* AlamofireIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0700D93F1E556E2100DC9928 /* AlamofireIntegration.swift */; };
 		0700D9431E556EF300DC9928 /* FacebookIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0700D9411E556EF300DC9928 /* FacebookIntegration.swift */; };
 		0700D9441E556EF300DC9928 /* GoogleSignInIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0700D9421E556EF300DC9928 /* GoogleSignInIntegration.swift */; };
+		074E19451E66F93A009FC7D4 /* icomoon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 074E19441E66F93A009FC7D4 /* icomoon.ttf */; };
 		078633EB1E65680C00680A1C /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078633EA1E65680C00680A1C /* SignupVC.swift */; };
 		078633ED1E65688400680A1C /* TabBarControllerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078633EC1E65688400680A1C /* TabBarControllerVC.swift */; };
 		078633EF1E6568B800680A1C /* HomePageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078633EE1E6568B800680A1C /* HomePageVC.swift */; };
@@ -33,6 +34,14 @@
 		078633F51E65690B00680A1C /* FriendsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078633F41E65690B00680A1C /* FriendsVC.swift */; };
 		078633F71E656EAE00680A1C /* InvitationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078633F61E656EAE00680A1C /* InvitationsVC.swift */; };
 		07D461561E64353C00691B46 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 07D461551E64353C00691B46 /* user.png */; };
+		07F057D81E669361008B8120 /* HomePageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F057D71E669361008B8120 /* HomePageTableViewCell.swift */; };
+		07F057DA1E6694BB008B8120 /* EventDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F057D91E6694BB008B8120 /* EventDetailVC.swift */; };
+		07F057DD1E66D76F008B8120 /* FilterEventsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F057DC1E66D76E008B8120 /* FilterEventsVC.swift */; };
+		07F057DF1E66D792008B8120 /* NotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F057DE1E66D792008B8120 /* NotificationsVC.swift */; };
+		07F057E11E66DF95008B8120 /* AttendingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F057E01E66DF94008B8120 /* AttendingVC.swift */; };
+		07F057E31E66DFC9008B8120 /* InvitedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F057E21E66DFC9008B8120 /* InvitedVC.swift */; };
+		07F057E51E66DFDD008B8120 /* InterestedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F057E41E66DFDD008B8120 /* InterestedVC.swift */; };
+		07F057E71E66DFF1008B8120 /* CommentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F057E61E66DFF1008B8120 /* CommentsVC.swift */; };
 		07F7A1141E60692D00448FFF /* homePic.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F7A1131E60692D00448FFF /* homePic.png */; };
 		4DBC018DAEB12F70CCFCCFC7 /* Pods_cityfam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB705ACBA8A558DB8BB929BF /* Pods_cityfam.framework */; };
 		C713ABEF1FCA1145E03B12AE /* Pods_cityfamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA53D3085126ABA04058E83 /* Pods_cityfamTests.framework */; };
@@ -82,7 +91,7 @@
 		0700D9411E556EF300DC9928 /* FacebookIntegration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookIntegration.swift; sourceTree = "<group>"; };
 		0700D9421E556EF300DC9928 /* GoogleSignInIntegration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleSignInIntegration.swift; sourceTree = "<group>"; };
 		0700D9451E55725C00DC9928 /* cityfam-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "cityfam-Bridging-Header.h"; sourceTree = "<group>"; };
-		078633E91E653B7600680A1C /* icomoon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = icomoon.ttf; sourceTree = "<group>"; };
+		074E19441E66F93A009FC7D4 /* icomoon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = icomoon.ttf; sourceTree = "<group>"; };
 		078633EA1E65680C00680A1C /* SignupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
 		078633EC1E65688400680A1C /* TabBarControllerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarControllerVC.swift; sourceTree = "<group>"; };
 		078633EE1E6568B800680A1C /* HomePageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageVC.swift; sourceTree = "<group>"; };
@@ -91,6 +100,14 @@
 		078633F41E65690B00680A1C /* FriendsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsVC.swift; sourceTree = "<group>"; };
 		078633F61E656EAE00680A1C /* InvitationsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvitationsVC.swift; sourceTree = "<group>"; };
 		07D461551E64353C00691B46 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
+		07F057D71E669361008B8120 /* HomePageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageTableViewCell.swift; sourceTree = "<group>"; };
+		07F057D91E6694BB008B8120 /* EventDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailVC.swift; sourceTree = "<group>"; };
+		07F057DC1E66D76E008B8120 /* FilterEventsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterEventsVC.swift; sourceTree = "<group>"; };
+		07F057DE1E66D792008B8120 /* NotificationsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsVC.swift; sourceTree = "<group>"; };
+		07F057E01E66DF94008B8120 /* AttendingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendingVC.swift; sourceTree = "<group>"; };
+		07F057E21E66DFC9008B8120 /* InvitedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvitedVC.swift; sourceTree = "<group>"; };
+		07F057E41E66DFDD008B8120 /* InterestedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestedVC.swift; sourceTree = "<group>"; };
+		07F057E61E66DFF1008B8120 /* CommentsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsVC.swift; sourceTree = "<group>"; };
 		07F7A10F1E60493F00448FFF /* Mark Simonson - Proxima Nova Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mark Simonson - Proxima Nova Regular.otf"; sourceTree = "<group>"; };
 		07F7A1101E60493F00448FFF /* ProximaNova-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Bold.otf"; sourceTree = "<group>"; };
 		07F7A1111E60493F00448FFF /* ufonts.com_gotham-medium_0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ufonts.com_gotham-medium_0.ttf"; sourceTree = "<group>"; };
@@ -223,6 +240,14 @@
 				078633EA1E65680C00680A1C /* SignupVC.swift */,
 				078633EC1E65688400680A1C /* TabBarControllerVC.swift */,
 				078633EE1E6568B800680A1C /* HomePageVC.swift */,
+				07F057D71E669361008B8120 /* HomePageTableViewCell.swift */,
+				07F057D91E6694BB008B8120 /* EventDetailVC.swift */,
+				07F057E01E66DF94008B8120 /* AttendingVC.swift */,
+				07F057E21E66DFC9008B8120 /* InvitedVC.swift */,
+				07F057E41E66DFDD008B8120 /* InterestedVC.swift */,
+				07F057E61E66DFF1008B8120 /* CommentsVC.swift */,
+				07F057DC1E66D76E008B8120 /* FilterEventsVC.swift */,
+				07F057DE1E66D792008B8120 /* NotificationsVC.swift */,
 				078633F01E6568D500680A1C /* ActivityVC.swift */,
 				078633F21E6568ED00680A1C /* CreateEventVC.swift */,
 				078633F41E65690B00680A1C /* FriendsVC.swift */,
@@ -244,7 +269,7 @@
 		07F7A1121E60495000448FFF /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				078633E91E653B7600680A1C /* icomoon.ttf */,
+				074E19441E66F93A009FC7D4 /* icomoon.ttf */,
 				07F7A10F1E60493F00448FFF /* Mark Simonson - Proxima Nova Regular.otf */,
 				07F7A1101E60493F00448FFF /* ProximaNova-Bold.otf */,
 				07F7A1111E60493F00448FFF /* ufonts.com_gotham-medium_0.ttf */,
@@ -398,6 +423,7 @@
 				0700D9041E556D2200DC9928 /* LaunchScreen.storyboard in Resources */,
 				07D461561E64353C00691B46 /* user.png in Resources */,
 				0700D9011E556D2200DC9928 /* Assets.xcassets in Resources */,
+				074E19451E66F93A009FC7D4 /* icomoon.ttf in Resources */,
 				07F7A1141E60692D00448FFF /* homePic.png in Resources */,
 				0700D8FF1E556D2200DC9928 /* Main.storyboard in Resources */,
 			);
@@ -563,8 +589,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0700D92C1E556D9300DC9928 /* UILabelFontSize.swift in Sources */,
+				07F057D81E669361008B8120 /* HomePageTableViewCell.swift in Sources */,
 				078633F51E65690B00680A1C /* FriendsVC.swift in Sources */,
 				0700D93A1E556DC900DC9928 /* UITextFieldCustomClass.swift in Sources */,
+				07F057E31E66DFC9008B8120 /* InvitedVC.swift in Sources */,
+				07F057DA1E6694BB008B8120 /* EventDetailVC.swift in Sources */,
 				0700D9371E556DC900DC9928 /* UILabelCustomClass.swift in Sources */,
 				078633F31E6568ED00680A1C /* CreateEventVC.swift in Sources */,
 				0700D8FC1E556D2200DC9928 /* LogInVC.swift in Sources */,
@@ -575,12 +604,17 @@
 				078633ED1E65688400680A1C /* TabBarControllerVC.swift in Sources */,
 				0700D92D1E556D9300DC9928 /* UITextFieldFontSize.swift in Sources */,
 				078633EB1E65680C00680A1C /* SignupVC.swift in Sources */,
+				07F057E11E66DF95008B8120 /* AttendingVC.swift in Sources */,
 				078633EF1E6568B800680A1C /* HomePageVC.swift in Sources */,
+				07F057DD1E66D76F008B8120 /* FilterEventsVC.swift in Sources */,
 				0700D9401E556E2100DC9928 /* AlamofireIntegration.swift in Sources */,
 				078633F71E656EAE00680A1C /* InvitationsVC.swift in Sources */,
+				07F057E51E66DFDD008B8120 /* InterestedVC.swift in Sources */,
+				07F057DF1E66D792008B8120 /* NotificationsVC.swift in Sources */,
 				0700D9361E556DC900DC9928 /* UIButtonCustomClass.swift in Sources */,
 				0700D9391E556DC900DC9928 /* UIImageViewCustomClass.swift in Sources */,
 				0700D9431E556EF300DC9928 /* FacebookIntegration.swift in Sources */,
+				07F057E71E66DFF1008B8120 /* CommentsVC.swift in Sources */,
 				0700D9381E556DC900DC9928 /* UIViewCustomClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -743,6 +777,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Piyush Gupta (52M6T9CGB9)";
 				DEVELOPMENT_TEAM = 854539W674;
 				INFOPLIST_FILE = cityfam/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.PiyushGupta.cityfam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -763,6 +798,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Piyush Gupta (52M6T9CGB9)";
 				DEVELOPMENT_TEAM = 854539W674;
 				INFOPLIST_FILE = cityfam/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.PiyushGupta.cityfam;
 				PRODUCT_NAME = "$(TARGET_NAME)";

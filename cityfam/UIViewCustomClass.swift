@@ -8,7 +8,7 @@
 
 import UIKit
 
-@IBDesignable class UIViewCustomClass: UIView {
+ class UIViewCustomClass: UIView {
 
     @IBInspectable var borderWidth:CGFloat {
         get { return layer.borderWidth }
