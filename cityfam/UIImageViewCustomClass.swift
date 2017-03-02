@@ -44,7 +44,6 @@ import UIKit
         get {
             return super.frame
         }
-        
     }
 
     fileprivate func makeRound() {
@@ -56,7 +55,5 @@ import UIKit
             self.layer.cornerRadius = 0
         }
     }
-
-    
 
 }

@@ -25,6 +25,36 @@ import UIKit
         set { layer.cornerRadius = newValue }
     }
     
+    fileprivate var _round = false
+    @IBInspectable var round: Bool {
+        set {
+            _round = newValue
+            makeRound()
+        }
+        get {
+            return self._round
+        }
+    }
     
+    override internal var frame: CGRect {
+        set {
+            super.frame = newValue
+            makeRound()
+        }
+        get {
+            return super.frame
+        }
+    }
+    
+    fileprivate func makeRound() {
+        if self.round == true {
+            self.clipsToBounds = true
+            self.layer.cornerRadius = self.frame.width*0.5
+        }
+        else {
+            self.layer.cornerRadius = 0
+        }
+    }
 
+    
 }

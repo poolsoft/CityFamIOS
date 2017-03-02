@@ -68,4 +68,8 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
         self.navigationController?.pushViewController(notificationsVcObj, animated: true)
     }
     
+    @IBAction func profileButtonAction(_ sender: Any) {
+        let profileVcObj = self.storyboard?.instantiateViewController(withIdentifier: "profileVc") as! ProfileVC
+        self.navigationController?.pushViewController(profileVcObj, animated: true)
+    }
 }

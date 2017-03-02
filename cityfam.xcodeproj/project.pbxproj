@@ -25,6 +25,15 @@
 		0700D9401E556E2100DC9928 /* AlamofireIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0700D93F1E556E2100DC9928 /* AlamofireIntegration.swift */; };
 		0700D9431E556EF300DC9928 /* FacebookIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0700D9411E556EF300DC9928 /* FacebookIntegration.swift */; };
 		0700D9441E556EF300DC9928 /* GoogleSignInIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0700D9421E556EF300DC9928 /* GoogleSignInIntegration.swift */; };
+		07254B5E1E6804BA009417BA /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07254B5D1E6804B9009417BA /* ProfileVC.swift */; };
+		07254B601E6804DA009417BA /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07254B5F1E6804DA009417BA /* EditProfileVC.swift */; };
+		07254B621E6804F1009417BA /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07254B611E6804F1009417BA /* SettingsVC.swift */; };
+		07254B641E680500009417BA /* ManageNotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07254B631E680500009417BA /* ManageNotificationsVC.swift */; };
+		07254B661E68140E009417BA /* MyGroupsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07254B651E68140D009417BA /* MyGroupsVC.swift */; };
+		07254B681E681435009417BA /* MyPlansVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07254B671E681435009417BA /* MyPlansVC.swift */; };
+		07254B6A1E681490009417BA /* GroupDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07254B691E681490009417BA /* GroupDetailVC.swift */; };
+		07254B6C1E682FBF009417BA /* AddPeopleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07254B6B1E682FBF009417BA /* AddPeopleVC.swift */; };
+		07254B6E1E6838FF009417BA /* InviteFriendsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07254B6D1E6838FF009417BA /* InviteFriendsVC.swift */; };
 		074E19451E66F93A009FC7D4 /* icomoon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 074E19441E66F93A009FC7D4 /* icomoon.ttf */; };
 		078633EB1E65680C00680A1C /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078633EA1E65680C00680A1C /* SignupVC.swift */; };
 		078633ED1E65688400680A1C /* TabBarControllerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078633EC1E65688400680A1C /* TabBarControllerVC.swift */; };
@@ -91,6 +100,15 @@
 		0700D9411E556EF300DC9928 /* FacebookIntegration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookIntegration.swift; sourceTree = "<group>"; };
 		0700D9421E556EF300DC9928 /* GoogleSignInIntegration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleSignInIntegration.swift; sourceTree = "<group>"; };
 		0700D9451E55725C00DC9928 /* cityfam-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "cityfam-Bridging-Header.h"; sourceTree = "<group>"; };
+		07254B5D1E6804B9009417BA /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		07254B5F1E6804DA009417BA /* EditProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
+		07254B611E6804F1009417BA /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		07254B631E680500009417BA /* ManageNotificationsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageNotificationsVC.swift; sourceTree = "<group>"; };
+		07254B651E68140D009417BA /* MyGroupsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyGroupsVC.swift; sourceTree = "<group>"; };
+		07254B671E681435009417BA /* MyPlansVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPlansVC.swift; sourceTree = "<group>"; };
+		07254B691E681490009417BA /* GroupDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupDetailVC.swift; sourceTree = "<group>"; };
+		07254B6B1E682FBF009417BA /* AddPeopleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPeopleVC.swift; sourceTree = "<group>"; };
+		07254B6D1E6838FF009417BA /* InviteFriendsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteFriendsVC.swift; sourceTree = "<group>"; };
 		074E19441E66F93A009FC7D4 /* icomoon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = icomoon.ttf; sourceTree = "<group>"; };
 		078633EA1E65680C00680A1C /* SignupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
 		078633EC1E65688400680A1C /* TabBarControllerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarControllerVC.swift; sourceTree = "<group>"; };
@@ -240,6 +258,15 @@
 				078633EA1E65680C00680A1C /* SignupVC.swift */,
 				078633EC1E65688400680A1C /* TabBarControllerVC.swift */,
 				078633EE1E6568B800680A1C /* HomePageVC.swift */,
+				07254B5D1E6804B9009417BA /* ProfileVC.swift */,
+				07254B651E68140D009417BA /* MyGroupsVC.swift */,
+				07254B691E681490009417BA /* GroupDetailVC.swift */,
+				07254B6B1E682FBF009417BA /* AddPeopleVC.swift */,
+				07254B671E681435009417BA /* MyPlansVC.swift */,
+				07254B5F1E6804DA009417BA /* EditProfileVC.swift */,
+				07254B611E6804F1009417BA /* SettingsVC.swift */,
+				07254B6D1E6838FF009417BA /* InviteFriendsVC.swift */,
+				07254B631E680500009417BA /* ManageNotificationsVC.swift */,
 				07F057D71E669361008B8120 /* HomePageTableViewCell.swift */,
 				07F057D91E6694BB008B8120 /* EventDetailVC.swift */,
 				07F057E01E66DF94008B8120 /* AttendingVC.swift */,
@@ -589,14 +616,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				0700D92C1E556D9300DC9928 /* UILabelFontSize.swift in Sources */,
+				07254B681E681435009417BA /* MyPlansVC.swift in Sources */,
 				07F057D81E669361008B8120 /* HomePageTableViewCell.swift in Sources */,
+				07254B6C1E682FBF009417BA /* AddPeopleVC.swift in Sources */,
 				078633F51E65690B00680A1C /* FriendsVC.swift in Sources */,
+				07254B661E68140E009417BA /* MyGroupsVC.swift in Sources */,
+				07254B5E1E6804BA009417BA /* ProfileVC.swift in Sources */,
 				0700D93A1E556DC900DC9928 /* UITextFieldCustomClass.swift in Sources */,
 				07F057E31E66DFC9008B8120 /* InvitedVC.swift in Sources */,
 				07F057DA1E6694BB008B8120 /* EventDetailVC.swift in Sources */,
 				0700D9371E556DC900DC9928 /* UILabelCustomClass.swift in Sources */,
 				078633F31E6568ED00680A1C /* CreateEventVC.swift in Sources */,
 				0700D8FC1E556D2200DC9928 /* LogInVC.swift in Sources */,
+				07254B601E6804DA009417BA /* EditProfileVC.swift in Sources */,
 				0700D9441E556EF300DC9928 /* GoogleSignInIntegration.swift in Sources */,
 				0700D92B1E556D9300DC9928 /* UIButtonFontSize.swift in Sources */,
 				078633F11E6568D500680A1C /* ActivityVC.swift in Sources */,
@@ -604,11 +636,15 @@
 				078633ED1E65688400680A1C /* TabBarControllerVC.swift in Sources */,
 				0700D92D1E556D9300DC9928 /* UITextFieldFontSize.swift in Sources */,
 				078633EB1E65680C00680A1C /* SignupVC.swift in Sources */,
+				07254B641E680500009417BA /* ManageNotificationsVC.swift in Sources */,
+				07254B621E6804F1009417BA /* SettingsVC.swift in Sources */,
 				07F057E11E66DF95008B8120 /* AttendingVC.swift in Sources */,
+				07254B6A1E681490009417BA /* GroupDetailVC.swift in Sources */,
 				078633EF1E6568B800680A1C /* HomePageVC.swift in Sources */,
 				07F057DD1E66D76F008B8120 /* FilterEventsVC.swift in Sources */,
 				0700D9401E556E2100DC9928 /* AlamofireIntegration.swift in Sources */,
 				078633F71E656EAE00680A1C /* InvitationsVC.swift in Sources */,
+				07254B6E1E6838FF009417BA /* InviteFriendsVC.swift in Sources */,
 				07F057E51E66DFDD008B8120 /* InterestedVC.swift in Sources */,
 				07F057DF1E66D792008B8120 /* NotificationsVC.swift in Sources */,
 				0700D9361E556DC900DC9928 /* UIButtonCustomClass.swift in Sources */,
