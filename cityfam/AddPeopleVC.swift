@@ -10,7 +10,7 @@ import UIKit
 
 class AddPeopleVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
-    var contactsArray = []
+    //var contactsArray = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
