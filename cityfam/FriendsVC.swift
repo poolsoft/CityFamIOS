@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FriendsVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class FriendsVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate {
     
     @IBOutlet var searchTableView: UITableView!
     @IBOutlet var requestTableView: UITableView!
@@ -24,9 +24,21 @@ class FriendsVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
         requestTableView.tableFooterView = UIView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
     }
+    
+    // dismissing keyboard on pressing return key
+    
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool{
+        textField.resignFirstResponder()
+        return true
+    }
+
     
     //MARK: UITableView Functions
     
@@ -76,6 +88,11 @@ class FriendsVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
             requestsView.isHidden = false
             searchBarViewHeightConstraint.constant = 0
         }
+    }
+    
+    @IBAction func profileButtonAction(_ sender: Any) {
+        let profileVcObj = self.storyboard?.instantiateViewController(withIdentifier: "profileVc") as! ProfileVC
+        self.navigationController?.pushViewController(profileVcObj, animated: true)
     }
     
     

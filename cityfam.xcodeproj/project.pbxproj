@@ -42,6 +42,8 @@
 		078633F31E6568ED00680A1C /* CreateEventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078633F21E6568ED00680A1C /* CreateEventVC.swift */; };
 		078633F51E65690B00680A1C /* FriendsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078633F41E65690B00680A1C /* FriendsVC.swift */; };
 		078633F71E656EAE00680A1C /* InvitationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078633F61E656EAE00680A1C /* InvitationsVC.swift */; };
+		07AE60BD1E6D9386006F39F0 /* SearchLocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AE60BC1E6D9384006F39F0 /* SearchLocationVC.swift */; };
+		07AE60BF1E6D93AD006F39F0 /* MessagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AE60BE1E6D93AD006F39F0 /* MessagesVC.swift */; };
 		07D461561E64353C00691B46 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 07D461551E64353C00691B46 /* user.png */; };
 		07F057D81E669361008B8120 /* HomePageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F057D71E669361008B8120 /* HomePageTableViewCell.swift */; };
 		07F057DA1E6694BB008B8120 /* EventDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F057D91E6694BB008B8120 /* EventDetailVC.swift */; };
@@ -117,6 +119,8 @@
 		078633F21E6568ED00680A1C /* CreateEventVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventVC.swift; sourceTree = "<group>"; };
 		078633F41E65690B00680A1C /* FriendsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsVC.swift; sourceTree = "<group>"; };
 		078633F61E656EAE00680A1C /* InvitationsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvitationsVC.swift; sourceTree = "<group>"; };
+		07AE60BC1E6D9384006F39F0 /* SearchLocationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchLocationVC.swift; sourceTree = "<group>"; };
+		07AE60BE1E6D93AD006F39F0 /* MessagesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesVC.swift; sourceTree = "<group>"; };
 		07D461551E64353C00691B46 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
 		07F057D71E669361008B8120 /* HomePageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageTableViewCell.swift; sourceTree = "<group>"; };
 		07F057D91E6694BB008B8120 /* EventDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailVC.swift; sourceTree = "<group>"; };
@@ -279,6 +283,8 @@
 				078633F21E6568ED00680A1C /* CreateEventVC.swift */,
 				078633F41E65690B00680A1C /* FriendsVC.swift */,
 				078633F61E656EAE00680A1C /* InvitationsVC.swift */,
+				07AE60BC1E6D9384006F39F0 /* SearchLocationVC.swift */,
+				07AE60BE1E6D93AD006F39F0 /* MessagesVC.swift */,
 			);
 			name = ViewControllerClasses;
 			sourceTree = "<group>";
@@ -648,8 +654,10 @@
 				07F057E51E66DFDD008B8120 /* InterestedVC.swift in Sources */,
 				07F057DF1E66D792008B8120 /* NotificationsVC.swift in Sources */,
 				0700D9361E556DC900DC9928 /* UIButtonCustomClass.swift in Sources */,
+				07AE60BF1E6D93AD006F39F0 /* MessagesVC.swift in Sources */,
 				0700D9391E556DC900DC9928 /* UIImageViewCustomClass.swift in Sources */,
 				0700D9431E556EF300DC9928 /* FacebookIntegration.swift in Sources */,
+				07AE60BD1E6D9386006F39F0 /* SearchLocationVC.swift in Sources */,
 				07F057E71E66DFF1008B8120 /* CommentsVC.swift in Sources */,
 				0700D9381E556DC900DC9928 /* UIViewCustomClass.swift in Sources */,
 			);

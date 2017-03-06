@@ -8,10 +8,21 @@
 
 import UIKit
 
-class MyPlansVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class MyPlansVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    // dismissing keyboard on pressing return key
+    
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool{
+        textField.resignFirstResponder()
+        return true
     }
     
     override var preferredStatusBarStyle : UIStatusBarStyle {

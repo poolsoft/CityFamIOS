@@ -17,6 +17,10 @@ class GroupDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
         groupDetailTableView.tableFooterView = UIView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
     }

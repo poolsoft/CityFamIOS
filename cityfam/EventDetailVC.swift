@@ -20,6 +20,10 @@ class EventDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
         return UIStatusBarStyle.lightContent
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
      //MARK: UIButton actions
 
     @IBAction func backButtonAction(_ sender: Any) {

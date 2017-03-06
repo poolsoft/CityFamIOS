@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MyGroupsVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class MyGroupsVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate {
     
     @IBOutlet var addNewGroupView: UIView!
     @IBOutlet var myGroupsTableView: UITableView!
@@ -16,6 +16,17 @@ class MyGroupsVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         myGroupsTableView.tableFooterView = UIView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    // dismissing keyboard on pressing return key
+    
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool{
+        textField.resignFirstResponder()
+        return true
     }
     
     override var preferredStatusBarStyle : UIStatusBarStyle {

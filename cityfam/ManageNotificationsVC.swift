@@ -16,6 +16,10 @@ class ManageNotificationsVC: UIViewController,UITableViewDataSource,UITableViewD
         super.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
     }

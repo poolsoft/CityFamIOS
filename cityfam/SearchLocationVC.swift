@@ -1,21 +1,21 @@
 //
-//  InviteFriendsVC.swift
+//  SearchLocationVC.swift
 //  cityfam
 //
-//  Created by Piyush Gupta on 3/2/17.
+//  Created by Piyush Gupta on 3/6/17.
 //  Copyright © 2017 Piyush Gupta. All rights reserved.
 //
 
 import UIKit
 
-class InviteFriendsVC: UIViewController,UITextFieldDelegate {
+class SearchLocationVC: UIViewController,UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.tabBarController?.tabBar.isHidden = false
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     // dismissing keyboard on pressing return key
@@ -23,10 +23,6 @@ class InviteFriendsVC: UIViewController,UITextFieldDelegate {
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool{
         textField.resignFirstResponder()
         return true
-    }
-    
-    override var preferredStatusBarStyle : UIStatusBarStyle {
-        return UIStatusBarStyle.lightContent
     }
     
     @IBAction func backButtonAction(_ sender: Any) {

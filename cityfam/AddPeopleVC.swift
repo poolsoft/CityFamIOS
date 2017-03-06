@@ -8,12 +8,23 @@
 
 import UIKit
 
-class AddPeopleVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class AddPeopleVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate {
     
     //var contactsArray = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    // dismissing keyboard on pressing return key
+    
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool{
+        textField.resignFirstResponder()
+        return true
     }
     
     override var preferredStatusBarStyle : UIStatusBarStyle {

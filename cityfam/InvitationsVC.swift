@@ -18,6 +18,10 @@ class InvitationsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
         return UIStatusBarStyle.lightContent
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
     //MARK: UITableView Functions
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
@@ -30,6 +34,13 @@ class InvitationsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    }
+    
+    //MARK: UIButton actions
+    
+    @IBAction func profileButtonAction(_ sender: Any) {
+        let profileVcObj = self.storyboard?.instantiateViewController(withIdentifier: "profileVc") as! ProfileVC
+        self.navigationController?.pushViewController(profileVcObj, animated: true)
     }
 
 

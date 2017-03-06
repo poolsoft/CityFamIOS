@@ -19,6 +19,10 @@ class ActivityVC: UIViewController,UITableViewDataSource,UITableViewDelegate  {
         activityTableView.tableFooterView = UIView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
     }
@@ -54,6 +58,11 @@ class ActivityVC: UIViewController,UITableViewDataSource,UITableViewDelegate  {
             myEventsButton.isSelected = true
             myEventsButton.backgroundColor = UIColor(colorLiteralRed: 208/255, green: 74/255, blue: 88/255, alpha: 1)
         }
+    }
+    
+    @IBAction func profileButtonAction(_ sender: Any) {
+        let profileVcObj = self.storyboard?.instantiateViewController(withIdentifier: "profileVc") as! ProfileVC
+        self.navigationController?.pushViewController(profileVcObj, animated: true)
     }
 
 
