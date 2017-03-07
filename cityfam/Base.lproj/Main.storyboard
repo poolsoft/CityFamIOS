@@ -266,7 +266,7 @@
             <objects>
                 <navigationController navigationBarHidden="YES" id="oov-E4-lp2" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Events" image="eventIcon" selectedImage="eventIcon" id="oVo-K9-Y0B"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="dS1-t7-qC1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dS1-t7-qC1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -283,7 +283,7 @@
             <objects>
                 <navigationController navigationBarHidden="YES" id="zoF-fD-g8K" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Activity" image="activityIcon" selectedImage="activityIcon" id="PFi-bg-yRP"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="410-pX-fD6">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="410-pX-fD6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1280,7 +1280,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="aRP-Ut-0Uq" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="qtN-oQ-Rd8">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qtN-oQ-Rd8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1298,7 +1298,7 @@
             <objects>
                 <navigationController navigationBarHidden="YES" id="r82-iF-xvv" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Create Event" image="event_createIcon" selectedImage="event_createIcon" id="1xb-A7-del"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="SQa-nA-3wV">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="SQa-nA-3wV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1315,7 +1315,7 @@
             <objects>
                 <navigationController navigationBarHidden="YES" id="CeZ-nu-Gur" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Friends" image="friendsIcon" selectedImage="friendsIcon" id="WLZ-GZ-pMP"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="jKO-Ru-1kc">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jKO-Ru-1kc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1332,7 +1332,7 @@
             <objects>
                 <navigationController navigationBarHidden="YES" id="abj-NL-LaP" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Invitations" image="invitationIcon" selectedImage="invitationIcon" id="7in-7Y-N1P"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="MK6-yT-3hf">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MK6-yT-3hf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2241,7 +2241,7 @@
                                         <rect key="frame" x="0.0" y="1" width="394" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="p4r-sz-aby" id="fPJ-LU-dfC">
-                                            <rect key="frame" x="0.0" y="0.0" width="394" height="89.666666666666671"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="394" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user.png" translatesAutoresizingMaskIntoConstraints="NO" id="njH-Ee-MGJ" customClass="UIImageViewCustomClass" customModule="cityfam" customModuleProvider="target">
@@ -3349,7 +3349,7 @@
                                         <rect key="frame" x="0.0" y="1" width="394" height="71"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="95n-I4-Krk" id="wtO-t5-x1H">
-                                            <rect key="frame" x="0.0" y="0.0" width="394" height="70.666666666666671"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="394" height="71"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -3645,7 +3645,7 @@
                                                 <rect key="frame" x="0.0" y="1" width="394" height="75"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dCg-01-THh" id="U3X-ta-YQm">
-                                                    <rect key="frame" x="0.0" y="0.0" width="394" height="74.666666666666671"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="394" height="75"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marshall Mathers LP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8sA-jp-fRO" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
@@ -3744,7 +3744,7 @@
                                                 <rect key="frame" x="0.0" y="1" width="394" height="75"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="g6o-5v-dGK" id="1mf-3X-WHX">
-                                                    <rect key="frame" x="0.0" y="0.0" width="394" height="74.666666666666671"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="394" height="75"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marshall Mathers LP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bfz-s9-aSG" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
@@ -3932,7 +3932,7 @@
                                         <rect key="frame" x="0.0" y="1" width="394" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="coM-hd-jvr" id="0KK-bU-TfC">
-                                            <rect key="frame" x="0.0" y="0.0" width="394" height="64.666666666666671"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="394" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marshall Mathers LP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dlq-LP-rcE" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
@@ -4081,7 +4081,7 @@
                                         <rect key="frame" x="0.0" y="1" width="394" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eq7-nL-rcI" id="yHF-MC-XIk">
-                                            <rect key="frame" x="0.0" y="0.0" width="394" height="64.666666666666671"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="394" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marshall Mathers LP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iu5-mO-4y8" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
@@ -4221,7 +4221,7 @@
                                         <rect key="frame" x="0.0" y="1" width="394" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rLm-S0-lEy" id="Ne3-PH-aus">
-                                            <rect key="frame" x="0.0" y="0.0" width="394" height="64.666666666666671"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="394" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marshall Mathers LP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mXt-x4-Usi" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
@@ -4489,7 +4489,7 @@
                                         <rect key="frame" x="0.0" y="1" width="394" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ih3-a3-3kj" id="ji7-TD-E3s">
-                                            <rect key="frame" x="0.0" y="0.0" width="394" height="44.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="394" height="45"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I am invited to an event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4vf-9f-vY0" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
@@ -4623,7 +4623,7 @@
                                         <rect key="frame" x="0.0" y="1" width="394" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yhT-th-xVd" id="dPl-7A-rF7">
-                                            <rect key="frame" x="0.0" y="0.0" width="394" height="64.666666666666671"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="394" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brittany Murphy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wbP-QV-vtg" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
@@ -5256,7 +5256,7 @@
                                         <rect key="frame" x="0.0" y="1" width="394" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Uq2-Sh-xoL" id="LMM-rh-nBY">
-                                            <rect key="frame" x="0.0" y="0.0" width="394" height="44.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="394" height="45"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Designers on the go" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bs6-6R-Xgp" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
@@ -5483,7 +5483,7 @@
                                         <rect key="frame" x="0.0" y="1" width="394" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qhq-61-e3Z" id="EEi-qz-wL2">
-                                            <rect key="frame" x="0.0" y="0.0" width="394" height="64.666666666666671"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="394" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marshall Mathers LP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Qv-P5-5ls" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
@@ -5849,7 +5849,7 @@
                                                         <rect key="frame" x="0.0" y="28" width="384" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gDK-0P-K0I" id="f8Q-9u-bmH">
-                                                            <rect key="frame" x="0.0" y="0.0" width="384" height="43.666666666666664"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="384" height="43"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3158" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wz8-pe-UXB" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
@@ -6278,7 +6278,7 @@
                                                         <rect key="frame" x="0.0" y="28" width="384" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="heG-YP-k5H" id="UrP-FT-ic6">
-                                                            <rect key="frame" x="0.0" y="0.0" width="384" height="43.666666666666664"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="384" height="43"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brittany Murphy's Plans" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dID-Yf-YSA" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
@@ -6560,7 +6560,7 @@
                                                         <rect key="frame" x="0.0" y="1" width="394" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gW4-O6-dM7" id="aAB-H7-sFh">
-                                                            <rect key="frame" x="0.0" y="0.0" width="394" height="43.666666666666664"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="394" height="43"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Groups" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Sc-8v-1v5" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
