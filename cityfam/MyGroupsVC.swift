@@ -18,10 +18,6 @@ class MyGroupsVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UIT
         myGroupsTableView.tableFooterView = UIView()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.tabBarController?.tabBar.isHidden = false
-    }
-    
     // dismissing keyboard on pressing return key
     
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool{

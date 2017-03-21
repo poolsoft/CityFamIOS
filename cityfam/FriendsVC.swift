@@ -17,15 +17,12 @@ class FriendsVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UITe
     @IBOutlet var searchView: UIView!
     @IBOutlet var requestsView: UIView!
     @IBOutlet var searchBarViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet var searchIconLabel: UILabelFontSize!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         searchTableView.tableFooterView = UIView()
         requestTableView.tableFooterView = UIView()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.tabBarController?.tabBar.isHidden = false
     }
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
@@ -78,6 +75,7 @@ class FriendsVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UITe
             searchView.isHidden = false
             requestsView.isHidden = true
             searchBarViewHeightConstraint.constant = 50
+            searchIconLabel.isHidden = false
         }
         else{
             searchButton.isSelected = false
@@ -87,6 +85,7 @@ class FriendsVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UITe
             searchView.isHidden = true
             requestsView.isHidden = false
             searchBarViewHeightConstraint.constant = 0
+            searchIconLabel.isHidden = true
         }
     }
     

@@ -17,10 +17,6 @@ class CommentsVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
         commentsTableView.tableFooterView = UIView()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.tabBarController?.tabBar.isHidden = true
-    }
-    
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
     }

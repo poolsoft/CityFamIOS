@@ -10,6 +10,9 @@ import UIKit
 
 class EventDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
 
+    @IBOutlet var acceptButton: UIButtonCustomClass!
+    @IBOutlet var declineButton: UIButtonCustomClass!
+    @IBOutlet var interestedButton: UIButtonCustomClass!
     @IBOutlet var shareView: UIView!
     
     override func viewDidLoad() {
@@ -18,10 +21,6 @@ class EventDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.tabBarController?.tabBar.isHidden = true
     }
     
      //MARK: UIButton actions
@@ -36,6 +35,34 @@ class EventDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
     
     @IBAction func cancelButtonAction(_ sender: Any) {
         shareView.isHidden = true
+    }
+    
+    @IBAction func segmentButtonsAction(_ sender: Any) {
+        let button = sender as! UIButtonCustomClass
+        if button == acceptButton{
+            acceptButton.isSelected = true
+            acceptButton.backgroundColor = UIColor(colorLiteralRed: 208/255, green: 74/255, blue: 88/255, alpha: 1)
+            declineButton.isSelected = false
+            declineButton.backgroundColor = UIColor.clear
+            interestedButton.isSelected = false
+            interestedButton.backgroundColor = UIColor.clear
+        }
+        else if button == declineButton{
+            declineButton.isSelected = true
+            declineButton.backgroundColor = UIColor(colorLiteralRed: 208/255, green: 74/255, blue: 88/255, alpha: 1)
+            interestedButton.isSelected = false
+            interestedButton.backgroundColor = UIColor.clear
+            acceptButton.isSelected = false
+            acceptButton.backgroundColor = UIColor.clear
+        }
+        else{
+            interestedButton.isSelected = true
+            interestedButton.backgroundColor = UIColor(colorLiteralRed: 208/255, green: 74/255, blue: 88/255, alpha: 1)
+            acceptButton.isSelected = false
+            acceptButton.backgroundColor = UIColor.clear
+            declineButton.isSelected = false
+            declineButton.backgroundColor = UIColor.clear
+        }
     }
     
     //MARK: UITableView Functions

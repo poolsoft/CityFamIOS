@@ -23,7 +23,7 @@ class AlamofireIntegration: NSObject {
     
 //    func login(_ parameters:[String : String]) {
 //        print(parameters)
-//        Alamofire.request(baseUrl+"checkLoginM.php", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+//        Alamofire.request(baseUrl+"", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
 //            if response.result.isFailure{
 //                self.loginServiceDelegate?.loginError()
 //            }

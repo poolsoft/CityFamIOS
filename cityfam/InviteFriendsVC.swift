@@ -14,10 +14,6 @@ class InviteFriendsVC: UIViewController,UITextFieldDelegate {
         super.viewDidLoad()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.tabBarController?.tabBar.isHidden = false
-    }
-    
     // dismissing keyboard on pressing return key
     
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool{

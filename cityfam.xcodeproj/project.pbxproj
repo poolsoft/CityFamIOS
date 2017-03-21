@@ -44,6 +44,7 @@
 		078633F71E656EAE00680A1C /* InvitationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078633F61E656EAE00680A1C /* InvitationsVC.swift */; };
 		07AE60BD1E6D9386006F39F0 /* SearchLocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AE60BC1E6D9384006F39F0 /* SearchLocationVC.swift */; };
 		07AE60BF1E6D93AD006F39F0 /* MessagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AE60BE1E6D93AD006F39F0 /* MessagesVC.swift */; };
+		07C34C521E810B0900A9699C /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C34C511E810B0900A9699C /* Constant.swift */; };
 		07D461561E64353C00691B46 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 07D461551E64353C00691B46 /* user.png */; };
 		07F057D81E669361008B8120 /* HomePageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F057D71E669361008B8120 /* HomePageTableViewCell.swift */; };
 		07F057DA1E6694BB008B8120 /* EventDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F057D91E6694BB008B8120 /* EventDetailVC.swift */; };
@@ -121,6 +122,7 @@
 		078633F61E656EAE00680A1C /* InvitationsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvitationsVC.swift; sourceTree = "<group>"; };
 		07AE60BC1E6D9384006F39F0 /* SearchLocationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchLocationVC.swift; sourceTree = "<group>"; };
 		07AE60BE1E6D93AD006F39F0 /* MessagesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesVC.swift; sourceTree = "<group>"; };
+		07C34C511E810B0900A9699C /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		07D461551E64353C00691B46 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
 		07F057D71E669361008B8120 /* HomePageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageTableViewCell.swift; sourceTree = "<group>"; };
 		07F057D91E6694BB008B8120 /* EventDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailVC.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 				07F7A1131E60692D00448FFF /* homePic.png */,
 				07D461551E64353C00691B46 /* user.png */,
 				0700D8F91E556D2200DC9928 /* AppDelegate.swift */,
+				07C34C511E810B0900A9699C /* Constant.swift */,
 				07F7A1121E60495000448FFF /* Fonts */,
 				0700D93E1E556E0500DC9928 /* Wrappers */,
 				0700D93C1E556DD000DC9928 /* LiveRenderingClasses */,
@@ -648,6 +651,7 @@
 				07254B6A1E681490009417BA /* GroupDetailVC.swift in Sources */,
 				078633EF1E6568B800680A1C /* HomePageVC.swift in Sources */,
 				07F057DD1E66D76F008B8120 /* FilterEventsVC.swift in Sources */,
+				07C34C521E810B0900A9699C /* Constant.swift in Sources */,
 				0700D9401E556E2100DC9928 /* AlamofireIntegration.swift in Sources */,
 				078633F71E656EAE00680A1C /* InvitationsVC.swift in Sources */,
 				07254B6E1E6838FF009417BA /* InviteFriendsVC.swift in Sources */,

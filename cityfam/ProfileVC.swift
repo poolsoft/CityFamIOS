@@ -17,10 +17,6 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
         super.viewDidLoad()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.tabBarController?.tabBar.isHidden = false
-    }
-    
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
     }

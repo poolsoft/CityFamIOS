@@ -10,16 +10,12 @@ import UIKit
 
 class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
-    @IBOutlet var exploreView: UIView!
+    @IBOutlet var exploreTableView: UITableView!
     @IBOutlet var exploreButton: UIButtonCustomClass!
     @IBOutlet var friendsButton: UIButtonCustomClass!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.tabBarController?.tabBar.isHidden = false
     }
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
@@ -51,14 +47,14 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
             friendsButton.backgroundColor = UIColor(colorLiteralRed: 208/255, green: 74/255, blue: 88/255, alpha: 1)
             exploreButton.isSelected = false
             exploreButton.backgroundColor = UIColor.clear
-            exploreView.isHidden = true
+            exploreTableView.isHidden = true
         }
         else{
             friendsButton.isSelected = false
             friendsButton.backgroundColor = UIColor.clear
             exploreButton.isSelected = true
             exploreButton.backgroundColor = UIColor(colorLiteralRed: 208/255, green: 74/255, blue: 88/255, alpha: 1)
-            exploreView.isHidden = false
+            exploreTableView.isHidden = false
         }
     }
     

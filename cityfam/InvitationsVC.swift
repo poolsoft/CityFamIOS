@@ -18,10 +18,6 @@ class InvitationsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
         return UIStatusBarStyle.lightContent
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.tabBarController?.tabBar.isHidden = false
-    }
-    
     //MARK: UITableView Functions
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{

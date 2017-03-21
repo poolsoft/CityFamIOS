@@ -19,10 +19,6 @@ class EditProfileVC: UIViewController,UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(EditProfileVC.keyboardWillHide(_:)), name:NSNotification.Name.UIKeyboardWillHide, object: nil);
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.tabBarController?.tabBar.isHidden = false
-    }
-    
     // dismissing keyboard on pressing return key
     
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool{
