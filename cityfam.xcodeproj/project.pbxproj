@@ -56,6 +56,9 @@
 		07F057E71E66DFF1008B8120 /* CommentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F057E61E66DFF1008B8120 /* CommentsVC.swift */; };
 		07F7A1141E60692D00448FFF /* homePic.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F7A1131E60692D00448FFF /* homePic.png */; };
 		4DBC018DAEB12F70CCFCCFC7 /* Pods_cityfam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB705ACBA8A558DB8BB929BF /* Pods_cityfam.framework */; };
+		A1761C641E94BAA10079E269 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1761C631E94BAA10079E269 /* Strings.swift */; };
+		A1761C661E94C14C0079E269 /* CommonFxns.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1761C651E94C14C0079E269 /* CommonFxns.swift */; };
+		A1761C6A1E95056F0079E269 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1761C691E95056F0079E269 /* GoogleService-Info.plist */; };
 		C713ABEF1FCA1145E03B12AE /* Pods_cityfamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA53D3085126ABA04058E83 /* Pods_cityfamTests.framework */; };
 		E8995F75844FEAEA759543F2 /* Pods_cityfamUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0A00B5EC1AAE01FA57C8022 /* Pods_cityfamUITests.framework */; };
 /* End PBXBuildFile section */
@@ -141,6 +144,9 @@
 		643E1FBFA6054261D01F45A5 /* Pods-cityfam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cityfam.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cityfam/Pods-cityfam.debug.xcconfig"; sourceTree = "<group>"; };
 		863E99728436B5DED6101934 /* Pods-cityfamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cityfamTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-cityfamTests/Pods-cityfamTests.release.xcconfig"; sourceTree = "<group>"; };
 		952B1B0427C8157F4B1B6ED3 /* Pods-cityfam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cityfam.release.xcconfig"; path = "Pods/Target Support Files/Pods-cityfam/Pods-cityfam.release.xcconfig"; sourceTree = "<group>"; };
+		A1761C631E94BAA10079E269 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		A1761C651E94C14C0079E269 /* CommonFxns.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonFxns.swift; sourceTree = "<group>"; };
+		A1761C691E95056F0079E269 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C0A00B5EC1AAE01FA57C8022 /* Pods_cityfamUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cityfamUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB705ACBA8A558DB8BB929BF /* Pods_cityfam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cityfam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E66AE9768B56EDAFE3162053 /* Pods-cityfamTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cityfamTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cityfamTests/Pods-cityfamTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -200,6 +206,7 @@
 		0700D8F81E556D2200DC9928 /* cityfam */ = {
 			isa = PBXGroup;
 			children = (
+				A1761C621E94BA390079E269 /* CommonClasses */,
 				07F7A1131E60692D00448FFF /* homePic.png */,
 				07D461551E64353C00691B46 /* user.png */,
 				0700D8F91E556D2200DC9928 /* AppDelegate.swift */,
@@ -336,6 +343,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		A1761C621E94BA390079E269 /* CommonClasses */ = {
+			isa = PBXGroup;
+			children = (
+				A1761C691E95056F0079E269 /* GoogleService-Info.plist */,
+				A1761C631E94BAA10079E269 /* Strings.swift */,
+				A1761C651E94C14C0079E269 /* CommonFxns.swift */,
+			);
+			name = CommonClasses;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -462,6 +479,7 @@
 				074E19451E66F93A009FC7D4 /* icomoon.ttf in Resources */,
 				07F7A1141E60692D00448FFF /* homePic.png in Resources */,
 				0700D8FF1E556D2200DC9928 /* Main.storyboard in Resources */,
+				A1761C6A1E95056F0079E269 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -645,6 +663,7 @@
 				078633ED1E65688400680A1C /* TabBarControllerVC.swift in Sources */,
 				0700D92D1E556D9300DC9928 /* UITextFieldFontSize.swift in Sources */,
 				078633EB1E65680C00680A1C /* SignupVC.swift in Sources */,
+				A1761C661E94C14C0079E269 /* CommonFxns.swift in Sources */,
 				07254B641E680500009417BA /* ManageNotificationsVC.swift in Sources */,
 				07254B621E6804F1009417BA /* SettingsVC.swift in Sources */,
 				07F057E11E66DF95008B8120 /* AttendingVC.swift in Sources */,
@@ -656,6 +675,7 @@
 				078633F71E656EAE00680A1C /* InvitationsVC.swift in Sources */,
 				07254B6E1E6838FF009417BA /* InviteFriendsVC.swift in Sources */,
 				07F057E51E66DFDD008B8120 /* InterestedVC.swift in Sources */,
+				A1761C641E94BAA10079E269 /* Strings.swift in Sources */,
 				07F057DF1E66D792008B8120 /* NotificationsVC.swift in Sources */,
 				0700D9361E556DC900DC9928 /* UIButtonCustomClass.swift in Sources */,
 				07AE60BF1E6D93AD006F39F0 /* MessagesVC.swift in Sources */,
@@ -827,7 +847,7 @@
 				INFOPLIST_FILE = cityfam/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.PiyushGupta.cityfam;
+				PRODUCT_BUNDLE_IDENTIFIER = com.imarkinfotech.CityFam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = GENDevProfile;
 				SWIFT_OBJC_BRIDGING_HEADER = "cityfam/cityfam-Bridging-Header.h";
@@ -848,7 +868,7 @@
 				INFOPLIST_FILE = cityfam/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.PiyushGupta.cityfam;
+				PRODUCT_BUNDLE_IDENTIFIER = com.imarkinfotech.CityFam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = GENDevProfile;
 				SWIFT_OBJC_BRIDGING_HEADER = "cityfam/cityfam-Bridging-Header.h";

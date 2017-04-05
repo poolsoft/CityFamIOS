@@ -5,29 +5,68 @@
 //  Created by Piyush Gupta on 2/16/17.
 //  Copyright © 2017 Piyush Gupta. All rights reserved.
 //
-
 import UIKit
+import MBProgressHUD
+import FBSDKLoginKit
+import Google
+import GoogleSignIn
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+ 
 
     var window: UIWindow?
-
+    var hud:MBProgressHUD!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        // Initialize Google sign-in
-        //var configureError: NSError?
-        //GGLContext.sharedInstance().configureWithError(&configureError)
-       // assert(configureError == nil, "Error configuring Google services: \(configureError)")
+        // Initialize sign-in
+        var configureError: NSError?
+        GGLContext.sharedInstance().configureWithError(&configureError)
+        assert(configureError == nil, "Error configuring Google services: \(configureError)")
         
+
+//        let navController:UINavigationController = self.window?.rootViewController as! UINavigationController
+//        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//        if(UserDefaults.standard.value(forKey: USER_DEFAULT_userId_Key) != nil){
+//            let signupVcObj = self.storyboard?.instantiateViewController(withIdentifier: "signupVc") as! SignupVC
+//            self.navigationController?.pushViewController(signupVcObj, animated: true)
+//        }
+//        else{
+//            let secondViewController = mainStoryboard.instantiateViewController(withIdentifier: "loginVC") as! LoginVC
+//            navController.pushViewController(secondViewController, animated: true)
+//        }
         
-        //return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-        return true
+        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
 
+//    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+//        
+//        return GIDSignIn.sharedInstance().handleURL(url,sourceApplication: option[UIApplicationOpenURLOptionsSourceApplicationKey] as? String,
+//        annotation: option[UIApplicationOpenURLOptionsAnnotationKey])
+//        //return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
+//    }
+
+    // [START openurl]
+    func application(_ application: UIApplication,
+                     open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        return GIDSignIn.sharedInstance().handle(url,
+                                                 sourceApplication: sourceApplication,
+                                                 annotation: annotation)
+    }
+    // [END openurl]
+    @available(iOS 9.0, *)
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
+        return GIDSignIn.sharedInstance().handle(url,
+                                                 sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
+                                                 annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+    }
     func applicationWillResignActive(_ application: UIApplication) {
+        
+        FBSDKAppEvents.activateApp()
+
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
     }
@@ -48,7 +87,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
+    
+    //MARK: ProgressHUD Methods
+    
+    func showProgressHUD(view : UIView)->Void{
+        MBProgressHUD.showAdded(to: view, animated: true)
+    }
+    
+    func hideProgressHUD(view : UIView)->Void{
+        MBProgressHUD.hide(for: view, animated: true)
+    }
+    
+   
 
 }
 

@@ -25,7 +25,8 @@ class SettingsVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
     }
     
     @IBAction func logoutButtonAction(_ sender: Any) {
-        
+        UserDefaults.standard.removeObject(forKey: USER_DEFAULT_userId_Key)
+        _ = self.navigationController?.popToRootViewController(animated: true)
     }
     
     //MARK: UITableView Functions

@@ -81,6 +81,7 @@ PODS:
   - GTMSessionFetcher/Core (1.1.7)
   - GTMSessionFetcher/Full (1.1.7):
     - GTMSessionFetcher/Core (= 1.1.7)
+  - MBProgressHUD (1.0.0)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
@@ -93,6 +94,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Messaging
   - Google/SignIn
+  - MBProgressHUD
   - SDWebImage (~> 3.8)
 
 SPEC CHECKSUMS:
@@ -117,8 +119,9 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 2b2596cbb7186865e98cadf2b1e262d851c2b168
   GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
   GTMSessionFetcher: a1f8ed39e4fe21c68957daed472c7afbcdf29166
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
 
-PODFILE CHECKSUM: fea848dbb353352214c5c25fabbfd4f657213ba0
+PODFILE CHECKSUM: 1b59f42c253ea26d13ac13fd6410ec8213c9a443
 
-COCOAPODS: 1.2.0.beta.1
+COCOAPODS: 1.1.1

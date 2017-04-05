@@ -15,7 +15,7 @@ pod 'Firebase/Messaging'
 pod 'FacebookCore'
 pod 'FacebookLogin'
 pod 'FacebookShare'
-
+pod 'MBProgressHUD'
 
   target 'cityfamTests' do
     inherit! :search_paths

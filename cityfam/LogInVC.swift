@@ -8,9 +8,15 @@
 
 import UIKit
 
-class LogInVC: UIViewController, loginServiceAlamofire, GoogleSignInService, FacebookDelegate,UITextFieldDelegate {
-    
+class LogInVC: UIViewController, loginServiceAlamofire, GoogleSignInService,RegisterationServiceAlamofire, FacebookDelegate,UITextFieldDelegate {
+   
+    //MARK:- Outlets & Properties
+
     @IBOutlet var scrollView: UIScrollView!
+    @IBOutlet var passwordTxtField: UITextFieldCustomClass!    
+    @IBOutlet var emailTxtField: UITextFieldCustomClass!
+    
+    //MARK:- View life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,29 +49,105 @@ class LogInVC: UIViewController, loginServiceAlamofire, GoogleSignInService, Fac
         let contentInset:UIEdgeInsets = UIEdgeInsets.zero
         self.scrollView.contentInset = contentInset
     }
-
     
-     //MARK: UIButton actions
+    //MARK:- Other Methods
     
-    @IBAction func loginButtonAction(_ sender: Any) {
-        let tabBarControllerVcObj = self.storyboard?.instantiateViewController(withIdentifier: "tabBarControllerVc") as! TabBarControllerVC
-        self.navigationController?.pushViewController(tabBarControllerVcObj, animated: true)
+    func isValid()->Bool{
+        if self.emailTxtField.text != "" && self.passwordTxtField.text != "" {
+            if CommonFxns.isValidEmail(testStr: self.emailTxtField.text!){
+                return true
+            }
+            else{
+                CommonFxns.showAlert(self, message:enterValidEmailAlert , title: errorAlertTitle)
+                return false
+            }
+        }
+        else{
+            CommonFxns.showAlert(self, message: allFieldRequiredAlert, title: errorAlertTitle)
+            return false
+        }
+    }
+    
+    func resetData(){
+        self.emailTxtField.text = ""
+        self.passwordTxtField.text = ""
+    }
+    
+    //MARK:- Method to get Api's results
+    
+    
+    func ServerError(){
+        appDelegate.hideProgressHUD(view: self.view)
+        CommonFxns.showAlert(self, message: networkOperationErrorAlert, title: errorAlertTitle)
+    }
+    
+    //login Api Result
+    func loginResult(_ result:AnyObject){
+        DispatchQueue.main.async( execute: {
+            appDelegate.hideProgressHUD(view: self.view)
+            
+            if (result.value(forKey: "success")as! String == "1"){
+                let resultDict = result.value(forKey: "result") as! NSDictionary//result.value("result") as! Array
+                
+                UserDefaults.standard.set(resultDict.value(forKey: "userId") as! String, forKey: USER_DEFAULT_userId_Key)
+                print(UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key)!)
+                
+                let tabBarControllerVcObj = self.storyboard?.instantiateViewController(withIdentifier: "tabBarControllerVc") as! TabBarControllerVC
+                self.navigationController?.pushViewController(tabBarControllerVcObj, animated: true)
+            }
+            else{
+                CommonFxns.showAlert(self, message: (result.value(forKey: "error") as? String)!, title: errorAlertTitle)
+            }
+        })
     }
 
-    @IBAction func googleButtonAction(_ sender: Any) {
+    func registerationResult(_ result:AnyObject){
+
+    }
+     //MARK: UIButton actions
+    
+    //Login Api call
+    @IBAction func loginButtonAction(_ sender: Any) {
+        if isValid() {
+            if CommonFxns.isInternetAvailable(){
+                appDelegate.showProgressHUD(view: self.view)
+                let parameters = [
+                    "emailId": CommonFxns.trimString(string: self.emailTxtField.text!),
+                    "password": CommonFxns.trimString(string: self.passwordTxtField.text!),
+                    "deviceToken":"",
+                    "deviceType":"iOS"
+                ]
+                AlamofireIntegration.sharedInstance.loginServiceDelegate = self
+                AlamofireIntegration.sharedInstance.loginApi(parameters)
+            }
+            else{
+                CommonFxns.showAlert(self, message: internetConnectionError, title: oopsText)
+            }
+        }
+    }
+
+    @IBAction func googleBtnAction(_ sender: Any) {
         GoogleSignInIntegration.sharedInstance.delegate = self
         GoogleSignInIntegration.sharedInstance.callGoogleSignIn()
     }
     
-    @IBAction func facebookButtonAction(_ sender: Any) {
-        FacebookIntegration.sharedInstance.delegate = self
-        FacebookIntegration.sharedInstance.fbLogin(self)
+    @IBAction func facebookBtnAction(_ sender: Any) {
+        
+        self.emailTxtField.text = ""
+        self.passwordTxtField.text = ""
+        
+        if CommonFxns.isInternetAvailable(){
+            FacebookIntegration.sharedInstance.delegate = self
+            FacebookIntegration.sharedInstance.fbLogin(_reference: self)
+        }
+        else{
+            CommonFxns.showAlert(self, message: internetConnectionError, title: oopsText)
+        }
     }
-    
+
     @IBAction func createAccountButtonAction(_ sender: Any) {
         let signupVcObj = self.storyboard?.instantiateViewController(withIdentifier: "signupVc") as! SignupVC
         self.navigationController?.pushViewController(signupVcObj, animated: true)
-
     }
     
     //MARK: Google sign in result
@@ -79,22 +161,75 @@ class LogInVC: UIViewController, loginServiceAlamofire, GoogleSignInService, Fac
     }
     
     //MARK: Facebook api result
-    
+
     func fbGraphApiData(_ dict:NSDictionary){
         print(dict)
-    }
-    
-    //MARK: login api result
-    
-    func loginResult(_ result:AnyObject){
-        
-    }
-    
-    func loginError(){
-        
-    }
 
-
+//        if let email = dict.value(forKey: "email"){
+//            let id = dict.value(forKey: "id")
+//            
+//            //print("facebook data", dict)
+//            if CommonFxns.isInternetAvailable(){
+//                appDelegate.showProgressHUD(view: self.view)
+//                var first_name = ""
+//                var last_name = ""
+//                
+//                if let firstName = dict.value(forKey: "first_name"){
+//                    first_name = firstName as! String
+//                }
+//                
+//                if let lastName = dict.value(forKey: "last_name"){
+//                    last_name = lastName  as! String
+//                }
+//                var imgStr = ""
+//                
+//                if let picture = dict.value(forKey: "picture") as? NSDictionary{
+//                    if let data = picture.value(forKey: "data") as? NSDictionary{
+//                        if let urlStr = data.value(forKey: "url"){
+//                            do {
+//                                let url = NSURL(string: urlStr as! String)
+//                                let imageData:NSData = try NSData(contentsOf: url as! URL)
+//                                let image:UIImage = UIImage(data: imageData as Data)!
+//                                let imgData:NSData = UIImagePNGRepresentation(image)! as NSData
+//                                imgStr = "data:image/png;base64,\(imgData.base64EncodedString(options: .lineLength64Characters))"
+//                            }
+//                            catch{
+//                            }
+//                        }
+//                    }
+//                }
+//                var tokenId = ""
+//                if UserDefaults.standard.string(forKey: "tokenId") != nil{
+//                    tokenId = UserDefaults.standard.string(forKey: "tokenId")!
+//                }
+//                
+//                let parameters = [
+//                    "name": first_name+last_name,
+//                    "emailId": CommonFxns.trimString(string: self.emailTxtField.text!),
+//                    "phone": "",
+//                    "password": CommonFxns.trimString(string: self.passwordTxtField.text!),
+//                    "latitude": "1233.4545",
+//                    "longitude": "674623.567",
+//                    "address": "",
+//                    "deviceToken":"",
+//                    "facebookId": "",
+//                    "googleId": "",
+//                    "deviceType":"iOS",
+//                    "profilePicBase64":imgStr
+//                ]
+//
+//                
+//                AlamofireIntegration.sharedInstance.registerationServiceDelegate = self
+//                AlamofireIntegration.sharedInstance.registerationApi(parameters as! [String : String])
+//            }
+//            else{
+//                CommonFxns.showAlert(self, message: internetConnectionError, title: oopsText)
+//            }
+//        }
+//        else{
+//            CommonFxns.showAlert(self, message: "Email not found", title: oopsText)
+//        }
+    }
 
 }
 
