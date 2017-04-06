@@ -58,7 +58,13 @@
 		4DBC018DAEB12F70CCFCCFC7 /* Pods_cityfam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB705ACBA8A558DB8BB929BF /* Pods_cityfam.framework */; };
 		A1761C641E94BAA10079E269 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1761C631E94BAA10079E269 /* Strings.swift */; };
 		A1761C661E94C14C0079E269 /* CommonFxns.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1761C651E94C14C0079E269 /* CommonFxns.swift */; };
-		A1761C6A1E95056F0079E269 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1761C691E95056F0079E269 /* GoogleService-Info.plist */; };
+		A17D70381E9617E300D730FE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A17D70371E9617E300D730FE /* GoogleService-Info.plist */; };
+		A17D703A1E9624AB00D730FE /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17D70391E9624AB00D730FE /* ForgotPasswordVC.swift */; };
+		A17D703C1E9633BC00D730FE /* LocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17D703B1E9633BC00D730FE /* LocationVC.swift */; };
+		A17D703F1E9634C000D730FE /* InvitationsScreenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17D703E1E9634C000D730FE /* InvitationsScreenTableViewCell.swift */; };
+		A17D70401E9637D800D730FE /* Mark Simonson - Proxima Nova Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 07F7A10F1E60493F00448FFF /* Mark Simonson - Proxima Nova Regular.otf */; };
+		A17D70411E9637D800D730FE /* ProximaNova-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 07F7A1101E60493F00448FFF /* ProximaNova-Bold.otf */; };
+		A17D70421E9637D800D730FE /* ufonts.com_gotham-medium_0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07F7A1111E60493F00448FFF /* ufonts.com_gotham-medium_0.ttf */; };
 		C713ABEF1FCA1145E03B12AE /* Pods_cityfamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA53D3085126ABA04058E83 /* Pods_cityfamTests.framework */; };
 		E8995F75844FEAEA759543F2 /* Pods_cityfamUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0A00B5EC1AAE01FA57C8022 /* Pods_cityfamUITests.framework */; };
 /* End PBXBuildFile section */
@@ -146,7 +152,10 @@
 		952B1B0427C8157F4B1B6ED3 /* Pods-cityfam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cityfam.release.xcconfig"; path = "Pods/Target Support Files/Pods-cityfam/Pods-cityfam.release.xcconfig"; sourceTree = "<group>"; };
 		A1761C631E94BAA10079E269 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		A1761C651E94C14C0079E269 /* CommonFxns.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonFxns.swift; sourceTree = "<group>"; };
-		A1761C691E95056F0079E269 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A17D70371E9617E300D730FE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A17D70391E9624AB00D730FE /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
+		A17D703B1E9633BC00D730FE /* LocationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationVC.swift; sourceTree = "<group>"; };
+		A17D703E1E9634C000D730FE /* InvitationsScreenTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvitationsScreenTableViewCell.swift; sourceTree = "<group>"; };
 		C0A00B5EC1AAE01FA57C8022 /* Pods_cityfamUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cityfamUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB705ACBA8A558DB8BB929BF /* Pods_cityfam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cityfam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E66AE9768B56EDAFE3162053 /* Pods-cityfamTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cityfamTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cityfamTests/Pods-cityfamTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -206,11 +215,10 @@
 		0700D8F81E556D2200DC9928 /* cityfam */ = {
 			isa = PBXGroup;
 			children = (
+				A17D703D1E9633ED00D730FE /* CustomCellClasses */,
 				A1761C621E94BA390079E269 /* CommonClasses */,
 				07F7A1131E60692D00448FFF /* homePic.png */,
 				07D461551E64353C00691B46 /* user.png */,
-				0700D8F91E556D2200DC9928 /* AppDelegate.swift */,
-				07C34C511E810B0900A9699C /* Constant.swift */,
 				07F7A1121E60495000448FFF /* Fonts */,
 				0700D93E1E556E0500DC9928 /* Wrappers */,
 				0700D93C1E556DD000DC9928 /* LiveRenderingClasses */,
@@ -221,6 +229,7 @@
 				0700D9021E556D2200DC9928 /* LaunchScreen.storyboard */,
 				0700D9051E556D2200DC9928 /* Info.plist */,
 				0700D9451E55725C00DC9928 /* cityfam-Bridging-Header.h */,
+				A17D703B1E9633BC00D730FE /* LocationVC.swift */,
 			);
 			path = cityfam;
 			sourceTree = "<group>";
@@ -281,7 +290,6 @@
 				07254B611E6804F1009417BA /* SettingsVC.swift */,
 				07254B6D1E6838FF009417BA /* InviteFriendsVC.swift */,
 				07254B631E680500009417BA /* ManageNotificationsVC.swift */,
-				07F057D71E669361008B8120 /* HomePageTableViewCell.swift */,
 				07F057D91E6694BB008B8120 /* EventDetailVC.swift */,
 				07F057E01E66DF94008B8120 /* AttendingVC.swift */,
 				07F057E21E66DFC9008B8120 /* InvitedVC.swift */,
@@ -295,6 +303,7 @@
 				078633F61E656EAE00680A1C /* InvitationsVC.swift */,
 				07AE60BC1E6D9384006F39F0 /* SearchLocationVC.swift */,
 				07AE60BE1E6D93AD006F39F0 /* MessagesVC.swift */,
+				A17D70391E9624AB00D730FE /* ForgotPasswordVC.swift */,
 			);
 			name = ViewControllerClasses;
 			sourceTree = "<group>";
@@ -346,11 +355,22 @@
 		A1761C621E94BA390079E269 /* CommonClasses */ = {
 			isa = PBXGroup;
 			children = (
-				A1761C691E95056F0079E269 /* GoogleService-Info.plist */,
+				07C34C511E810B0900A9699C /* Constant.swift */,
+				0700D8F91E556D2200DC9928 /* AppDelegate.swift */,
+				A17D70371E9617E300D730FE /* GoogleService-Info.plist */,
 				A1761C631E94BAA10079E269 /* Strings.swift */,
 				A1761C651E94C14C0079E269 /* CommonFxns.swift */,
 			);
 			name = CommonClasses;
+			sourceTree = "<group>";
+		};
+		A17D703D1E9633ED00D730FE /* CustomCellClasses */ = {
+			isa = PBXGroup;
+			children = (
+				07F057D71E669361008B8120 /* HomePageTableViewCell.swift */,
+				A17D703E1E9634C000D730FE /* InvitationsScreenTableViewCell.swift */,
+			);
+			name = CustomCellClasses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -473,13 +493,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A17D70401E9637D800D730FE /* Mark Simonson - Proxima Nova Regular.otf in Resources */,
+				A17D70411E9637D800D730FE /* ProximaNova-Bold.otf in Resources */,
+				A17D70421E9637D800D730FE /* ufonts.com_gotham-medium_0.ttf in Resources */,
 				0700D9041E556D2200DC9928 /* LaunchScreen.storyboard in Resources */,
 				07D461561E64353C00691B46 /* user.png in Resources */,
 				0700D9011E556D2200DC9928 /* Assets.xcassets in Resources */,
 				074E19451E66F93A009FC7D4 /* icomoon.ttf in Resources */,
 				07F7A1141E60692D00448FFF /* homePic.png in Resources */,
 				0700D8FF1E556D2200DC9928 /* Main.storyboard in Resources */,
-				A1761C6A1E95056F0079E269 /* GoogleService-Info.plist in Resources */,
+				A17D70381E9617E300D730FE /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -651,6 +674,7 @@
 				07254B5E1E6804BA009417BA /* ProfileVC.swift in Sources */,
 				0700D93A1E556DC900DC9928 /* UITextFieldCustomClass.swift in Sources */,
 				07F057E31E66DFC9008B8120 /* InvitedVC.swift in Sources */,
+				A17D703C1E9633BC00D730FE /* LocationVC.swift in Sources */,
 				07F057DA1E6694BB008B8120 /* EventDetailVC.swift in Sources */,
 				0700D9371E556DC900DC9928 /* UILabelCustomClass.swift in Sources */,
 				078633F31E6568ED00680A1C /* CreateEventVC.swift in Sources */,
@@ -675,6 +699,8 @@
 				078633F71E656EAE00680A1C /* InvitationsVC.swift in Sources */,
 				07254B6E1E6838FF009417BA /* InviteFriendsVC.swift in Sources */,
 				07F057E51E66DFDD008B8120 /* InterestedVC.swift in Sources */,
+				A17D703F1E9634C000D730FE /* InvitationsScreenTableViewCell.swift in Sources */,
+				A17D703A1E9624AB00D730FE /* ForgotPasswordVC.swift in Sources */,
 				A1761C641E94BAA10079E269 /* Strings.swift in Sources */,
 				07F057DF1E66D792008B8120 /* NotificationsVC.swift in Sources */,
 				0700D9361E556DC900DC9928 /* UIButtonCustomClass.swift in Sources */,

@@ -19,6 +19,8 @@ let USER_DEFAULT_FireBaseToken = "fireBaseTokenId"
 // MARK: appDelegate reference
 let appDelegate = UIApplication.shared.delegate as!(AppDelegate)
 
+//MARK:- other
 
+let appNavColor:UIColor = UIColor(colorLiteralRed: 208/255, green: 74/255, blue: 88/255, alpha: 1)
 
 

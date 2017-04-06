@@ -21,13 +21,24 @@
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
-			<key>CFBundleURLName</key>
-			<string>com.imarkinfotech.CityFam</string>
-		</dict>
-		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.1016686776927-i0uvagh3n8lk6a8poof94sfui62prmka</string>
+				<string>com.googleusercontent.apps.59303853655-jl9hdqnu3mu5e7u2i8mbgfdsk9di5c06</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.imarkinfotech.CityFam</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
 				<string>fb1932886773597489</string>
 			</array>
 		</dict>

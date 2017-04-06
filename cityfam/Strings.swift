@@ -35,3 +35,14 @@ let allFieldRequiredAlert = "Please enter all fields."
 let enterValidEmailAlert = "Enter valid Email."
 let pwdMismatchAlert = "Passowrd not matched."
 let incorrectPwdAlert = "Passowrd must be of 8 characters"
+
+ 
+//Forgot password screen
+ 
+let passwordResetAlert = "Password reset successfully!"
+let enterEmailAlert = "Please enter Email to reset password."
+ 
+ 
+ 
+ 
+ 

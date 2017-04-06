@@ -11,10 +11,8 @@ import FBSDKLoginKit
 import Google
 import GoogleSignIn
 
-
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
- 
+class AppDelegate: UIResponder, UIApplicationDelegate,GIDSignInDelegate {
 
     var window: UIWindow?
     var hud:MBProgressHUD!
@@ -23,9 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         // Initialize sign-in
-        var configureError: NSError?
-        GGLContext.sharedInstance().configureWithError(&configureError)
-        assert(configureError == nil, "Error configuring Google services: \(configureError)")
+//        var configureError: NSError?
+//        GGLContext.sharedInstance().configureWithError(&configureError)
+//        assert(configureError == nil, "Error configuring Google services: \(configureError)")
         
 
 //        let navController:UINavigationController = self.window?.rootViewController as! UINavigationController
@@ -38,6 +36,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            let secondViewController = mainStoryboard.instantiateViewController(withIdentifier: "loginVC") as! LoginVC
 //            navController.pushViewController(secondViewController, animated: true)
 //        }
+
+            
+        
+        GIDSignIn.sharedInstance().signOut()
+        
+        GIDSignIn.sharedInstance().clientID = "59303853655-jl9hdqnu3mu5e7u2i8mbgfdsk9di5c06.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance().delegate = self
         
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
@@ -49,22 +54,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        //return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
 //    }
 
-    // [START openurl]
-    func application(_ application: UIApplication,
-                     open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        return GIDSignIn.sharedInstance().handle(url,
-                                                 sourceApplication: sourceApplication,
-                                                 annotation: annotation)
+
+    //For iOS 8 and older
+//    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+//        return GIDSignIn.sharedInstance().handle(url as URL!, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String, annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+//    }
+    
+//    func application(_ application: UIApplication,
+//                     open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+//        return GIDSignIn.sharedInstance().handle(url as URL!,sourceApplication: sourceApplication,annotation: annotation)
+//    }
+
+    //For iOS 10
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
     }
-    // [END openurl]
-    @available(iOS 9.0, *)
-    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
-        return GIDSignIn.sharedInstance().handle(url,
-                                                 sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
-                                                 annotation: options[UIApplicationOpenURLOptionsKey.annotation])
-    }
+    
     func applicationWillResignActive(_ application: UIApplication) {
-        
         FBSDKAppEvents.activateApp()
 
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -98,6 +104,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         MBProgressHUD.hide(for: view, animated: true)
     }
     
+    public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if (error == nil)
+        {
+            // Perform any operations on signed in user here.
+            let userId = user.userID // For client-side use only!
+            let idToken = user.authentication.idToken //Safe to send to the server
+            let name = user.profile.name
+            let email = user.profile.email
+            let userImageURL = user.profile.imageURL(withDimension: 200)
+            // ...
+            
+            print(name!,userId!,idToken!,email!,userImageURL!)
+            
+            GIDSignIn.sharedInstance().signOut()
+        }
+        else
+        {
+            print("\(error.localizedDescription)")
+        }
+        
+    }
+    
+    
+    //    func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!,
+    //                withError error: NSError!)
+    //    {
+    //            }
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user:GIDGoogleUser!,
+              withError error: Error!)
+    {
+        // Perform any operations when the user disconnects from app here.
+    }
    
 
 }

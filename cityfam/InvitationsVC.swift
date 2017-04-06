@@ -25,7 +25,7 @@ class InvitationsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)//InvitationsScreenTableViewCell
         return cell
     }
     
@@ -38,6 +38,5 @@ class InvitationsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
         let profileVcObj = self.storyboard?.instantiateViewController(withIdentifier: "profileVc") as! ProfileVC
         self.navigationController?.pushViewController(profileVcObj, animated: true)
     }
-
 
 }

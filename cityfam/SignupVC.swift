@@ -37,7 +37,7 @@ class SignupVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
     
     // dismissing keyboard on pressing return key
     
-    public func textFieldShouldReturn(_ textField: UITextField) -> Bool{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool{
         textField.resignFirstResponder()
         return true
     }
@@ -73,10 +73,9 @@ class SignupVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
             appDelegate.hideProgressHUD(view: self.view)
             self.resetData()
             
-            if (result.value(forKey: "success")as! String == "1"){
-                let resultDict = result.value(forKey: "result") as! NSDictionary//result.value("result") as! Array
+            if (result.value(forKey: "success")as! Int == 1){
+                let userId = result.value(forKey: "result") as! String//result.value("result") as! Array
                 
-                let userId:Int = resultDict.value(forKey: "userId") as! Int
                 UserDefaults.standard.set(userId, forKey: USER_DEFAULT_userId_Key)
                 
                 let tabBarControllerVcObj = self.storyboard?.instantiateViewController(withIdentifier: "tabBarControllerVc") as! TabBarControllerVC
@@ -108,7 +107,7 @@ class SignupVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
             
             if CommonFxns.isValidEmail(testStr: self.emailTxtField.text!){
                 if self.passwordTxtField.text == self.confirmPasswordTxtField.text{
-                    if (self.passwordTxtField.text?.characters.count)!>8{
+                    if (self.passwordTxtField.text?.characters.count)!>7{
                         return true
                     }
                     else{
@@ -158,6 +157,8 @@ class SignupVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
     //MARK: Button Actions
     
     //SignUp Button Action
+    
+    //data:image/png;base64,
     @IBAction func signupButtonAction(_ sender: Any) {
         if isValid() {
             if CommonFxns.isInternetAvailable(){
@@ -165,7 +166,7 @@ class SignupVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
                 var imgStr = ""
                 if profileImgToUpload != nil{
                     let imageData:NSData = UIImagePNGRepresentation(profileImgToUpload)! as NSData
-                    imgStr = "data:image/png;base64,\(imageData.base64EncodedString(options: .lineLength64Characters))"
+                    imgStr = "\(imageData.base64EncodedString(options: .lineLength64Characters))"
                 }
                 
                 let parameters = [
