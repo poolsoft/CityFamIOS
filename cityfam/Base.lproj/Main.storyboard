@@ -58,7 +58,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gAg-Sn-8LF" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                                <rect key="frame" x="78" y="254" width="18" height="28"/>
+                                                <rect key="frame" x="78" y="254.33333333333331" width="18" height="27.999999999999943"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="18" id="JMp-8p-RCq"/>
                                                 </constraints>
@@ -66,7 +66,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="E-mail" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GWA-Dc-cUY" customClass="UITextFieldCustomClass" customModule="cityfam" customModuleProvider="target">
+                                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="E-mail" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GWA-Dc-cUY" customClass="UITextFieldCustomClass" customModule="cityfam" customModuleProvider="target">
                                                 <rect key="frame" x="96" y="257" width="241" height="21"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
@@ -84,7 +84,7 @@
                                                 </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xjb-JH-D9w" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                                <rect key="frame" x="78" y="315" width="18" height="28"/>
+                                                <rect key="frame" x="78" y="315.33333333333331" width="18" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="18" id="Qis-Rg-d1u"/>
                                                 </constraints>
@@ -92,7 +92,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iaz-Br-kxO" customClass="UITextFieldCustomClass" customModule="cityfam" customModuleProvider="target">
+                                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iaz-Br-kxO" customClass="UITextFieldCustomClass" customModule="cityfam" customModuleProvider="target">
                                                 <rect key="frame" x="96" y="318" width="241" height="21"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
@@ -120,7 +120,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kvz-77-Jiz" customClass="UIButtonFontSize" customModule="cityfam" customModuleProvider="target">
-                                                <rect key="frame" x="144" y="365" width="127" height="30"/>
+                                                <rect key="frame" x="144.33333333333331" y="365" width="126.99999999999994" height="30"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
                                                 <state key="normal" title="Forgot Password ?">
                                                     <color key="titleColor" red="0.28627450980392155" green="0.28627450980392155" blue="0.28627450980392155" alpha="1" colorSpace="calibratedRGB"/>
@@ -150,7 +150,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   Or Connect With   " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Flq-tU-stm" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                                <rect key="frame" x="153" y="511" width="110" height="14"/>
+                                                <rect key="frame" x="153.33333333333337" y="511" width="109.66666666666663" height="14"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -184,7 +184,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O8m-M1-K37" customClass="UIButtonFontSize" customModule="cityfam" customModuleProvider="target">
-                                                <rect key="frame" x="135" y="597" width="144" height="30"/>
+                                                <rect key="frame" x="136.33333333333331" y="597" width="143.99999999999994" height="30"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
                                                 <state key="normal" title="Create  New Account">
                                                     <color key="titleColor" red="0.28627450980000002" green="0.28627450980000002" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -296,7 +296,7 @@
             <objects>
                 <navigationController navigationBarHidden="YES" id="oov-E4-lp2" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Events" image="eventIcon" selectedImage="eventIcon" id="oVo-K9-Y0B"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dS1-t7-qC1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="dS1-t7-qC1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -313,7 +313,7 @@
             <objects>
                 <navigationController navigationBarHidden="YES" id="zoF-fD-g8K" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Activity" image="activityIcon" selectedImage="activityIcon" id="PFi-bg-yRP"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="410-pX-fD6">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="410-pX-fD6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -344,10 +344,10 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="788"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zXR-UT-lM0">
-                                                <rect key="frame" x="137" y="40" width="139" height="140"/>
+                                                <rect key="frame" x="136.66666666666669" y="40" width="140.00000000000006" height="140"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="registerScreenUserImage" translatesAutoresizingMaskIntoConstraints="NO" id="c25-xi-McB">
-                                                        <rect key="frame" x="0.0" y="0.0" width="139" height="140"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="140.00000000000003" height="140"/>
                                                         <gestureRecognizers/>
                                                         <connections>
                                                             <outletCollection property="gestureRecognizers" destination="Nhg-wU-K4W" appends="YES" id="y0f-Vi-Fuq"/>
@@ -373,7 +373,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="adb-D6-p3f" customClass="UITextFieldCustomClass" customModule="cityfam" customModuleProvider="target">
+                                            <textField opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="adb-D6-p3f" customClass="UITextFieldCustomClass" customModule="cityfam" customModuleProvider="target">
                                                 <rect key="frame" x="82" y="210" width="251" height="21"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
@@ -397,7 +397,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="E-mail" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9e7-qq-X64" customClass="UITextFieldCustomClass" customModule="cityfam" customModuleProvider="target">
+                                            <textField opaque="NO" clipsSubviews="YES" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="E-mail" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9e7-qq-X64" customClass="UITextFieldCustomClass" customModule="cityfam" customModuleProvider="target">
                                                 <rect key="frame" x="82" y="271" width="251" height="21"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
@@ -421,7 +421,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FLT-sU-xXa" customClass="UITextFieldCustomClass" customModule="cityfam" customModuleProvider="target">
+                                            <textField opaque="NO" clipsSubviews="YES" tag="13" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FLT-sU-xXa" customClass="UITextFieldCustomClass" customModule="cityfam" customModuleProvider="target">
                                                 <rect key="frame" x="82" y="332" width="251" height="21"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
@@ -445,7 +445,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Location" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gY5-HR-8A2" customClass="UITextFieldCustomClass" customModule="cityfam" customModuleProvider="target">
+                                            <textField opaque="NO" clipsSubviews="YES" tag="14" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Location" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gY5-HR-8A2" customClass="UITextFieldCustomClass" customModule="cityfam" customModuleProvider="target">
                                                 <rect key="frame" x="82" y="393" width="251" height="21"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
@@ -469,7 +469,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="515-Yo-a1o" customClass="UITextFieldCustomClass" customModule="cityfam" customModuleProvider="target">
+                                            <textField opaque="NO" clipsSubviews="YES" tag="15" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="515-Yo-a1o" customClass="UITextFieldCustomClass" customModule="cityfam" customModuleProvider="target">
                                                 <rect key="frame" x="82" y="454" width="251" height="21"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
@@ -483,7 +483,7 @@
                                                     <outlet property="delegate" destination="wNg-YZ-8a5" id="5K2-nH-QFY"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jnb-Nr-NQM" customClass="UITextFieldCustomClass" customModule="cityfam" customModuleProvider="target">
+                                            <textField opaque="NO" clipsSubviews="YES" tag="16" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jnb-Nr-NQM" customClass="UITextFieldCustomClass" customModule="cityfam" customModuleProvider="target">
                                                 <rect key="frame" x="82" y="515" width="251" height="21"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
@@ -518,7 +518,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   Or Connect With   " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K34-lH-3zb" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                                <rect key="frame" x="153" y="661" width="110" height="14"/>
+                                                <rect key="frame" x="153.33333333333337" y="661" width="109.66666666666663" height="14"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -700,13 +700,16 @@
                                 <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NMh-dA-G3Y" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                        <rect key="frame" x="144" y="9" width="127" height="26"/>
+                                        <rect key="frame" x="144" y="9.3333333333333304" width="127" height="25.666666666666671"/>
                                         <fontDescription key="fontDescription" name="GothamMedium" family="Gotham Medium" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I8E-tV-OLP" userLabel="backButton" customClass="UIButtonFontSize" customModule="cityfam" customModuleProvider="target">
-                                        <rect key="frame" x="5" y="2" width="30" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="3Fh-aI-3mO"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="icomoon" family="icomoon" pointSize="24"/>
                                         <state key="normal" title="">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -716,32 +719,45 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FlY-oc-jyg" customClass="UIButtonFontSize" customModule="cityfam" customModuleProvider="target">
-                                        <rect key="frame" x="374" y="2" width="30" height="40"/>
+                                        <rect key="frame" x="374" y="0.0" width="40" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="9HF-o0-P0q"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="icomoon" family="icomoon" pointSize="24"/>
                                         <state key="normal" title="">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="tickBtnAction:" destination="bEJ-Yw-PZB" eventType="touchUpInside" id="AHx-7t-1B6"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.17254901959999999" green="0.15686274510000001" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="I8E-tV-OLP" firstAttribute="centerY" secondItem="dsO-hP-ING" secondAttribute="centerY" id="1k8-q5-YZC"/>
+                                    <constraint firstAttribute="bottom" secondItem="I8E-tV-OLP" secondAttribute="bottom" id="C6A-Se-84p"/>
+                                    <constraint firstAttribute="bottom" secondItem="FlY-oc-jyg" secondAttribute="bottom" id="NvA-Qt-EOz"/>
+                                    <constraint firstItem="I8E-tV-OLP" firstAttribute="top" secondItem="dsO-hP-ING" secondAttribute="top" id="PNo-D2-9XH"/>
                                     <constraint firstItem="NMh-dA-G3Y" firstAttribute="centerX" secondItem="dsO-hP-ING" secondAttribute="centerX" id="RWn-TL-whU"/>
-                                    <constraint firstAttribute="trailing" secondItem="FlY-oc-jyg" secondAttribute="trailing" constant="10" id="XZI-EF-kF9"/>
+                                    <constraint firstAttribute="trailing" secondItem="FlY-oc-jyg" secondAttribute="trailing" id="XZI-EF-kF9"/>
                                     <constraint firstAttribute="height" constant="44" id="bJb-xK-y9n"/>
                                     <constraint firstItem="NMh-dA-G3Y" firstAttribute="centerY" secondItem="dsO-hP-ING" secondAttribute="centerY" id="hTH-GX-Nqb"/>
-                                    <constraint firstItem="I8E-tV-OLP" firstAttribute="leading" secondItem="dsO-hP-ING" secondAttribute="leading" constant="5" id="nbf-Sx-ILZ"/>
+                                    <constraint firstItem="I8E-tV-OLP" firstAttribute="leading" secondItem="dsO-hP-ING" secondAttribute="leading" id="nbf-Sx-ILZ"/>
                                     <constraint firstItem="FlY-oc-jyg" firstAttribute="centerY" secondItem="dsO-hP-ING" secondAttribute="centerY" id="sAk-xF-Bqh"/>
+                                    <constraint firstItem="FlY-oc-jyg" firstAttribute="top" secondItem="dsO-hP-ING" secondAttribute="top" id="zrc-Iu-rgz"/>
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Ee-sm-5Ib">
                                 <rect key="frame" x="0.0" y="64" width="414" height="618"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D8o-Fp-hf6" userLabel="contentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="935"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="940.33333333333337"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eventCreateAddImage" translatesAutoresizingMaskIntoConstraints="NO" id="kQ0-jE-Dq2">
+                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eventCreateAddImage" translatesAutoresizingMaskIntoConstraints="NO" id="kQ0-jE-Dq2">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="184"/>
+                                                <gestureRecognizers/>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="khS-Sm-3mw" appends="YES" id="DRq-4B-5kj"/>
+                                                </connections>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4vM-D4-NN0" userLabel="firstUnderlineLabel">
                                                 <rect key="frame" x="21" y="264" width="373" height="1"/>
@@ -753,7 +769,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Event title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="die-J4-KcY" customClass="UITextFieldFontSize" customModule="cityfam" customModuleProvider="target">
+                                            <textField opaque="NO" tag="111" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Event title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="die-J4-KcY" customClass="UITextFieldFontSize" customModule="cityfam" customModuleProvider="target">
                                                 <rect key="frame" x="26" y="235" width="368" height="21"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
@@ -762,14 +778,20 @@
                                                     <outlet property="delegate" destination="bEJ-Yw-PZB" id="n7D-PB-59Z"/>
                                                 </connections>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n0v-0S-7hK" customClass="UIButtonFontSize" customModule="cityfam" customModuleProvider="target">
-                                                <rect key="frame" x="26" y="292" width="79" height="33"/>
+                                            <textField opaque="NO" tag="112" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Start time" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kVi-Ll-LiE" customClass="UITextFieldCustomClass" customModule="cityfam" customModuleProvider="target">
+                                                <rect key="frame" x="26" y="296" width="368" height="21"/>
+                                                <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
-                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <state key="normal" title="Start time">
-                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                            </button>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="bEJ-Yw-PZB" id="O1o-zm-Lpo"/>
+                                                </connections>
+                                            </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gUD-jh-I9v" userLabel="secondunderlineLabel">
                                                 <rect key="frame" x="21" y="325" width="373" height="1"/>
                                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -780,14 +802,6 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QbA-Pd-bfB" customClass="UIButtonFontSize" customModule="cityfam" customModuleProvider="target">
-                                                <rect key="frame" x="26" y="353" width="72" height="33"/>
-                                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
-                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <state key="normal" title="End time">
-                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                            </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wR8-dK-T5C" userLabel="thirdunderlineLabel">
                                                 <rect key="frame" x="21" y="386" width="373" height="1"/>
                                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -798,8 +812,22 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <textField opaque="NO" tag="113" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="End time" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OBI-wR-BOM" customClass="UITextFieldCustomClass" customModule="cityfam" customModuleProvider="target">
+                                                <rect key="frame" x="26" y="357" width="368" height="21"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="bEJ-Yw-PZB" id="eic-GI-uyI"/>
+                                                </connections>
+                                            </textField>
                                             <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mGc-YS-HXc" customClass="UIButtonFontSize" customModule="cityfam" customModuleProvider="target">
-                                                <rect key="frame" x="26" y="414" width="108" height="33"/>
+                                                <rect key="frame" x="26" y="713.33333333333337" width="108" height="33"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <state key="normal" title="Invite Friends">
@@ -822,14 +850,14 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Who can see this event ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fAq-dg-WBU" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                                <rect key="frame" x="26" y="483" width="180" height="19"/>
-                                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Who can see this event ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fAq-dg-WBU" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
+                                                <rect key="frame" x="26" y="799" width="175" height="19"/>
+                                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hqt-ns-Fzx" customClass="UIViewCustomClass" customModule="cityfam" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="521" width="374" height="44"/>
+                                                <rect key="frame" x="20" y="524" width="374" height="44"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8gy-SY-qZ0" customClass="UIButtonCustomClass" customModule="cityfam" customModuleProvider="target">
                                                         <rect key="frame" x="253" y="5" width="116" height="34"/>
@@ -919,14 +947,14 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Everyone on cityfam can see this." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MQV-EA-BxV" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                                <rect key="frame" x="26" y="575" width="181" height="14"/>
-                                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" misplaced="YES" text="Everyone on cityfam can see this." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MQV-EA-BxV" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
+                                                <rect key="frame" x="26" y="968" width="175.33333333333334" height="14"/>
+                                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                                 <color key="textColor" red="0.50980392159999999" green="0.51372549020000002" blue="0.51764705879999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iwo-9i-Bix" userLabel="fifthunderlineLabel">
-                                                <rect key="frame" x="21" y="619" width="373" height="1"/>
+                                                <rect key="frame" x="21" y="624.33333333333337" width="373" height="1"/>
                                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="h3e-bC-37V"/>
@@ -936,13 +964,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Allow guests to invite their friends" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IE1-Uh-fky" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                                <rect key="frame" x="26" y="651" width="241" height="19"/>
-                                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
+                                                <rect key="frame" x="26" y="654.33333333333337" width="270.66666666666669" height="21"/>
+                                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mpg-0q-ilJ" userLabel="sixthunderlineLabel">
-                                                <rect key="frame" x="21" y="680" width="373" height="1"/>
+                                                <rect key="frame" x="21" y="685.33333333333337" width="373" height="1"/>
                                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="Vgn-g3-frQ"/>
@@ -952,19 +980,11 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oar-I7-60X">
-                                                <rect key="frame" x="340" y="645" width="51" height="31"/>
+                                                <rect key="frame" x="340" y="649.33333333333337" width="51" height="31"/>
                                                 <color key="onTintColor" red="0.81568627449999997" green="0.2901960784" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
                                             </switch>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6aW-hG-3rG" customClass="UIButtonFontSize" customModule="cityfam" customModuleProvider="target">
-                                                <rect key="frame" x="26" y="708" width="121" height="33"/>
-                                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
-                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <state key="normal" title="Event Location">
-                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                            </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XSS-mx-zJD" userLabel="seventhunderlineLabel">
-                                                <rect key="frame" x="21" y="741" width="373" height="1"/>
+                                                <rect key="frame" x="21" y="746.33333333333337" width="373" height="1"/>
                                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="09J-J7-x1c"/>
@@ -973,16 +993,8 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vb2-vY-Afb" customClass="UIButtonFontSize" customModule="cityfam" customModuleProvider="target">
-                                                <rect key="frame" x="26" y="769" width="104" height="33"/>
-                                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
-                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <state key="normal" title="Event details">
-                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                            </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r3z-lK-jzr" userLabel="eigthunderlineLabel">
-                                                <rect key="frame" x="21" y="802" width="373" height="1"/>
+                                                <rect key="frame" x="21" y="807.33333333333337" width="373" height="1"/>
                                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="TZ1-Ie-Udq"/>
@@ -991,19 +1003,8 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfD-Xd-mdN" customClass="UIButtonFontSize" customModule="cityfam" customModuleProvider="target">
-                                                <rect key="frame" x="26" y="830" width="123" height="33"/>
-                                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
-                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <state key="normal" title="Add categories">
-                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <state key="selected">
-                                                    <color key="titleColor" red="0.81568627449999997" green="0.2901960784" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                            </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="urz-ch-tPI" userLabel="ninthunderlineLabel">
-                                                <rect key="frame" x="21" y="863" width="372" height="1"/>
+                                                <rect key="frame" x="21" y="868.33333333333337" width="373" height="1"/>
                                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="078-O3-y31"/>
@@ -1012,16 +1013,17 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SZp-kL-lP0" customClass="UIButtonFontSize" customModule="cityfam" customModuleProvider="target">
-                                                <rect key="frame" x="26" y="891" width="134" height="33"/>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="116" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add tickets link" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z3R-mB-JwX" customClass="UITextFieldFontSize" customModule="cityfam" customModuleProvider="target">
+                                                <rect key="frame" x="26" y="900.33333333333337" width="368" height="21"/>
+                                                <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
-                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <state key="normal" title="Add tickets link  ">
-                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                            </button>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="bEJ-Yw-PZB" id="Rrx-Xn-qvW"/>
+                                                </connections>
+                                            </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QLD-b5-uQO" userLabel="tenthunderlineLabel">
-                                                <rect key="frame" x="21" y="924" width="372" height="1"/>
+                                                <rect key="frame" x="21" y="929.33333333333337" width="373" height="1"/>
                                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="3c7-aP-zWC"/>
@@ -1030,69 +1032,108 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <textField opaque="NO" tag="114" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Event details" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L4T-mF-wjq" customClass="UITextFieldFontSize" customModule="cityfam" customModuleProvider="target">
+                                                <rect key="frame" x="26" y="778.33333333333337" width="368" height="21"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="bEJ-Yw-PZB" id="MOB-Rc-3qq"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" tag="115" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add Categories" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="atg-GD-eXS" customClass="UITextFieldCustomClass" customModule="cityfam" customModuleProvider="target">
+                                                <rect key="frame" x="26" y="839.33333333333337" width="368" height="21"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                        <color key="value" red="0.81568627449999997" green="0.2901960784" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="bEJ-Yw-PZB" id="4fX-nH-eFJ"/>
+                                                </connections>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6aW-hG-3rG" customClass="UIButtonFontSize" customModule="cityfam" customModuleProvider="target">
+                                                <rect key="frame" x="26" y="414" width="115" height="33"/>
+                                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
+                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <state key="normal" title="Event location">
+                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="eventLocationBtnAction:" destination="bEJ-Yw-PZB" eventType="touchUpInside" id="fcY-Hn-XXe"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="XSS-mx-zJD" firstAttribute="leading" secondItem="mpg-0q-ilJ" secondAttribute="leading" id="04y-aZ-luf"/>
+                                            <constraint firstItem="L4T-mF-wjq" firstAttribute="trailing" secondItem="r3z-lK-jzr" secondAttribute="trailing" id="0Jw-WF-rFm"/>
                                             <constraint firstItem="Sgo-kK-UML" firstAttribute="leading" secondItem="wR8-dK-T5C" secondAttribute="leading" id="0Xj-1m-9nu"/>
                                             <constraint firstItem="Sgo-kK-UML" firstAttribute="top" secondItem="wR8-dK-T5C" secondAttribute="bottom" constant="60" id="2SH-uu-rXC"/>
                                             <constraint firstItem="kQ0-jE-Dq2" firstAttribute="centerX" secondItem="D8o-Fp-hf6" secondAttribute="centerX" id="3vM-gq-jf3"/>
                                             <constraint firstItem="urz-ch-tPI" firstAttribute="trailing" secondItem="r3z-lK-jzr" secondAttribute="trailing" id="3z2-i8-nkl"/>
+                                            <constraint firstItem="kVi-Ll-LiE" firstAttribute="leading" secondItem="gUD-jh-I9v" secondAttribute="leading" constant="5" id="4he-5A-Hsf"/>
                                             <constraint firstItem="MQV-EA-BxV" firstAttribute="leading" secondItem="fAq-dg-WBU" secondAttribute="leading" id="7QJ-Fm-Cym"/>
                                             <constraint firstItem="4vM-D4-NN0" firstAttribute="centerX" secondItem="D8o-Fp-hf6" secondAttribute="centerX" id="7Uf-yJ-mtt"/>
                                             <constraint firstItem="oar-I7-60X" firstAttribute="centerY" secondItem="IE1-Uh-fky" secondAttribute="centerY" id="8UM-gh-4WN"/>
                                             <constraint firstItem="wR8-dK-T5C" firstAttribute="top" secondItem="gUD-jh-I9v" secondAttribute="bottom" constant="60" id="8m4-re-ISl"/>
-                                            <constraint firstItem="QbA-Pd-bfB" firstAttribute="leading" secondItem="wR8-dK-T5C" secondAttribute="leading" constant="5" id="A6W-Ib-M8h"/>
-                                            <constraint firstItem="fAq-dg-WBU" firstAttribute="leading" secondItem="mGc-YS-HXc" secondAttribute="leading" id="B5J-PJ-UK1"/>
                                             <constraint firstItem="gUD-jh-I9v" firstAttribute="trailing" secondItem="4vM-D4-NN0" secondAttribute="trailing" id="CdO-NQ-cZQ"/>
-                                            <constraint firstItem="Vb2-vY-Afb" firstAttribute="leading" secondItem="r3z-lK-jzr" secondAttribute="leading" constant="5" id="Ckf-DO-gWH"/>
                                             <constraint firstItem="kQ0-jE-Dq2" firstAttribute="top" secondItem="D8o-Fp-hf6" secondAttribute="top" id="D3y-eG-Xod"/>
                                             <constraint firstAttribute="trailing" secondItem="kQ0-jE-Dq2" secondAttribute="trailing" id="Fcw-G8-Nj4"/>
-                                            <constraint firstItem="n0v-0S-7hK" firstAttribute="leading" secondItem="gUD-jh-I9v" secondAttribute="leading" constant="5" id="GOR-8q-5g9"/>
                                             <constraint firstItem="wR8-dK-T5C" firstAttribute="leading" secondItem="gUD-jh-I9v" secondAttribute="leading" id="Gnz-DB-5fD"/>
-                                            <constraint firstItem="dfD-Xd-mdN" firstAttribute="leading" secondItem="urz-ch-tPI" secondAttribute="leading" constant="5" id="GsF-Tv-8qi"/>
-                                            <constraint firstItem="r3z-lK-jzr" firstAttribute="top" secondItem="Vb2-vY-Afb" secondAttribute="bottom" id="IcM-bm-OzN"/>
                                             <constraint firstItem="urz-ch-tPI" firstAttribute="leading" secondItem="r3z-lK-jzr" secondAttribute="leading" id="KMK-hF-LgW"/>
+                                            <constraint firstItem="Z3R-mB-JwX" firstAttribute="trailing" secondItem="QLD-b5-uQO" secondAttribute="trailing" id="LFE-Jn-TzJ"/>
                                             <constraint firstItem="gUD-jh-I9v" firstAttribute="top" secondItem="4vM-D4-NN0" secondAttribute="bottom" constant="60" id="OEP-9w-FAo"/>
                                             <constraint firstItem="die-J4-KcY" firstAttribute="leading" secondItem="4vM-D4-NN0" secondAttribute="leading" constant="5" id="Oyo-Em-hla"/>
                                             <constraint firstItem="iwo-9i-Bix" firstAttribute="top" secondItem="MQV-EA-BxV" secondAttribute="bottom" constant="30" id="PLq-90-SLJ"/>
+                                            <constraint firstItem="L4T-mF-wjq" firstAttribute="leading" secondItem="r3z-lK-jzr" secondAttribute="leading" constant="5" id="POX-rW-UcP"/>
                                             <constraint firstItem="4vM-D4-NN0" firstAttribute="centerX" secondItem="D8o-Fp-hf6" secondAttribute="centerX" id="SJx-jr-Wdt"/>
                                             <constraint firstItem="MQV-EA-BxV" firstAttribute="top" secondItem="hqt-ns-Fzx" secondAttribute="bottom" constant="10" id="SNS-3s-NfM"/>
                                             <constraint firstItem="4vM-D4-NN0" firstAttribute="top" secondItem="die-J4-KcY" secondAttribute="bottom" constant="8" id="SUp-iN-6gv"/>
+                                            <constraint firstItem="kVi-Ll-LiE" firstAttribute="trailing" secondItem="gUD-jh-I9v" secondAttribute="trailing" id="SZu-sg-g4I"/>
                                             <constraint firstItem="QLD-b5-uQO" firstAttribute="leading" secondItem="urz-ch-tPI" secondAttribute="leading" id="Sou-aj-sm6"/>
                                             <constraint firstItem="mpg-0q-ilJ" firstAttribute="leading" secondItem="iwo-9i-Bix" secondAttribute="leading" id="Tps-lM-bv1"/>
+                                            <constraint firstItem="wR8-dK-T5C" firstAttribute="top" secondItem="OBI-wR-BOM" secondAttribute="bottom" constant="8" id="UBO-sI-dwI"/>
                                             <constraint firstAttribute="trailing" secondItem="hqt-ns-Fzx" secondAttribute="trailing" constant="20" id="URp-XY-PQz"/>
-                                            <constraint firstItem="wR8-dK-T5C" firstAttribute="top" secondItem="QbA-Pd-bfB" secondAttribute="bottom" id="UkY-9a-82r"/>
                                             <constraint firstAttribute="trailing" secondItem="oar-I7-60X" secondAttribute="trailing" constant="25" id="Vg9-fU-neh"/>
                                             <constraint firstItem="QLD-b5-uQO" firstAttribute="trailing" secondItem="urz-ch-tPI" secondAttribute="trailing" id="VsM-Kd-P5p"/>
+                                            <constraint firstItem="QLD-b5-uQO" firstAttribute="top" secondItem="Z3R-mB-JwX" secondAttribute="bottom" constant="8" id="Wic-8K-bJm"/>
                                             <constraint firstItem="hqt-ns-Fzx" firstAttribute="leading" secondItem="D8o-Fp-hf6" secondAttribute="leading" constant="20" id="X75-p4-QiP"/>
                                             <constraint firstItem="4vM-D4-NN0" firstAttribute="top" secondItem="kQ0-jE-Dq2" secondAttribute="bottom" constant="80" id="YW8-vv-dBq"/>
-                                            <constraint firstItem="QLD-b5-uQO" firstAttribute="top" secondItem="SZp-kL-lP0" secondAttribute="bottom" id="ZVb-Jw-JV8"/>
+                                            <constraint firstItem="atg-GD-eXS" firstAttribute="trailing" secondItem="urz-ch-tPI" secondAttribute="trailing" id="Ybb-tn-jVb"/>
                                             <constraint firstItem="wR8-dK-T5C" firstAttribute="trailing" secondItem="gUD-jh-I9v" secondAttribute="trailing" id="ZiW-Dn-T8z"/>
-                                            <constraint firstItem="mGc-YS-HXc" firstAttribute="leading" secondItem="Sgo-kK-UML" secondAttribute="leading" constant="5" id="ZuZ-Fb-sya"/>
-                                            <constraint firstItem="urz-ch-tPI" firstAttribute="top" secondItem="dfD-Xd-mdN" secondAttribute="bottom" id="bIw-iC-Gc5"/>
+                                            <constraint firstItem="gUD-jh-I9v" firstAttribute="top" secondItem="kVi-Ll-LiE" secondAttribute="bottom" constant="8" id="Zuo-oE-H3x"/>
+                                            <constraint firstItem="MQV-EA-BxV" firstAttribute="leading" secondItem="r3z-lK-jzr" secondAttribute="leading" constant="5" id="akb-FE-GrW"/>
                                             <constraint firstItem="QLD-b5-uQO" firstAttribute="top" secondItem="urz-ch-tPI" secondAttribute="bottom" constant="60" id="bnh-0Z-vxD"/>
                                             <constraint firstItem="Sgo-kK-UML" firstAttribute="trailing" secondItem="wR8-dK-T5C" secondAttribute="trailing" id="fwY-UY-vdJ"/>
+                                            <constraint firstItem="atg-GD-eXS" firstAttribute="leading" secondItem="urz-ch-tPI" secondAttribute="leading" constant="5" id="gBZ-B3-XqQ"/>
                                             <constraint firstItem="r3z-lK-jzr" firstAttribute="trailing" secondItem="XSS-mx-zJD" secondAttribute="trailing" id="gcG-Q2-KgG"/>
-                                            <constraint firstItem="6aW-hG-3rG" firstAttribute="leading" secondItem="XSS-mx-zJD" secondAttribute="leading" constant="5" id="hb2-dC-zlX"/>
                                             <constraint firstAttribute="bottom" secondItem="QLD-b5-uQO" secondAttribute="bottom" constant="10" id="ilq-hz-TbV"/>
+                                            <constraint firstItem="OBI-wR-BOM" firstAttribute="trailing" secondItem="wR8-dK-T5C" secondAttribute="trailing" id="jSs-3y-69N"/>
                                             <constraint firstItem="hqt-ns-Fzx" firstAttribute="top" secondItem="fAq-dg-WBU" secondAttribute="bottom" constant="20" id="k2e-oV-egK"/>
+                                            <constraint firstItem="6aW-hG-3rG" firstAttribute="leading" secondItem="Sgo-kK-UML" secondAttribute="leading" constant="5" id="kU9-Ze-wqN"/>
                                             <constraint firstItem="urz-ch-tPI" firstAttribute="top" secondItem="r3z-lK-jzr" secondAttribute="bottom" constant="60" id="kfJ-wO-O30"/>
                                             <constraint firstItem="gUD-jh-I9v" firstAttribute="leading" secondItem="4vM-D4-NN0" secondAttribute="leading" id="kuJ-yl-0hy"/>
+                                            <constraint firstItem="XSS-mx-zJD" firstAttribute="top" secondItem="mGc-YS-HXc" secondAttribute="bottom" id="mFh-0V-VU5"/>
                                             <constraint firstItem="r3z-lK-jzr" firstAttribute="top" secondItem="XSS-mx-zJD" secondAttribute="bottom" constant="60" id="nGT-06-ttt"/>
                                             <constraint firstItem="mpg-0q-ilJ" firstAttribute="top" secondItem="IE1-Uh-fky" secondAttribute="bottom" constant="10" id="nUd-OF-u9C"/>
                                             <constraint firstItem="die-J4-KcY" firstAttribute="trailing" secondItem="4vM-D4-NN0" secondAttribute="trailing" id="oGb-KT-5Zr"/>
-                                            <constraint firstItem="Sgo-kK-UML" firstAttribute="top" secondItem="mGc-YS-HXc" secondAttribute="bottom" id="p7h-BD-Jbk"/>
-                                            <constraint firstItem="SZp-kL-lP0" firstAttribute="leading" secondItem="QLD-b5-uQO" secondAttribute="leading" constant="5" id="pwB-im-xxd"/>
+                                            <constraint firstItem="urz-ch-tPI" firstAttribute="top" secondItem="atg-GD-eXS" secondAttribute="bottom" constant="8" id="qdO-Av-ORR"/>
                                             <constraint firstItem="kQ0-jE-Dq2" firstAttribute="leading" secondItem="D8o-Fp-hf6" secondAttribute="leading" id="rKf-cT-jwk"/>
+                                            <constraint firstItem="Z3R-mB-JwX" firstAttribute="leading" secondItem="QLD-b5-uQO" secondAttribute="leading" constant="5" id="rbB-Qj-EjC"/>
+                                            <constraint firstItem="OBI-wR-BOM" firstAttribute="leading" secondItem="wR8-dK-T5C" secondAttribute="leading" constant="5" id="tVJ-X9-H02"/>
                                             <constraint firstItem="mpg-0q-ilJ" firstAttribute="top" secondItem="iwo-9i-Bix" secondAttribute="bottom" constant="60" id="u10-Jo-5FN"/>
                                             <constraint firstItem="IE1-Uh-fky" firstAttribute="leading" secondItem="mpg-0q-ilJ" secondAttribute="leading" constant="5" id="uOu-ts-bLY"/>
-                                            <constraint firstItem="gUD-jh-I9v" firstAttribute="top" secondItem="n0v-0S-7hK" secondAttribute="bottom" id="uU0-92-fma"/>
-                                            <constraint firstItem="XSS-mx-zJD" firstAttribute="top" secondItem="6aW-hG-3rG" secondAttribute="bottom" id="uUU-du-RFz"/>
+                                            <constraint firstItem="Sgo-kK-UML" firstAttribute="top" secondItem="6aW-hG-3rG" secondAttribute="bottom" id="uZf-T0-E84"/>
                                             <constraint firstItem="XSS-mx-zJD" firstAttribute="trailing" secondItem="mpg-0q-ilJ" secondAttribute="trailing" id="udC-tG-a9R"/>
                                             <constraint firstItem="r3z-lK-jzr" firstAttribute="leading" secondItem="XSS-mx-zJD" secondAttribute="leading" id="v4m-GS-cUO"/>
                                             <constraint firstItem="XSS-mx-zJD" firstAttribute="top" secondItem="mpg-0q-ilJ" secondAttribute="bottom" constant="60" id="vvo-nv-7g2"/>
                                             <constraint firstItem="iwo-9i-Bix" firstAttribute="trailing" secondItem="Sgo-kK-UML" secondAttribute="trailing" id="vw8-FV-dEl"/>
+                                            <constraint firstItem="mGc-YS-HXc" firstAttribute="leading" secondItem="XSS-mx-zJD" secondAttribute="leading" constant="5" id="wJz-uM-GyM"/>
+                                            <constraint firstItem="r3z-lK-jzr" firstAttribute="top" secondItem="L4T-mF-wjq" secondAttribute="bottom" constant="8" id="wfm-ci-yLK"/>
                                             <constraint firstItem="mpg-0q-ilJ" firstAttribute="trailing" secondItem="iwo-9i-Bix" secondAttribute="trailing" id="xxm-aJ-WkS"/>
                                             <constraint firstItem="iwo-9i-Bix" firstAttribute="leading" secondItem="Sgo-kK-UML" secondAttribute="leading" id="yRQ-gL-pe5"/>
                                             <constraint firstItem="fAq-dg-WBU" firstAttribute="top" secondItem="Sgo-kK-UML" secondAttribute="bottom" constant="35" id="zKR-vt-9Xo"/>
@@ -1127,16 +1168,30 @@
                     </view>
                     <navigationItem key="navigationItem" id="Y8K-Ul-pyd"/>
                     <connections>
+                        <outlet property="addCategoriesTxtFields" destination="atg-GD-eXS" id="Ktz-PN-1Az"/>
+                        <outlet property="addTicketsLinkTxtField" destination="Z3R-mB-JwX" id="ZmE-8c-7la"/>
+                        <outlet property="allowGuestToInviteSwitch" destination="oar-I7-60X" id="zQs-4Y-ueM"/>
+                        <outlet property="endTimeTxtField" destination="OBI-wR-BOM" id="b96-0E-0Hc"/>
+                        <outlet property="eventDetailTxtFields" destination="L4T-mF-wjq" id="ax8-Bb-hhQ"/>
+                        <outlet property="eventImgView" destination="kQ0-jE-Dq2" id="280-Fz-gL3"/>
+                        <outlet property="eventTitleTxtField" destination="die-J4-KcY" id="e56-SN-8o2"/>
                         <outlet property="friendsButton" destination="D7r-8J-SWE" id="B8d-Qj-eOg"/>
+                        <outlet property="inviteFriendsBtn" destination="mGc-YS-HXc" id="VCp-I4-qJs"/>
                         <outlet property="labelUnderSegmentView" destination="MQV-EA-BxV" id="WPf-ZZ-cLB"/>
                         <outlet property="privateButton" destination="8av-vp-42v" id="hqf-vE-zbV"/>
                         <outlet property="publicButton" destination="8gy-SY-qZ0" id="z2d-Hp-wuN"/>
                         <outlet property="scrollView" destination="5Ee-sm-5Ib" id="ezJ-2u-7YU"/>
+                        <outlet property="startTimeTxtField" destination="kVi-Ll-LiE" id="WfH-tm-nLp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GXW-wd-d3m" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="khS-Sm-3mw">
+                    <connections>
+                        <action selector="uploadImgTapGestureAction:" destination="bEJ-Yw-PZB" id="6C9-aZ-evO"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3282.608695652174" y="2484.7826086956525"/>
+            <point key="canvasLocation" x="3226" y="2485"/>
         </scene>
         <!--Edit ProfileVC-->
         <scene sceneID="4oe-Si-e9S">
@@ -1164,7 +1219,7 @@
                                 <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bax-e1-a16" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                        <rect key="frame" x="154" y="9" width="107" height="26"/>
+                                        <rect key="frame" x="154.66666666666663" y="9.3333333333333304" width="106.33333333333337" height="25.666666666666671"/>
                                         <fontDescription key="fontDescription" name="GothamMedium" family="Gotham Medium" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -1377,7 +1432,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="aRP-Ut-0Uq" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qtN-oQ-Rd8">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="qtN-oQ-Rd8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1395,7 +1450,7 @@
             <objects>
                 <navigationController navigationBarHidden="YES" id="r82-iF-xvv" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Create Event" image="event_createIcon" selectedImage="event_createIcon" id="1xb-A7-del"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="SQa-nA-3wV">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="SQa-nA-3wV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1412,7 +1467,7 @@
             <objects>
                 <navigationController navigationBarHidden="YES" id="CeZ-nu-Gur" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Friends" image="friendsIcon" selectedImage="friendsIcon" id="WLZ-GZ-pMP"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jKO-Ru-1kc">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="jKO-Ru-1kc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1429,7 +1484,7 @@
             <objects>
                 <navigationController navigationBarHidden="YES" id="abj-NL-LaP" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Invitations" image="invitationIcon" selectedImage="invitationIcon" id="7in-7Y-N1P"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MK6-yT-3hf">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="MK6-yT-3hf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1444,7 +1499,7 @@
         <!--Home PageVC-->
         <scene sceneID="pCQ-ab-uK9">
             <objects>
-                <viewController id="9n8-c9-4HO" customClass="HomePageVC" customModule="cityfam" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="homePageVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9n8-c9-4HO" customClass="HomePageVC" customModule="cityfam" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PXm-bT-Ntw"/>
                         <viewControllerLayoutGuide type="bottom" id="RVT-mU-gSn"/>
@@ -1467,7 +1522,7 @@
                                 <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HsG-LX-g9c" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                        <rect key="frame" x="177" y="9" width="60" height="26"/>
+                                        <rect key="frame" x="178" y="9.3333333333333304" width="59.333333333333343" height="25.666666666666671"/>
                                         <fontDescription key="fontDescription" name="GothamMedium" family="Gotham Medium" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -1493,7 +1548,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6RL-tw-BnJ" userLabel="notificationButton" customClass="UIButtonFontSize" customModule="cityfam" customModuleProvider="target">
-                                        <rect key="frame" x="333" y="-2" width="33" height="45"/>
+                                        <rect key="frame" x="333" y="-2.3333333333333321" width="33" height="45"/>
                                         <fontDescription key="fontDescription" name="icomoon" family="icomoon" pointSize="28"/>
                                         <state key="normal" title="">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1503,7 +1558,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oww-Dh-URj" customClass="UILabelCustomClass" customModule="cityfam" customModuleProvider="target">
-                                        <rect key="frame" x="348" y="4" width="16" height="16"/>
+                                        <rect key="frame" x="347.66666666666669" y="4" width="16" height="16"/>
                                         <color key="backgroundColor" red="0.90196078430000004" green="0.1215686275" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="KRZ-Di-pUP"/>
@@ -1628,7 +1683,7 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mega edm night" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wE2-17-Y19" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                                            <rect key="frame" x="75" y="26" width="124" height="20"/>
+                                                            <rect key="frame" x="75" y="25.666666666666664" width="124" height="19.999999999999993"/>
                                                             <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
                                                             <color key="textColor" red="0.16078431372549018" green="0.16078431372549018" blue="0.16078431372549018" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -1722,7 +1777,7 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5yY-1X-seQ" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                                            <rect key="frame" x="345" y="25" width="20" height="20"/>
+                                                            <rect key="frame" x="345.33333333333326" y="25" width="19.666666666666686" height="20"/>
                                                             <fontDescription key="fontDescription" name="icomoon" family="icomoon" pointSize="17"/>
                                                             <color key="textColor" red="0.81568627449999997" green="0.2901960784" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -1834,7 +1889,7 @@
                                 <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notification" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lKg-bK-c6e" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                        <rect key="frame" x="142" y="12" width="131" height="20"/>
+                                        <rect key="frame" x="141.66666666666669" y="12.333333333333336" width="130.66666666666669" height="19.666666666666664"/>
                                         <fontDescription key="fontDescription" name="GothamMedium" family="Gotham Medium" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -1897,7 +1952,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="3 min" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZGW-0v-BaF" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                                    <rect key="frame" x="354" y="25" width="30" height="14"/>
+                                                    <rect key="frame" x="355" y="25" width="29" height="14"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                                     <color key="textColor" red="0.50980392159999999" green="0.51372549020000002" blue="0.51764705879999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1975,7 +2030,7 @@
                                 <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invitations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qff-CJ-DkH" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                        <rect key="frame" x="149" y="12" width="117" height="20"/>
+                                        <rect key="frame" x="149.33333333333337" y="12.333333333333336" width="116.66666666666663" height="19.666666666666664"/>
                                         <fontDescription key="fontDescription" name="GothamMedium" family="Gotham Medium" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -2027,7 +2082,7 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mega edm night" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OeB-9g-1NC" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                                            <rect key="frame" x="75" y="25" width="124" height="20"/>
+                                                            <rect key="frame" x="75" y="25.333333333333336" width="124" height="20.000000000000007"/>
                                                             <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
                                                             <color key="textColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -2109,7 +2164,7 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8H7-Ev-eBd" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                                            <rect key="frame" x="345" y="24" width="20" height="20"/>
+                                                            <rect key="frame" x="345.33333333333326" y="24" width="19.666666666666686" height="20"/>
                                                             <fontDescription key="fontDescription" name="icomoon" family="icomoon" pointSize="17"/>
                                                             <color key="textColor" red="0.81568627449999997" green="0.2901960784" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -2215,7 +2270,7 @@
                                 <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lMJ-fw-E0v" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                        <rect key="frame" x="172" y="9" width="72" height="26"/>
+                                        <rect key="frame" x="171.33333333333334" y="9.3333333333333304" width="72" height="25.666666666666671"/>
                                         <fontDescription key="fontDescription" name="GothamMedium" family="Gotham Medium" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -2342,7 +2397,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user.png" translatesAutoresizingMaskIntoConstraints="NO" id="0H6-tR-ywA" customClass="UIImageViewCustomClass" customModule="cityfam" customModuleProvider="target">
-                                                    <rect key="frame" x="338" y="64" width="24" height="24"/>
+                                                    <rect key="frame" x="338.66666666666669" y="63.666666666666671" width="24" height="24.000000000000014"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="0H6-tR-ywA" secondAttribute="height" multiplier="1:1" id="XAv-Zw-4gW"/>
                                                         <constraint firstAttribute="height" constant="24" id="uGm-yD-cwC"/>
@@ -2354,7 +2409,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user.png" translatesAutoresizingMaskIntoConstraints="NO" id="VaF-WI-diT" customClass="UIImageViewCustomClass" customModule="cityfam" customModuleProvider="target">
-                                                    <rect key="frame" x="304" y="64" width="24" height="24"/>
+                                                    <rect key="frame" x="304.66666666666669" y="63.666666666666671" width="24" height="24.000000000000014"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="VaF-WI-diT" secondAttribute="height" multiplier="1:1" id="3Nb-KL-Tsu"/>
                                                         <constraint firstAttribute="height" constant="24" id="r6r-Zt-trE"/>
@@ -2366,25 +2421,25 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marshall Mathers LP invited 8 friends to your event &quot;Shady XV Album release&quot;" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BXs-lb-SZq" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                                    <rect key="frame" x="70" y="10" width="319" height="40"/>
+                                                    <rect key="frame" x="70" y="10" width="319" height="39.666666666666664"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3+" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgl-CZ-MB4" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                                    <rect key="frame" x="372" y="67" width="17" height="17"/>
+                                                    <rect key="frame" x="372.66666666666674" y="66.666666666666671" width="16.333333333333314" height="17"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="2 hours ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uvZ-gd-Fzb" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                                    <rect key="frame" x="70" y="69" width="64" height="14"/>
+                                                    <rect key="frame" x="70" y="68.666666666666671" width="64" height="14"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                                     <color key="textColor" red="0.50980392159999999" green="0.51372549020000002" blue="0.51764705879999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user.png" translatesAutoresizingMaskIntoConstraints="NO" id="hSV-Lr-H0i" customClass="UIImageViewCustomClass" customModule="cityfam" customModuleProvider="target">
-                                                    <rect key="frame" x="270" y="64" width="24" height="24"/>
+                                                    <rect key="frame" x="270.66666666666669" y="63.666666666666671" width="24" height="24.000000000000014"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="hSV-Lr-H0i" secondAttribute="height" multiplier="1:1" id="VSg-gh-Ba7"/>
                                                         <constraint firstAttribute="height" constant="24" id="qtc-yl-K69"/>
@@ -2484,7 +2539,7 @@
                                 <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invite Friends" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vSM-fp-2Hp" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                        <rect key="frame" x="141" y="9" width="132" height="26"/>
+                                        <rect key="frame" x="141.33333333333337" y="9.3333333333333304" width="131.66666666666663" height="25.666666666666671"/>
                                         <fontDescription key="fontDescription" name="GothamMedium" family="Gotham Medium" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -2621,7 +2676,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OXc-xs-qwJ" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                        <rect key="frame" x="30" y="15" width="20" height="20"/>
+                                        <rect key="frame" x="29.999999999999996" y="15.333333333333329" width="19.666666666666661" height="20"/>
                                         <fontDescription key="fontDescription" name="icomoon" family="icomoon" pointSize="17"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -2692,7 +2747,7 @@
                                 <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Messages" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="76R-dJ-5Jk" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                        <rect key="frame" x="157" y="9" width="101" height="26"/>
+                                        <rect key="frame" x="157.33333333333331" y="9.3333333333333304" width="100.33333333333331" height="25.666666666666671"/>
                                         <fontDescription key="fontDescription" name="GothamMedium" family="Gotham Medium" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -2801,7 +2856,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marshall Mathers LP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahd-4H-bDG" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                                            <rect key="frame" x="75" y="24" width="179" height="18"/>
+                                                            <rect key="frame" x="75" y="23" width="179" height="18"/>
                                                             <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -2825,7 +2880,7 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="3 min" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jl2-ea-fkg" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                                            <rect key="frame" x="336" y="46" width="28" height="13"/>
+                                                            <rect key="frame" x="337.33333333333326" y="46" width="26.666666666666686" height="13"/>
                                                             <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="11"/>
                                                             <color key="textColor" red="0.50980392159999999" green="0.51372549020000002" blue="0.51764705879999995" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -2930,7 +2985,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IgU-Wu-UkQ" customClass="UIImageViewCustomClass" customModule="cityfam" customModuleProvider="target">
-                                                            <rect key="frame" x="344" y="-3" width="30" height="31"/>
+                                                            <rect key="frame" x="344" y="-2.6666666666666661" width="30" height="30.333333333333336"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="IgU-Wu-UkQ" secondAttribute="height" multiplier="1:1" id="RNk-VC-UOq"/>
                                                                 <constraint firstAttribute="height" constant="30" id="Vfq-a8-cwv"/>
@@ -3095,7 +3150,7 @@
                                 <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add People" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nC5-Bq-sRB" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                        <rect key="frame" x="150" y="9" width="115" height="26"/>
+                                        <rect key="frame" x="150" y="9.3333333333333304" width="115" height="25.666666666666671"/>
                                         <fontDescription key="fontDescription" name="GothamMedium" family="Gotham Medium" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -3165,7 +3220,7 @@
                                         </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oSL-ap-FlO" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                        <rect key="frame" x="30" y="16" width="20" height="20"/>
+                                        <rect key="frame" x="29.999999999999996" y="15.666666666666671" width="19.666666666666661" height="20"/>
                                         <fontDescription key="fontDescription" name="icomoon" family="icomoon" pointSize="17"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -3289,7 +3344,7 @@
                                 <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qhb-AL-fgv" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                        <rect key="frame" x="127" y="9" width="161" height="26"/>
+                                        <rect key="frame" x="127.66666666666666" y="9.3333333333333304" width="160.33333333333334" height="25.666666666666671"/>
                                         <fontDescription key="fontDescription" name="GothamMedium" family="Gotham Medium" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -3400,7 +3455,7 @@
                                 <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MyPlans" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G5Y-mH-amM" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                        <rect key="frame" x="165" y="9" width="85" height="26"/>
+                                        <rect key="frame" x="165.33333333333337" y="9.3333333333333304" width="84.666666666666657" height="25.666666666666671"/>
                                         <fontDescription key="fontDescription" name="GothamMedium" family="Gotham Medium" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -3462,7 +3517,7 @@
                                         </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ucz-sw-9pf" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                        <rect key="frame" x="30" y="15" width="20" height="20"/>
+                                        <rect key="frame" x="29.999999999999996" y="15.333333333333329" width="19.666666666666661" height="20"/>
                                         <fontDescription key="fontDescription" name="icomoon" family="icomoon" pointSize="17"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -3586,7 +3641,7 @@
                                 <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friends" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cfl-zy-FV0" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                        <rect key="frame" x="171" y="9" width="73" height="26"/>
+                                        <rect key="frame" x="171.33333333333334" y="9.3333333333333304" width="73" height="25.666666666666671"/>
                                         <fontDescription key="fontDescription" name="GothamMedium" family="Gotham Medium" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -3633,7 +3688,7 @@
                                         </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WAg-b3-EOL" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                        <rect key="frame" x="30" y="15" width="20" height="20"/>
+                                        <rect key="frame" x="29.999999999999996" y="15.333333333333329" width="19.666666666666661" height="20"/>
                                         <fontDescription key="fontDescription" name="icomoon" family="icomoon" pointSize="17"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -3734,7 +3789,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marshall Mathers LP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8sA-jp-fRO" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                                            <rect key="frame" x="70" y="29" width="219" height="18"/>
+                                                            <rect key="frame" x="70" y="28" width="219" height="18"/>
                                                             <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -3833,7 +3888,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marshall Mathers LP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bfz-s9-aSG" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                                            <rect key="frame" x="70" y="29" width="184" height="18"/>
+                                                            <rect key="frame" x="70" y="28" width="184" height="18"/>
                                                             <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -3984,7 +4039,7 @@
                                 <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attending" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nou-Fm-iUw" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                        <rect key="frame" x="151" y="12" width="112" height="20"/>
+                                        <rect key="frame" x="151.33333333333331" y="12.333333333333336" width="111.99999999999994" height="19.666666666666664"/>
                                         <fontDescription key="fontDescription" name="GothamMedium" family="Gotham Medium" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -4022,7 +4077,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marshall Mathers LP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dlq-LP-rcE" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                                    <rect key="frame" x="70" y="24" width="138" height="18"/>
+                                                    <rect key="frame" x="70" y="23" width="138" height="18"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
                                                     <color key="textColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -4124,7 +4179,7 @@
                                 <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invited" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xEc-BR-EGh" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                        <rect key="frame" x="168" y="12" width="78" height="20"/>
+                                        <rect key="frame" x="169" y="12.333333333333336" width="77.333333333333343" height="19.666666666666664"/>
                                         <fontDescription key="fontDescription" name="GothamMedium" family="Gotham Medium" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -4171,7 +4226,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marshall Mathers LP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iu5-mO-4y8" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                                    <rect key="frame" x="70" y="24" width="138" height="18"/>
+                                                    <rect key="frame" x="70" y="23" width="138" height="18"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
                                                     <color key="textColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -4273,7 +4328,7 @@
                                 <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Interested" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kIV-gr-Rat" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                        <rect key="frame" x="150" y="12" width="114" height="20"/>
+                                        <rect key="frame" x="150.33333333333337" y="12.333333333333336" width="113.66666666666663" height="19.666666666666664"/>
                                         <fontDescription key="fontDescription" name="GothamMedium" family="Gotham Medium" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -4311,7 +4366,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marshall Mathers LP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mXt-x4-Usi" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                                    <rect key="frame" x="70" y="24" width="138" height="18"/>
+                                                    <rect key="frame" x="70" y="23" width="138" height="18"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
                                                     <color key="textColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -4413,7 +4468,7 @@
                                 <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHz-3o-9P0" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                        <rect key="frame" x="167" y="9" width="81" height="26"/>
+                                        <rect key="frame" x="167.33333333333334" y="9.3333333333333304" width="81" height="25.666666666666671"/>
                                         <fontDescription key="fontDescription" name="GothamMedium" family="Gotham Medium" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -4455,7 +4510,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connect Phone Contacts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H76-7L-LIJ" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                                    <rect key="frame" x="5" y="12" width="175" height="20"/>
+                                                    <rect key="frame" x="5" y="13" width="175" height="19"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
                                                     <color key="textColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -4537,7 +4592,7 @@
                                 <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7PW-Pv-pKb" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                        <rect key="frame" x="161" y="12" width="92" height="20"/>
+                                        <rect key="frame" x="161.66666666666663" y="12.333333333333336" width="91.333333333333343" height="19.666666666666664"/>
                                         <fontDescription key="fontDescription" name="GothamMedium" family="Gotham Medium" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -4579,7 +4634,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I am invited to an event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4vf-9f-vY0" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                                    <rect key="frame" x="5" y="12" width="164" height="20"/>
+                                                    <rect key="frame" x="5" y="13" width="163.33333333333334" height="19"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
                                                     <color key="textColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -4662,7 +4717,7 @@
                                 <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maah Groopy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="APC-xh-WoS" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                        <rect key="frame" x="133" y="12" width="149" height="20"/>
+                                        <rect key="frame" x="133.33333333333331" y="12.333333333333336" width="148.33333333333331" height="19.666666666666664"/>
                                         <fontDescription key="fontDescription" name="GothamMedium" family="Gotham Medium" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -4713,7 +4768,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brittany Murphy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wbP-QV-vtg" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                                    <rect key="frame" x="75" y="24" width="108" height="18"/>
+                                                    <rect key="frame" x="75.000000000000014" y="23" width="107.33333333333336" height="18"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
                                                     <color key="textColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -4797,7 +4852,7 @@
                                 <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter Events" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ecw-SD-pil" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                        <rect key="frame" x="147" y="9" width="121" height="26"/>
+                                        <rect key="frame" x="147.33333333333331" y="9.3333333333333304" width="120.99999999999994" height="25.666666666666671"/>
                                         <fontDescription key="fontDescription" name="GothamMedium" family="Gotham Medium" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -4852,13 +4907,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LNj-OJ-tgu" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                                <rect key="frame" x="25" y="22" width="79" height="24"/>
+                                                <rect key="frame" x="24.999999999999993" y="22" width="78.333333333333314" height="24"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="20"/>
                                                 <color key="textColor" red="0.19215686274509802" green="0.1764705882352941" blue="0.23529411764705882" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Public events less than 51 miles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3JT-2R-t6Z" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                                <rect key="frame" x="25" y="76" width="186" height="16"/>
+                                                <rect key="frame" x="25" y="76" width="185.66666666666666" height="16"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="13"/>
                                                 <color key="textColor" red="0.81568627449999997" green="0.2901960784" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -4913,7 +4968,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I2M-HJ-EH2" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                                <rect key="frame" x="25" y="191" width="98" height="24"/>
+                                                <rect key="frame" x="24.999999999999993" y="191" width="97.333333333333314" height="24"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="20"/>
                                                 <color key="textColor" red="0.19215686269999999" green="0.1764705882" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -5006,7 +5061,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Days of the week" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t1q-bl-JoA" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                                <rect key="frame" x="25" y="315" width="155" height="24"/>
+                                                <rect key="frame" x="25" y="315" width="154.33333333333334" height="24"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="20"/>
                                                 <color key="textColor" red="0.19215686269999999" green="0.1764705882" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -5295,7 +5350,7 @@
                                 <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Groups" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N7Z-Ub-ZHi" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                        <rect key="frame" x="153" y="9" width="109" height="26"/>
+                                        <rect key="frame" x="153" y="9.3333333333333304" width="109" height="25.666666666666671"/>
                                         <fontDescription key="fontDescription" name="GothamMedium" family="Gotham Medium" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -5346,13 +5401,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Designers on the go" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bs6-6R-Xgp" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                                    <rect key="frame" x="10" y="12" width="344" height="21"/>
+                                                    <rect key="frame" x="10" y="12.666666666666664" width="344" height="21"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
                                                     <color key="textColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(4)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nPP-Pr-djh" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                                    <rect key="frame" x="365" y="13" width="16" height="19"/>
+                                                    <rect key="frame" x="365" y="13" width="16" height="18"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
                                                     <color key="textColor" red="0.81568627449999997" green="0.2901960784" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -5387,7 +5442,7 @@
                                         <rect key="frame" x="20" y="150" width="374" height="141"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Your New Group" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c4f-bh-1Ej" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                                <rect key="frame" x="94" y="15" width="186" height="21"/>
+                                                <rect key="frame" x="94.333333333333343" y="15" width="185.66666666666666" height="21"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
                                                 <color key="textColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -5535,7 +5590,7 @@
                                 <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AKj-Zj-uJJ" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                        <rect key="frame" x="153" y="9" width="109" height="26"/>
+                                        <rect key="frame" x="153.33333333333331" y="9.3333333333333304" width="108.33333333333331" height="25.666666666666671"/>
                                         <fontDescription key="fontDescription" name="GothamMedium" family="Gotham Medium" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -5573,7 +5628,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marshall Mathers LP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Qv-P5-5ls" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                                    <rect key="frame" x="70" y="14" width="138" height="18"/>
+                                                    <rect key="frame" x="70" y="13" width="138" height="18"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
                                                     <color key="textColor" red="0.81568627449999997" green="0.2901960784" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -5597,7 +5652,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="2 hours ago" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfy-BJ-hO2" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                                    <rect key="frame" x="330" y="16" width="59" height="13"/>
+                                                    <rect key="frame" x="331" y="15" width="58" height="13"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="11"/>
                                                     <color key="textColor" red="0.50980392159999999" green="0.51372549020000002" blue="0.51764705879999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -5624,7 +5679,7 @@
                                 </connections>
                             </tableView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cJL-O1-efT" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                <rect key="frame" x="150" y="310" width="115" height="117"/>
+                                <rect key="frame" x="150" y="310.33333333333326" width="115" height="116.66666666666669"/>
                                 <fontDescription key="fontDescription" name="icomoon" family="icomoon" pointSize="100"/>
                                 <color key="textColor" red="0.70980392160000005" green="0.70980392160000005" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -5739,7 +5794,7 @@
                                 <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hd1-9u-lCE" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                        <rect key="frame" x="179" y="9" width="56" height="26"/>
+                                        <rect key="frame" x="179.66666666666666" y="9.3333333333333304" width="55.666666666666686" height="25.666666666666671"/>
                                         <fontDescription key="fontDescription" name="GothamMedium" family="Gotham Medium" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -5896,7 +5951,7 @@
                                                 <rect key="frame" x="0.0" y="266" width="414" height="110"/>
                                             </mapView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Cp-dv-31D" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="386" width="97" height="20"/>
+                                                <rect key="frame" x="19.999999999999993" y="386" width="96.333333333333314" height="20"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
                                                 <color key="textColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -5933,13 +5988,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marshall Mathers LP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j3s-xQ-HMt" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                                <rect key="frame" x="85" y="530" width="138" height="18"/>
+                                                <rect key="frame" x="85" y="529" width="138" height="18"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
                                                 <color key="textColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Host)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3j-YG-er8" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                                <rect key="frame" x="85" y="550" width="40" height="18"/>
+                                                <rect key="frame" x="85" y="549" width="39.666666666666671" height="18"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
                                                 <color key="textColor" red="0.81568627449999997" green="0.2901960784" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -5960,13 +6015,13 @@
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3158" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wz8-pe-UXB" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                                                    <rect key="frame" x="10" y="13" width="34" height="18"/>
+                                                                    <rect key="frame" x="10" y="13" width="33.666666666666664" height="18"/>
                                                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
                                                                     <color key="textColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attending" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FRD-UP-VVW" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                                                    <rect key="frame" x="52" y="13" width="65" height="18"/>
+                                                                    <rect key="frame" x="51.666666666666657" y="13" width="65" height="18"/>
                                                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
                                                                     <color key="textColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -6251,7 +6306,7 @@
                                 <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRl-Lm-IQF" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                        <rect key="frame" x="177" y="9" width="62" height="26"/>
+                                        <rect key="frame" x="176" y="9.3333333333333304" width="62" height="25.666666666666671"/>
                                         <fontDescription key="fontDescription" name="GothamMedium" family="Gotham Medium" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -6329,7 +6384,7 @@
                                                 </state>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="New York City" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Puy-8U-XrN" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                                <rect key="frame" x="163" y="175" width="89" height="17"/>
+                                                <rect key="frame" x="163.66666666666663" y="175" width="88.333333333333343" height="17"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                                 <color key="textColor" red="0.50980392159999999" green="0.51372549020000002" blue="0.51764705879999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -6429,7 +6484,7 @@
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Groups" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Sc-8v-1v5" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                                                    <rect key="frame" x="10" y="12" width="85" height="20"/>
+                                                                    <rect key="frame" x="10" y="12.333333333333336" width="84.333333333333329" height="20"/>
                                                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
                                                                     <color key="textColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -6566,7 +6621,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot Password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tlq-D5-bog" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
-                                        <rect key="frame" x="40" y="9" width="334" height="26"/>
+                                        <rect key="frame" x="40" y="9.3333333333333304" width="334" height="25.666666666666671"/>
                                         <fontDescription key="fontDescription" name="GothamMedium" family="Gotham Medium" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -6587,10 +6642,10 @@
                                 <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CCR-AB-ycU" userLabel="contentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="283"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="282.66666666666669"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gw5-GQ-LsZ" userLabel="firstUnderlineLabel">
-                                                <rect key="frame" x="79" y="134" width="257" height="1"/>
+                                                <rect key="frame" x="79" y="133.66666666666666" width="257" height="1"/>
                                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="nOm-sq-nwl"/>
@@ -6609,7 +6664,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="E-mail" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fha-bY-546" customClass="UITextFieldCustomClass" customModule="cityfam" customModuleProvider="target">
-                                                <rect key="frame" x="97" y="103" width="239" height="21"/>
+                                                <rect key="frame" x="97" y="102.66666666666666" width="239" height="21"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -6626,7 +6681,7 @@
                                                 </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6x2-ev-SJU" customClass="UIButtonCustomClass" customModule="cityfam" customModuleProvider="target">
-                                                <rect key="frame" x="82" y="185" width="251" height="48"/>
+                                                <rect key="frame" x="82" y="184.66666666666669" width="251" height="48.000000000000028"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="19"/>
                                                 <state key="normal" title="Reset my password" backgroundImage="pinkButtonBackground">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -6636,7 +6691,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To reset your password,  enter your email address you use to sign in to app." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9qA-uT-0OM">
-                                                <rect key="frame" x="20" y="30" width="374" height="33"/>
+                                                <rect key="frame" x="20" y="30" width="374" height="32.666666666666671"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -6693,6 +6748,75 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jVr-4h-4yD" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="839" y="38"/>
+        </scene>
+        <!--Map ViewVC-->
+        <scene sceneID="00V-1h-c00">
+            <objects>
+                <viewController storyboardIdentifier="mapViewVc" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WOj-4B-9aN" customClass="MapViewVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="P7R-La-GsS"/>
+                        <viewControllerLayoutGuide type="bottom" id="ONr-xX-Gsc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QLg-q0-CaD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bQS-Du-FRM" userLabel="statusBarLabel">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="20"/>
+                                <color key="backgroundColor" red="0.17254901959999999" green="0.15686274510000001" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="mgY-Dw-Jma"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MgX-jN-F7b" userLabel="navigationView">
+                                <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fKf-Sm-jH9" userLabel="filterButton" customClass="UIButtonFontSize" customModule="cityfam" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="DZG-xr-EPv"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="icomoon" family="icomoon" pointSize="24"/>
+                                        <state key="normal" title="">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D3j-vf-Mhz" customClass="UILabelFontSize" customModule="cityfam" customModuleProvider="target">
+                                        <rect key="frame" x="40" y="12.333333333333336" width="334" height="19.666666666666664"/>
+                                        <fontDescription key="fontDescription" name="GothamMedium" family="Gotham Medium" pointSize="22"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.17254901959999999" green="0.15686274510000001" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="D3j-vf-Mhz" firstAttribute="leading" secondItem="fKf-Sm-jH9" secondAttribute="trailing" id="2qm-9x-5oP"/>
+                                    <constraint firstItem="fKf-Sm-jH9" firstAttribute="leading" secondItem="MgX-jN-F7b" secondAttribute="leading" id="8Hv-5k-rPC"/>
+                                    <constraint firstItem="D3j-vf-Mhz" firstAttribute="centerY" secondItem="MgX-jN-F7b" secondAttribute="centerY" id="H7m-HT-Bva"/>
+                                    <constraint firstAttribute="trailing" secondItem="D3j-vf-Mhz" secondAttribute="trailing" constant="40" id="Of4-l3-qw2"/>
+                                    <constraint firstAttribute="height" constant="44" id="ffh-v0-ddo"/>
+                                    <constraint firstItem="fKf-Sm-jH9" firstAttribute="top" secondItem="MgX-jN-F7b" secondAttribute="top" id="hdA-yi-LzU"/>
+                                    <constraint firstAttribute="bottom" secondItem="fKf-Sm-jH9" secondAttribute="bottom" id="usP-tQ-waD"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="MgX-jN-F7b" firstAttribute="top" secondItem="P7R-La-GsS" secondAttribute="bottom" id="2Eg-SP-tQe"/>
+                            <constraint firstAttribute="trailing" secondItem="MgX-jN-F7b" secondAttribute="trailing" id="N9N-2G-7AE"/>
+                            <constraint firstAttribute="trailing" secondItem="bQS-Du-FRM" secondAttribute="trailing" id="OnL-pc-VPe"/>
+                            <constraint firstItem="bQS-Du-FRM" firstAttribute="top" secondItem="QLg-q0-CaD" secondAttribute="top" id="Yy4-HQ-a5p"/>
+                            <constraint firstItem="MgX-jN-F7b" firstAttribute="leading" secondItem="QLg-q0-CaD" secondAttribute="leading" id="iLk-rg-ct7"/>
+                            <constraint firstItem="bQS-Du-FRM" firstAttribute="leading" secondItem="QLg-q0-CaD" secondAttribute="leading" id="izn-GR-5rn"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gcc-rI-sH6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1584" y="39"/>
         </scene>
     </scenes>
     <resources>

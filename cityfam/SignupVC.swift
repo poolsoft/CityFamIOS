@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SignupVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate,RegisterationServiceAlamofire {
+class SignupVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate,RegisterationServiceAlamofire,FacebookDelegate {
     
     //MARK:- Outlets & Properties
     
@@ -77,7 +77,8 @@ class SignupVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
                 let userId = result.value(forKey: "result") as! String//result.value("result") as! Array
                 
                 UserDefaults.standard.set(userId, forKey: USER_DEFAULT_userId_Key)
-                
+                print(UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key)!)
+
                 let tabBarControllerVcObj = self.storyboard?.instantiateViewController(withIdentifier: "tabBarControllerVc") as! TabBarControllerVC
                 self.navigationController?.pushViewController(tabBarControllerVcObj, animated: true)
             }
@@ -130,6 +131,70 @@ class SignupVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
             return false
         }
     }
+
+    //MARK: Facebook api result
+    
+    func fbUserData(dict:NSDictionary){
+        if let email = dict.value(forKey: "email"){
+            let id = dict.value(forKey: "id")
+            
+            //print("facebook data", dict)
+            if CommonFxns.isInternetAvailable(){
+                appDelegate.showProgressHUD(view: self.view)
+                var name = ""
+                
+                if let firstName = dict.value(forKey: "first_name") as? String{
+                    name = name + firstName
+                }
+                
+                if let lastName = dict.value(forKey: "last_name")as? String{
+                    name = name + lastName
+                }
+                var imgStr = ""
+                
+                if let picture = dict.value(forKey: "picture") as? NSDictionary{
+                    if let data = picture.value(forKey: "data") as? NSDictionary{
+                        if let urlStr = data.value(forKey: "url"){
+                            do {
+                                let url = NSURL(string: urlStr as! String)
+                                let imageData:NSData = try NSData(contentsOf: url as! URL)
+                                let image:UIImage = UIImage(data: imageData as Data)!
+                                let imgData:NSData = UIImagePNGRepresentation(image)! as NSData
+                                imgStr = "\(imgData.base64EncodedString(options: .lineLength64Characters))"
+                            }
+                            catch{
+                            }
+                        }
+                    }
+                }
+                
+                let parameters = [
+                    "name": name,
+                    "emailId": email,
+                    "phone": "",
+                    "password": "testing123",
+                    "latitude": "",
+                    "longitude": "",
+                    "address": "",
+                    "deviceToken":"",
+                    "facebookId": id as! String,
+                    "googleId": "",
+                    "deviceType":"iOS",
+                    "profilePicBase64":imgStr
+                ]
+                
+                AlamofireIntegration.sharedInstance.registerationServiceDelegate = self
+                AlamofireIntegration.sharedInstance.registerationApi(parameters as! [String : String])
+            }
+            else{
+                CommonFxns.showAlert(self, message: internetConnectionError, title: oopsText)
+            }
+        }
+        else{
+            CommonFxns.showAlert(self, message: "Email not found", title: errorAlertTitle)
+        }
+    }
+    
 
     //MARK:- Image Picker Delegates
     
@@ -200,6 +265,15 @@ class SignupVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
     
     //SignUp with Facebook button
     @IBAction func facebookBtnAction(_ sender: Any) {
+        self.resetData()
+        if CommonFxns.isInternetAvailable(){
+            FacebookIntegration.sharedInstance.delegate = self
+            FacebookIntegration.sharedInstance.fbLogin(reference: self)
+        }
+        else{
+            CommonFxns.showAlert(self, message: internetConnectionError, title: oopsText)
+        }
+
     }
     
     //SignUp with google button

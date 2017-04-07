@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LogInVC: UIViewController, loginServiceAlamofire,RegisterationServiceAlamofire, FacebookDelegate,UITextFieldDelegate,GIDSignInUIDelegate {
+class LogInVC: UIViewController, loginServiceAlamofire,RegisterationServiceAlamofire, FacebookDelegate,UITextFieldDelegate,GoogleSignInService {
    
     //MARK:- Outlets & Properties
     
@@ -92,6 +92,8 @@ class LogInVC: UIViewController, loginServiceAlamofire,RegisterationServiceAlamo
             if (result.value(forKey: "success")as! Int == 1){
                 let resultDict = result.value(forKey: "result") as! NSDictionary//result.value("result") as! Array
                 
+                //"result": { "userId": "8" , "eventsAddToCalendar": 0/1 },
+
                 UserDefaults.standard.set(resultDict.value(forKey: "userId") as! String, forKey: USER_DEFAULT_userId_Key)
                 print(UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key)!)
                 
@@ -115,7 +117,8 @@ class LogInVC: UIViewController, loginServiceAlamofire,RegisterationServiceAlamo
                 let userId = result.value(forKey: "result") as! String//result.value("result") as! Array
                 
                 UserDefaults.standard.set(userId, forKey: USER_DEFAULT_userId_Key)
-                
+                print(UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key)!)
+
                 let tabBarControllerVcObj = self.storyboard?.instantiateViewController(withIdentifier: "tabBarControllerVc") as! TabBarControllerVC
                 self.navigationController?.pushViewController(tabBarControllerVcObj, animated: true)
             }
@@ -148,13 +151,9 @@ class LogInVC: UIViewController, loginServiceAlamofire,RegisterationServiceAlamo
     }
 
     @IBAction func googleBtnAction(_ sender: Any) {
-        GIDSignIn.sharedInstance().uiDelegate = self
-
-//        GoogleSignInIntegration.sharedInstance.delegate = self
-//        GoogleSignInIntegration.sharedInstance.callGoogleSignIn()
+        GoogleSignInIntegration.sharedInstance.delegate = self
+        GoogleSignInIntegration.sharedInstance.callGoogleSignIn()
     }
-    
-    
     
     @IBAction func googleViewAction(_ sender: Any) {
     }

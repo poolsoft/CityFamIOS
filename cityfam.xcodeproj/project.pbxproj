@@ -65,6 +65,9 @@
 		A17D70401E9637D800D730FE /* Mark Simonson - Proxima Nova Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 07F7A10F1E60493F00448FFF /* Mark Simonson - Proxima Nova Regular.otf */; };
 		A17D70411E9637D800D730FE /* ProximaNova-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 07F7A1101E60493F00448FFF /* ProximaNova-Bold.otf */; };
 		A17D70421E9637D800D730FE /* ufonts.com_gotham-medium_0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07F7A1111E60493F00448FFF /* ufonts.com_gotham-medium_0.ttf */; };
+		A18727CF1E975C32008CBA77 /* EventsAlamofireIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18727CE1E975C32008CBA77 /* EventsAlamofireIntegration.swift */; };
+		A1D063B11E97C027004BF404 /* MapViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D063B01E97C027004BF404 /* MapViewVC.swift */; };
+		A1D063B31E97C368004BF404 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1D063B21E97C368004BF404 /* Contacts.framework */; };
 		C713ABEF1FCA1145E03B12AE /* Pods_cityfamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA53D3085126ABA04058E83 /* Pods_cityfamTests.framework */; };
 		E8995F75844FEAEA759543F2 /* Pods_cityfamUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0A00B5EC1AAE01FA57C8022 /* Pods_cityfamUITests.framework */; };
 /* End PBXBuildFile section */
@@ -156,6 +159,9 @@
 		A17D70391E9624AB00D730FE /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
 		A17D703B1E9633BC00D730FE /* LocationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationVC.swift; sourceTree = "<group>"; };
 		A17D703E1E9634C000D730FE /* InvitationsScreenTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvitationsScreenTableViewCell.swift; sourceTree = "<group>"; };
+		A18727CE1E975C32008CBA77 /* EventsAlamofireIntegration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsAlamofireIntegration.swift; sourceTree = "<group>"; };
+		A1D063B01E97C027004BF404 /* MapViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewVC.swift; sourceTree = "<group>"; };
+		A1D063B21E97C368004BF404 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
 		C0A00B5EC1AAE01FA57C8022 /* Pods_cityfamUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cityfamUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB705ACBA8A558DB8BB929BF /* Pods_cityfam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cityfam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E66AE9768B56EDAFE3162053 /* Pods-cityfamTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cityfamTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cityfamTests/Pods-cityfamTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -167,6 +173,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1D063B31E97C368004BF404 /* Contacts.framework in Frameworks */,
 				4DBC018DAEB12F70CCFCCFC7 /* Pods_cityfam.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -304,6 +311,7 @@
 				07AE60BC1E6D9384006F39F0 /* SearchLocationVC.swift */,
 				07AE60BE1E6D93AD006F39F0 /* MessagesVC.swift */,
 				A17D70391E9624AB00D730FE /* ForgotPasswordVC.swift */,
+				A1D063B01E97C027004BF404 /* MapViewVC.swift */,
 			);
 			name = ViewControllerClasses;
 			sourceTree = "<group>";
@@ -314,6 +322,7 @@
 				0700D93F1E556E2100DC9928 /* AlamofireIntegration.swift */,
 				0700D9411E556EF300DC9928 /* FacebookIntegration.swift */,
 				0700D9421E556EF300DC9928 /* GoogleSignInIntegration.swift */,
+				A18727CE1E975C32008CBA77 /* EventsAlamofireIntegration.swift */,
 			);
 			name = Wrappers;
 			sourceTree = "<group>";
@@ -332,6 +341,7 @@
 		2107714A2BAF8F23F11DB78A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A1D063B21E97C368004BF404 /* Contacts.framework */,
 				DB705ACBA8A558DB8BB929BF /* Pods_cityfam.framework */,
 				EAA53D3085126ABA04058E83 /* Pods_cityfamTests.framework */,
 				C0A00B5EC1AAE01FA57C8022 /* Pods_cityfamUITests.framework */,
@@ -671,6 +681,7 @@
 				07254B6C1E682FBF009417BA /* AddPeopleVC.swift in Sources */,
 				078633F51E65690B00680A1C /* FriendsVC.swift in Sources */,
 				07254B661E68140E009417BA /* MyGroupsVC.swift in Sources */,
+				A18727CF1E975C32008CBA77 /* EventsAlamofireIntegration.swift in Sources */,
 				07254B5E1E6804BA009417BA /* ProfileVC.swift in Sources */,
 				0700D93A1E556DC900DC9928 /* UITextFieldCustomClass.swift in Sources */,
 				07F057E31E66DFC9008B8120 /* InvitedVC.swift in Sources */,
@@ -682,6 +693,7 @@
 				07254B601E6804DA009417BA /* EditProfileVC.swift in Sources */,
 				0700D9441E556EF300DC9928 /* GoogleSignInIntegration.swift in Sources */,
 				0700D92B1E556D9300DC9928 /* UIButtonFontSize.swift in Sources */,
+				A1D063B11E97C027004BF404 /* MapViewVC.swift in Sources */,
 				078633F11E6568D500680A1C /* ActivityVC.swift in Sources */,
 				0700D8FA1E556D2200DC9928 /* AppDelegate.swift in Sources */,
 				078633ED1E65688400680A1C /* TabBarControllerVC.swift in Sources */,

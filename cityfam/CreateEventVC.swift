@@ -8,27 +8,233 @@
 
 import UIKit
 
-class CreateEventVC: UIViewController,UITextFieldDelegate {
+class CreateEventVC: UIViewController,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CreateEventServiceAlamofire,UIPickerViewDelegate {
     
+    //MARK:- Outlets & Properties
+    
+    @IBOutlet var eventImgView: UIImageView!
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var publicButton: UIButtonCustomClass!
     @IBOutlet var privateButton: UIButtonCustomClass!
     @IBOutlet var friendsButton: UIButtonCustomClass!
+    @IBOutlet var inviteFriendsBtn: UIButtonFontSize!
+    @IBOutlet var addTicketsLinkTxtField: UITextFieldCustomClass!
+    @IBOutlet var eventTitleTxtField: UITextFieldFontSize!
+    @IBOutlet var eventDetailTxtFields: UITextFieldFontSize!
+    @IBOutlet var addCategoriesTxtFields: UITextFieldCustomClass!
+    @IBOutlet var endTimeTxtField: UITextFieldCustomClass!
+    @IBOutlet var startTimeTxtField: UITextFieldCustomClass!
     @IBOutlet var labelUnderSegmentView: UILabelFontSize!
+    @IBOutlet var allowGuestToInviteSwitch: UISwitch!
     
+    var eventImgToUpload:UIImage!
+    let imagePicker = UIImagePickerController()
+    let datePickerView:UIDatePicker = UIDatePicker()
+    var categoryPicker:UIPickerView = UIPickerView()
+    var categoriesListArr = [NSDictionary]()
+    var categoryId = String()
+    var whoCanSeeValueLbl = ""
+    var privateUserListArr = [NSDictionary]()
+
+    //MARK:- View life cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         //keyboard notifications
         NotificationCenter.default.addObserver(self, selector: #selector(CreateEventVC.keyboardWillShow(_:)), name:NSNotification.Name.UIKeyboardWillShow, object: nil);
         NotificationCenter.default.addObserver(self, selector: #selector(CreateEventVC.keyboardWillHide(_:)), name:NSNotification.Name.UIKeyboardWillHide, object: nil);
+        
+        //Get categories list
+        self.getEventCategoryApi()
+        
+        imagePicker.delegate = self
+        datePickerView.minimumDate = Date()
     }
     
-    // dismissing keyboard on pressing return key
+    //MARK:- Methods
+
+    //Api's results
+    //Server error Alert
+    func ServerError(){
+        appDelegate.hideProgressHUD(view: self.view)
+        CommonFxns.showAlert(self, message: networkOperationErrorAlert, title: errorAlertTitle)
+    }
+
+    //get categoories Api call
+    func getEventCategoryApi() {
+        if CommonFxns.isInternetAvailable(){
+            appDelegate.showProgressHUD(view: self.view)
+            EventsAlamofireIntegration.sharedInstance.createEventServiceDelegate = self
+            EventsAlamofireIntegration.sharedInstance.getEventCategoryApi()
+        }
+        else{
+            CommonFxns.showAlert(self, message: internetConnectionError, title: oopsText)
+        }
+    }
     
+    //get categoories Api result
+    func getEventCategoryResult(_ result:AnyObject){
+        DispatchQueue.main.async( execute: {
+            appDelegate.hideProgressHUD(view: self.view)
+            if (result.value(forKey: "success")as! Int == 1){
+                
+//                result =     (
+//                    {
+//                        categoryId = 12;
+//                        categoryName = Love;
+//                },
+                    self.categoriesListArr = result.value(forKey: "result") as! [NSDictionary]
+            }
+            else{
+                CommonFxns.showAlert(self, message: (result.value(forKey: "error") as? String)!, title: errorAlertTitle)
+            }
+        })
+    }
+    
+
+    //Create event Api call
+    
+    func createEventApi(){
+        if isValid() {
+            if CommonFxns.isInternetAvailable(){
+                appDelegate.showProgressHUD(view: self.view)
+                var imgStr = ""
+                if eventImgToUpload != nil{
+                    let imageData:NSData = UIImagePNGRepresentation(eventImgToUpload)! as NSData
+                    imgStr = "\(imageData.base64EncodedString(options: .lineLength64Characters))"
+                }
+                
+                for i in 0..<2{
+                    self.privateUserListArr.append(["emailID":"abc@gmail.com","userID":"","name":"Ankita"])
+                }
+                
+                let parameters = [
+                        "userId":"23",
+                        "eventImage":imgStr,
+                        "eventName":CommonFxns.trimString(string: self.eventTitleTxtField.text!),
+                        "eventStartTime":"17/3/2017-12:36",//CommonFxns.trimString(string: self.eventTitleTxtField.text!)
+                        "eventEndTime":"18/3/2017-12:36",
+                        "whoCanSee":self.whoCanSeeValueLbl,
+                        "privateUserList":privateUserListArr,
+                        "allowGuestsToInviteOthers":"0",
+                        "latitude": "1233.4545",
+                        "longitude": "674623.567",
+                        "placeName": "rock garden, chandigarh",
+                        "categories": self.categoryId,
+                        "eventDescription":"This is a very big concert of all pop singers",
+                        "ticketLink":"https://www.ticket.com"
+                ] as [String : Any]
+                
+                print(parameters)
+                
+                EventsAlamofireIntegration.sharedInstance.createEventServiceDelegate = self
+                EventsAlamofireIntegration.sharedInstance.createEventApi(parameters)
+            }
+            else{
+                CommonFxns.showAlert(self, message: internetConnectionError, title: oopsText)
+            }
+        }
+    }
+    
+    //Create event Api result
+    func createEventResult(_ result:AnyObject){
+        DispatchQueue.main.async( execute: {
+            appDelegate.hideProgressHUD(view: self.view)
+            
+            if (result.value(forKey: "success")as! Int == 1){
+                CommonFxns.showAlert(self, message: "Event Created successfully!", title: successAlertTitle)
+            }
+            else{
+                CommonFxns.showAlert(self, message: (result.value(forKey: "error") as? String)!, title: errorAlertTitle)
+            }
+        })
+    }
+    
+    //Other methods
+    
+    //Method to check validations to create an event
+    
+    func isValid()->Bool{
+        return true
+    }
+    
+    // MARK: TextField delegates
+    
+    // dismissing keyboard on pressing return key
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool{
         textField.resignFirstResponder()
         return true
     }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        toolbar.barStyle = .default
+        toolbar.tintColor = UIColor.white
+        
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target:self, action:#selector(CreateEventVC.doneButtonTapped))
+        doneButton.tintColor = UIColor.black
+        toolbar.items = [doneButton]
+        
+        switch textField.tag {
+        case 112:
+            //add done button
+            textField.inputAccessoryView = toolbar
+            //Show date picker
+            datePickerView.datePickerMode = UIDatePickerMode.date
+            textField.inputView = datePickerView
+            datePickerView.addTarget(self, action: #selector(CreateEventVC.startTimePickerValueChanged(sender:)), for: UIControlEvents.valueChanged)
+            break
+        case 113:
+            //add done button
+            textField.inputAccessoryView = toolbar
+            //Show date picker
+            datePickerView.datePickerMode = UIDatePickerMode.date
+            textField.inputView = datePickerView
+            datePickerView.addTarget(self, action: #selector(CreateEventVC.endTimePickerValueChanged(sender:)), for: UIControlEvents.valueChanged)
+            break
+        case 115:
+            //add done button
+            textField.inputAccessoryView = toolbar
+            //show categoryPicker
+            categoryPicker.delegate = self
+            categoryPicker.reloadAllComponents()
+            textField.inputView = categoryPicker
+            break
+        default:
+            break
+        }
+        return true
+    }
+    
+    //keyboard Done button
+    func doneButtonTapped(){
+        self.view.endEditing(true)
+    }
+    
+    func startTimePickerValueChanged(sender:UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale!
+        dateFormatter.dateStyle = DateFormatter.Style.full
+        dateFormatter.timeStyle = DateFormatter.Style.short
+        dateFormatter.dateFormat = "dd MMM yyyy hh mm"
+        
+        let date = sender.date
+        self.startTimeTxtField.text = dateFormatter.string(from: date)
+    }
+
+    func endTimePickerValueChanged(sender:UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale!
+        dateFormatter.dateStyle = DateFormatter.Style.full
+        dateFormatter.timeStyle = DateFormatter.Style.short
+        dateFormatter.dateFormat = "dd MMM yyyy hh mm"
+        
+        let date = sender.date
+        self.endTimeTxtField.text = dateFormatter.string(from: date)
+    }
+
     
     // MARK: Keyboard notifications methods
     
@@ -47,49 +253,107 @@ class CreateEventVC: UIViewController,UITextFieldDelegate {
         self.scrollView.contentInset = contentInset
     }
     
-    override var preferredStatusBarStyle : UIStatusBarStyle {
-        return UIStatusBarStyle.lightContent
+    //MARK:- Picker view delegates
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int{
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
+        return self.categoriesListArr.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?{
+        return categoriesListArr[row].value(forKey: "categoryName") as? String
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.addCategoriesTxtFields.text = categoriesListArr[row].value(forKey: "categoryName") as? String
+        categoryId = (categoriesListArr[row].value(forKey: "categoryId") as? String)!
+    }
+    
+    //MARK:- Methods to upload image
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        picker.allowsEditing = true
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            picker.allowsEditing = true
+            picker.delegate = self
+            eventImgToUpload = pickedImage
+        }
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePicker(imagePicker: UIPickerView!, pickedImage image: UIImage!) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
     }
     
     //MARK: UIButton actions
     
+    //Segment Control button
     @IBAction func segmentButtonsAction(_ sender: Any) {
         let button = sender as! UIButtonCustomClass
         if button == publicButton{
             publicButton.isSelected = true
-            publicButton.backgroundColor = UIColor(colorLiteralRed: 208/255, green: 74/255, blue: 88/255, alpha: 1)
+            publicButton.backgroundColor = appNavColor
             privateButton.isSelected = false
             privateButton.backgroundColor = UIColor.clear
             friendsButton.isSelected = false
             friendsButton.backgroundColor = UIColor.clear
             labelUnderSegmentView.text = publicButtonDescription
+            self.whoCanSeeValueLbl = "public"
         }
         else if button == privateButton{
             privateButton.isSelected = true
-            privateButton.backgroundColor = UIColor(colorLiteralRed: 208/255, green: 74/255, blue: 88/255, alpha: 1)
+            privateButton.backgroundColor = appNavColor
             publicButton.isSelected = false
             publicButton.backgroundColor = UIColor.clear
             friendsButton.isSelected = false
             friendsButton.backgroundColor = UIColor.clear
             labelUnderSegmentView.text = privateButtonDescription
+            self.whoCanSeeValueLbl = "private"
+
         }
         else{
             friendsButton.isSelected = true
-            friendsButton.backgroundColor = UIColor(colorLiteralRed: 208/255, green: 74/255, blue: 88/255, alpha: 1)
+            friendsButton.backgroundColor = appNavColor
             publicButton.isSelected = false
             publicButton.backgroundColor = UIColor.clear
             privateButton.isSelected = false
             privateButton.backgroundColor = UIColor.clear
             labelUnderSegmentView.text = friendsButtonDescription
+            self.whoCanSeeValueLbl = "friends"
         }
     }
 
-    @IBAction func backButtonAction(_ sender: Any) {
-       _ = self.navigationController?.popViewController(animated: true)
+    //Create Event button Action
+    @IBAction func tickBtnAction(_ sender: UIButton) {
+        createEventApi()
     }
     
+    //invite button Action
     @IBAction func inviteButtonAction(_ sender: Any) {
         let inviteFriendsVcObj = self.storyboard?.instantiateViewController(withIdentifier: "inviteFriendsVc") as! InviteFriendsVC
         self.navigationController?.pushViewController(inviteFriendsVcObj, animated: true)
+    }
+    
+    //Enter event location button action
+    @IBAction func eventLocationBtnAction(_ sender: Any) {
+    }
+    
+    //Upload Image
+    @IBAction func uploadImgTapGestureAction(_ sender: Any) {
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    //Back button action
+    @IBAction func backButtonAction(_ sender: Any) {
+        _ = self.navigationController?.popViewController(animated: true)
     }
 }

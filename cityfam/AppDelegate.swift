@@ -12,7 +12,7 @@ import Google
 import GoogleSignIn
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate,GIDSignInDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var hud:MBProgressHUD!
@@ -26,23 +26,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate,GIDSignInDelegate {
 //        assert(configureError == nil, "Error configuring Google services: \(configureError)")
         
 
-//        let navController:UINavigationController = self.window?.rootViewController as! UINavigationController
-//        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//        if(UserDefaults.standard.value(forKey: USER_DEFAULT_userId_Key) != nil){
-//            let signupVcObj = self.storyboard?.instantiateViewController(withIdentifier: "signupVc") as! SignupVC
-//            self.navigationController?.pushViewController(signupVcObj, animated: true)
-//        }
-//        else{
-//            let secondViewController = mainStoryboard.instantiateViewController(withIdentifier: "loginVC") as! LoginVC
-//            navController.pushViewController(secondViewController, animated: true)
-//        }
+        let navController:UINavigationController = self.window?.rootViewController as! UINavigationController
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        if(UserDefaults.standard.value(forKey: USER_DEFAULT_userId_Key) != nil){
+            let tabBarControllerVcObj = mainStoryboard.instantiateViewController(withIdentifier: "tabBarControllerVc") as! TabBarControllerVC
+            navController.pushViewController(tabBarControllerVcObj, animated: true)
+        }
+        else{
+            let secondViewController = mainStoryboard.instantiateViewController(withIdentifier: "logInVC") as! LogInVC
+            navController.pushViewController(secondViewController, animated: true)
+        }
 
             
         
         GIDSignIn.sharedInstance().signOut()
         
         GIDSignIn.sharedInstance().clientID = "59303853655-jl9hdqnu3mu5e7u2i8mbgfdsk9di5c06.apps.googleusercontent.com"
-        GIDSignIn.sharedInstance().delegate = self
+        //GIDSignIn.sharedInstance().delegate = self
         
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
@@ -55,11 +55,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,GIDSignInDelegate {
 //    }
 
 
-    //For iOS 8 and older
+//    //For iOS 8 and older
 //    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
 //        return GIDSignIn.sharedInstance().handle(url as URL!, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String, annotation: options[UIApplicationOpenURLOptionsKey.annotation])
 //    }
-    
+//    
 //    func application(_ application: UIApplication,
 //                     open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
 //        return GIDSignIn.sharedInstance().handle(url as URL!,sourceApplication: sourceApplication,annotation: annotation)
@@ -104,40 +104,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,GIDSignInDelegate {
         MBProgressHUD.hide(for: view, animated: true)
     }
     
-    public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        if (error == nil)
-        {
-            // Perform any operations on signed in user here.
-            let userId = user.userID // For client-side use only!
-            let idToken = user.authentication.idToken //Safe to send to the server
-            let name = user.profile.name
-            let email = user.profile.email
-            let userImageURL = user.profile.imageURL(withDimension: 200)
-            // ...
-            
-            print(name!,userId!,idToken!,email!,userImageURL!)
-            
-            GIDSignIn.sharedInstance().signOut()
-        }
-        else
-        {
-            print("\(error.localizedDescription)")
-        }
-        
-    }
-    
-    
-    //    func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!,
-    //                withError error: NSError!)
-    //    {
-    //            }
-    
-    func sign(_ signIn: GIDSignIn!, didDisconnectWith user:GIDGoogleUser!,
-              withError error: Error!)
-    {
-        // Perform any operations when the user disconnects from app here.
-    }
-   
+
 
 }
 

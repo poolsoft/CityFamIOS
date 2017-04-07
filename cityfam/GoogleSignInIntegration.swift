@@ -18,18 +18,16 @@ class GoogleSignInIntegration: NSObject, GIDSignInDelegate, GIDSignInUIDelegate{
     }
     
     func callGoogleSignIn() {
-        GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().uiDelegate = self
-        GIDSignIn.sharedInstance().signIn()
     }
-//    
-//    public func sign(_ signIn: GIDSignIn!, present viewController: UIViewController!){
-//        
-//    }
-//    
-//    public func sign(_ signIn: GIDSignIn!, dismiss viewController: UIViewController!){
-//       
-//    }
+    
+    public func sign(_ signIn: GIDSignIn!, present viewController: UIViewController!){
+        GIDSignIn.sharedInstance().delegate = self
+    }
+    
+    public func sign(_ signIn: GIDSignIn!, dismiss viewController: UIViewController!){
+       
+    }
 
     
     // MARK: GID sign in delegate
