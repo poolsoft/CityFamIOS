@@ -10,15 +10,16 @@ import UIKit
 
 class HomePageTableViewCell: UITableViewCell {
 
+    @IBOutlet var eventCoverImg: UIImageView!
+    @IBOutlet var eventName: UILabelFontSize!
+    @IBOutlet var userImg: UIImageViewCustomClass!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
+    @IBOutlet var eventTimingDetail: UILabelFontSize!
 }

@@ -58,6 +58,8 @@
 		4DBC018DAEB12F70CCFCCFC7 /* Pods_cityfam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB705ACBA8A558DB8BB929BF /* Pods_cityfam.framework */; };
 		A1761C641E94BAA10079E269 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1761C631E94BAA10079E269 /* Strings.swift */; };
 		A1761C661E94C14C0079E269 /* CommonFxns.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1761C651E94C14C0079E269 /* CommonFxns.swift */; };
+		A17C17A81E98A3DE0033F669 /* ContactsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A17C17A71E98A3DE0033F669 /* ContactsUI.framework */; };
+		A17C17E91E98DDEA0033F669 /* InviteFriendsTableViewcell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17C17E81E98DDEA0033F669 /* InviteFriendsTableViewcell.swift */; };
 		A17D70381E9617E300D730FE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A17D70371E9617E300D730FE /* GoogleService-Info.plist */; };
 		A17D703A1E9624AB00D730FE /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17D70391E9624AB00D730FE /* ForgotPasswordVC.swift */; };
 		A17D703C1E9633BC00D730FE /* LocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17D703B1E9633BC00D730FE /* LocationVC.swift */; };
@@ -155,6 +157,8 @@
 		952B1B0427C8157F4B1B6ED3 /* Pods-cityfam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cityfam.release.xcconfig"; path = "Pods/Target Support Files/Pods-cityfam/Pods-cityfam.release.xcconfig"; sourceTree = "<group>"; };
 		A1761C631E94BAA10079E269 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		A1761C651E94C14C0079E269 /* CommonFxns.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonFxns.swift; sourceTree = "<group>"; };
+		A17C17A71E98A3DE0033F669 /* ContactsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ContactsUI.framework; path = System/Library/Frameworks/ContactsUI.framework; sourceTree = SDKROOT; };
+		A17C17E81E98DDEA0033F669 /* InviteFriendsTableViewcell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteFriendsTableViewcell.swift; sourceTree = "<group>"; };
 		A17D70371E9617E300D730FE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A17D70391E9624AB00D730FE /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
 		A17D703B1E9633BC00D730FE /* LocationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationVC.swift; sourceTree = "<group>"; };
@@ -173,6 +177,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A17C17A81E98A3DE0033F669 /* ContactsUI.framework in Frameworks */,
 				A1D063B31E97C368004BF404 /* Contacts.framework in Frameworks */,
 				4DBC018DAEB12F70CCFCCFC7 /* Pods_cityfam.framework in Frameworks */,
 			);
@@ -341,6 +346,7 @@
 		2107714A2BAF8F23F11DB78A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A17C17A71E98A3DE0033F669 /* ContactsUI.framework */,
 				A1D063B21E97C368004BF404 /* Contacts.framework */,
 				DB705ACBA8A558DB8BB929BF /* Pods_cityfam.framework */,
 				EAA53D3085126ABA04058E83 /* Pods_cityfamTests.framework */,
@@ -379,6 +385,7 @@
 			children = (
 				07F057D71E669361008B8120 /* HomePageTableViewCell.swift */,
 				A17D703E1E9634C000D730FE /* InvitationsScreenTableViewCell.swift */,
+				A17C17E81E98DDEA0033F669 /* InviteFriendsTableViewcell.swift */,
 			);
 			name = CustomCellClasses;
 			sourceTree = "<group>";
@@ -707,6 +714,7 @@
 				078633EF1E6568B800680A1C /* HomePageVC.swift in Sources */,
 				07F057DD1E66D76F008B8120 /* FilterEventsVC.swift in Sources */,
 				07C34C521E810B0900A9699C /* Constant.swift in Sources */,
+				A17C17E91E98DDEA0033F669 /* InviteFriendsTableViewcell.swift in Sources */,
 				0700D9401E556E2100DC9928 /* AlamofireIntegration.swift in Sources */,
 				078633F71E656EAE00680A1C /* InvitationsVC.swift in Sources */,
 				07254B6E1E6838FF009417BA /* InviteFriendsVC.swift in Sources */,
