@@ -58,6 +58,8 @@
 		4DBC018DAEB12F70CCFCCFC7 /* Pods_cityfam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB705ACBA8A558DB8BB929BF /* Pods_cityfam.framework */; };
 		A1761C641E94BAA10079E269 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1761C631E94BAA10079E269 /* Strings.swift */; };
 		A1761C661E94C14C0079E269 /* CommonFxns.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1761C651E94C14C0079E269 /* CommonFxns.swift */; };
+		A17B65971E9B6CC3001893CF /* EventsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17B65961E9B6CC3001893CF /* EventsListTableViewCell.swift */; };
+		A17B65991E9B6D5A001893CF /* EventsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17B65981E9B6D5A001893CF /* EventsListVC.swift */; };
 		A17C17A81E98A3DE0033F669 /* ContactsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A17C17A71E98A3DE0033F669 /* ContactsUI.framework */; };
 		A17C17E91E98DDEA0033F669 /* InviteFriendsTableViewcell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17C17E81E98DDEA0033F669 /* InviteFriendsTableViewcell.swift */; };
 		A17D70381E9617E300D730FE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A17D70371E9617E300D730FE /* GoogleService-Info.plist */; };
@@ -157,6 +159,8 @@
 		952B1B0427C8157F4B1B6ED3 /* Pods-cityfam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cityfam.release.xcconfig"; path = "Pods/Target Support Files/Pods-cityfam/Pods-cityfam.release.xcconfig"; sourceTree = "<group>"; };
 		A1761C631E94BAA10079E269 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		A1761C651E94C14C0079E269 /* CommonFxns.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonFxns.swift; sourceTree = "<group>"; };
+		A17B65961E9B6CC3001893CF /* EventsListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsListTableViewCell.swift; sourceTree = "<group>"; };
+		A17B65981E9B6D5A001893CF /* EventsListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsListVC.swift; sourceTree = "<group>"; };
 		A17C17A71E98A3DE0033F669 /* ContactsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ContactsUI.framework; path = System/Library/Frameworks/ContactsUI.framework; sourceTree = SDKROOT; };
 		A17C17E81E98DDEA0033F669 /* InviteFriendsTableViewcell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteFriendsTableViewcell.swift; sourceTree = "<group>"; };
 		A17D70371E9617E300D730FE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -317,6 +321,7 @@
 				07AE60BE1E6D93AD006F39F0 /* MessagesVC.swift */,
 				A17D70391E9624AB00D730FE /* ForgotPasswordVC.swift */,
 				A1D063B01E97C027004BF404 /* MapViewVC.swift */,
+				A17B65981E9B6D5A001893CF /* EventsListVC.swift */,
 			);
 			name = ViewControllerClasses;
 			sourceTree = "<group>";
@@ -386,6 +391,7 @@
 				07F057D71E669361008B8120 /* HomePageTableViewCell.swift */,
 				A17D703E1E9634C000D730FE /* InvitationsScreenTableViewCell.swift */,
 				A17C17E81E98DDEA0033F669 /* InviteFriendsTableViewcell.swift */,
+				A17B65961E9B6CC3001893CF /* EventsListTableViewCell.swift */,
 			);
 			name = CustomCellClasses;
 			sourceTree = "<group>";
@@ -689,6 +695,7 @@
 				078633F51E65690B00680A1C /* FriendsVC.swift in Sources */,
 				07254B661E68140E009417BA /* MyGroupsVC.swift in Sources */,
 				A18727CF1E975C32008CBA77 /* EventsAlamofireIntegration.swift in Sources */,
+				A17B65971E9B6CC3001893CF /* EventsListTableViewCell.swift in Sources */,
 				07254B5E1E6804BA009417BA /* ProfileVC.swift in Sources */,
 				0700D93A1E556DC900DC9928 /* UITextFieldCustomClass.swift in Sources */,
 				07F057E31E66DFC9008B8120 /* InvitedVC.swift in Sources */,
@@ -730,6 +737,7 @@
 				07AE60BD1E6D9386006F39F0 /* SearchLocationVC.swift in Sources */,
 				07F057E71E66DFF1008B8120 /* CommentsVC.swift in Sources */,
 				0700D9381E556DC900DC9928 /* UIViewCustomClass.swift in Sources */,
+				A17B65991E9B6D5A001893CF /* EventsListVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

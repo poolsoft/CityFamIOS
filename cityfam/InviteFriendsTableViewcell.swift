@@ -10,15 +10,20 @@ import UIKit
 
 class InviteFriendsTableViewcell: UITableViewCell {
 
+    //MARK:- Outlets & Properties
+    
+    @IBOutlet var userEmailLbl: UILabel!
+    @IBOutlet var userNameLbl: UILabel!
+    @IBOutlet var userImgView: UIImageView!
+    
+    //MARK:- Methods
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }

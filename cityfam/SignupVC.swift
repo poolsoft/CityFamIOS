@@ -61,6 +61,7 @@ class SignupVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
 
     //MARK:- Method to get Api's results
 
+    //Server failure Alert
     func ServerError(){
        appDelegate.hideProgressHUD(view: self.view)
        CommonFxns.showAlert(self, message: networkOperationErrorAlert, title: errorAlertTitle)

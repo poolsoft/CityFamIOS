@@ -17,6 +17,16 @@ protocol CreateEventServiceAlamofire {
     func ServerError()
 }
 
+protocol GetEventsListOfParticularUserServiceAlamofire {
+    func getEventsListOfParticularUserResult(_ result:AnyObject)
+    func ServerError()
+}
+
+protocol GetEventsListServiceAlamofire {
+    func getEventsListResult(_ result:AnyObject)
+    func ServerError()
+}
+
 //MARK:- Class
 
 class EventsAlamofireIntegration: NSObject {
@@ -31,7 +41,9 @@ class EventsAlamofireIntegration: NSObject {
     //MARK:- Properties
     
     var createEventServiceDelegate: CreateEventServiceAlamofire?
-    
+    var getEventsListOfParticularUserServiceDelegate:GetEventsListOfParticularUserServiceAlamofire?
+    var getEventsListServiceDelegate:GetEventsListServiceAlamofire?
+
     //MARK:- Api's Methods
     
     //getEventCategory Api for Create event Screen
@@ -69,6 +81,45 @@ class EventsAlamofireIntegration: NSObject {
                 break
             }
         }
+    }
+    
+    //Get Evnets list of of particular user on Other user's profile screen
+    func getEventsListOfParticularUserApi(parameter: String){
+        print(parameter)
+        Alamofire.request("\(baseUrl)getEventsListOfParticularUser.php?userId=\(UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key)!)&anotherUserId=\(parameter)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+            
+            switch(response.result){
+            case .success:
+                if let json = response.result.value{
+                    print(json)
+                    self.getEventsListOfParticularUserServiceDelegate?.getEventsListOfParticularUserResult(json as AnyObject)
+                }
+                break
+            case .failure:
+                self.getEventsListOfParticularUserServiceDelegate?.ServerError()
+                break
+            }
+        }
+    }
+    
+    //Get events list for Home page according to filters or without filters
+    func getEventsListApi(_ parameters:[String : Any]){
+        print(parameters)
+        Alamofire.request("\(baseUrl)getEventsList.php", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+            
+            switch(response.result){
+            case .success:
+                if let json = response.result.value{
+                    print(json)
+                    self.getEventsListServiceDelegate?.getEventsListResult(json as AnyObject)
+                }
+                break
+            case .failure:
+                self.getEventsListServiceDelegate?.ServerError()
+                break
+            }
+        }
+
     }
 }
 
