@@ -26,18 +26,22 @@ class CreateEventVC: UIViewController,UITextFieldDelegate,UIImagePickerControlle
     @IBOutlet var startTimeTxtField: UITextFieldCustomClass!
     @IBOutlet var labelUnderSegmentView: UILabelFontSize!
     @IBOutlet var allowGuestToInviteSwitch: UISwitch!
-    
+    @IBOutlet var eventLocationLbl: UILabel!
+
     var eventImgToUpload:UIImage!
     let imagePicker = UIImagePickerController()
-    let datePickerView:UIDatePicker = UIDatePicker()
+    let startDatePickerView:UIDatePicker = UIDatePicker()
+    let endDatePickerView:UIDatePicker = UIDatePicker()
+
     var categoryPicker:UIPickerView = UIPickerView()
     var categoriesListArr = [NSDictionary]()
     var categoryId = String()
     var whoCanSeeValueLbl = ""
     var privateUserListArr = [NSDictionary]()
-
+    var allowGuestSwitchSelectedState = "1"
+    
     //MARK:- View life cycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,22 +49,24 @@ class CreateEventVC: UIViewController,UITextFieldDelegate,UIImagePickerControlle
         NotificationCenter.default.addObserver(self, selector: #selector(CreateEventVC.keyboardWillShow(_:)), name:NSNotification.Name.UIKeyboardWillShow, object: nil);
         NotificationCenter.default.addObserver(self, selector: #selector(CreateEventVC.keyboardWillHide(_:)), name:NSNotification.Name.UIKeyboardWillHide, object: nil);
         
-        //Get categories list
-        self.getEventCategoryApi()
-        
+        self.whoCanSeeValueLbl = "private"
         imagePicker.delegate = self
-        datePickerView.minimumDate = Date()
+        endDatePickerView.minimumDate = Date()
+        startDatePickerView.minimumDate = Date()
+
+        // AllowGuestToInvite Switch Control
+        self.allowGuestToInviteSwitch.addTarget(self, action: #selector(CreateEventVC.allowGuestToInviteSwitchValueChanged(sender:)), for: .valueChanged)
     }
     
     //MARK:- Methods
-
+    
     //Api's results
     //Server error Alert
     func ServerError(){
         appDelegate.hideProgressHUD(view: self.view)
         CommonFxns.showAlert(self, message: networkOperationErrorAlert, title: errorAlertTitle)
     }
-
+    
     //get categoories Api call
     func getEventCategoryApi() {
         if CommonFxns.isInternetAvailable(){
@@ -78,13 +84,13 @@ class CreateEventVC: UIViewController,UITextFieldDelegate,UIImagePickerControlle
         DispatchQueue.main.async( execute: {
             appDelegate.hideProgressHUD(view: self.view)
             if (result.value(forKey: "success")as! Int == 1){
+                self.categoriesListArr = result.value(forKey: "result") as! [NSDictionary]
                 
-//                result =     (
-//                    {
-//                        categoryId = 12;
-//                        categoryName = Love;
-//                },
-                    self.categoriesListArr = result.value(forKey: "result") as! [NSDictionary]
+                //show categoryPicker
+                self.addCategoriesTxtFields.isUserInteractionEnabled = true
+                self.categoryPicker.delegate = self
+                self.categoryPicker.reloadAllComponents()
+                self.addCategoriesTxtFields.inputView = self.categoryPicker
             }
             else{
                 CommonFxns.showAlert(self, message: (result.value(forKey: "error") as? String)!, title: errorAlertTitle)
@@ -92,7 +98,6 @@ class CreateEventVC: UIViewController,UITextFieldDelegate,UIImagePickerControlle
         })
     }
     
-
     //Create event Api call
     
     func createEventApi(){
@@ -110,21 +115,21 @@ class CreateEventVC: UIViewController,UITextFieldDelegate,UIImagePickerControlle
                 }
                 
                 let parameters = [
-                        "userId":"23",
-                        "eventImage":imgStr,
-                        "eventName":CommonFxns.trimString(string: self.eventTitleTxtField.text!),
-                        "eventStartTime":"17/3/2017-12:36",//CommonFxns.trimString(string: self.eventTitleTxtField.text!)
-                        "eventEndTime":"18/3/2017-12:36",
-                        "whoCanSee":self.whoCanSeeValueLbl,
-                        "privateUserList":privateUserListArr,
-                        "allowGuestsToInviteOthers":"0",
-                        "latitude": "1233.4545",
-                        "longitude": "674623.567",
-                        "placeName": "rock garden, chandigarh",
-                        "categories": self.categoryId,
-                        "eventDescription":"This is a very big concert of all pop singers",
-                        "ticketLink":"https://www.ticket.com"
-                ] as [String : Any]
+                    "userId":"23",
+                    "eventImage":imgStr,
+                    "eventName":CommonFxns.trimString(string: self.eventTitleTxtField.text!),
+                    "eventStartTime": self.startTimeTxtField.text!,//"17/3/2017-12:36"
+                    "eventEndTime":self.endTimeTxtField.text!,//"18/3/2017-12:36",//
+                    "whoCanSee":self.whoCanSeeValueLbl,
+                    "privateUserList":privateUserListArr,
+                    "allowGuestsToInviteOthers":allowGuestSwitchSelectedState,
+                    "latitude": "1233.4545",
+                    "longitude": "674623.567",
+                    "placeName": "rock garden, chandigarh",
+                    "categories": self.categoryId,
+                    "eventDescription":CommonFxns.trimString(string: self.eventDetailTxtFields.text!),
+                    "ticketLink":"https://www.ticket.com"
+                    ] as [String : Any]
                 
                 print(parameters)
                 
@@ -143,6 +148,7 @@ class CreateEventVC: UIViewController,UITextFieldDelegate,UIImagePickerControlle
             appDelegate.hideProgressHUD(view: self.view)
             
             if (result.value(forKey: "success")as! Int == 1){
+                self.resetData()
                 CommonFxns.showAlert(self, message: "Event Created successfully!", title: successAlertTitle)
             }
             else{
@@ -154,9 +160,28 @@ class CreateEventVC: UIViewController,UITextFieldDelegate,UIImagePickerControlle
     //Other methods
     
     //Method to check validations to create an event
-    
     func isValid()->Bool{
+        
+        if self.eventTitleTxtField.text != "" && self.startTimeTxtField.text != "" && self.eventDetailTxtFields.text != "" {
+            return true
+        }
+        else{
+            CommonFxns.showAlert(self, message: "Enter required fields.", title: errorAlertTitle)
+        }
         return true
+    }
+    
+    func resetData(){
+        self.eventImgToUpload = nil
+        self.eventImgView.image = UIImage(named: "eventCreateAddImage.png")
+        self.eventTitleTxtField.text = ""
+        self.startTimeTxtField.text = ""
+        self.endTimeTxtField.text = ""
+        //eventloaction
+        self.eventDetailTxtFields.text = ""
+        self.addCategoriesTxtFields.text = ""
+        self.categoryId = ""
+        self.addTicketsLinkTxtField.text = ""
     }
     
     // MARK: TextField delegates
@@ -182,25 +207,27 @@ class CreateEventVC: UIViewController,UITextFieldDelegate,UIImagePickerControlle
             //add done button
             textField.inputAccessoryView = toolbar
             //Show date picker
-            datePickerView.datePickerMode = UIDatePickerMode.date
-            textField.inputView = datePickerView
-            datePickerView.addTarget(self, action: #selector(CreateEventVC.startTimePickerValueChanged(sender:)), for: UIControlEvents.valueChanged)
+            startDatePickerView.datePickerMode = UIDatePickerMode.date
+            textField.inputView = startDatePickerView
+            startDatePickerView.addTarget(self, action: #selector(CreateEventVC.startTimePickerValueChanged(sender:)), for: UIControlEvents.valueChanged)
             break
         case 113:
             //add done button
             textField.inputAccessoryView = toolbar
             //Show date picker
-            datePickerView.datePickerMode = UIDatePickerMode.date
-            textField.inputView = datePickerView
-            datePickerView.addTarget(self, action: #selector(CreateEventVC.endTimePickerValueChanged(sender:)), for: UIControlEvents.valueChanged)
+            endDatePickerView.datePickerMode = UIDatePickerMode.date
+            textField.inputView = endDatePickerView
+            endDatePickerView.addTarget(self, action: #selector(CreateEventVC.endTimePickerValueChanged(sender:)), for: UIControlEvents.valueChanged)
             break
         case 115:
             //add done button
             textField.inputAccessoryView = toolbar
-            //show categoryPicker
-            categoryPicker.delegate = self
-            categoryPicker.reloadAllComponents()
-            textField.inputView = categoryPicker
+            
+            if self.categoriesListArr.count == 0{
+                textField.isUserInteractionEnabled = false
+                //Get categories list
+                self.getEventCategoryApi()
+            }
             break
         default:
             break
@@ -218,23 +245,23 @@ class CreateEventVC: UIViewController,UITextFieldDelegate,UIImagePickerControlle
         dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale!
         dateFormatter.dateStyle = DateFormatter.Style.full
         dateFormatter.timeStyle = DateFormatter.Style.short
-        dateFormatter.dateFormat = "dd MMM yyyy hh mm"
+        dateFormatter.dateFormat = "dd/MM/yyyy-hh:mm"
         
         let date = sender.date
         self.startTimeTxtField.text = dateFormatter.string(from: date)
     }
-
+    
     func endTimePickerValueChanged(sender:UIDatePicker) {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale!
         dateFormatter.dateStyle = DateFormatter.Style.full
         dateFormatter.timeStyle = DateFormatter.Style.short
-        dateFormatter.dateFormat = "dd MMM yyyy hh mm"
+        dateFormatter.dateFormat = "dd/MM/yyyy-hh:mm"
         
         let date = sender.date
         self.endTimeTxtField.text = dateFormatter.string(from: date)
     }
-
+    
     
     // MARK: Keyboard notifications methods
     
@@ -279,6 +306,7 @@ class CreateEventVC: UIViewController,UITextFieldDelegate,UIImagePickerControlle
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             picker.allowsEditing = true
             picker.delegate = self
+            self.eventImgView.image = pickedImage
             eventImgToUpload = pickedImage
         }
         dismiss(animated: true, completion: nil)
@@ -316,7 +344,7 @@ class CreateEventVC: UIViewController,UITextFieldDelegate,UIImagePickerControlle
             friendsButton.backgroundColor = UIColor.clear
             labelUnderSegmentView.text = privateButtonDescription
             self.whoCanSeeValueLbl = "private"
-
+            
         }
         else{
             friendsButton.isSelected = true
@@ -329,7 +357,17 @@ class CreateEventVC: UIViewController,UITextFieldDelegate,UIImagePickerControlle
             self.whoCanSeeValueLbl = "friends"
         }
     }
-
+    
+    //Handle allowGuestToInvite Switch control
+    func allowGuestToInviteSwitchValueChanged(sender: UISwitch){
+        if self.allowGuestToInviteSwitch.isOn{
+            self.allowGuestSwitchSelectedState = "1"
+        }
+        else{
+            self.allowGuestSwitchSelectedState = "0"
+        }
+    }
+    
     //Create Event button Action
     @IBAction func tickBtnAction(_ sender: UIButton) {
         createEventApi()
@@ -343,6 +381,8 @@ class CreateEventVC: UIViewController,UITextFieldDelegate,UIImagePickerControlle
     
     //Enter event location button action
     @IBAction func eventLocationBtnAction(_ sender: Any) {
+        let inviteFriendsVcObj = self.storyboard?.instantiateViewController(withIdentifier: "searchLocationVc") as! SearchLocationVC
+        self.navigationController?.pushViewController(inviteFriendsVcObj, animated: true)
     }
     
     //Upload Image

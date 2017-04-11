@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,GetEventsListServiceAlamofire {
     
@@ -16,6 +17,8 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
     @IBOutlet var exploreButton: UIButtonCustomClass!
     @IBOutlet var friendsButton: UIButtonCustomClass!
     
+    private let refreshControl = UIRefreshControl()
+
     var filtersDataDict = ["distance": "",
                             "categories": "",
                             "daysOfWeek": "",
@@ -33,30 +36,46 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
         //adding notification observer to filter events
         NotificationCenter.default.addObserver(forName:NSNotification.Name(rawValue: "filterEventsNotification"), object:nil, queue:nil, using:catchNotification)
     }
-    
-    override var preferredStatusBarStyle : UIStatusBarStyle {
-        return UIStatusBarStyle.lightContent
-    }
+
     
     //MARK:- Methods
+    
+    //IntialSetup Method
     func intialSetup(){
         self.selectedSegmentValue = 0
-        getEventsListApi()
+        self.getEventsListApi()
+        
+        if #available(iOS 10.0, *) {
+            exploreTableView.refreshControl = refreshControl
+        } else {
+            exploreTableView.addSubview(refreshControl)
+        }
+        
+        // Configure Refresh Control
+        refreshControl.addTarget(self, action: #selector(HomePageVC.refreshData(sender:)), for: .valueChanged)
     }
     
+    //Pul to refresh Action
+    func refreshData(sender:UIRefreshControl){
+        self.getEventsListApi()
+    }
+
+    //Catch filterEventsNotification
     func catchNotification(notification:Notification) -> Void {
         print("Catch notification")
         filtersDataDict = notification.userInfo as! [String : String]
         print(filtersDataDict)
     }
 
+    //Get Api's Results
+    
     //Server failure Alert
     func ServerError(){
         appDelegate.hideProgressHUD(view: self.view)
         CommonFxns.showAlert(self, message: networkOperationErrorAlert, title: errorAlertTitle)
     }
     
-    //Get Events list of friends or public
+    //Get Events list Result of friends or public
     func getEventsListResult(_ result:AnyObject){
         DispatchQueue.main.async( execute: {
             appDelegate.hideProgressHUD(view: self.view)
@@ -68,6 +87,8 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
                 //let messageCount = result.value(forKey: "notificationCount") as! String
                 
                 self.exploreTableView.reloadData()
+                
+                self.refreshControl.endRefreshing()
             }
             else{
                 CommonFxns.showAlert(self, message: (result.value(forKey: "error") as? String)!, title: errorAlertTitle)
@@ -75,6 +96,7 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
         })
     }
     
+    //GetEventsList Api call
     func getEventsListApi() {
             if CommonFxns.isInternetAvailable(){
                 appDelegate.showProgressHUD(view: self.view)
@@ -101,12 +123,70 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! HomePageTableViewCell
         
+        let dict = self.eventsListArr[indexPath.row]
         
+        cell.eventName.text = dict.value(forKey: "eventName") as? String
+        
+        var eventTimingDetail = ""
+        
+        if let eventStartTime = dict.value(forKey: "eventStartTime") as? String{
+            eventTimingDetail = eventTimingDetail + "Starting from " + eventStartTime
+        }
+        if let eventAddress = dict.value(forKey: "eventAddress") as? String{
+            eventTimingDetail = eventTimingDetail + " at" + eventAddress
+        }
+        cell.eventTimingDetail.text = eventTimingDetail
+        
+        if (dict.value(forKey: "eventCoverImageUrl") as? String) != nil{
+            cell.eventCoverImg.sd_setImage(with: URL(string: (dict.value(forKey: "eventCoverImageUrl") as? String)!), placeholderImage: UIImage(named: ""))
+            cell.eventCoverImg.setShowActivityIndicator(true)
+            cell.eventCoverImg.setIndicatorStyle(.gray)
+        }
+        else{
+            cell.eventCoverImg.image = UIImage(named: "")
+        }
+        
+        if (dict.value(forKey: "userImageUrl") as? String) != nil{
+            cell.userImg.sd_setImage(with: URL(string: (dict.value(forKey: "userImageUrl") as? String)!), placeholderImage: UIImage(named: ""))
+            cell.userImg.setShowActivityIndicator(true)
+            cell.userImg.setIndicatorStyle(.gray)
+        }
+        else{
+            cell.userImg.image = UIImage(named: "")
+        }
+        //numberOfPeopleAttending
         return cell
     }
     
+//    description = imark;
+//    eventAddress = "Event Location";
+//    eventCoverImageUrl = "";
+//    eventEndDate = "Thursday,April 27,2017";
+//    eventEndTime = "06:30 AM";
+//    eventId = 68;
+//    eventImagesUrlArray =                 (
+//    );
+//    eventName = "hello party";
+//    eventStartDate = "Wednesday,April 26,2017";
+//    eventStartTime = "01:30 AM";
+//    latitude = "";
+//    longitude = "";
+//    myStatus = "No Invitation Sent.";
+//    numberOfComments = 0;
+//    numberOfPeopleAttending = 25;
+//    numberOfPeopleInterested = 25;
+//    numberOfPeopleInvited = 25;
+//    ticketLink = "";
+//    userId = 29;
+//    userImageUrl = "http://0.gravatar.com/avatar/f9f5a3edac178f9f956b1239d49d2081?s=96&d=mm&r=g";
+//    userName = "Z9nh_jai";
+//    userRole = "Normal User";
+//},
+    
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let eventDetailVcObj = self.storyboard?.instantiateViewController(withIdentifier: "eventDetailVc") as! EventDetailVC
+        eventDetailVcObj.eventDetailDict = self.eventsListArr[indexPath.row]
         self.navigationController?.pushViewController(eventDetailVcObj, animated: true)
     }
     

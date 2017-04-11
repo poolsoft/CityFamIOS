@@ -56,6 +56,10 @@
 		07F057E71E66DFF1008B8120 /* CommentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F057E61E66DFF1008B8120 /* CommentsVC.swift */; };
 		07F7A1141E60692D00448FFF /* homePic.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F7A1131E60692D00448FFF /* homePic.png */; };
 		4DBC018DAEB12F70CCFCCFC7 /* Pods_cityfam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB705ACBA8A558DB8BB929BF /* Pods_cityfam.framework */; };
+		A154BB001E9CB1C600E3727F /* EventDetailTypeOfUsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A154BAFF1E9CB1C600E3727F /* EventDetailTypeOfUsersTableViewCell.swift */; };
+		A154BB021E9CE3F700E3727F /* AttendingVcTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A154BB011E9CE3F700E3727F /* AttendingVcTableViewCell.swift */; };
+		A154BB041E9CE40D00E3727F /* InvitedVcTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A154BB031E9CE40D00E3727F /* InvitedVcTableViewCell.swift */; };
+		A154BB061E9CE41A00E3727F /* InterestedVcTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A154BB051E9CE41A00E3727F /* InterestedVcTableViewCell.swift */; };
 		A1761C641E94BAA10079E269 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1761C631E94BAA10079E269 /* Strings.swift */; };
 		A1761C661E94C14C0079E269 /* CommonFxns.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1761C651E94C14C0079E269 /* CommonFxns.swift */; };
 		A17B65971E9B6CC3001893CF /* EventsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17B65961E9B6CC3001893CF /* EventsListTableViewCell.swift */; };
@@ -157,6 +161,10 @@
 		643E1FBFA6054261D01F45A5 /* Pods-cityfam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cityfam.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cityfam/Pods-cityfam.debug.xcconfig"; sourceTree = "<group>"; };
 		863E99728436B5DED6101934 /* Pods-cityfamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cityfamTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-cityfamTests/Pods-cityfamTests.release.xcconfig"; sourceTree = "<group>"; };
 		952B1B0427C8157F4B1B6ED3 /* Pods-cityfam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cityfam.release.xcconfig"; path = "Pods/Target Support Files/Pods-cityfam/Pods-cityfam.release.xcconfig"; sourceTree = "<group>"; };
+		A154BAFF1E9CB1C600E3727F /* EventDetailTypeOfUsersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailTypeOfUsersTableViewCell.swift; sourceTree = "<group>"; };
+		A154BB011E9CE3F700E3727F /* AttendingVcTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendingVcTableViewCell.swift; sourceTree = "<group>"; };
+		A154BB031E9CE40D00E3727F /* InvitedVcTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvitedVcTableViewCell.swift; sourceTree = "<group>"; };
+		A154BB051E9CE41A00E3727F /* InterestedVcTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestedVcTableViewCell.swift; sourceTree = "<group>"; };
 		A1761C631E94BAA10079E269 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		A1761C651E94C14C0079E269 /* CommonFxns.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonFxns.swift; sourceTree = "<group>"; };
 		A17B65961E9B6CC3001893CF /* EventsListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsListTableViewCell.swift; sourceTree = "<group>"; };
@@ -392,6 +400,10 @@
 				A17D703E1E9634C000D730FE /* InvitationsScreenTableViewCell.swift */,
 				A17C17E81E98DDEA0033F669 /* InviteFriendsTableViewcell.swift */,
 				A17B65961E9B6CC3001893CF /* EventsListTableViewCell.swift */,
+				A154BAFF1E9CB1C600E3727F /* EventDetailTypeOfUsersTableViewCell.swift */,
+				A154BB011E9CE3F700E3727F /* AttendingVcTableViewCell.swift */,
+				A154BB031E9CE40D00E3727F /* InvitedVcTableViewCell.swift */,
+				A154BB051E9CE41A00E3727F /* InterestedVcTableViewCell.swift */,
 			);
 			name = CustomCellClasses;
 			sourceTree = "<group>";
@@ -695,6 +707,7 @@
 				078633F51E65690B00680A1C /* FriendsVC.swift in Sources */,
 				07254B661E68140E009417BA /* MyGroupsVC.swift in Sources */,
 				A18727CF1E975C32008CBA77 /* EventsAlamofireIntegration.swift in Sources */,
+				A154BB021E9CE3F700E3727F /* AttendingVcTableViewCell.swift in Sources */,
 				A17B65971E9B6CC3001893CF /* EventsListTableViewCell.swift in Sources */,
 				07254B5E1E6804BA009417BA /* ProfileVC.swift in Sources */,
 				0700D93A1E556DC900DC9928 /* UITextFieldCustomClass.swift in Sources */,
@@ -702,7 +715,9 @@
 				A17D703C1E9633BC00D730FE /* LocationVC.swift in Sources */,
 				07F057DA1E6694BB008B8120 /* EventDetailVC.swift in Sources */,
 				0700D9371E556DC900DC9928 /* UILabelCustomClass.swift in Sources */,
+				A154BB061E9CE41A00E3727F /* InterestedVcTableViewCell.swift in Sources */,
 				078633F31E6568ED00680A1C /* CreateEventVC.swift in Sources */,
+				A154BB041E9CE40D00E3727F /* InvitedVcTableViewCell.swift in Sources */,
 				0700D8FC1E556D2200DC9928 /* LogInVC.swift in Sources */,
 				07254B601E6804DA009417BA /* EditProfileVC.swift in Sources */,
 				0700D9441E556EF300DC9928 /* GoogleSignInIntegration.swift in Sources */,
@@ -734,6 +749,7 @@
 				07AE60BF1E6D93AD006F39F0 /* MessagesVC.swift in Sources */,
 				0700D9391E556DC900DC9928 /* UIImageViewCustomClass.swift in Sources */,
 				0700D9431E556EF300DC9928 /* FacebookIntegration.swift in Sources */,
+				A154BB001E9CB1C600E3727F /* EventDetailTypeOfUsersTableViewCell.swift in Sources */,
 				07AE60BD1E6D9386006F39F0 /* SearchLocationVC.swift in Sources */,
 				07F057E71E66DFF1008B8120 /* CommentsVC.swift in Sources */,
 				0700D9381E556DC900DC9928 /* UIViewCustomClass.swift in Sources */,

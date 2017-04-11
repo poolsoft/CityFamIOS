@@ -19,6 +19,16 @@ protocol ForgotPasswordServiceAlamofire {
     func ServerError()
 }
 
+protocol RespondToRequestServiceAlamofire {
+    func respondToRequestResult(_ result:AnyObject)
+    func ServerError()
+}
+
+protocol ManageFriendshipServiceAlamofire {
+    func manageFriendshipResult(_ result:AnyObject)
+    func ServerError()
+}
+
 //MARK:- Class
 
 class AlamofireIntegration: NSObject {
@@ -36,6 +46,8 @@ class AlamofireIntegration: NSObject {
     var registerationServiceDelegate:RegisterationServiceAlamofire?
     var forgotPasswordServiceDelegate: ForgotPasswordServiceAlamofire?
     var createEventServiceDelegate: CreateEventServiceAlamofire?
+    var respondToRequestServiceDelegate: RespondToRequestServiceAlamofire?
+    var manageFriendshipServiceDelegate:ManageFriendshipServiceAlamofire?
     
     //MARK:- Api's Methods
 
@@ -91,6 +103,44 @@ class AlamofireIntegration: NSObject {
                 break
             case .failure:
                 self.forgotPasswordServiceDelegate?.ServerError()
+                break
+            }
+        }
+    }
+
+    //Respond To Friend request Api
+    func respondToRequestApi(anotherUserId:String,status:Int) {
+        print(anotherUserId,status)
+        Alamofire.request("\(baseUrl)respondToRequest.php?userId=\(UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key)!)&anotherUserId=\(anotherUserId)&status=\(status)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+            
+            switch (response.result) {
+            case .success:
+                if let json = response.result.value {
+                    print(json)
+                    self.respondToRequestServiceDelegate?.respondToRequestResult(json as AnyObject)
+                }
+                break
+            case .failure:
+                self.respondToRequestServiceDelegate?.ServerError()
+                break
+            }
+        }
+    }
+
+    //Manage friendship Api
+    func manageFriendshipApi(anotherUserId:String,status:Int) {
+        print(anotherUserId,status)
+        Alamofire.request("\(baseUrl)manageFriendship.php?userId=\(UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key)!)&anotherUserId=\(anotherUserId)&status=\(status)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+            
+            switch (response.result) {
+            case .success:
+                if let json = response.result.value {
+                    print(json)
+                    self.manageFriendshipServiceDelegate?.manageFriendshipResult(json as AnyObject)
+                }
+                break
+            case .failure:
+                self.manageFriendshipServiceDelegate?.ServerError()
                 break
             }
         }

@@ -10,17 +10,67 @@ import UIKit
 
 class EventDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
 
+    //MARK:- Outlets & Properties
+    
+    @IBOutlet var eventTimeAndAddress: UILabelFontSize!
+    @IBOutlet var eventDate: UILabelFontSize!
+    @IBOutlet var eventName: UILabelFontSize!
+    @IBOutlet var collectionView: UICollectionView!
+   // @IBOutlet var mapView: MKMapView!
+    @IBOutlet var userRole: UILabelFontSize!
+    @IBOutlet var userName: UILabelFontSize!
+    @IBOutlet var userProfileImg: UIImageViewCustomClass!
+    @IBOutlet var eventDesclbl: UILabelFontSize!
+    @IBOutlet var ticketsBgViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet var acceptButton: UIButtonCustomClass!
     @IBOutlet var declineButton: UIButtonCustomClass!
     @IBOutlet var interestedButton: UIButtonCustomClass!
     @IBOutlet var shareView: UIView!
+    @IBOutlet var shareEventBtn: UIButtonCustomClass!
+    @IBOutlet var editEventBtn: UIButtonCustomClass!
+    
+    let typeOfEventsUsersList = ["Attending","Invited","Interested","Comments"]
+
+    var eventDetailDict = NSDictionary()
+    
+    //MARK:- View life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+
     
-    override var preferredStatusBarStyle : UIStatusBarStyle {
-        return UIStatusBarStyle.lightContent
+    //MARK: UITableView Functions
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        return typeOfEventsUsersList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! EventDetailTypeOfUsersTableViewCell
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 0:
+            let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "attendingVc") as! AttendingVC
+            secondViewController.eventId = (self.eventDetailDict.value(forKey: "eventId") as? String)!
+            self.navigationController?.pushViewController(secondViewController, animated: true)
+        case 1:
+            let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "invitedVc") as! InvitedVC
+            secondViewController.eventId = (self.eventDetailDict.value(forKey: "eventId") as? String)!
+            self.navigationController?.pushViewController(secondViewController, animated: true)
+        case 2:
+            let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "interestedVc") as! InterestedVC
+            secondViewController.eventId = (self.eventDetailDict.value(forKey: "eventId") as? String)!
+            self.navigationController?.pushViewController(secondViewController, animated: true)
+        case 3:
+            let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "commentsVc") as! CommentsVC
+            self.navigationController?.pushViewController(secondViewController, animated: true)
+        default:
+            break
+        }
     }
     
      //MARK: UIButton actions
@@ -29,12 +79,16 @@ class EventDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
         _ = self.navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func facebookBtnAction(_ sender: Any) {
+    }
     @IBAction func shareButtonAction(_ sender: Any) {
         shareView.isHidden = false
     }
     
     @IBAction func cancelButtonAction(_ sender: Any) {
         shareView.isHidden = true
+    }
+    @IBAction func googleBtnAction(_ sender: Any) {
     }
     
     @IBAction func segmentButtonsAction(_ sender: Any) {
@@ -64,33 +118,6 @@ class EventDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
             declineButton.backgroundColor = UIColor.clear
         }
     }
-    
-    //MARK: UITableView Functions
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return 4
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var obj = UIViewController()
-        switch indexPath.row {
-        case 0:
-            obj = self.storyboard?.instantiateViewController(withIdentifier: "attendingVc") as! AttendingVC
-        case 1:
-            obj = self.storyboard?.instantiateViewController(withIdentifier: "invitedVc") as! InvitedVC
-        case 2:
-            obj = self.storyboard?.instantiateViewController(withIdentifier: "interestedVc") as! InterestedVC
-        case 3:
-            obj = self.storyboard?.instantiateViewController(withIdentifier: "commentsVc") as! CommentsVC
-        default:
-            break
-        }
-        self.navigationController?.pushViewController(obj, animated: true)
-    }
+
 
 }

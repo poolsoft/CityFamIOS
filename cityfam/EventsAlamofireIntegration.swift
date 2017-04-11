@@ -27,6 +27,19 @@ protocol GetEventsListServiceAlamofire {
     func ServerError()
 }
 
+protocol GetListOfPeopleAttendingTheEventServiceAlamofire {
+    func getListOfPeopleAttendingTheEventResult(_ result:AnyObject)
+    func ServerError()
+}
+protocol GetListOfPeopleInvitedToTheEventServiceAlamofire {
+    func getListOfPeopleInvitedToTheEventResult(_ result:AnyObject)
+    func ServerError()
+}
+protocol GetListOfPeopleInterestedInEventServiceAlamofire {
+    func getListOfPeopleInterestedInEventResult(_ result:AnyObject)
+    func ServerError()
+}
+
 //MARK:- Class
 
 class EventsAlamofireIntegration: NSObject {
@@ -43,7 +56,10 @@ class EventsAlamofireIntegration: NSObject {
     var createEventServiceDelegate: CreateEventServiceAlamofire?
     var getEventsListOfParticularUserServiceDelegate:GetEventsListOfParticularUserServiceAlamofire?
     var getEventsListServiceDelegate:GetEventsListServiceAlamofire?
-
+    var getListOfPeopleAttendingTheEventServiceDelgate:GetListOfPeopleAttendingTheEventServiceAlamofire?
+    var getListOfPeopleInvitedToTheEventServiceDelegate:GetListOfPeopleInvitedToTheEventServiceAlamofire?
+    var getListOfPeopleInterestedInEventServiceDelegate:GetListOfPeopleInterestedInEventServiceAlamofire?
+    
     //MARK:- Api's Methods
     
     //getEventCategory Api for Create event Screen
@@ -119,8 +135,65 @@ class EventsAlamofireIntegration: NSObject {
                 break
             }
         }
-
     }
+    
+    //getListOfPeopleInterestedInEvent Api
+    func getListOfPeopleInterestedInEventApi(eventId:String){
+        print(eventId)
+        Alamofire.request("\(baseUrl)getListOfPeopleInterestedInEvent.php?userId=\(UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key)!)&eventId=\(eventId)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+            
+            switch(response.result){
+            case .success:
+                if let json = response.result.value{
+                    print(json)
+                    self.getListOfPeopleInterestedInEventServiceDelegate?.getListOfPeopleInterestedInEventResult(json as AnyObject)
+                }
+                break
+            case .failure:
+                self.getListOfPeopleInterestedInEventServiceDelegate?.ServerError()
+                break
+            }
+        }
+    }
+    
+    //getListOfPeopleInvitedToTheEvent Api
+    func getListOfPeopleInvitedToTheEventApi(eventId:String){
+        print(eventId)
+        Alamofire.request("\(baseUrl)getListOfPeopleInvitedToTheEvent.php?userId=\(UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key)!)&eventId=\(eventId)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+            
+            switch(response.result){
+            case .success:
+                if let json = response.result.value{
+                    print(json)
+                    self.getListOfPeopleInvitedToTheEventServiceDelegate?.getListOfPeopleInvitedToTheEventResult(json as AnyObject)
+                }
+                break
+            case .failure:
+                self.getListOfPeopleInvitedToTheEventServiceDelegate?.ServerError()
+                break
+            }
+        }
+    }
+    
+    //getListOfPeopleAttendingTheEvent Api
+    func getListOfPeopleAttendingTheEventApi(eventId:String){
+        print(eventId)
+        Alamofire.request("\(baseUrl)getListOfPeopleAttendingTheEvent.php?userId=\(UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key)!)&eventId=\(eventId)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+            
+            switch(response.result){
+            case .success:
+                if let json = response.result.value{
+                    print(json)
+                    self.getListOfPeopleAttendingTheEventServiceDelgate?.getListOfPeopleAttendingTheEventResult(json as AnyObject)
+                }
+                break
+            case .failure:
+                self.getListOfPeopleAttendingTheEventServiceDelgate?.ServerError()
+                break
+            }
+        }
+    }
+
 }
 
 

@@ -17,6 +17,15 @@ class HomePageTableViewCell: UITableViewCell {
     @IBOutlet var userImg: UIImageViewCustomClass!
     @IBOutlet var eventTimingDetail: UILabelFontSize!
 
+    @IBOutlet var noOfPeopleAttendingEventCountLbl: UILabelFontSize!
+    
+    @IBOutlet var interestedBtn: UIButtonCustomClass!
+    
+    @IBAction func segmentControlBtnAction(_ sender: UIButton) {
+    }
+    
+    @IBOutlet var declineBtn: UIButtonCustomClass!
+    
     //MARK:- Methods
     
     override func awakeFromNib() {
@@ -26,5 +35,6 @@ class HomePageTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    @IBOutlet var acceptBtn: UIButtonCustomClass!
 
 }
