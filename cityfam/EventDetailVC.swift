@@ -48,6 +48,7 @@ class EventDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! EventDetailTypeOfUsersTableViewCell
+        cell.typeOfPeopleLbl.text = self.typeOfEventsUsersList[indexPath.row]
         return cell
     }
     

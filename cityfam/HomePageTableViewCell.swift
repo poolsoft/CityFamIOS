@@ -16,14 +16,9 @@ class HomePageTableViewCell: UITableViewCell {
     @IBOutlet var eventName: UILabelFontSize!
     @IBOutlet var userImg: UIImageViewCustomClass!
     @IBOutlet var eventTimingDetail: UILabelFontSize!
-
     @IBOutlet var noOfPeopleAttendingEventCountLbl: UILabelFontSize!
-    
     @IBOutlet var interestedBtn: UIButtonCustomClass!
-    
-    @IBAction func segmentControlBtnAction(_ sender: UIButton) {
-    }
-    
+    @IBOutlet var acceptBtn: UIButtonCustomClass!
     @IBOutlet var declineBtn: UIButtonCustomClass!
     
     //MARK:- Methods
@@ -35,6 +30,10 @@ class HomePageTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-    @IBOutlet var acceptBtn: UIButtonCustomClass!
+    
+    //MARK:- Button Actions
+    
+    @IBAction func segmentControlBtnAction(_ sender: UIButton) {
+    }
 
 }

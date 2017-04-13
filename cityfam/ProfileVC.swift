@@ -10,18 +10,38 @@ import UIKit
 
 class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
     
+    //MARK:- Outlets & Properties
+    
+    @IBOutlet var userImg: UIImageViewCustomClass!
+    @IBOutlet var userNameLbl: UILabelFontSize!
+    @IBOutlet var userLocationLbl: UILabelFontSize!
+    @IBOutlet var photosBgView: UIViewCustomClass!
+    @IBOutlet var seeAllPhotosBtn: UIButtonCustomClass!
+    @IBOutlet var addBtn: UIButtonCustomClass!
+    @IBOutlet var editBtn: UIButtonFontSize!
+    @IBOutlet var addPhotosBtn: UIButtonCustomClass!
+    @IBOutlet var manageConnectionBtn: UIButtonCustomClass!
+    @IBOutlet var tableView: UITableView!
+    
     var profileTableViewArray = ["My Groups", "My Plans", "My Friends"]
     var imagesArray = ["user","user","user","user"]
 
+    //MARK:- View life cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        manageConnectionBtn.addTarget(self, action: #selector(ProfileVC.unfriendBtnAction(sender:)), for: .touchUpInside)
+        editBtn.addTarget(self, action: #selector(ProfileVC.unfriendBtnAction(sender:)), for: .touchUpInside)
+        addBtn.addTarget(self, action: #selector(ProfileVC.unfriendBtnAction(sender:)), for: .touchUpInside)
+        addBtn.addTarget(self, action: #selector(ProfileVC.unfriendBtnAction(sender:)), for: .touchUpInside)
+
     }
-    
+
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
     }
     
-    //MARK: UITableView Functions
+    //MARK: UITableView Delagtes & Datasource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return profileTableViewArray.count
@@ -50,7 +70,7 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
 
     }
     
-    //MARK: UICollectionView Methods
+    //MARK: UICollectionView Delegates
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         return imagesArray.count
@@ -72,6 +92,28 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
     }
 
+    
+    //MARK:- View life cycle
 
+    
+    @IBAction func backBtnAction(_ sender: UIButton) {
+    }
+    
+    func unfriendBtnAction(sender:UIButton){
+        
+    }
+    
+    func shareBtnAction(sender:UIButton){
+        
+    }
+    
+    func editBtnAction(sender:UIButton){
+        
+    }
+    
+    func addBtnAction(sender:UIButton){
+        
+    }
+    
 
 }

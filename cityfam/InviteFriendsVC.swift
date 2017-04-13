@@ -29,6 +29,8 @@ class InviteFriendsVC: UIViewController,UITextFieldDelegate,UITableViewDelegate,
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     //MARK: UITableView delgates & datasource
@@ -87,6 +89,7 @@ class InviteFriendsVC: UIViewController,UITextFieldDelegate,UITableViewDelegate,
     }
 
     @IBAction func backButtonAction(_ sender: Any) {
+        _ = self.navigationController?.popViewController(animated: true)
         //retreiveEmail()
 //        let cnPicker = CNContactPickerViewController()
 //        cnPicker.delegate = self

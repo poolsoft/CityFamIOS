@@ -40,7 +40,6 @@
 		078633EF1E6568B800680A1C /* HomePageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078633EE1E6568B800680A1C /* HomePageVC.swift */; };
 		078633F11E6568D500680A1C /* ActivityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078633F01E6568D500680A1C /* ActivityVC.swift */; };
 		078633F31E6568ED00680A1C /* CreateEventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078633F21E6568ED00680A1C /* CreateEventVC.swift */; };
-		078633F51E65690B00680A1C /* FriendsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078633F41E65690B00680A1C /* FriendsVC.swift */; };
 		078633F71E656EAE00680A1C /* InvitationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078633F61E656EAE00680A1C /* InvitationsVC.swift */; };
 		07AE60BD1E6D9386006F39F0 /* SearchLocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AE60BC1E6D9384006F39F0 /* SearchLocationVC.swift */; };
 		07AE60BF1E6D93AD006F39F0 /* MessagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AE60BE1E6D93AD006F39F0 /* MessagesVC.swift */; };
@@ -60,6 +59,7 @@
 		A154BB021E9CE3F700E3727F /* AttendingVcTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A154BB011E9CE3F700E3727F /* AttendingVcTableViewCell.swift */; };
 		A154BB041E9CE40D00E3727F /* InvitedVcTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A154BB031E9CE40D00E3727F /* InvitedVcTableViewCell.swift */; };
 		A154BB061E9CE41A00E3727F /* InterestedVcTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A154BB051E9CE41A00E3727F /* InterestedVcTableViewCell.swift */; };
+		A15DA20E1E9F601A0024E5AB /* FriendVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15DA20D1E9F601A0024E5AB /* FriendVC.swift */; };
 		A1761C641E94BAA10079E269 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1761C631E94BAA10079E269 /* Strings.swift */; };
 		A1761C661E94C14C0079E269 /* CommonFxns.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1761C651E94C14C0079E269 /* CommonFxns.swift */; };
 		A17B65971E9B6CC3001893CF /* EventsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17B65961E9B6CC3001893CF /* EventsListTableViewCell.swift */; };
@@ -73,7 +73,12 @@
 		A17D70401E9637D800D730FE /* Mark Simonson - Proxima Nova Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 07F7A10F1E60493F00448FFF /* Mark Simonson - Proxima Nova Regular.otf */; };
 		A17D70411E9637D800D730FE /* ProximaNova-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 07F7A1101E60493F00448FFF /* ProximaNova-Bold.otf */; };
 		A17D70421E9637D800D730FE /* ufonts.com_gotham-medium_0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07F7A1111E60493F00448FFF /* ufonts.com_gotham-medium_0.ttf */; };
+		A181AD1C1E9F3E6700DD53E3 /* FriendsRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A181AD1B1E9F3E6700DD53E3 /* FriendsRequestTableViewCell.swift */; };
+		A181AD1E1E9F460800DD53E3 /* FriendsAlamofireIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A181AD1D1E9F460800DD53E3 /* FriendsAlamofireIntegration.swift */; };
+		A181AD221E9F559600DD53E3 /* SearchFriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A181AD211E9F559600DD53E3 /* SearchFriendsTableViewCell.swift */; };
 		A18727CF1E975C32008CBA77 /* EventsAlamofireIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18727CE1E975C32008CBA77 /* EventsAlamofireIntegration.swift */; };
+		A18B2E0E1E9DF5F200CEE62A /* SearchLocationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18B2E0D1E9DF5F200CEE62A /* SearchLocationsTableViewCell.swift */; };
+		A18B2E101E9E0CDA00CEE62A /* SearchLocationWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18B2E0F1E9E0CDA00CEE62A /* SearchLocationWrapper.swift */; };
 		A1D063B11E97C027004BF404 /* MapViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D063B01E97C027004BF404 /* MapViewVC.swift */; };
 		A1D063B31E97C368004BF404 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1D063B21E97C368004BF404 /* Contacts.framework */; };
 		C713ABEF1FCA1145E03B12AE /* Pods_cityfamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA53D3085126ABA04058E83 /* Pods_cityfamTests.framework */; };
@@ -138,7 +143,6 @@
 		078633EE1E6568B800680A1C /* HomePageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageVC.swift; sourceTree = "<group>"; };
 		078633F01E6568D500680A1C /* ActivityVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityVC.swift; sourceTree = "<group>"; };
 		078633F21E6568ED00680A1C /* CreateEventVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventVC.swift; sourceTree = "<group>"; };
-		078633F41E65690B00680A1C /* FriendsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsVC.swift; sourceTree = "<group>"; };
 		078633F61E656EAE00680A1C /* InvitationsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvitationsVC.swift; sourceTree = "<group>"; };
 		07AE60BC1E6D9384006F39F0 /* SearchLocationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchLocationVC.swift; sourceTree = "<group>"; };
 		07AE60BE1E6D93AD006F39F0 /* MessagesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesVC.swift; sourceTree = "<group>"; };
@@ -165,6 +169,7 @@
 		A154BB011E9CE3F700E3727F /* AttendingVcTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendingVcTableViewCell.swift; sourceTree = "<group>"; };
 		A154BB031E9CE40D00E3727F /* InvitedVcTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvitedVcTableViewCell.swift; sourceTree = "<group>"; };
 		A154BB051E9CE41A00E3727F /* InterestedVcTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestedVcTableViewCell.swift; sourceTree = "<group>"; };
+		A15DA20D1E9F601A0024E5AB /* FriendVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendVC.swift; sourceTree = "<group>"; };
 		A1761C631E94BAA10079E269 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		A1761C651E94C14C0079E269 /* CommonFxns.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonFxns.swift; sourceTree = "<group>"; };
 		A17B65961E9B6CC3001893CF /* EventsListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsListTableViewCell.swift; sourceTree = "<group>"; };
@@ -175,7 +180,12 @@
 		A17D70391E9624AB00D730FE /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
 		A17D703B1E9633BC00D730FE /* LocationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationVC.swift; sourceTree = "<group>"; };
 		A17D703E1E9634C000D730FE /* InvitationsScreenTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvitationsScreenTableViewCell.swift; sourceTree = "<group>"; };
+		A181AD1B1E9F3E6700DD53E3 /* FriendsRequestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsRequestTableViewCell.swift; sourceTree = "<group>"; };
+		A181AD1D1E9F460800DD53E3 /* FriendsAlamofireIntegration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsAlamofireIntegration.swift; sourceTree = "<group>"; };
+		A181AD211E9F559600DD53E3 /* SearchFriendsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFriendsTableViewCell.swift; sourceTree = "<group>"; };
 		A18727CE1E975C32008CBA77 /* EventsAlamofireIntegration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsAlamofireIntegration.swift; sourceTree = "<group>"; };
+		A18B2E0D1E9DF5F200CEE62A /* SearchLocationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchLocationsTableViewCell.swift; sourceTree = "<group>"; };
+		A18B2E0F1E9E0CDA00CEE62A /* SearchLocationWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchLocationWrapper.swift; sourceTree = "<group>"; };
 		A1D063B01E97C027004BF404 /* MapViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewVC.swift; sourceTree = "<group>"; };
 		A1D063B21E97C368004BF404 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
 		C0A00B5EC1AAE01FA57C8022 /* Pods_cityfamUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cityfamUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -323,13 +333,13 @@
 				07F057DE1E66D792008B8120 /* NotificationsVC.swift */,
 				078633F01E6568D500680A1C /* ActivityVC.swift */,
 				078633F21E6568ED00680A1C /* CreateEventVC.swift */,
-				078633F41E65690B00680A1C /* FriendsVC.swift */,
 				078633F61E656EAE00680A1C /* InvitationsVC.swift */,
 				07AE60BC1E6D9384006F39F0 /* SearchLocationVC.swift */,
 				07AE60BE1E6D93AD006F39F0 /* MessagesVC.swift */,
 				A17D70391E9624AB00D730FE /* ForgotPasswordVC.swift */,
 				A1D063B01E97C027004BF404 /* MapViewVC.swift */,
 				A17B65981E9B6D5A001893CF /* EventsListVC.swift */,
+				A15DA20D1E9F601A0024E5AB /* FriendVC.swift */,
 			);
 			name = ViewControllerClasses;
 			sourceTree = "<group>";
@@ -341,6 +351,8 @@
 				0700D9411E556EF300DC9928 /* FacebookIntegration.swift */,
 				0700D9421E556EF300DC9928 /* GoogleSignInIntegration.swift */,
 				A18727CE1E975C32008CBA77 /* EventsAlamofireIntegration.swift */,
+				A18B2E0F1E9E0CDA00CEE62A /* SearchLocationWrapper.swift */,
+				A181AD1D1E9F460800DD53E3 /* FriendsAlamofireIntegration.swift */,
 			);
 			name = Wrappers;
 			sourceTree = "<group>";
@@ -404,6 +416,9 @@
 				A154BB011E9CE3F700E3727F /* AttendingVcTableViewCell.swift */,
 				A154BB031E9CE40D00E3727F /* InvitedVcTableViewCell.swift */,
 				A154BB051E9CE41A00E3727F /* InterestedVcTableViewCell.swift */,
+				A18B2E0D1E9DF5F200CEE62A /* SearchLocationsTableViewCell.swift */,
+				A181AD1B1E9F3E6700DD53E3 /* FriendsRequestTableViewCell.swift */,
+				A181AD211E9F559600DD53E3 /* SearchFriendsTableViewCell.swift */,
 			);
 			name = CustomCellClasses;
 			sourceTree = "<group>";
@@ -704,8 +719,8 @@
 				07254B681E681435009417BA /* MyPlansVC.swift in Sources */,
 				07F057D81E669361008B8120 /* HomePageTableViewCell.swift in Sources */,
 				07254B6C1E682FBF009417BA /* AddPeopleVC.swift in Sources */,
-				078633F51E65690B00680A1C /* FriendsVC.swift in Sources */,
 				07254B661E68140E009417BA /* MyGroupsVC.swift in Sources */,
+				A18B2E101E9E0CDA00CEE62A /* SearchLocationWrapper.swift in Sources */,
 				A18727CF1E975C32008CBA77 /* EventsAlamofireIntegration.swift in Sources */,
 				A154BB021E9CE3F700E3727F /* AttendingVcTableViewCell.swift in Sources */,
 				A17B65971E9B6CC3001893CF /* EventsListTableViewCell.swift in Sources */,
@@ -740,16 +755,21 @@
 				0700D9401E556E2100DC9928 /* AlamofireIntegration.swift in Sources */,
 				078633F71E656EAE00680A1C /* InvitationsVC.swift in Sources */,
 				07254B6E1E6838FF009417BA /* InviteFriendsVC.swift in Sources */,
+				A181AD1E1E9F460800DD53E3 /* FriendsAlamofireIntegration.swift in Sources */,
 				07F057E51E66DFDD008B8120 /* InterestedVC.swift in Sources */,
 				A17D703F1E9634C000D730FE /* InvitationsScreenTableViewCell.swift in Sources */,
 				A17D703A1E9624AB00D730FE /* ForgotPasswordVC.swift in Sources */,
 				A1761C641E94BAA10079E269 /* Strings.swift in Sources */,
+				A15DA20E1E9F601A0024E5AB /* FriendVC.swift in Sources */,
 				07F057DF1E66D792008B8120 /* NotificationsVC.swift in Sources */,
 				0700D9361E556DC900DC9928 /* UIButtonCustomClass.swift in Sources */,
 				07AE60BF1E6D93AD006F39F0 /* MessagesVC.swift in Sources */,
 				0700D9391E556DC900DC9928 /* UIImageViewCustomClass.swift in Sources */,
 				0700D9431E556EF300DC9928 /* FacebookIntegration.swift in Sources */,
+				A18B2E0E1E9DF5F200CEE62A /* SearchLocationsTableViewCell.swift in Sources */,
+				A181AD221E9F559600DD53E3 /* SearchFriendsTableViewCell.swift in Sources */,
 				A154BB001E9CB1C600E3727F /* EventDetailTypeOfUsersTableViewCell.swift in Sources */,
+				A181AD1C1E9F3E6700DD53E3 /* FriendsRequestTableViewCell.swift in Sources */,
 				07AE60BD1E6D9386006F39F0 /* SearchLocationVC.swift in Sources */,
 				07F057E71E66DFF1008B8120 /* CommentsVC.swift in Sources */,
 				0700D9381E556DC900DC9928 /* UIViewCustomClass.swift in Sources */,

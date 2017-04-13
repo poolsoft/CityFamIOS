@@ -116,5 +116,7 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This tutorial wants to use your location</string>
 </dict>
 </plist>

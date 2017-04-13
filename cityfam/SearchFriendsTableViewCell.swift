@@ -10,15 +10,25 @@ import UIKit
 
 class SearchFriendsTableViewCell: UITableViewCell {
 
+    //MARK:- Outlets & Properties
+    
+    @IBOutlet var userImg: UIImageViewCustomClass!
+    @IBOutlet var userNameLbl: UILabelFontSize!
+    @IBOutlet var userStatusLbl: UILabelCustomClass!
+    @IBOutlet var userStatusBtn: UIButton!
+    @IBOutlet var userPendingStatusLbl: UILabelCustomClass!
+    
+    //MARK:- Methods
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
+    
+    
+    
 
 }

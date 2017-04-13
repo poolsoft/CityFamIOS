@@ -27,6 +27,9 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
     var selectedSegmentValue = Int()
     var eventsListArr = [NSDictionary]()
     
+    var friendsEventsListArr = [NSDictionary]()
+    var publicEventsListArr = [NSDictionary]()
+    
     //MARK:- View life cycle
     
     override func viewDidLoad() {
@@ -55,7 +58,7 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
         refreshControl.addTarget(self, action: #selector(HomePageVC.refreshData(sender:)), for: .valueChanged)
     }
     
-    //Pul to refresh Action
+    //Pull to refresh Action
     func refreshData(sender:UIRefreshControl){
         self.getEventsListApi()
     }
@@ -86,6 +89,13 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
                 self.eventsListArr = resultDict.value(forKey: "eventDetail") as! [NSDictionary]
                 //let messageCount = result.value(forKey: "notificationCount") as! String
                 
+                if self.selectedSegmentValue == 1{
+                    self.friendsEventsListArr = self.eventsListArr
+                }
+                else{
+                    self.publicEventsListArr = self.eventsListArr
+                }
+
                 self.exploreTableView.reloadData()
                 
                 self.refreshControl.endRefreshing()
@@ -202,6 +212,14 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
             exploreButton.backgroundColor = UIColor.clear
             exploreTableView.isHidden = true
             selectedSegmentValue = 1
+            
+            if self.friendsEventsListArr.count == 0{
+                self.getEventsListApi()
+            }
+            else{
+                eventsListArr = friendsEventsListArr
+                self.exploreTableView.reloadData()
+            }
         }
         else{
             friendsButton.isSelected = false
@@ -210,6 +228,8 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
             exploreButton.backgroundColor = appNavColor
             exploreTableView.isHidden = false
             selectedSegmentValue = 0
+            eventsListArr = publicEventsListArr
+            self.exploreTableView.reloadData()
         }
     }
     

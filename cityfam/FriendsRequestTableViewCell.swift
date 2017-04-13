@@ -10,15 +10,21 @@ import UIKit
 
 class FriendsRequestTableViewCell: UITableViewCell {
 
+    //MARK:- Outlets & Properties
+    
+    @IBOutlet var acceptRequestBtn: UIButtonCustomClass!
+    @IBOutlet var declineRequestBtn: UIButtonCustomClass!
+    @IBOutlet var userImg: UIImageViewCustomClass!
+    @IBOutlet var userNameLbl: UILabelFontSize!
+    
+    //MARK:- Methods
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }

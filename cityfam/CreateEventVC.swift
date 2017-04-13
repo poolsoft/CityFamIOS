@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MapKit
 
-class CreateEventVC: UIViewController,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CreateEventServiceAlamofire,UIPickerViewDelegate {
+class CreateEventVC: UIViewController,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CreateEventServiceAlamofire,UIPickerViewDelegate,SearchedLocationServiceProtocol {
     
     //MARK:- Outlets & Properties
     
@@ -32,13 +33,15 @@ class CreateEventVC: UIViewController,UITextFieldDelegate,UIImagePickerControlle
     let imagePicker = UIImagePickerController()
     let startDatePickerView:UIDatePicker = UIDatePicker()
     let endDatePickerView:UIDatePicker = UIDatePicker()
-
     var categoryPicker:UIPickerView = UIPickerView()
     var categoriesListArr = [NSDictionary]()
     var categoryId = String()
     var whoCanSeeValueLbl = ""
     var privateUserListArr = [NSDictionary]()
     var allowGuestSwitchSelectedState = "1"
+    var longitude = String()
+    var latitude = String()
+    
     
     //MARK:- View life cycle
     
@@ -56,9 +59,53 @@ class CreateEventVC: UIViewController,UITextFieldDelegate,UIImagePickerControlle
 
         // AllowGuestToInvite Switch Control
         self.allowGuestToInviteSwitch.addTarget(self, action: #selector(CreateEventVC.allowGuestToInviteSwitchValueChanged(sender:)), for: .valueChanged)
+        
+        //adding notification observer to get searchedLocation
+        NotificationCenter.default.addObserver(forName:NSNotification.Name(rawValue: "getSearchedLocationNotification"), object:nil, queue:nil, using:catchNotification)
     }
     
+    
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    
     //MARK:- Methods
+    
+    //Catch filterEventsNotification
+    func catchNotification(notification:Notification) -> Void {
+//        let annotation = MKPointAnnotation()
+//        annotation.coordinate = placemark.coordinate
+//        annotation.title = placemark.name
+//        
+//        if let city = placemark.locality,
+//            let state = placemark.administrativeArea {
+//            annotation.subtitle = "city : \(city) state: \(state)"
+//        }
+//        
+        
+        let locationDetailDict = notification.userInfo as! [String:Any]
+        
+        
+        
+        let placemark = locationDetailDict.values.first as! MKPlacemark
+        
+        print("placemark",placemark)
+        self.eventLocationLbl.text = locationDetailDict["address"] as? String
+        
+//        selectedItemDetail
+        let span = MKCoordinateSpanMake(0.05, 0.05)
+        let region = MKCoordinateRegionMake(placemark.coordinate, span)
+        
+        latitude = String(region.center.latitude)
+        longitude = String(region.center.longitude)
+        
+        print("span and region",span,region)
+    }
     
     //Api's results
     //Server error Alert
@@ -110,12 +157,12 @@ class CreateEventVC: UIViewController,UITextFieldDelegate,UIImagePickerControlle
                     imgStr = "\(imageData.base64EncodedString(options: .lineLength64Characters))"
                 }
                 
-                for i in 0..<2{
-                    self.privateUserListArr.append(["emailID":"abc@gmail.com","userID":"","name":"Ankita"])
-                }
+//                for i in 0..<2{
+//                    self.privateUserListArr.append(["emailID":"abc@gmail.com","userID":"","name":"Ankita"])
+//                }
                 
                 let parameters = [
-                    "userId":"23",
+                    "userId":UserDefaults.standard.value(forKey: USER_DEFAULT_userId_Key)!,
                     "eventImage":imgStr,
                     "eventName":CommonFxns.trimString(string: self.eventTitleTxtField.text!),
                     "eventStartTime": self.startTimeTxtField.text!,//"17/3/2017-12:36"
@@ -123,12 +170,12 @@ class CreateEventVC: UIViewController,UITextFieldDelegate,UIImagePickerControlle
                     "whoCanSee":self.whoCanSeeValueLbl,
                     "privateUserList":privateUserListArr,
                     "allowGuestsToInviteOthers":allowGuestSwitchSelectedState,
-                    "latitude": "1233.4545",
-                    "longitude": "674623.567",
-                    "placeName": "rock garden, chandigarh",
+                    "latitude": longitude,
+                    "longitude": latitude,
+                    "placeName": self.eventLocationLbl,
                     "categories": self.categoryId,
                     "eventDescription":CommonFxns.trimString(string: self.eventDetailTxtFields.text!),
-                    "ticketLink":"https://www.ticket.com"
+                    "ticketLink":CommonFxns.trimString(string: self.eventLocationLbl.text!)
                     ] as [String : Any]
                 
                 print(parameters)
@@ -159,16 +206,39 @@ class CreateEventVC: UIViewController,UITextFieldDelegate,UIImagePickerControlle
     
     //Other methods
     
+    //Get detail of selected location
+    
+    func getSelectedAddressDetail(_ placemark: MKPlacemark){
+        
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = placemark.coordinate
+        annotation.title = placemark.name
+        
+        if let city = placemark.locality,
+            let state = placemark.administrativeArea {
+            annotation.subtitle = "city : \(city) state: \(state)"
+        }
+        
+        let span = MKCoordinateSpanMake(0.05, 0.05)
+        let region = MKCoordinateRegionMake(placemark.coordinate, span)
+        
+        latitude = String(region.center.latitude)
+        longitude = String(region.center.longitude)
+        
+        print("span and region",span,region)
+    }
+    
+    
     //Method to check validations to create an event
     func isValid()->Bool{
         
-        if self.eventTitleTxtField.text != "" && self.startTimeTxtField.text != "" && self.eventDetailTxtFields.text != "" {
+        if self.eventTitleTxtField.text != "" && self.startTimeTxtField.text != "" && self.eventDetailTxtFields.text != "" && self.eventLocationLbl.text != "" {
             return true
         }
         else{
             CommonFxns.showAlert(self, message: "Enter required fields.", title: errorAlertTitle)
+            return false
         }
-        return true
     }
     
     func resetData(){
