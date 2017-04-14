@@ -25,7 +25,6 @@ class SearchLocationVC: UIViewController,UITextFieldDelegate,CLLocationManagerDe
     let locationManager = CLLocationManager()
     var searchedLocationServiceDelegate:SearchedLocationServiceProtocol?
     
-    
     //MARK:- View life cycle
 
     override func viewDidLoad() {

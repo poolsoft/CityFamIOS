@@ -16,6 +16,7 @@ class EventsListVC: UIViewController,GetEventsListOfParticularUserServiceAlamofi
     var anotherUserId = String()
     
     //MARK:- View life cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -77,8 +78,5 @@ class EventsListVC: UIViewController,GetEventsListOfParticularUserServiceAlamofi
     }
     
     //MARK:- Button Actions
-    
-    
-
 
 }

@@ -30,7 +30,11 @@ class FriendVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UITex
     
     private let refreshControl1 = UIRefreshControl()
     private let refreshControl2 = UIRefreshControl()
-
+    var offSet = 0
+    var tempOffset = 1
+    var pullToRefresh = false
+    
+    
     //MARK:- View life cycle
     
     override func viewDidLoad() {
@@ -61,12 +65,47 @@ class FriendVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UITex
     //Pull to refresh Action
     func refreshData(sender:UIRefreshControl){
         if selectedBtnTag == 1{
+            self.offSet = 0
+            self.tempOffset = 1
+            self.pullToRefresh = true
+            self.searchTxtField.text = ""
             self.getCityFamUsersApi()
         }
         else{
             self.getFriendsRequestApi()
         }
     }
+    
+    func searchText(str:String){
+        if str.characters.count == 0{
+            searchedCityFamUsersListArr = cityFamUserListArr
+            self.searchTableView.reloadData()
+        }
+        else {
+            let resultPredicate = NSPredicate(format: "userName contains[c] %@",str);
+            searchedCityFamUsersListArr = cityFamUserListArr.filter { resultPredicate.evaluate(with: $0) };
+            self.searchTableView.reloadData()
+            print("names = ,\(searchedCityFamUsersListArr)");
+        }
+    }
+    
+    //MARK:- TextField Delegates & search methods
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.searchText(str: "")
+    }
+    
+    @IBAction func searchTxtFieldEditingChangedAction(_ sender: Any) {
+        self.searchText(str: CommonFxns.trimString(string: (sender as AnyObject).text!))
+    }
+    
+    // dismissing keyboard on pressing return key
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool{
+        textField.resignFirstResponder()
+        return true
+    }
+    
+
     
     //Api's results
     
@@ -81,7 +120,7 @@ class FriendVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UITex
         if CommonFxns.isInternetAvailable(){
             appDelegate.showProgressHUD(view: self.view)
             FriendsAlamofireIntegration.sharedInstance.respondToRequestServiceDelegate = self
-            FriendsAlamofireIntegration.sharedInstance.getCityFamUsersApi(searchText: "", offset: 0)
+            FriendsAlamofireIntegration.sharedInstance.getCityFamUsersApi(searchText: "", offset: offSet)
         }
         else{
             CommonFxns.showAlert(self, message: internetConnectionError, title: oopsText)
@@ -93,8 +132,16 @@ class FriendVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UITex
         DispatchQueue.main.async( execute: {
             appDelegate.hideProgressHUD(view: self.view)
             if (result.value(forKey: "success")as! Int == 1){
-                self.cityFamUserListArr = result.value(forKey: "result") as! [NSDictionary]
-                self.searchedCityFamUsersListArr = self.cityFamUserListArr
+                let arr = result.value(forKey: "result") as! [NSDictionary]
+                if self.pullToRefresh{
+                    self.cityFamUserListArr  = arr
+                    self.searchedCityFamUsersListArr  = arr
+                }
+                else{
+                    self.cityFamUserListArr  = self.cityFamUserListArr + arr
+                    self.searchedCityFamUsersListArr  = self.searchedCityFamUsersListArr + arr
+                }
+
                 self.searchTableView.reloadData()
                 self.refreshControl1.endRefreshing()
                 self.refreshControl2.endRefreshing()
@@ -137,7 +184,7 @@ class FriendVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UITex
         if CommonFxns.isInternetAvailable(){
             appDelegate.showProgressHUD(view: self.view)
             FriendsAlamofireIntegration.sharedInstance.respondToRequestServiceDelegate = self
-            FriendsAlamofireIntegration.sharedInstance.respondToRequestApi(anotherUserId: self.friendsRequestsListArr[selectedRow].value(forKey: "userId") as! String, status: 1)
+            FriendsAlamofireIntegration.sharedInstance.respondToRequestApi(anotherUserId: self.friendsRequestsListArr[selectedRow].value(forKey: "userId") as! String, status: status)
         }
         else{
             CommonFxns.showAlert(self, message: internetConnectionError, title: oopsText)
@@ -188,14 +235,6 @@ class FriendVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UITex
             }
         })
     }
-    
-    // dismissing keyboard on pressing return key
-    
-    public func textFieldShouldReturn(_ textField: UITextField) -> Bool{
-        textField.resignFirstResponder()
-        return true
-    }
-    
     
     //MARK: UITableView Functions
     
@@ -253,7 +292,7 @@ class FriendVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UITex
         else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "requestCell", for: indexPath)as! FriendsRequestTableViewCell
 
-            let dict = self.searchedCityFamUsersListArr[indexPath.row]
+            let dict = self.friendsRequestsListArr[indexPath.row]
             cell.userNameLbl.text = dict.value(forKey: "userName") as? String
             
             if (dict.value(forKey: "userImageUrl") as? String) != nil{
@@ -278,10 +317,27 @@ class FriendVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UITex
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //userid
         
+        let profileVcObj = self.storyboard?.instantiateViewController(withIdentifier: "profileVc") as! ProfileVC
+        profileVcObj.profileUserId = self.searchedCityFamUsersListArr[indexPath.row].value(forKey: "userId") as! String
+        self.navigationController?.pushViewController(profileVcObj, animated: true)
+        
 //        if tableView.tag == 1 {
 //        }
 //        else{
 //        }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let lastElement = self.searchedCityFamUsersListArr.count - 1
+        if indexPath.row == lastElement{
+            
+            if lastElement == (tempOffset*10-1){
+                self.offSet += 1
+                self.tempOffset += 1
+                self.pullToRefresh = false
+                self.getCityFamUsersApi()
+            }
+        }
     }
     
     //MARK: UIButton actions

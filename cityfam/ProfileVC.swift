@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
+class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,GetUserProfileServiceAlamofire {
     
     //MARK:- Outlets & Properties
     
@@ -23,6 +23,7 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
     @IBOutlet var manageConnectionBtn: UIButtonCustomClass!
     @IBOutlet var tableView: UITableView!
     
+    var profileUserId = String()
     var profileTableViewArray = ["My Groups", "My Plans", "My Friends"]
     var imagesArray = ["user","user","user","user"]
 
@@ -30,17 +31,123 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.notMyFriendProfileLayoutSetup()
         manageConnectionBtn.addTarget(self, action: #selector(ProfileVC.unfriendBtnAction(sender:)), for: .touchUpInside)
         editBtn.addTarget(self, action: #selector(ProfileVC.unfriendBtnAction(sender:)), for: .touchUpInside)
         addBtn.addTarget(self, action: #selector(ProfileVC.unfriendBtnAction(sender:)), for: .touchUpInside)
         addBtn.addTarget(self, action: #selector(ProfileVC.unfriendBtnAction(sender:)), for: .touchUpInside)
-
+        
+        self.getUserProfileApi()
     }
 
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
     }
     
+    //MARK:- Methods
+    
+    func myFriendProfileLayoutSetup(){
+        self.userLocationLbl.isHidden = false
+        self.photosBgView.isHidden = false
+        self.tableView.isHidden = false
+        self.manageConnectionBtn.isHidden = false
+        self.addBtn.isHidden = true
+    }
+    
+    func notMyFriendProfileLayoutSetup(){
+        self.userLocationLbl.isHidden = true
+        self.photosBgView.isHidden = true
+        self.tableView.isHidden = true
+        self.manageConnectionBtn.isHidden = true
+        self.addBtn.isHidden = false
+    }
+    
+    func myProfileLayoutSetup(){
+        self.userLocationLbl.isHidden = false
+        self.photosBgView.isHidden = false
+        self.tableView.isHidden = false
+        self.manageConnectionBtn.isHidden = true
+        self.addBtn.isHidden = true
+    }
+    
+    
+    //Api's results
+    
+    //Server error Alert
+    func ServerError(){
+        appDelegate.hideProgressHUD(view: self.view)
+        CommonFxns.showAlert(self, message: networkOperationErrorAlert, title: errorAlertTitle)
+    }
+    
+    //Get CityFam user list Api call
+    func getUserProfileApi() {
+        if CommonFxns.isInternetAvailable(){
+            appDelegate.showProgressHUD(view: self.view)
+            AlamofireIntegration.sharedInstance.getUserProfileServiceDelegate = self
+            AlamofireIntegration.sharedInstance.getUserProfileApi(anotherUserId:profileUserId)
+        }
+        else{
+            CommonFxns.showAlert(self, message: internetConnectionError, title: oopsText)
+        }
+    }
+    
+    //Get CityFam user list Api result
+    func getUserProfileResult(_ result:AnyObject){
+        DispatchQueue.main.async( execute: {
+            appDelegate.hideProgressHUD(view: self.view)
+            if (result.value(forKey: "success")as! Int == 1){
+                
+                let dict = result.value(forKey: "result") as! NSDictionary
+                
+                if (dict.value(forKey: "userImageUrl") as? String) != nil{
+                    self.userImg.sd_setImage(with: URL(string: (dict.value(forKey: "userImageUrl") as? String)!), placeholderImage: UIImage(named: "user.png"))
+                    self.userImg.setShowActivityIndicator(true)
+                    self.userImg.setIndicatorStyle(.gray)
+                }
+                else{
+                    self.userImg.image = UIImage(named: "user.png")
+                }
+                
+                self.userNameLbl.text = dict.value(forKey: "userName") as? String
+                
+                    switch (dict.value(forKey: "isMyFriend") as! Int){
+                    case 0:
+                        if self.profileUserId == UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key){
+                            self.myProfileLayoutSetup()
+                        }
+                        else{
+                            self.notMyFriendProfileLayoutSetup()
+                        }
+                        self.userLocationLbl.text = dict.value(forKey: "userAddress") as? String
+
+                        break
+                    case 1:
+                        self.myFriendProfileLayoutSetup()
+                        break
+                    default:
+                        break
+                    }
+
+//                {
+//                    error = "No Error Found.";
+//                    result =     {
+//                        isMyFriend = 0;
+//                        userAddress = panna;
+//                        userId = 6;
+//                        userImageUrl = "";
+//                        userImagesArray =         (
+//                        );
+//                        userName = ahbsh;
+//                    };
+//                    success = 1;
+//                }
+            }
+            else{
+                CommonFxns.showAlert(self, message: (result.value(forKey: "error") as? String)!, title: errorAlertTitle)
+            }
+        })
+    }
+
     //MARK: UITableView Delagtes & Datasource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
@@ -100,19 +207,12 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
     }
     
     func unfriendBtnAction(sender:UIButton){
-        
     }
-    
-    func shareBtnAction(sender:UIButton){
-        
-    }
-    
+
     func editBtnAction(sender:UIButton){
-        
     }
     
     func addBtnAction(sender:UIButton){
-        
     }
     
 

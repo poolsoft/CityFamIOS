@@ -10,8 +10,12 @@ import UIKit
 
 class SettingsVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
+    //MARK:- outlets & Properties
+    
     var settingsArray = ["Connect phone contacts", "Manage notifications", "Invite phone contacts", "Invite facebook friends", "Add events I'm attending to my calendar", "Terms of service"]
 
+    //MARK:- View life cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -20,13 +24,23 @@ class SettingsVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
         return UIStatusBarStyle.lightContent
     }
 
+    //MARK:- Button Actions
+    
+    //Back button action
     @IBAction func backButtonAction(_ sender: Any) {
         _ = self.navigationController?.popViewController(animated: true)
     }
     
+    //Logout user profile
     @IBAction func logoutButtonAction(_ sender: Any) {
         UserDefaults.standard.removeObject(forKey: USER_DEFAULT_userId_Key)
-        _ = self.navigationController?.popToRootViewController(animated: true)
+        
+       // (UIApplication.sharedApplication().delegate as! AppDelegate).logoutUser()
+
+        //(UIApplication.sharedApplication().delegate as! AppDelegate).
+        
+        let intialVcObj = self.storyboard?.instantiateViewController(withIdentifier: "logInVC") as! LogInVC
+        self.navigationController?.pushViewController(intialVcObj, animated: true)
     }
     
     //MARK: UITableView Functions

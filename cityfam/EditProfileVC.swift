@@ -8,9 +8,13 @@
 
 import UIKit
 
-class EditProfileVC: UIViewController,UITextFieldDelegate {
+class EditProfileVC: UIViewController,UITextFieldDelegate,EditUserProfileServiceAlamofire {
+    
+    //MARK:- Outlets & Propeties
     
     @IBOutlet var scrollView: UIScrollView!
+
+    //MARK:- View life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +23,43 @@ class EditProfileVC: UIViewController,UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(EditProfileVC.keyboardWillHide(_:)), name:NSNotification.Name.UIKeyboardWillHide, object: nil);
     }
     
+    //MARK:- Methods
+    
     // dismissing keyboard on pressing return key
+    
+    //Server error Alert
+    func ServerError(){
+        appDelegate.hideProgressHUD(view: self.view)
+        CommonFxns.showAlert(self, message: networkOperationErrorAlert, title: errorAlertTitle)
+    }
+    
+    //Get CityFam user list Api call
+    func editProfileApi() {
+        if CommonFxns.isInternetAvailable(){
+            appDelegate.showProgressHUD(view: self.view)
+            AlamofireIntegration.sharedInstance.editUserProfileServiceDelegate = self
+            
+            let parameters = [String : String]()
+            
+            AlamofireIntegration.sharedInstance.editProfileApi(parameters)
+        }
+        else{
+            CommonFxns.showAlert(self, message: internetConnectionError, title: oopsText)
+        }
+    }
+    
+    //Get CityFam user list Api result
+    func editUserProfileResult(_ result:AnyObject){
+        DispatchQueue.main.async( execute: {
+            appDelegate.hideProgressHUD(view: self.view)
+            if (result.value(forKey: "success")as! Int == 1){
+                
+            }
+            else{
+                CommonFxns.showAlert(self, message: (result.value(forKey: "error") as? String)!, title: errorAlertTitle)
+            }
+        })
+    }
     
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool{
         textField.resignFirstResponder()

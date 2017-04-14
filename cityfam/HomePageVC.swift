@@ -248,6 +248,7 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
     //Top bar profile button action
     @IBAction func profileButtonAction(_ sender: Any) {
         let profileVcObj = self.storyboard?.instantiateViewController(withIdentifier: "profileVc") as! ProfileVC
+        profileVcObj.profileUserId = UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key)!
         self.navigationController?.pushViewController(profileVcObj, animated: true)
     }
 }
