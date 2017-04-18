@@ -27,6 +27,7 @@ class GroupDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
     
     @IBAction func addButtonAction(_ sender: Any) {
         let addPeopleVcObj = self.storyboard?.instantiateViewController(withIdentifier: "addPeopleVc") as! AddPeopleVC
+        addPeopleVcObj.isComingFromProfileScreen = false
         self.navigationController?.pushViewController(addPeopleVcObj, animated: true)
     }
     

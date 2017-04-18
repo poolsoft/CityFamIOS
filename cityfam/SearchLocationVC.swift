@@ -142,7 +142,6 @@ class SearchLocationVC: UIViewController,UITextFieldDelegate,CLLocationManagerDe
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         let cell = tableView.cellForRow(at: indexPath) as? SearchLocationsTableViewCell
         
         let selectedItem = matchedLocationsListArr[indexPath.row].placemark
@@ -153,9 +152,7 @@ class SearchLocationVC: UIViewController,UITextFieldDelegate,CLLocationManagerDe
         "address":self.searchTxtField.text!])
         self.searchedLocationServiceDelegate?.getSelectedAddressDetail(selectedItem)
         _ = self.navigationController?.popViewController(animated: true)
-        
     }
-    
 
     //MARK:- Button Actions
     

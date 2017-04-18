@@ -29,6 +29,10 @@ protocol EditUserProfileServiceAlamofire {
     func ServerError()
 }
 
+protocol GetInvitationsServiceAlamofire {
+    func getInvitationsResult(_ result:AnyObject)
+    func ServerError()
+}
 
 //MARK:- Class
 
@@ -49,6 +53,7 @@ class AlamofireIntegration: NSObject {
     var createEventServiceDelegate: CreateEventServiceAlamofire?
     var getUserProfileServiceDelegate: GetUserProfileServiceAlamofire?
     var editUserProfileServiceDelegate: EditUserProfileServiceAlamofire?
+    var getInvitationsServiceDelegate: GetInvitationsServiceAlamofire?
     
     //MARK:- Api's Methods
     
@@ -145,6 +150,28 @@ class AlamofireIntegration: NSObject {
             }
         }
     }
+    
+    //Edit user profile Api
+    func getInvitationsApi() {
+        Alamofire.request("\(baseUrl)getInvitationsList.php?userId=\(UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key)!)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+            
+            switch (response.result) {
+            case .success:
+                if let json = response.result.value {
+                    print(json)
+                    self.getInvitationsServiceDelegate?.getInvitationsResult(json as AnyObject)
+                }
+                break
+            case .failure:
+                self.getInvitationsServiceDelegate?.ServerError()
+                break
+            }
+        }
+    }
+    
+    //http://imarkclients.com/cityfam/api/getInvitationsList.php?userId=1
+    //http://imarkclients.com/cityfam/api/addPhotoToProfile.php
+  
     
 }
 

@@ -12,6 +12,7 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
     
     //MARK:- Outlets & Properties
     
+    @IBOutlet var settingsBtnWidthConst: NSLayoutConstraint!
     @IBOutlet var userImg: UIImageViewCustomClass!
     @IBOutlet var userNameLbl: UILabelFontSize!
     @IBOutlet var userLocationLbl: UILabelFontSize!
@@ -26,25 +27,30 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
     var profileUserId = String()
     var profileTableViewArray = ["My Groups", "My Plans", "My Friends"]
     var imagesArray = ["user","user","user","user"]
-
+    var profileInfoDict = NSDictionary()
+    
     //MARK:- View life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.notMyFriendProfileLayoutSetup()
         manageConnectionBtn.addTarget(self, action: #selector(ProfileVC.unfriendBtnAction(sender:)), for: .touchUpInside)
-        editBtn.addTarget(self, action: #selector(ProfileVC.unfriendBtnAction(sender:)), for: .touchUpInside)
-        addBtn.addTarget(self, action: #selector(ProfileVC.unfriendBtnAction(sender:)), for: .touchUpInside)
-        addBtn.addTarget(self, action: #selector(ProfileVC.unfriendBtnAction(sender:)), for: .touchUpInside)
+        editBtn.addTarget(self, action: #selector(ProfileVC.editBtnAction(sender:)), for: .touchUpInside)
+        addBtn.addTarget(self, action: #selector(ProfileVC.addBtnAction(sender:)), for: .touchUpInside)
+        manageConnectionBtn.addTarget(self, action: #selector(ProfileVC.unfriendBtnAction(sender:)), for: .touchUpInside)
+        
+        //adding notification observer
+        NotificationCenter.default.addObserver(self, selector: #selector(ProfileVC.updateProfileNotification), name: NSNotification.Name(rawValue: "updateProfileInfoNotification"), object: nil)
         
         self.getUserProfileApi()
     }
 
-    override var preferredStatusBarStyle : UIStatusBarStyle {
-        return UIStatusBarStyle.lightContent
-    }
     
     //MARK:- Methods
+    
+    func updateProfileNotification(){
+        self.getUserProfileApi()
+    }
     
     func myFriendProfileLayoutSetup(){
         self.userLocationLbl.isHidden = false
@@ -52,6 +58,8 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
         self.tableView.isHidden = false
         self.manageConnectionBtn.isHidden = false
         self.addBtn.isHidden = true
+        self.editBtn.isHidden = true
+        self.settingsBtnWidthConst.constant = 0.0
     }
     
     func notMyFriendProfileLayoutSetup(){
@@ -60,6 +68,8 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
         self.tableView.isHidden = true
         self.manageConnectionBtn.isHidden = true
         self.addBtn.isHidden = false
+        self.editBtn.isHidden = true
+        self.settingsBtnWidthConst.constant = 0.0
     }
     
     func myProfileLayoutSetup(){
@@ -68,8 +78,9 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
         self.tableView.isHidden = false
         self.manageConnectionBtn.isHidden = true
         self.addBtn.isHidden = true
+        self.editBtn.isHidden = false
+        self.settingsBtnWidthConst.constant = 30.0
     }
-    
     
     //Api's results
     
@@ -97,10 +108,10 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
             appDelegate.hideProgressHUD(view: self.view)
             if (result.value(forKey: "success")as! Int == 1){
                 
-                let dict = result.value(forKey: "result") as! NSDictionary
+                self.profileInfoDict = result.value(forKey: "result") as! NSDictionary
                 
-                if (dict.value(forKey: "userImageUrl") as? String) != nil{
-                    self.userImg.sd_setImage(with: URL(string: (dict.value(forKey: "userImageUrl") as? String)!), placeholderImage: UIImage(named: "user.png"))
+                if (self.profileInfoDict.value(forKey: "userImageUrl") as? String) != nil{
+                    self.userImg.sd_setImage(with: URL(string: (self.profileInfoDict.value(forKey: "userImageUrl") as? String)!), placeholderImage: UIImage(named: "user.png"))
                     self.userImg.setShowActivityIndicator(true)
                     self.userImg.setIndicatorStyle(.gray)
                 }
@@ -108,9 +119,9 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
                     self.userImg.image = UIImage(named: "user.png")
                 }
                 
-                self.userNameLbl.text = dict.value(forKey: "userName") as? String
+                self.userNameLbl.text = self.profileInfoDict.value(forKey: "userName") as? String
                 
-                    switch (dict.value(forKey: "isMyFriend") as! Int){
+                    switch (self.profileInfoDict.value(forKey: "isMyFriend") as! Int){
                     case 0:
                         if self.profileUserId == UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key){
                             self.myProfileLayoutSetup()
@@ -118,7 +129,7 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
                         else{
                             self.notMyFriendProfileLayoutSetup()
                         }
-                        self.userLocationLbl.text = dict.value(forKey: "userAddress") as? String
+                        self.userLocationLbl.text = self.profileInfoDict.value(forKey: "userAddress") as? String
 
                         break
                     case 1:
@@ -128,19 +139,6 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
                         break
                     }
 
-//                {
-//                    error = "No Error Found.";
-//                    result =     {
-//                        isMyFriend = 0;
-//                        userAddress = panna;
-//                        userId = 6;
-//                        userImageUrl = "";
-//                        userImagesArray =         (
-//                        );
-//                        userName = ahbsh;
-//                    };
-//                    success = 1;
-//                }
             }
             else{
                 CommonFxns.showAlert(self, message: (result.value(forKey: "error") as? String)!, title: errorAlertTitle)
@@ -162,19 +160,20 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var obj = UIViewController()
         switch indexPath.row {
         case 0:
-            obj = self.storyboard?.instantiateViewController(withIdentifier: "myGroupsVc") as! MyGroupsVC
+            let myGroupVcObj = self.storyboard?.instantiateViewController(withIdentifier: "myGroupsVc") as! MyGroupsVC
+            self.navigationController?.pushViewController(myGroupVcObj, animated: true)
         case 1:
-            obj = self.storyboard?.instantiateViewController(withIdentifier: "myPlansVc") as! MyPlansVC
+            let myPlansVcObj = self.storyboard?.instantiateViewController(withIdentifier: "myPlansVc") as! MyPlansVC
+            self.navigationController?.pushViewController(myPlansVcObj, animated: true)
         case 2:
-            obj = self.storyboard?.instantiateViewController(withIdentifier: "myPlansVc") as! MyPlansVC
+            let addPeopleVcObj = self.storyboard?.instantiateViewController(withIdentifier: "addPeopleVc") as! AddPeopleVC
+            addPeopleVcObj.isComingFromProfileScreen = true
+            self.navigationController?.pushViewController(addPeopleVcObj, animated: true)
         default:
             break
         }
-        self.navigationController?.pushViewController(obj, animated: true)
-
     }
     
     //MARK: UICollectionView Delegates
@@ -198,21 +197,35 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
     }
-
     
-    //MARK:- View life cycle
+    //MARK:- Button Actions
 
-    
+    //Back btn action
     @IBAction func backBtnAction(_ sender: UIButton) {
+        _ = self.navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func settingsBtnAction(_ sender: UIButton) {
+        let settingsVcObj = self.storyboard?.instantiateViewController(withIdentifier: "settingsVc") as! SettingsVC
+        self.navigationController?.pushViewController(settingsVcObj, animated: true)
+    }
+    //Manage Connection with this user (Unfriend)
     func unfriendBtnAction(sender:UIButton){
+        //Unfriend this user Api call
+        
     }
 
+    //Go to Edit MyProfile screen
     func editBtnAction(sender:UIButton){
+        let editProfileVcObj = self.storyboard?.instantiateViewController(withIdentifier: "editProfileVc") as! EditProfileVC
+        print("profileInfoDict  fvsaghdfdjshgdj:", profileInfoDict)
+        editProfileVcObj.profileInfoDict = self.profileInfoDict
+        self.navigationController?.pushViewController(editProfileVcObj, animated: true)
     }
     
+    //Send request to this user
     func addBtnAction(sender:UIButton){
+        //Send request APi call
     }
     
 

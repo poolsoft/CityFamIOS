@@ -24,7 +24,6 @@ class ForgotPasswordVC: UIViewController,ForgotPasswordServiceAlamofire {
         super.didReceiveMemoryWarning()
     }
 
-    
     //MARK:- Methods
     //Server error Alert
     func ServerError(){

@@ -73,12 +73,17 @@
 		A17D70401E9637D800D730FE /* Mark Simonson - Proxima Nova Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 07F7A10F1E60493F00448FFF /* Mark Simonson - Proxima Nova Regular.otf */; };
 		A17D70411E9637D800D730FE /* ProximaNova-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 07F7A1101E60493F00448FFF /* ProximaNova-Bold.otf */; };
 		A17D70421E9637D800D730FE /* ufonts.com_gotham-medium_0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07F7A1111E60493F00448FFF /* ufonts.com_gotham-medium_0.ttf */; };
+		A181A10E1EA5EB660092ECD0 /* HomeFriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A181A10D1EA5EB650092ECD0 /* HomeFriendsTableViewCell.swift */; };
 		A181AD1C1E9F3E6700DD53E3 /* FriendsRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A181AD1B1E9F3E6700DD53E3 /* FriendsRequestTableViewCell.swift */; };
 		A181AD1E1E9F460800DD53E3 /* FriendsAlamofireIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A181AD1D1E9F460800DD53E3 /* FriendsAlamofireIntegration.swift */; };
 		A181AD221E9F559600DD53E3 /* SearchFriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A181AD211E9F559600DD53E3 /* SearchFriendsTableViewCell.swift */; };
 		A18727CF1E975C32008CBA77 /* EventsAlamofireIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18727CE1E975C32008CBA77 /* EventsAlamofireIntegration.swift */; };
 		A18B2E0E1E9DF5F200CEE62A /* SearchLocationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18B2E0D1E9DF5F200CEE62A /* SearchLocationsTableViewCell.swift */; };
 		A18B2E101E9E0CDA00CEE62A /* SearchLocationWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18B2E0F1E9E0CDA00CEE62A /* SearchLocationWrapper.swift */; };
+		A19448D61EA48B4B0060D30E /* AddPeopleMyFriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19448D51EA48B4A0060D30E /* AddPeopleMyFriendsTableViewCell.swift */; };
+		A19448D81EA48BA80060D30E /* AddPeopleMyContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19448D71EA48BA80060D30E /* AddPeopleMyContactsTableViewCell.swift */; };
+		A19448DA1EA4D1A60060D30E /* EventDetailImagesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19448D91EA4D1A50060D30E /* EventDetailImagesCollectionViewCell.swift */; };
+		A19448DC1EA4F3840060D30E /* HomePageFriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19448DB1EA4F3830060D30E /* HomePageFriendsTableViewCell.swift */; };
 		A1D063B11E97C027004BF404 /* MapViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D063B01E97C027004BF404 /* MapViewVC.swift */; };
 		A1D063B31E97C368004BF404 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1D063B21E97C368004BF404 /* Contacts.framework */; };
 		C713ABEF1FCA1145E03B12AE /* Pods_cityfamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA53D3085126ABA04058E83 /* Pods_cityfamTests.framework */; };
@@ -180,12 +185,17 @@
 		A17D70391E9624AB00D730FE /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
 		A17D703B1E9633BC00D730FE /* LocationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationVC.swift; sourceTree = "<group>"; };
 		A17D703E1E9634C000D730FE /* InvitationsScreenTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvitationsScreenTableViewCell.swift; sourceTree = "<group>"; };
+		A181A10D1EA5EB650092ECD0 /* HomeFriendsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeFriendsTableViewCell.swift; sourceTree = "<group>"; };
 		A181AD1B1E9F3E6700DD53E3 /* FriendsRequestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsRequestTableViewCell.swift; sourceTree = "<group>"; };
 		A181AD1D1E9F460800DD53E3 /* FriendsAlamofireIntegration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsAlamofireIntegration.swift; sourceTree = "<group>"; };
 		A181AD211E9F559600DD53E3 /* SearchFriendsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFriendsTableViewCell.swift; sourceTree = "<group>"; };
 		A18727CE1E975C32008CBA77 /* EventsAlamofireIntegration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsAlamofireIntegration.swift; sourceTree = "<group>"; };
 		A18B2E0D1E9DF5F200CEE62A /* SearchLocationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchLocationsTableViewCell.swift; sourceTree = "<group>"; };
 		A18B2E0F1E9E0CDA00CEE62A /* SearchLocationWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchLocationWrapper.swift; sourceTree = "<group>"; };
+		A19448D51EA48B4A0060D30E /* AddPeopleMyFriendsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPeopleMyFriendsTableViewCell.swift; sourceTree = "<group>"; };
+		A19448D71EA48BA80060D30E /* AddPeopleMyContactsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPeopleMyContactsTableViewCell.swift; sourceTree = "<group>"; };
+		A19448D91EA4D1A50060D30E /* EventDetailImagesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailImagesCollectionViewCell.swift; sourceTree = "<group>"; };
+		A19448DB1EA4F3830060D30E /* HomePageFriendsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageFriendsTableViewCell.swift; sourceTree = "<group>"; };
 		A1D063B01E97C027004BF404 /* MapViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewVC.swift; sourceTree = "<group>"; };
 		A1D063B21E97C368004BF404 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
 		C0A00B5EC1AAE01FA57C8022 /* Pods_cityfamUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cityfamUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -419,6 +429,11 @@
 				A18B2E0D1E9DF5F200CEE62A /* SearchLocationsTableViewCell.swift */,
 				A181AD1B1E9F3E6700DD53E3 /* FriendsRequestTableViewCell.swift */,
 				A181AD211E9F559600DD53E3 /* SearchFriendsTableViewCell.swift */,
+				A19448D51EA48B4A0060D30E /* AddPeopleMyFriendsTableViewCell.swift */,
+				A19448D71EA48BA80060D30E /* AddPeopleMyContactsTableViewCell.swift */,
+				A19448D91EA4D1A50060D30E /* EventDetailImagesCollectionViewCell.swift */,
+				A19448DB1EA4F3830060D30E /* HomePageFriendsTableViewCell.swift */,
+				A181A10D1EA5EB650092ECD0 /* HomeFriendsTableViewCell.swift */,
 			);
 			name = CustomCellClasses;
 			sourceTree = "<group>";
@@ -731,12 +746,14 @@
 				07F057DA1E6694BB008B8120 /* EventDetailVC.swift in Sources */,
 				0700D9371E556DC900DC9928 /* UILabelCustomClass.swift in Sources */,
 				A154BB061E9CE41A00E3727F /* InterestedVcTableViewCell.swift in Sources */,
+				A181A10E1EA5EB660092ECD0 /* HomeFriendsTableViewCell.swift in Sources */,
 				078633F31E6568ED00680A1C /* CreateEventVC.swift in Sources */,
 				A154BB041E9CE40D00E3727F /* InvitedVcTableViewCell.swift in Sources */,
 				0700D8FC1E556D2200DC9928 /* LogInVC.swift in Sources */,
 				07254B601E6804DA009417BA /* EditProfileVC.swift in Sources */,
 				0700D9441E556EF300DC9928 /* GoogleSignInIntegration.swift in Sources */,
 				0700D92B1E556D9300DC9928 /* UIButtonFontSize.swift in Sources */,
+				A19448D61EA48B4B0060D30E /* AddPeopleMyFriendsTableViewCell.swift in Sources */,
 				A1D063B11E97C027004BF404 /* MapViewVC.swift in Sources */,
 				078633F11E6568D500680A1C /* ActivityVC.swift in Sources */,
 				0700D8FA1E556D2200DC9928 /* AppDelegate.swift in Sources */,
@@ -748,10 +765,12 @@
 				07254B621E6804F1009417BA /* SettingsVC.swift in Sources */,
 				07F057E11E66DF95008B8120 /* AttendingVC.swift in Sources */,
 				07254B6A1E681490009417BA /* GroupDetailVC.swift in Sources */,
+				A19448DC1EA4F3840060D30E /* HomePageFriendsTableViewCell.swift in Sources */,
 				078633EF1E6568B800680A1C /* HomePageVC.swift in Sources */,
 				07F057DD1E66D76F008B8120 /* FilterEventsVC.swift in Sources */,
 				07C34C521E810B0900A9699C /* Constant.swift in Sources */,
 				A17C17E91E98DDEA0033F669 /* InviteFriendsTableViewcell.swift in Sources */,
+				A19448DA1EA4D1A60060D30E /* EventDetailImagesCollectionViewCell.swift in Sources */,
 				0700D9401E556E2100DC9928 /* AlamofireIntegration.swift in Sources */,
 				078633F71E656EAE00680A1C /* InvitationsVC.swift in Sources */,
 				07254B6E1E6838FF009417BA /* InviteFriendsVC.swift in Sources */,
@@ -774,6 +793,7 @@
 				07F057E71E66DFF1008B8120 /* CommentsVC.swift in Sources */,
 				0700D9381E556DC900DC9928 /* UIViewCustomClass.swift in Sources */,
 				A17B65991E9B6D5A001893CF /* EventsListVC.swift in Sources */,
+				A19448D81EA48BA80060D30E /* AddPeopleMyContactsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

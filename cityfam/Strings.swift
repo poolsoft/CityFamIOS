@@ -23,12 +23,13 @@ let errorAlertTitle = "Error!"
 let successAlertTitle = "Success!"
 let oopsText = "Oops!"
 let messageText = "Message!"
+let alertText = "Alert!"
 let publicButtonDescription = "Everyone on cityfam can see this."
 let privateButtonDescription = "Only your invited people can see this."
 let friendsButtonDescription = "Only your friends can see this."
 let internetConnectionError = "Internet connection error"
 let networkOperationErrorAlert = "Network operation error."
-
+let allFieldsRequiredAlert = "Please enter all fields"
 //
 
 let allFieldRequiredAlert = "Please enter all fields."

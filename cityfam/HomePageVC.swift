@@ -9,24 +9,24 @@
 import UIKit
 import SDWebImage
 
-class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,GetEventsListServiceAlamofire {
+class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,GetEventsListServiceAlamofire,ChangeStatusOfEventServiceAlamofire {
     
     //MARK:- Outlets & Properties
     
+    @IBOutlet var friendsTableView: UITableView!
     @IBOutlet var exploreTableView: UITableView!
     @IBOutlet var exploreButton: UIButtonCustomClass!
     @IBOutlet var friendsButton: UIButtonCustomClass!
     
-    private let refreshControl = UIRefreshControl()
+    private let friendsTableRefreshControl = UIRefreshControl()
+    private let exploreTableRefreshControl = UIRefreshControl()
 
     var filtersDataDict = ["distance": "",
                             "categories": "",
                             "daysOfWeek": "",
                             "timeOfDay": ""]
-    
     var selectedSegmentValue = Int()
-    var eventsListArr = [NSDictionary]()
-    
+    //var eventsListArr = [NSDictionary]()
     var friendsEventsListArr = [NSDictionary]()
     var publicEventsListArr = [NSDictionary]()
     
@@ -45,17 +45,24 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
     
     //IntialSetup Method
     func intialSetup(){
-        self.selectedSegmentValue = 0
+        self.selectedSegmentValue = 2
         self.getEventsListApi()
         
         if #available(iOS 10.0, *) {
-            exploreTableView.refreshControl = refreshControl
+            friendsTableView.refreshControl = friendsTableRefreshControl
+            exploreTableView.refreshControl = exploreTableRefreshControl
+
         } else {
-            exploreTableView.addSubview(refreshControl)
+            friendsTableView.addSubview(friendsTableRefreshControl)
+            exploreTableView.addSubview(exploreTableRefreshControl)
+
         }
+        self.friendsTableView.isHidden = true
+        self.exploreTableView.isHidden = false
         
         // Configure Refresh Control
-        refreshControl.addTarget(self, action: #selector(HomePageVC.refreshData(sender:)), for: .valueChanged)
+        friendsTableRefreshControl.addTarget(self, action: #selector(HomePageVC.refreshData(sender:)), for: .valueChanged)
+        exploreTableRefreshControl.addTarget(self, action: #selector(HomePageVC.refreshData(sender:)), for: .valueChanged)
     }
     
     //Pull to refresh Action
@@ -86,19 +93,43 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
                 
                 let resultDict = result.value(forKey: "result") as! NSDictionary
                 
-                self.eventsListArr = resultDict.value(forKey: "eventDetail") as! [NSDictionary]
+                let eventsListArr = resultDict.value(forKey: "eventDetail") as! [NSDictionary]
                 //let messageCount = result.value(forKey: "notificationCount") as! String
                 
                 if self.selectedSegmentValue == 1{
-                    self.friendsEventsListArr = self.eventsListArr
+                    self.friendsEventsListArr = eventsListArr
+                    self.friendsTableView.reloadData()
                 }
                 else{
-                    self.publicEventsListArr = self.eventsListArr
+                    self.publicEventsListArr = eventsListArr
+                    self.exploreTableView.reloadData()
                 }
-
-                self.exploreTableView.reloadData()
-                
-                self.refreshControl.endRefreshing()
+            }
+            else{
+                CommonFxns.showAlert(self, message: (result.value(forKey: "error") as? String)!, title: errorAlertTitle)
+            }
+            self.friendsTableRefreshControl.endRefreshing()
+            self.exploreTableRefreshControl.endRefreshing()
+        })
+    }
+    
+    //ChangeStatusOfEvent Api call
+    func changeStatusOfEventApi(eventId:String, status:String) {
+            if CommonFxns.isInternetAvailable(){
+                appDelegate.showProgressHUD(view: self.view)
+                EventsAlamofireIntegration.sharedInstance.changeStatusOfEventServiceDelegate = self
+                EventsAlamofireIntegration.sharedInstance.changeStatusOfEventApi(eventId:eventId, status:status)
+            }
+            else{
+                CommonFxns.showAlert(self, message: internetConnectionError, title: oopsText)
+            }
+    }
+    
+    //ChangeStatusOfEvent Api Result
+    func changeStatusOfEventResult(_ result:AnyObject){
+        DispatchQueue.main.async( execute: {
+            appDelegate.hideProgressHUD(view: self.view)
+            if (result.value(forKey: "success")as! Int == 1){
             }
             else{
                 CommonFxns.showAlert(self, message: (result.value(forKey: "error") as? String)!, title: errorAlertTitle)
@@ -108,95 +139,109 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
     
     //GetEventsList Api call
     func getEventsListApi() {
-            if CommonFxns.isInternetAvailable(){
-                appDelegate.showProgressHUD(view: self.view)
-                let parameters = [
-                    "userId": UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key)!,
-                    "type": selectedSegmentValue,
-                    "filters": self.filtersDataDict
+        if CommonFxns.isInternetAvailable(){
+            appDelegate.showProgressHUD(view: self.view)
+            let parameters = [
+                "userId": UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key)!,
+                "type": selectedSegmentValue,
+                "filters": self.filtersDataDict
                 ] as [String : Any]
-                
-                EventsAlamofireIntegration.sharedInstance.getEventsListServiceDelegate = self
-                EventsAlamofireIntegration.sharedInstance.getEventsListApi(parameters)
-            }
-            else{
-                CommonFxns.showAlert(self, message: internetConnectionError, title: oopsText)
-            }
+            
+            EventsAlamofireIntegration.sharedInstance.getEventsListServiceDelegate = self
+            EventsAlamofireIntegration.sharedInstance.getEventsListApi(parameters)
+        }
+        else{
+            CommonFxns.showAlert(self, message: internetConnectionError, title: oopsText)
+        }
     }
     
     //MARK: UITableView delgates & datasource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return eventsListArr.count
+        if tableView.tag == 1{
+            return friendsEventsListArr.count
+        }
+        else{
+            return publicEventsListArr.count
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! HomePageTableViewCell
         
-        let dict = self.eventsListArr[indexPath.row]
-        
-        cell.eventName.text = dict.value(forKey: "eventName") as? String
-        
-        var eventTimingDetail = ""
-        
-        if let eventStartTime = dict.value(forKey: "eventStartTime") as? String{
-            eventTimingDetail = eventTimingDetail + "Starting from " + eventStartTime
-        }
-        if let eventAddress = dict.value(forKey: "eventAddress") as? String{
-            eventTimingDetail = eventTimingDetail + " at" + eventAddress
-        }
-        cell.eventTimingDetail.text = eventTimingDetail
-        
-        if (dict.value(forKey: "eventCoverImageUrl") as? String) != nil{
-            cell.eventCoverImg.sd_setImage(with: URL(string: (dict.value(forKey: "eventCoverImageUrl") as? String)!), placeholderImage: UIImage(named: ""))
-            cell.eventCoverImg.setShowActivityIndicator(true)
-            cell.eventCoverImg.setIndicatorStyle(.gray)
+        if tableView.tag == 1{
+            let cell:HomeFriendsTableViewCell = tableView.dequeueReusableCell(withIdentifier: "friendsCell", for: indexPath) as! HomeFriendsTableViewCell
+            let dict = self.friendsEventsListArr[indexPath.row]
+            cell.eventName.text = dict.value(forKey: "eventName") as? String
+            cell.noOfPeopleAttendingEventCountLbl.text = dict.value(forKey: "numberOfPeopleAttending") as? String
+            var eventTimingDetail = ""
+            if let eventStartTime = dict.value(forKey: "eventStartTime") as? String{
+                eventTimingDetail = eventTimingDetail + "Starting from " + eventStartTime
+            }
+            if let eventAddress = dict.value(forKey: "eventAddress") as? String{
+                eventTimingDetail = eventTimingDetail + " at" + eventAddress
+            }
+            cell.eventTimingDetail.text = eventTimingDetail
+            
+            if (dict.value(forKey: "eventCoverImageUrl") as? String) != nil{
+                cell.eventCoverImg.sd_setImage(with: URL(string: (dict.value(forKey: "eventCoverImageUrl") as? String)!), placeholderImage: UIImage(named: "homePic.png"))
+                cell.eventCoverImg.setShowActivityIndicator(true)
+                cell.eventCoverImg.setIndicatorStyle(.gray)
+            }
+            else{
+                cell.eventCoverImg.image = UIImage(named: "homePic.png")
+            }
+            if (dict.value(forKey: "userImageUrl") as? String) != nil{
+                cell.userImg.sd_setImage(with: URL(string: (dict.value(forKey: "userImageUrl") as? String)!), placeholderImage: UIImage(named: "user.png"))
+                cell.userImg.setShowActivityIndicator(true)
+                cell.userImg.setIndicatorStyle(.gray)
+            }
+            else{
+                cell.userImg.image = UIImage(named: "user.png")
+            }
+            return cell
         }
         else{
-            cell.eventCoverImg.image = UIImage(named: "")
+           let cell = tableView.dequeueReusableCell(withIdentifier: "exploreCell", for: indexPath) as! HomePageTableViewCell
+            let dict = self.publicEventsListArr[indexPath.row]
+            cell.eventName.text = dict.value(forKey: "eventName") as? String
+            cell.noOfPeopleAttendingEventCountLbl.text = dict.value(forKey: "numberOfPeopleAttending") as? String
+            var eventTimingDetail = ""
+            if let eventStartTime = dict.value(forKey: "eventStartTime") as? String{
+                eventTimingDetail = eventTimingDetail + "Starting from " + eventStartTime
+            }
+            if let eventAddress = dict.value(forKey: "eventAddress") as? String{
+                eventTimingDetail = eventTimingDetail + " at" + eventAddress
+            }
+            cell.eventTimingDetail.text = eventTimingDetail
+            
+            if (dict.value(forKey: "eventCoverImageUrl") as? String) != nil{
+                cell.eventCoverImg.sd_setImage(with: URL(string: (dict.value(forKey: "eventCoverImageUrl") as? String)!), placeholderImage: UIImage(named: "homePic.png"))
+                cell.eventCoverImg.setShowActivityIndicator(true)
+                cell.eventCoverImg.setIndicatorStyle(.gray)
+            }
+            else{
+                cell.eventCoverImg.image = UIImage(named: "homePic.png")
+            }
+            if (dict.value(forKey: "userImageUrl") as? String) != nil{
+                cell.userImg.sd_setImage(with: URL(string: (dict.value(forKey: "userImageUrl") as? String)!), placeholderImage: UIImage(named: "user.png"))
+                cell.userImg.setShowActivityIndicator(true)
+                cell.userImg.setIndicatorStyle(.gray)
+            }
+            else{
+                cell.userImg.image = UIImage(named: "user.png")
+            }
+            return cell
         }
-        
-        if (dict.value(forKey: "userImageUrl") as? String) != nil{
-            cell.userImg.sd_setImage(with: URL(string: (dict.value(forKey: "userImageUrl") as? String)!), placeholderImage: UIImage(named: ""))
-            cell.userImg.setShowActivityIndicator(true)
-            cell.userImg.setIndicatorStyle(.gray)
-        }
-        else{
-            cell.userImg.image = UIImage(named: "")
-        }
-        //numberOfPeopleAttending
-        return cell
     }
-    
-//    description = imark;
-//    eventAddress = "Event Location";
-//    eventCoverImageUrl = "";
-//    eventEndDate = "Thursday,April 27,2017";
-//    eventEndTime = "06:30 AM";
-//    eventId = 68;
-//    eventImagesUrlArray =                 (
-//    );
-//    eventName = "hello party";
-//    eventStartDate = "Wednesday,April 26,2017";
-//    eventStartTime = "01:30 AM";
-//    latitude = "";
-//    longitude = "";
-//    myStatus = "No Invitation Sent.";
-//    numberOfComments = 0;
-//    numberOfPeopleAttending = 25;
-//    numberOfPeopleInterested = 25;
-//    numberOfPeopleInvited = 25;
-//    ticketLink = "";
-//    userId = 29;
-//    userImageUrl = "http://0.gravatar.com/avatar/f9f5a3edac178f9f956b1239d49d2081?s=96&d=mm&r=g";
-//    userName = "Z9nh_jai";
-//    userRole = "Normal User";
-//},
-    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let eventDetailVcObj = self.storyboard?.instantiateViewController(withIdentifier: "eventDetailVc") as! EventDetailVC
-        eventDetailVcObj.eventDetailDict = self.eventsListArr[indexPath.row]
+        if tableView.tag == 1{
+            eventDetailVcObj.eventDetailDict = self.friendsEventsListArr[indexPath.row]
+        }
+        else{
+            eventDetailVcObj.eventDetailDict = self.publicEventsListArr[indexPath.row]
+        }
         self.navigationController?.pushViewController(eventDetailVcObj, animated: true)
     }
     
@@ -210,15 +255,12 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
             friendsButton.backgroundColor = appNavColor
             exploreButton.isSelected = false
             exploreButton.backgroundColor = UIColor.clear
-            exploreTableView.isHidden = true
             selectedSegmentValue = 1
-            
+            self.friendsTableView.isHidden = false
+            self.exploreTableView.isHidden = true
+
             if self.friendsEventsListArr.count == 0{
                 self.getEventsListApi()
-            }
-            else{
-                eventsListArr = friendsEventsListArr
-                self.exploreTableView.reloadData()
             }
         }
         else{
@@ -226,10 +268,9 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
             friendsButton.backgroundColor = UIColor.clear
             exploreButton.isSelected = true
             exploreButton.backgroundColor = appNavColor
-            exploreTableView.isHidden = false
+            self.friendsTableView.isHidden = true
+            self.exploreTableView.isHidden = false
             selectedSegmentValue = 0
-            eventsListArr = publicEventsListArr
-            self.exploreTableView.reloadData()
         }
     }
     

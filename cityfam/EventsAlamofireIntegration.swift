@@ -27,16 +27,28 @@ protocol GetEventsListServiceAlamofire {
     func ServerError()
 }
 
+protocol ChangeStatusOfEventServiceAlamofire {
+    func changeStatusOfEventResult(_ result:AnyObject)
+    func ServerError()
+}
+
 protocol GetListOfPeopleAttendingTheEventServiceAlamofire {
     func getListOfPeopleAttendingTheEventResult(_ result:AnyObject)
     func ServerError()
 }
+
 protocol GetListOfPeopleInvitedToTheEventServiceAlamofire {
     func getListOfPeopleInvitedToTheEventResult(_ result:AnyObject)
     func ServerError()
 }
+
 protocol GetListOfPeopleInterestedInEventServiceAlamofire {
     func getListOfPeopleInterestedInEventResult(_ result:AnyObject)
+    func ServerError()
+}
+
+protocol EventsInvitationsServiceAlamofire{
+    func getInvitationsListResult(_ result:AnyObject)
     func ServerError()
 }
 
@@ -59,6 +71,8 @@ class EventsAlamofireIntegration: NSObject {
     var getListOfPeopleAttendingTheEventServiceDelgate:GetListOfPeopleAttendingTheEventServiceAlamofire?
     var getListOfPeopleInvitedToTheEventServiceDelegate:GetListOfPeopleInvitedToTheEventServiceAlamofire?
     var getListOfPeopleInterestedInEventServiceDelegate:GetListOfPeopleInterestedInEventServiceAlamofire?
+    var eventsInvitationsServiceDelegate:EventsInvitationsServiceAlamofire?
+    var changeStatusOfEventServiceDelegate:ChangeStatusOfEventServiceAlamofire?
     
     //MARK:- Api's Methods
     
@@ -193,7 +207,45 @@ class EventsAlamofireIntegration: NSObject {
             }
         }
     }
-
+    
+    //Get Events Invitations List Api
+    func getInvitationsListApi(eventId:String){
+        print(eventId)
+        Alamofire.request("\(baseUrl)getInvitationsList.php?userId=\(UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key)!)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+            
+            switch(response.result){
+            case .success:
+                if let json = response.result.value{
+                    print(json)
+                    self.eventsInvitationsServiceDelegate?.getInvitationsListResult(json as AnyObject)
+                }
+                break
+            case .failure:
+                self.eventsInvitationsServiceDelegate?.ServerError()
+                break
+            }
+        }
+    }
+    
+    func changeStatusOfEventApi(eventId:String, status:String){
+        print("change status Api------------",eventId,"status",status,"userId",UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key)!)
+        
+        Alamofire.request("\(baseUrl)changeStatusForEvent.php?userId=\(UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key)!)&eventId=\(eventId)&status=\(status)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+            
+            switch(response.result){
+            case .success:
+                if let json = response.result.value{
+                    print(json)
+                    self.changeStatusOfEventServiceDelegate?.changeStatusOfEventResult(json as AnyObject)
+                }
+                break
+            case .failure:
+                self.changeStatusOfEventServiceDelegate?.ServerError()
+                break
+            }
+        }
+    }
+    
 }
 
 

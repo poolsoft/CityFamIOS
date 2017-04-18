@@ -93,22 +93,6 @@
             timestampString = "513694886.424413"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "281"
-            endingLineNumber = "281"
-            landmarkName = "textFieldShouldBeginEditing(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "cityfam/CreateEventVC.swift"
-            timestampString = "513694886.424413"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
             startingLineNumber = "289"
             endingLineNumber = "289"
             landmarkName = "textFieldShouldBeginEditing(_:)"
@@ -186,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cityfam/FriendsAlamofireIntegration.swift"
-            timestampString = "513777738.050189"
+            timestampString = "514121802.95976"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
             landmarkName = "manageFriendshipApi(anotherUserId:status:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -198,16 +182,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "cityfam/FriendVC.swift"
-            timestampString = "513845453.696854"
+            filePath = "cityfam/EventsAlamofireIntegration.swift"
+            timestampString = "514125590.703908"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "275"
-            endingLineNumber = "275"
-            landmarkName = "tableView(_:cellForRowAt:)"
+            startingLineNumber = "231"
+            endingLineNumber = "231"
+            landmarkName = "changeStatusOfEventApi(eventId:status:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -217,29 +201,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "cityfam/FriendVC.swift"
-            timestampString = "513845460.985183"
+            filePath = "cityfam/EventDetailVC.swift"
+            timestampString = "514211690.164449"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "281"
-            endingLineNumber = "281"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "cityfam/LogInVC.swift"
-            timestampString = "513846444.291942"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
-            landmarkName = "loginResult(_:)"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "showEventDetail()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

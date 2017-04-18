@@ -143,12 +143,12 @@ class FriendVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UITex
                 }
 
                 self.searchTableView.reloadData()
-                self.refreshControl1.endRefreshing()
-                self.refreshControl2.endRefreshing()
             }
             else{
                 CommonFxns.showAlert(self, message: (result.value(forKey: "error") as? String)!, title: errorAlertTitle)
             }
+            self.refreshControl1.endRefreshing()
+            self.refreshControl2.endRefreshing()
         })
     }
     
@@ -171,11 +171,12 @@ class FriendVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UITex
             if (result.value(forKey: "success")as! Int == 1){
                 self.friendsRequestsListArr = result.value(forKey: "result") as! [NSDictionary]
                 self.requestTableView.reloadData()
-                self.refreshControl1.endRefreshing()
-                self.refreshControl2.endRefreshing()            }
+            }
             else{
                 CommonFxns.showAlert(self, message: (result.value(forKey: "error") as? String)!, title: errorAlertTitle)
             }
+            self.refreshControl1.endRefreshing()
+            self.refreshControl2.endRefreshing()
         })
     }
     
@@ -393,8 +394,10 @@ class FriendVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UITex
         }
     }
     
+    //Go to MyProfile screen
     @IBAction func profileButtonAction(_ sender: Any) {
         let profileVcObj = self.storyboard?.instantiateViewController(withIdentifier: "profileVc") as! ProfileVC
+        profileVcObj.profileUserId = UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key)!
         self.navigationController?.pushViewController(profileVcObj, animated: true)
     }
     

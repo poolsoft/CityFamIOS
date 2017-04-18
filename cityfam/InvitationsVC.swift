@@ -8,8 +8,15 @@
 
 import UIKit
 
-class InvitationsVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class InvitationsVC: UIViewController,UITableViewDataSource,UITableViewDelegate,GetInvitationsServiceAlamofire {
 
+    //MARK:- Outlets & Properties
+    
+    @IBOutlet var invitationsTableView: UITableView!
+    var inviatationsListArr = [NSDictionary]()
+    
+    //MARK:- View life cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -18,14 +25,78 @@ class InvitationsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
         return UIStatusBarStyle.lightContent
     }
     
+    //MARK:- methods
+    
+    //Get Api's Results
+    
+    //Server failure Alert
+    func ServerError(){
+        appDelegate.hideProgressHUD(view: self.view)
+        CommonFxns.showAlert(self, message: networkOperationErrorAlert, title: errorAlertTitle)
+    }
+    
+    //Get inviations List Api Result
+    func getInvitationsResult(_ result:AnyObject){
+        DispatchQueue.main.async( execute: {
+            appDelegate.hideProgressHUD(view: self.view)
+            if (result.value(forKey: "success")as! Int == 1){
+                
+                self.inviatationsListArr = result.value(forKey: "result") as! [NSDictionary]
+                self.invitationsTableView.reloadData()
+            }
+            else{
+                CommonFxns.showAlert(self, message: (result.value(forKey: "error") as? String)!, title: errorAlertTitle)
+            }
+
+        })
+    }
+
+    //Get inviations List Api call
+    func getInvitationsApi() {
+        if CommonFxns.isInternetAvailable(){
+            appDelegate.showProgressHUD(view: self.view)
+            
+            AlamofireIntegration.sharedInstance.getInvitationsServiceDelegate = self
+            AlamofireIntegration.sharedInstance.getInvitationsApi()
+        }
+        else{
+            CommonFxns.showAlert(self, message: internetConnectionError, title: oopsText)
+        }
+    }
+
     //MARK: UITableView Functions
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return 5
+        return inviatationsListArr.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)//InvitationsScreenTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! InvitationsScreenTableViewCell
+        
+        let dict = self.inviatationsListArr[indexPath.row]
+        
+        cell.eventName.text = dict.value(forKey: "eventName") as? String
+        cell.noOfPeopleAttendingEventCountLbl.text = dict.value(forKey: "numberOfPeopleAttending") as? String
+        
+        var eventTimingDetail = ""
+        
+        if let eventStartTime = dict.value(forKey: "eventStartTime") as? String{
+            eventTimingDetail = eventTimingDetail + "Starting from " + eventStartTime
+        }
+        if let eventAddress = dict.value(forKey: "eventAddress") as? String{
+            eventTimingDetail = eventTimingDetail + " at" + eventAddress
+        }
+        cell.eventTimingDetail.text = eventTimingDetail
+        
+        if (dict.value(forKey: "userImageUrl") as? String) != nil{
+            cell.userImg.sd_setImage(with: URL(string: (dict.value(forKey: "userImageUrl") as? String)!), placeholderImage: UIImage(named: "user.png"))
+            cell.userImg.setShowActivityIndicator(true)
+            cell.userImg.setIndicatorStyle(.gray)
+        }
+        else{
+            cell.userImg.image = UIImage(named: "user.png")
+        }
+
         return cell
     }
     
@@ -36,6 +107,7 @@ class InvitationsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
     
     @IBAction func profileButtonAction(_ sender: Any) {
         let profileVcObj = self.storyboard?.instantiateViewController(withIdentifier: "profileVc") as! ProfileVC
+        profileVcObj.profileUserId = UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key)!
         self.navigationController?.pushViewController(profileVcObj, animated: true)
     }
 

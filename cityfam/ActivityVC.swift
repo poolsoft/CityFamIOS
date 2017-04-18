@@ -58,6 +58,7 @@ class ActivityVC: UIViewController,UITableViewDataSource,UITableViewDelegate  {
     
     @IBAction func profileButtonAction(_ sender: Any) {
         let profileVcObj = self.storyboard?.instantiateViewController(withIdentifier: "profileVc") as! ProfileVC
+        profileVcObj.profileUserId = UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key)!
         self.navigationController?.pushViewController(profileVcObj, animated: true)
     }
 

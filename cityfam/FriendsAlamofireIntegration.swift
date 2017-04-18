@@ -23,6 +23,11 @@ protocol ManageFriendshipServiceAlamofire {
     func ServerError()
 }
 
+protocol GetMyFriendsListServiceAlamofire{
+    func getMyFriendsListResult(_ result:AnyObject)
+    func ServerError()
+}
+
 //MARK:- Properties
 
 class FriendsAlamofireIntegration: NSObject {
@@ -38,6 +43,7 @@ class FriendsAlamofireIntegration: NSObject {
 
     var respondToRequestServiceDelegate: RespondToRequestServiceAlamofire?
     var manageFriendshipServiceDelegate:ManageFriendshipServiceAlamofire?
+    var getMyFriendsListServiceDelegate:GetMyFriendsListServiceAlamofire?
     
     //MARK:- Methods
 
@@ -118,4 +124,24 @@ class FriendsAlamofireIntegration: NSObject {
             }
         }
     }
+    
+    //Get MyFriends List Api
+    func getMyFriendsListApi(){
+        print("user id ---------------------",UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key)!)
+        Alamofire.request("\(baseUrl)getMyFriendsList.php?userId=\(UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key)!)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+            
+            switch (response.result) {
+            case .success:
+                if let json = response.result.value {
+                    print(json)
+                    self.getMyFriendsListServiceDelegate?.getMyFriendsListResult(json as AnyObject)
+                }
+                break
+            case .failure:
+                self.getMyFriendsListServiceDelegate?.ServerError()
+                break
+            }
+        }
+    }
+    
 }
