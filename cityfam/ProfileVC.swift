@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,GetUserProfileServiceAlamofire {
+class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,GetUserProfileServiceAlamofire,UIImagePickerControllerDelegate,UINavigationControllerDelegate,AddPhototoToProfileServiceAlamofire {
     
     //MARK:- Outlets & Properties
     
@@ -29,15 +29,22 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
     var imagesArray = ["user","user","user","user"]
     var profileInfoDict = NSDictionary()
     
+    let imagePicker = UIImagePickerController()
+    var userPhotosToUpload:UIImage!
+    
     //MARK:- View life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.notMyFriendProfileLayoutSetup()
-        manageConnectionBtn.addTarget(self, action: #selector(ProfileVC.unfriendBtnAction(sender:)), for: .touchUpInside)
-        editBtn.addTarget(self, action: #selector(ProfileVC.editBtnAction(sender:)), for: .touchUpInside)
-        addBtn.addTarget(self, action: #selector(ProfileVC.addBtnAction(sender:)), for: .touchUpInside)
-        manageConnectionBtn.addTarget(self, action: #selector(ProfileVC.unfriendBtnAction(sender:)), for: .touchUpInside)
+        imagePicker.delegate = self
+
+//        manageConnectionBtn.addTarget(self, action: #selector(ProfileVC.unfriendBtnAction(sender:)), for: .touchUpInside)
+//        editBtn.addTarget(self, action: #selector(ProfileVC.editBtnAction(sender:)), for: .touchUpInside)
+//        addBtn.addTarget(self, action: #selector(ProfileVC.addBtnAction(sender:)), for: .touchUpInside)
+//        seeAllPhotosBtn.addTarget(self, action: #selector(ProfileVC.editBtnAction(sender:)), for: .touchUpInside)
+//        addBtn.addTarget(self, action: #selector(ProfileVC.addBtnAction(sender:)), for: .touchUpInside)
+//        manageConnectionBtn.addTarget(self, action: #selector(ProfileVC.unfriendBtnAction(sender:)), for: .touchUpInside)
         
         //adding notification observer
         NotificationCenter.default.addObserver(self, selector: #selector(ProfileVC.updateProfileNotification), name: NSNotification.Name(rawValue: "updateProfileInfoNotification"), object: nil)
@@ -145,7 +152,43 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
             }
         })
     }
+    
+    //AddPhotoToProfile Api call
+    func addPhotoToProfileApi() {
+        if CommonFxns.isInternetAvailable(){
+            appDelegate.showProgressHUD(view: self.view)
+            
+            var imgStr = ""
+            if userPhotosToUpload != nil{
+                let imageData:NSData = UIImagePNGRepresentation(userPhotosToUpload)! as NSData
+                imgStr = "\(imageData.base64EncodedString(options: .lineLength64Characters))"
+            }
+            
+            let paramertes = ["userId": UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key)!,
+                              "photo": imgStr]
+                
+            AlamofireIntegration.sharedInstance.addPhototoToProfileServiceDelegate = self
+            AlamofireIntegration.sharedInstance.addPhotoToProfileApi(paramertes)
+        }
+        else{
+            CommonFxns.showAlert(self, message: internetConnectionError, title: oopsText)
+        }
+    }
+    
+    //AddPhotoToProfile Api result
+    func addPhotoToProfileResult(_ result:AnyObject){
+        DispatchQueue.main.async( execute: {
+            appDelegate.hideProgressHUD(view: self.view)
+            if (result.value(forKey: "success")as! Int == 1){
+                CommonFxns.showAlert(self, message: "Image uploaded successfully!", title: messageText)
+            }
+            else{
+                CommonFxns.showAlert(self, message: (result.value(forKey: "error") as? String)!, title: errorAlertTitle)
+            }
+        })
+    }
 
+    
     //MARK: UITableView Delagtes & Datasource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
@@ -200,6 +243,16 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
     
     //MARK:- Button Actions
 
+    @IBAction func addPhotosBtnAction(_ sender: Any) {
+        
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    @IBAction func seeAllPhotosBtnAction(_ sender: Any) {
+    }
+    
     //Back btn action
     @IBAction func backBtnAction(_ sender: UIButton) {
         _ = self.navigationController?.popViewController(animated: true)
@@ -209,24 +262,49 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
         let settingsVcObj = self.storyboard?.instantiateViewController(withIdentifier: "settingsVc") as! SettingsVC
         self.navigationController?.pushViewController(settingsVcObj, animated: true)
     }
-    //Manage Connection with this user (Unfriend)
-    func unfriendBtnAction(sender:UIButton){
-        //Unfriend this user Api call
-        
-    }
 
+    //Manage Connection with this user (Unfriend)
+    @IBAction func manageConnectionBtnAction(_ sender: UIButton) {
+        //Unfriend this user Api call
+    }
+    
     //Go to Edit MyProfile screen
-    func editBtnAction(sender:UIButton){
+    @IBAction func editBtnAction(_ sender: Any) {
         let editProfileVcObj = self.storyboard?.instantiateViewController(withIdentifier: "editProfileVc") as! EditProfileVC
-        print("profileInfoDict  fvsaghdfdjshgdj:", profileInfoDict)
+        print("profileInfoDict :", profileInfoDict)
         editProfileVcObj.profileInfoDict = self.profileInfoDict
         self.navigationController?.pushViewController(editProfileVcObj, animated: true)
     }
-    
+
     //Send request to this user
-    func addBtnAction(sender:UIButton){
+    @IBAction func addBtnAction(_ sender: UIButton) {
         //Send request APi call
     }
     
+    //MARK:- Image Picker Delegates
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        picker.allowsEditing = true
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            
+            picker.allowsEditing = true
+            picker.delegate = self
+            self.userPhotosToUpload = pickedImage
+            
+            //show Alert
+            
+            self.addPhotoToProfileApi()
+        }
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePicker(imagePicker: UIPickerView!, pickedImage image: UIImage!) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+
 
 }

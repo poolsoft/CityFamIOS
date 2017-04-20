@@ -19,6 +19,7 @@ class InvitationsVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.getInvitationsApi()
     }
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
@@ -40,14 +41,15 @@ class InvitationsVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
         DispatchQueue.main.async( execute: {
             appDelegate.hideProgressHUD(view: self.view)
             if (result.value(forKey: "success")as! Int == 1){
-                
-                self.inviatationsListArr = result.value(forKey: "result") as! [NSDictionary]
+
+                let resultDict = result.value(forKey: "result") as! NSDictionary
+                //invitationCount
+                self.inviatationsListArr = resultDict.value(forKey: "eventDetail") as! [NSDictionary]
                 self.invitationsTableView.reloadData()
             }
             else{
                 CommonFxns.showAlert(self, message: (result.value(forKey: "error") as? String)!, title: errorAlertTitle)
             }
-
         })
     }
 
@@ -101,6 +103,9 @@ class InvitationsVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let eventDetailVcObj = self.storyboard?.instantiateViewController(withIdentifier: "eventDetailVc") as! EventDetailVC
+        eventDetailVcObj.eventDetailDict = self.inviatationsListArr[indexPath.row]
+        self.navigationController?.pushViewController(eventDetailVcObj, animated: true)
     }
     
     //MARK: UIButton actions

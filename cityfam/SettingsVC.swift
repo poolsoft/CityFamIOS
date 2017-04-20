@@ -33,14 +33,22 @@ class SettingsVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
     //Logout user profile
     @IBAction func logoutButtonAction(_ sender: Any) {
-        UserDefaults.standard.removeObject(forKey: USER_DEFAULT_userId_Key)
-        
-       // (UIApplication.sharedApplication().delegate as! AppDelegate).logoutUser()
+       // UserDefaults.standard.removeObject(forKey: USER_DEFAULT_userId_Key)
 
-        //(UIApplication.sharedApplication().delegate as! AppDelegate).
-        
         let intialVcObj = self.storyboard?.instantiateViewController(withIdentifier: "logInVC") as! LogInVC
         self.navigationController?.pushViewController(intialVcObj, animated: true)
+        
+        // Clearing NSUserDefault
+        let appDomain = Bundle.main.bundleIdentifier!
+        UserDefaults.standard.removePersistentDomain(forName: appDomain)
+
+        // moving to login screen
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let loginVc = storyboard.instantiateViewController(withIdentifier: "logInVC") as! LogInVC
+        var vcArray = (appDelegate.window?.rootViewController as! UINavigationController).viewControllers
+        vcArray.removeAll()
+        vcArray.append(loginVc)
+        (appDelegate.window?.rootViewController as! UINavigationController).setViewControllers(vcArray, animated: false)
     }
     
     //MARK: UITableView Functions

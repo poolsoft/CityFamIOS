@@ -187,11 +187,11 @@ class LogInVC: UIViewController, loginServiceAlamofire,RegisterationServiceAlamo
     //MARK: Google sign in result
     
     func googleSignInData(_ result:NSDictionary){
-        print(result)
+        print(result,"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     }
     
     func googleSignInError(_ result:String){
-        print(result)
+        print(result,"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     }
     
     //MARK: Facebook api result
@@ -234,7 +234,7 @@ class LogInVC: UIViewController, loginServiceAlamofire,RegisterationServiceAlamo
                     "name": name,
                     "emailId": email,
                     "phone": "",
-                    "password": "testing123",
+                    "password": "test",
                     "latitude": "",
                     "longitude": "",
                     "address": "",

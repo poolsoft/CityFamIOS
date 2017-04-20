@@ -35,6 +35,14 @@ class SignupVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
         NotificationCenter.default.addObserver(self, selector: #selector(SignupVC.keyboardWillHide(_:)), name:NSNotification.Name.UIKeyboardWillHide, object: nil);
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.updateViewConstraints()
+        self.profileImgView.updateConstraintsIfNeeded()
+        self.profileImgView.clipsToBounds = true
+        self.profileImgView.layer.cornerRadius = self.profileImgView.bounds.width*0.5
+    }
+    
     // dismissing keyboard on pressing return key
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool{
@@ -173,7 +181,7 @@ class SignupVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
                     "name": name,
                     "emailId": email,
                     "phone": "",
-                    "password": "testing123",
+                    "password": "tester",
                     "latitude": "",
                     "longitude": "",
                     "address": "",
@@ -222,6 +230,14 @@ class SignupVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
     
     //MARK: Button Actions
     
+    //Enter location
+    @IBAction func locationBtnAction(_ sender: UIButton) {
+
+        self.locationTxtField.text = "Rajiv Gandhi It park, Chandigarh"
+//        let mapViewVcObj = self.storyboard?.instantiateViewController(withIdentifier: "mapViewVc") as! MapViewVC
+//        self.navigationController?.pushViewController(mapViewVcObj, animated: true)
+    }
+    
     //SignUp Button Action
     
     //data:image/png;base64,
@@ -240,8 +256,8 @@ class SignupVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
                     "emailId": CommonFxns.trimString(string: self.emailTxtField.text!),
                     "phone": CommonFxns.trimString(string: self.phoneTxtField.text!),
                     "password": CommonFxns.trimString(string: self.passwordTxtField.text!),
-                    "latitude": "1233.4545",
-                    "longitude": "674623.567",
+                    "latitude": "30.7829",
+                    "longitude": "76.8",
                     "address": CommonFxns.trimString(string: self.locationTxtField.text!),
                     "deviceToken":"",
                     "facebookId": "",

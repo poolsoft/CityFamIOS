@@ -13,6 +13,7 @@ class CreateEventVC: UIViewController,UITextFieldDelegate,UIImagePickerControlle
     
     //MARK:- Outlets & Properties
     
+    @IBOutlet var eventLocationLbl: UILabelCustomClass!
     @IBOutlet var eventImgView: UIImageView!
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var publicButton: UIButtonCustomClass!
@@ -27,7 +28,6 @@ class CreateEventVC: UIViewController,UITextFieldDelegate,UIImagePickerControlle
     @IBOutlet var startTimeTxtField: UITextFieldCustomClass!
     @IBOutlet var labelUnderSegmentView: UILabelFontSize!
     @IBOutlet var allowGuestToInviteSwitch: UISwitch!
-    @IBOutlet var eventLocationLbl: UILabel!
 
     var eventImgToUpload:UIImage!
     let imagePicker = UIImagePickerController()
@@ -42,7 +42,6 @@ class CreateEventVC: UIViewController,UITextFieldDelegate,UIImagePickerControlle
     var longitude = String()
     var latitude = String()
     
-    
     //MARK:- View life cycle
     
     override func viewDidLoad() {
@@ -52,7 +51,7 @@ class CreateEventVC: UIViewController,UITextFieldDelegate,UIImagePickerControlle
         NotificationCenter.default.addObserver(self, selector: #selector(CreateEventVC.keyboardWillShow(_:)), name:NSNotification.Name.UIKeyboardWillShow, object: nil);
         NotificationCenter.default.addObserver(self, selector: #selector(CreateEventVC.keyboardWillHide(_:)), name:NSNotification.Name.UIKeyboardWillHide, object: nil);
         
-        self.whoCanSeeValueLbl = "private"
+        self.whoCanSeeValueLbl = "public"
         imagePicker.delegate = self
         endDatePickerView.minimumDate = Date()
         startDatePickerView.minimumDate = Date()
@@ -64,15 +63,9 @@ class CreateEventVC: UIViewController,UITextFieldDelegate,UIImagePickerControlle
         NotificationCenter.default.addObserver(forName:NSNotification.Name(rawValue: "getSearchedLocationNotification"), object:nil, queue:nil, using:catchNotification)
     }
     
-    
-    override var preferredStatusBarStyle : UIStatusBarStyle {
-        return UIStatusBarStyle.lightContent
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
     }
-    
     
     //MARK:- Methods
     
@@ -89,9 +82,7 @@ class CreateEventVC: UIViewController,UITextFieldDelegate,UIImagePickerControlle
 //        
         
         let locationDetailDict = notification.userInfo as! [String:Any]
-        
-        
-        
+                
         let placemark = locationDetailDict.values.first as! MKPlacemark
         
         print("placemark",placemark)
@@ -172,10 +163,10 @@ class CreateEventVC: UIViewController,UITextFieldDelegate,UIImagePickerControlle
                     "allowGuestsToInviteOthers":allowGuestSwitchSelectedState,
                     "latitude": longitude,
                     "longitude": latitude,
-                    "placeName": self.eventLocationLbl,
+                    "placeName": self.eventLocationLbl.text!,
                     "categories": self.categoryId,
                     "eventDescription":CommonFxns.trimString(string: self.eventDetailTxtFields.text!),
-                    "ticketLink":CommonFxns.trimString(string: self.eventLocationLbl.text!)
+                    "ticketLink":""
                     ] as [String : Any]
                 
                 print(parameters)

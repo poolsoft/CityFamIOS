@@ -22,7 +22,6 @@ class InviteFriendsVC: UIViewController,UITextFieldDelegate,UITableViewDelegate,
     let arrContacts = NSMutableArray()
     var myFriendsListArr = [NSDictionary]()
     var myGroupsListArr = [NSDictionary]()
-
     var searchContactsListArr = [NSDictionary]()
     
     //MARK:- View life cycle

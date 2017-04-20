@@ -45,7 +45,7 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
     
     //IntialSetup Method
     func intialSetup(){
-        self.selectedSegmentValue = 2
+        self.selectedSegmentValue = 0
         self.getEventsListApi()
         
         if #available(iOS 10.0, *) {

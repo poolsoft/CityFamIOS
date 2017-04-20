@@ -10,6 +10,8 @@ import UIKit
 
 class GroupDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
+    //Outlets & Properties
+    
     @IBOutlet var groupDetailTableView: UITableView!
 
     override func viewDidLoad() {

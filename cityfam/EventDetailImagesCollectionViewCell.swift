@@ -10,5 +10,8 @@ import UIKit
 
 class EventDetailImagesCollectionViewCell: UICollectionViewCell {
     
+    //MARK:- Outlets & Properties
+
     @IBOutlet var eventImg: UIImageView!
+
 }

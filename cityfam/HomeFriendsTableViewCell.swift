@@ -10,8 +10,9 @@ import UIKit
 
 class HomeFriendsTableViewCell: UITableViewCell {
 
+    //MARK:- Outlets & Properties
+
     @IBOutlet var userImg: UIImageViewCustomClass!
-    
     @IBOutlet var eventCoverImg: UIImageView!
     @IBOutlet var eventName: UILabelFontSize!
     @IBOutlet var eventTimingDetail: UILabelFontSize!
@@ -20,15 +21,14 @@ class HomeFriendsTableViewCell: UITableViewCell {
     @IBOutlet var acceptBtn: UIButtonCustomClass!
     @IBOutlet var declineBtn: UIButtonCustomClass!
     
+    //MARK:- Methods
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }

@@ -11,6 +11,8 @@ import Foundation
 //MARK:- Api's Strings
 
 let baseUrl = "http://imarkclients.com/cityfam/api/"
+ 
+//let baseUrl = "http://imarkclients.com/cityfam/wp-admin/api/"
 
 // local strings
 

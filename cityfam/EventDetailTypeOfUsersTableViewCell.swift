@@ -10,11 +10,13 @@ import UIKit
 
 class EventDetailTypeOfUsersTableViewCell: UITableViewCell {
     
+    //MARK:- Outlets & Properties
+
     @IBOutlet var typeOfPeopleLbl: UILabelFontSize!
     @IBOutlet var noOfPeopleCountLbl: UILabelFontSize!
-    //MARK:- Outlets & Properties
     
     //MARK:- Methods
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }

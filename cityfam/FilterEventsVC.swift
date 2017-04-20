@@ -41,6 +41,8 @@ class FilterEventsVC: UIViewController {
         
         NotificationCenter.default.post(name:NSNotification.Name(rawValue: "filterEventsNotification"),
              object: nil,
+             
+             
              userInfo:["distance": "51","categories": "222","daysOfWeek": "","timeOfDay": ""])
         
         _ = self.navigationController?.popViewController(animated: true)
