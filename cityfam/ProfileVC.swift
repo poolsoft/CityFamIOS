@@ -26,7 +26,7 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
     
     var profileUserId = String()
     var profileTableViewArray = ["My Groups", "My Plans", "My Friends"]
-    var imagesArray = ["user","user","user","user"]
+    var imagesArray = NSArray()
     var profileInfoDict = NSDictionary()
     
     let imagePicker = UIImagePickerController()
@@ -125,6 +125,8 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
                 else{
                     self.userImg.image = UIImage(named: "user.png")
                 }
+                
+                self.imagesArray = self.profileInfoDict.value(forKey: "userImagesArray") as! NSArray
                 
                 self.userNameLbl.text = self.profileInfoDict.value(forKey: "userName") as? String
                 
@@ -226,9 +228,9 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
-        let imageView = cell.viewWithTag(1) as! UIImageView
-        imageView.image = UIImage(named: imagesArray[indexPath.row])
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! ProfileVcImagesCollectionViewCell
+       // let imageView = cell.viewWithTag(1) as! UIImageView
+       // imageView.image = UIImage(named: imagesArray[indexPath.row])
         return cell
     }
     

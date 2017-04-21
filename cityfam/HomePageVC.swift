@@ -8,6 +8,7 @@
 
 import UIKit
 import SDWebImage
+import EventKit
 
 class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,GetEventsListServiceAlamofire,ChangeStatusOfEventServiceAlamofire {
     
@@ -35,13 +36,53 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
     override func viewDidLoad() {
         super.viewDidLoad()
         self.intialSetup()
-        
+    
         //adding notification observer to filter events
         NotificationCenter.default.addObserver(forName:NSNotification.Name(rawValue: "filterEventsNotification"), object:nil, queue:nil, using:catchNotification)
     }
 
     
     //MARK:- Methods
+    
+    func setEventInDeviceCalender(){
+        let eventStore : EKEventStore = EKEventStore()
+        
+        // 'EKEntityTypeReminder' or 'EKEntityTypeEvent'
+        
+        eventStore.requestAccess(to: .event) { (granted, error) in
+        
+            if (granted) && (error == nil) {
+                print("granted \(granted)")
+                print("error \(error)")
+        
+                let event:EKEvent = EKEvent(eventStore: eventStore)
+        
+                event.title = "Reminder CityFam, Alert"
+                
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "YYYY mm dd - hh:mm"
+                
+                //let startDate = dateFormatter.date(from: "2017 04 22 - 12:29")
+                //let endDate = dateFormatter.date(from: "2017 04 22 - 12:30")
+                event.startDate = Date()
+                event.endDate = Date()
+                
+               // print("start date: ", startDate!, "end date: ", endDate!)
+                event.notes = "This is a note"
+                event.calendar = eventStore.defaultCalendarForNewEvents
+                do {
+                    try eventStore.save(event, span: .thisEvent)
+                } catch let error as NSError {
+                    print("failed to save event with error : \(error)")
+                }
+                print("Saved Event")
+            }
+            else{
+                
+                print("failed to save event with error : \(error) or access not granted")
+            }
+        }
+    }
     
     //IntialSetup Method
     func intialSetup(){

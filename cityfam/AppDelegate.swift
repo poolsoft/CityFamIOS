@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             navController.pushViewController(secondViewController, animated: true)
         }
 
-            
+       // GMSServices.provideAPIKey("AIzaSyAOVBwuZYYidkS18XYRMhbWhQgG2seVbs0")
         
         GIDSignIn.sharedInstance().signOut()
         

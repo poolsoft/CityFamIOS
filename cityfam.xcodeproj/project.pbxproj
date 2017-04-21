@@ -61,6 +61,7 @@
 		A154BB041E9CE40D00E3727F /* InvitedVcTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A154BB031E9CE40D00E3727F /* InvitedVcTableViewCell.swift */; };
 		A154BB061E9CE41A00E3727F /* InterestedVcTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A154BB051E9CE41A00E3727F /* InterestedVcTableViewCell.swift */; };
 		A15DA20E1E9F601A0024E5AB /* FriendVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15DA20D1E9F601A0024E5AB /* FriendVC.swift */; };
+		A16DB3001EA9F0B2003C1C84 /* CalenderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16DB2FF1EA9F0B2003C1C84 /* CalenderVC.swift */; };
 		A1761C641E94BAA10079E269 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1761C631E94BAA10079E269 /* Strings.swift */; };
 		A1761C661E94C14C0079E269 /* CommonFxns.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1761C651E94C14C0079E269 /* CommonFxns.swift */; };
 		A17B65971E9B6CC3001893CF /* EventsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17B65961E9B6CC3001893CF /* EventsListTableViewCell.swift */; };
@@ -178,6 +179,7 @@
 		A154BB031E9CE40D00E3727F /* InvitedVcTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvitedVcTableViewCell.swift; sourceTree = "<group>"; };
 		A154BB051E9CE41A00E3727F /* InterestedVcTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestedVcTableViewCell.swift; sourceTree = "<group>"; };
 		A15DA20D1E9F601A0024E5AB /* FriendVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendVC.swift; sourceTree = "<group>"; };
+		A16DB2FF1EA9F0B2003C1C84 /* CalenderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalenderVC.swift; sourceTree = "<group>"; };
 		A1761C631E94BAA10079E269 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		A1761C651E94C14C0079E269 /* CommonFxns.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonFxns.swift; sourceTree = "<group>"; };
 		A17B65961E9B6CC3001893CF /* EventsListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsListTableViewCell.swift; sourceTree = "<group>"; };
@@ -354,6 +356,7 @@
 				A1D063B01E97C027004BF404 /* MapViewVC.swift */,
 				A17B65981E9B6D5A001893CF /* EventsListVC.swift */,
 				A15DA20D1E9F601A0024E5AB /* FriendVC.swift */,
+				A16DB2FF1EA9F0B2003C1C84 /* CalenderVC.swift */,
 			);
 			name = ViewControllerClasses;
 			sourceTree = "<group>";
@@ -781,6 +784,7 @@
 				A19448DA1EA4D1A60060D30E /* EventDetailImagesCollectionViewCell.swift in Sources */,
 				0700D9401E556E2100DC9928 /* AlamofireIntegration.swift in Sources */,
 				078633F71E656EAE00680A1C /* InvitationsVC.swift in Sources */,
+				A16DB3001EA9F0B2003C1C84 /* CalenderVC.swift in Sources */,
 				07254B6E1E6838FF009417BA /* InviteFriendsVC.swift in Sources */,
 				A181AD1E1E9F460800DD53E3 /* FriendsAlamofireIntegration.swift in Sources */,
 				07F057E51E66DFDD008B8120 /* InterestedVC.swift in Sources */,

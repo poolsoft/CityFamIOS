@@ -52,6 +52,11 @@ PODS:
   - Google/SignIn (3.0.3):
     - Google/Core
     - GoogleSignIn (~> 4.0)
+  - GoogleAPIClient/Calendar (1.0.5):
+    - GoogleAPIClient/Core
+    - GTMSessionFetcher (~> 1.1)
+  - GoogleAPIClient/Core (1.0.5):
+    - GTMSessionFetcher (~> 1.1)
   - GoogleAppUtilities (1.1.2):
     - GoogleSymbolUtilities (~> 1.1)
   - GoogleInterchangeUtilities (1.2.2):
@@ -94,6 +99,8 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Messaging
   - Google/SignIn
+  - GoogleAPIClient/Calendar (~> 1.0.2)
+  - GTMOAuth2 (~> 1.1.0)
   - MBProgressHUD
   - SDWebImage (~> 3.8)
 
@@ -112,6 +119,7 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: ba1e640935235e5fac39dfa816fe7660e72e1a8a
   FirebaseMessaging: acf66347e43c5637c697060c3001d25c809a4131
   Google: 813c467362eabc11385f5a5cc9ad0cb651a58f4e
+  GoogleAPIClient: 4a6b0b807de8b1115a2835180b25dd93dc60f1ea
   GoogleAppUtilities: a8a552aa74f6597f805e45b5a3962766c3134973
   GoogleInterchangeUtilities: d5bc4d88d5b661ab72f9d70c58d02ca8c27ad1f7
   GoogleSignIn: a8694c0a8e6d1b0ec77c58014de5bfd4ba2fa766
@@ -122,6 +130,6 @@ SPEC CHECKSUMS:
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
 
-PODFILE CHECKSUM: 1b59f42c253ea26d13ac13fd6410ec8213c9a443
+PODFILE CHECKSUM: 52548fecb7849f55914c0499a6faad68be31c0cb
 
 COCOAPODS: 1.1.1

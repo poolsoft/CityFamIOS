@@ -16,6 +16,8 @@ pod 'FacebookCore'
 pod 'FacebookLogin'
 pod 'FacebookShare'
 pod 'MBProgressHUD'
+pod 'GoogleAPIClient/Calendar', '~> 1.0.2'
+pod 'GTMOAuth2', '~> 1.1.0'
 
   target 'cityfamTests' do
     inherit! :search_paths

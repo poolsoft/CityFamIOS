@@ -39,6 +39,8 @@ class EventDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.shareEventBtn.addTarget(self, action: #selector(EventDetailVC.shareBtnAction), for: .touchUpInside)
+        
         var locationManager:CLLocationManager!
 
         //Map setup
@@ -57,7 +59,12 @@ class EventDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
     }
-
+    
+    func shareBtnAction(){
+        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "calenderVc") as! CalenderVC
+        self.navigationController?.pushViewController(secondViewController, animated: true)
+    }
+    
     func showEventDetail(){
         if (self.eventDetailDict.value(forKey: "userId") as! String) == UserDefaults.standard.string(forKey: "USER_DEFAULT_userId_Key"){
             self.editEventBtn.isHidden = false
