@@ -12,7 +12,9 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
     
     //MARK:- Outlets & Properties
     
-    @IBOutlet var settingsBtnWidthConst: NSLayoutConstraint!
+    @IBOutlet var settingsBtn: UIButtonFontSize!
+    @IBOutlet var editBtnHeightConstraint: NSLayoutConstraint!
+
     @IBOutlet var userImg: UIImageViewCustomClass!
     @IBOutlet var userNameLbl: UILabelFontSize!
     @IBOutlet var userLocationLbl: UILabelFontSize!
@@ -66,7 +68,8 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
         self.manageConnectionBtn.isHidden = false
         self.addBtn.isHidden = true
         self.editBtn.isHidden = true
-        self.settingsBtnWidthConst.constant = 0.0
+        self.editBtnHeightConstraint.constant = 0.0
+        self.settingsBtn.isHidden = true
     }
     
     func notMyFriendProfileLayoutSetup(){
@@ -76,7 +79,8 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
         self.manageConnectionBtn.isHidden = true
         self.addBtn.isHidden = false
         self.editBtn.isHidden = true
-        self.settingsBtnWidthConst.constant = 0.0
+        self.editBtnHeightConstraint.constant = 0.0
+        self.settingsBtn.isHidden = true
     }
     
     func myProfileLayoutSetup(){
@@ -86,7 +90,8 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
         self.manageConnectionBtn.isHidden = true
         self.addBtn.isHidden = true
         self.editBtn.isHidden = false
-        self.settingsBtnWidthConst.constant = 30.0
+        self.editBtnHeightConstraint.constant = 30.0
+        self.settingsBtn.isHidden = false
     }
     
     //Api's results

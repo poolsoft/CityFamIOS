@@ -23,7 +23,8 @@ class AddPeopleVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UI
     var myContactsListArr = [NSDictionary]()
     var selectedSegmentValue = Int()
     var isComingFromProfileScreen = Bool()
-    
+    let arrOfPhoneContacts = NSMutableArray()
+
     //MARK:- View life cycle
     
     override func viewDidLoad() {
@@ -81,6 +82,75 @@ class AddPeopleVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UI
         }
         else{
             CommonFxns.showAlert(self, message: internetConnectionError, title: oopsText)
+        }
+    }
+    
+    //Get list of phone contacts which have Email address
+    func getMyContacts(){
+        let store = CNContactStore()
+        store.requestAccess(for: .contacts, completionHandler: {
+            granted, error in
+            
+            guard granted else {
+                let alert = UIAlertController(title: "Can't access contact", message: "Please go to Settings -> MyApp to enable contact permission", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
+            
+            let keysToFetch = CNContactFetchRequest(keysToFetch:[CNContactIdentifierKey as CNKeyDescriptor, CNContactEmailAddressesKey as CNKeyDescriptor, CNContactBirthdayKey as CNKeyDescriptor, CNContactImageDataKey as CNKeyDescriptor, CNContactPhoneNumbersKey as CNKeyDescriptor, CNContactFormatter.descriptorForRequiredKeys(for: CNContactFormatterStyle.fullName)])
+            // let keysToFetch = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName), CNContactPhoneNumbersKey,CNContactEmailAddressesKey,CNContactBirthdayKey] as [Any]
+            
+            //let request = CNContactFetchRequest(keysToFetch: keysToFetch as! [CNKeyDescriptor])
+            var cnContacts = [CNContact]()
+            
+            do {
+                try store.enumerateContacts(with: keysToFetch){
+                    (contact, cursor) -> Void in
+                    cnContacts.append(contact)
+                    
+                    let arrEmail = contact.emailAddresses as NSArray
+                    
+                    if arrEmail.count > 0 {
+                        
+                        let dict = NSMutableDictionary()
+                        dict.setValue((contact.givenName+" "+contact.familyName), forKey: "name")
+                        let emails = NSMutableArray()
+                        
+                        for index in 0...arrEmail.count-1 {
+                            
+                            let email = arrEmail.object(at: index)
+                            emails.add(email )
+                        }
+                        dict.setValue(emails, forKey: "email")
+                        self.arrOfPhoneContacts.add(dict) // Either retrieve only those contact who have email and store only name and email
+                    }
+                    //self.arrContacts.add(contact) // either store all contact with all detail and simplifies later on
+                    
+                }
+            }
+            catch let error {
+                NSLog("Fetch contact error: \(error)")
+            }
+            print("all contacts:\(self.arrOfPhoneContacts)")
+            
+            //            print(">>>> Contact list:")
+            //            for contact in cnContacts {
+            //                let fullName = CNContactFormatter.string(from: contact, style: .fullName) ?? "No Name"
+            //                let email = contact.emailAddresses
+            //                print("\(fullName): \(contact.phoneNumbers.description)")
+            //            }
+        })
+        
+    }
+
+    //retreive
+    
+    func retreiveEmail(){
+        for index in 0 ..< self.arrOfPhoneContacts.count-1 {
+            let dict = self.arrOfPhoneContacts[index] as! NSDictionary
+            print(dict.value(forKey: "name")!)
+            print(dict.value(forKey: "email")!)
         }
     }
     
@@ -195,6 +265,7 @@ class AddPeopleVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UI
             selectedSegmentValue = 1
             self.myFriendsTableView.isHidden = true
             self.myContactsTableView.isHidden = false
+            self.getMyContacts()
             
             if self.myContactsListArr.count == 0{
                 //get my contacts

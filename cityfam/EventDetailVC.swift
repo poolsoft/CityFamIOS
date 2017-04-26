@@ -39,6 +39,7 @@ class EventDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("----------------",eventDetailDict)
         self.shareEventBtn.addTarget(self, action: #selector(EventDetailVC.shareBtnAction), for: .touchUpInside)
         
         var locationManager:CLLocationManager!
@@ -75,7 +76,7 @@ class EventDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
         //event Name, timings and location
         self.eventName.text = self.eventDetailDict.value(forKey: "eventName") as? String
         self.eventDate.text = self.eventDetailDict.value(forKey: "eventStartDate") as? String
-        self.eventTimeAndAddress.text = "\(self.eventDetailDict.value(forKey: "eventStartTime") as? String) to \(self.eventDetailDict.value(forKey: "eventEndTime") as? String) at \(self.eventDetailDict.value(forKey: "eventAddress") as? String)"
+        self.eventTimeAndAddress.text = "\(self.eventDetailDict.value(forKey: "eventStartTime") as! String) to \(self.eventDetailDict.value(forKey: "eventEndTime") as! String) at \(self.eventDetailDict.value(forKey: "eventAddress") as! String)"
         
         //Events description
         self.eventDesclbl.text = self.eventDetailDict.value(forKey: "description") as? String
@@ -111,7 +112,7 @@ class EventDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
         // Drop a pin at user's Current Location
         let myAnnotation: MKPointAnnotation = MKPointAnnotation()
         myAnnotation.coordinate = CLLocationCoordinate2DMake(latitude!, longitude!);
-        myAnnotation.title = "Current location"
+        myAnnotation.title = self.eventDetailDict.value(forKey: "eventAddress") as? String//eventAddress
         mapView.addAnnotation(myAnnotation)
     }
     

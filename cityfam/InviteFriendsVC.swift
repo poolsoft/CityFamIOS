@@ -19,7 +19,7 @@ class InviteFriendsVC: UIViewController,UITextFieldDelegate,UITableViewDelegate,
     @IBOutlet var myContactsBtn: UIButtonCustomClass!
     @IBOutlet var myGroupBtn: UIButtonCustomClass!
     
-    let arrContacts = NSMutableArray()
+    let arrOfPhoneContacts = NSMutableArray()
     var myFriendsListArr = [NSDictionary]()
     var myGroupsListArr = [NSDictionary]()
     var searchContactsListArr = [NSDictionary]()
@@ -98,8 +98,8 @@ class InviteFriendsVC: UIViewController,UITextFieldDelegate,UITableViewDelegate,
     //retreive
     
     func retreiveEmail(){
-        for index in 0 ..< self.arrContacts.count-1 {
-            let dict = self.arrContacts[index] as! NSDictionary
+        for index in 0 ..< self.arrOfPhoneContacts.count-1 {
+            let dict = self.arrOfPhoneContacts[index] as! NSDictionary
             print(dict.value(forKey: "name")!)
             print(dict.value(forKey: "email")!)
         }
@@ -146,7 +146,7 @@ class InviteFriendsVC: UIViewController,UITextFieldDelegate,UITableViewDelegate,
                             emails.add(email )
                         }
                         dict.setValue(emails, forKey: "email")
-                        self.arrContacts.add(dict) // Either retrieve only those contact who have email and store only name and email
+                        self.arrOfPhoneContacts.add(dict) // Either retrieve only those contact who have email and store only name and email
                     }
                     //self.arrContacts.add(contact) // either store all contact with all detail and simplifies later on
                     
@@ -155,7 +155,7 @@ class InviteFriendsVC: UIViewController,UITextFieldDelegate,UITableViewDelegate,
             catch let error {
                 NSLog("Fetch contact error: \(error)")
             }
-            print("all contacts:\(self.arrContacts)")
+            print("all contacts:\(self.arrOfPhoneContacts)")
             
             //            print(">>>> Contact list:")
             //            for contact in cnContacts {

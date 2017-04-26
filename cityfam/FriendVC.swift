@@ -278,7 +278,7 @@ class FriendVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UITex
 
                 break
             case "1":
-                cell.userPendingStatusLbl.text = "pending"
+                cell.userPendingStatusLbl.text = "Pending"
                 cell.userStatusLbl.isHidden = true
                 cell.userStatusBtn.isHidden = true
                 break
