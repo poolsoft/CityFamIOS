@@ -13,13 +13,18 @@ class InvitationsVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
     //MARK:- Outlets & Properties
     
     @IBOutlet var invitationsTableView: UITableView!
+    
     var inviatationsListArr = [NSDictionary]()
+    private let invitationsTableRefreshControl = UIRefreshControl()
     
     //MARK:- View life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.getInvitationsApi()
+        
+        // Configure Refresh Control
+        invitationsTableRefreshControl.addTarget(self, action: #selector(InvitationsVC.refreshData(sender:)), for: .valueChanged)
     }
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
@@ -28,12 +33,18 @@ class InvitationsVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
     
     //MARK:- methods
     
+    //Pull to refresh Action
+    func refreshData(sender:UIRefreshControl){
+        self.getInvitationsApi()
+    }
+    
     //Get Api's Results
     
     //Server failure Alert
     func ServerError(){
         appDelegate.hideProgressHUD(view: self.view)
         CommonFxns.showAlert(self, message: networkOperationErrorAlert, title: errorAlertTitle)
+        self.invitationsTableRefreshControl.endRefreshing()
     }
     
     //Get inviations List Api Result
@@ -50,6 +61,7 @@ class InvitationsVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
             else{
                 CommonFxns.showAlert(self, message: (result.value(forKey: "error") as? String)!, title: errorAlertTitle)
             }
+            self.invitationsTableRefreshControl.endRefreshing()
         })
     }
 

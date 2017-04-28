@@ -206,7 +206,7 @@ class FriendVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UITex
         })
     }
     
-    //Get CityFam user list Api call
+    //Send Request to user(Manage Frienship) Api call
     func manageFriendshipApi(anotherUserId:String) {
         if CommonFxns.isInternetAvailable(){
             appDelegate.showProgressHUD(view: self.view)
@@ -218,7 +218,7 @@ class FriendVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UITex
         }
     }
     
-    //Get CityFam user list Api result
+    //Send Request to user(Manage Frienship) Api Result
     func manageFriendshipResult(_ result:AnyObject){
         DispatchQueue.main.async( execute: {
             appDelegate.hideProgressHUD(view: self.view)

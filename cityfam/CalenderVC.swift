@@ -13,7 +13,9 @@ import GTMOAuth2
 class CalenderVC: UIViewController {
 
     private let kKeychainItemName = "Google Calendar API"
-    private let kClientID = "710694110264-l6pvnqomt95d5te8vgrm2df2cluefst4.apps.googleusercontent.com"
+    //private let kClientID = "710694110264-l6pvnqomt95d5te8vgrm2df2cluefst4.apps.googleusercontent.com"
+    
+    private let kClientID = "835412959399-ehb642hsb952mhp9ub14atmva8kqektf.apps.googleusercontent.com"
     
     // If modifying these scopes, delete your previously saved credentials by
     // resetting the iOS simulator or uninstall the app.

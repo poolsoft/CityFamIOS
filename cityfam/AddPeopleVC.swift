@@ -19,6 +19,7 @@ class AddPeopleVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UI
     @IBOutlet var myFriendsTableView: UITableView!
     @IBOutlet var myContactsTableView: UITableView!
     
+    @IBOutlet var titleLbl: UILabelFontSize!
     var myFriendsListArr = [NSDictionary]()
     var myContactsListArr = [NSDictionary]()
     var selectedSegmentValue = Int()
@@ -36,8 +37,12 @@ class AddPeopleVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UI
         self.myContactsTableView.isHidden = true
         self.tickBtn.isHidden = true
         
+        if isComingFromProfileScreen{
+            self.titleLbl.text = "Friends"
+        }
         //Get friends list Api call
         self.getMyFriendsListApi()
+        self.getMyContacts()
     }
     
     //MARK:- Methods
@@ -60,10 +65,6 @@ class AddPeopleVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UI
                 if self.selectedSegmentValue == 1{
                     self.myFriendsListArr = resultArr
                     self.myFriendsTableView.reloadData()
-                }
-                else{
-                    self.myContactsListArr = resultArr
-                    self.myContactsTableView.reloadData()
                 }
             }
             else{
@@ -140,18 +141,28 @@ class AddPeopleVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UI
             //                let email = contact.emailAddresses
             //                print("\(fullName): \(contact.phoneNumbers.description)")
             //            }
+            
         })
         
     }
 
     //retreive
     
-    func retreiveEmail(){
-        for index in 0 ..< self.arrOfPhoneContacts.count-1 {
+    func retreiveEmail()->[NSDictionary]{
+        var dictArr = [NSDictionary]()
+        for index in 0 ..< self.arrOfPhoneContacts.count {
             let dict = self.arrOfPhoneContacts[index] as! NSDictionary
-            print(dict.value(forKey: "name")!)
-            print(dict.value(forKey: "email")!)
+            
+            let emailArr = dict.value(forKey: "email")! as! Array<Any>
+            dictArr.insert(["name":dict.value(forKey: "name")!,"email": (emailArr[0] as AnyObject).value(forKey: "value")!], at: index)
+
+           // print(dict.value(forKey: "name")!)
+           // print(dict.value(forKey: "email")!)
         }
+        
+        print("Sorted list",dictArr)
+        
+        return dictArr
     }
     
     // dismissing keyboard on pressing return key
@@ -199,15 +210,30 @@ class AddPeopleVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UI
     //}
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return self.myFriendsListArr.count
+        if tableView.tag == 1{
+            return self.myFriendsListArr.count
+        }
+        else{
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
+        if tableView.tag == 1{
+            return 40
+        }
+        else{
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return self.myFriendsListArr[section].value(forKey: "letters") as? String
+        if tableView.tag == 1{
+            return self.myFriendsListArr[section].value(forKey: "letters") as? String
+        }
+        else{
+            return ""
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
@@ -234,6 +260,10 @@ class AddPeopleVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UI
         }
         else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "myContactsCell", for: indexPath) as! AddPeopleMyContactsTableViewCell
+            
+            let dict = self.myContactsListArr[indexPath.row]
+            
+            cell.userNameLbl.text = dict.value(forKey: "name") as? String
             return cell
         }
         
@@ -265,10 +295,11 @@ class AddPeopleVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UI
             selectedSegmentValue = 1
             self.myFriendsTableView.isHidden = true
             self.myContactsTableView.isHidden = false
-            self.getMyContacts()
             
             if self.myContactsListArr.count == 0{
                 //get my contacts
+                myContactsListArr = self.retreiveEmail()
+                self.myContactsTableView.reloadData()
             }
         }
     }
@@ -276,5 +307,27 @@ class AddPeopleVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UI
     @IBAction func backButtonAction(_ sender: Any) {
         _ = self.navigationController?.popViewController(animated: true)
     }
+    
+//    all contacts:(
+//    {
+//    email =         (
+//    "<CNLabeledValue: 0xb8aa150: identifier=3394DCBF-A9B1-4F2D-A934-3B36C31DE460, label=_$!<Home>!$_, value=test@gmail.com>"
+//    );
+//    name = "Munish Aggarwal";
+//    },
+//    {
+//    email =         (
+//    "<CNLabeledValue: 0xfecd340: identifier=5D0BC8EF-2B2A-4BB7-AF38-BB636D6A2169, label=_$!<Home>!$_, value=developers@imarkinfotech.com>"
+//    );
+//    name = "Piyush Gupta";
+//    },
+//    {
+//    email =         (
+//    "<CNLabeledValue: 0x9f1ad80: identifier=BBE5CBDA-23AF-4BC9-AFDF-4DE5BF513477, label=_$!<Home>!$_, value=developers@imarkinfotech.com>"
+//    );
+//    name = "Piyush Gupta";
+//    }
+//    )
+//    
     
 }

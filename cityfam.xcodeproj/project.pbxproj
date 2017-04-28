@@ -85,7 +85,6 @@
 		A19448D61EA48B4B0060D30E /* AddPeopleMyFriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19448D51EA48B4A0060D30E /* AddPeopleMyFriendsTableViewCell.swift */; };
 		A19448D81EA48BA80060D30E /* AddPeopleMyContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19448D71EA48BA80060D30E /* AddPeopleMyContactsTableViewCell.swift */; };
 		A19448DA1EA4D1A60060D30E /* EventDetailImagesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19448D91EA4D1A50060D30E /* EventDetailImagesCollectionViewCell.swift */; };
-		A19448DC1EA4F3840060D30E /* HomePageFriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19448DB1EA4F3830060D30E /* HomePageFriendsTableViewCell.swift */; };
 		A1A92C941EA8D3B80074AAA2 /* ProfileVcImagesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A92C931EA8D3B70074AAA2 /* ProfileVcImagesCollectionViewCell.swift */; };
 		A1D063B11E97C027004BF404 /* MapViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D063B01E97C027004BF404 /* MapViewVC.swift */; };
 		A1D063B31E97C368004BF404 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1D063B21E97C368004BF404 /* Contacts.framework */; };
@@ -200,7 +199,6 @@
 		A19448D51EA48B4A0060D30E /* AddPeopleMyFriendsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPeopleMyFriendsTableViewCell.swift; sourceTree = "<group>"; };
 		A19448D71EA48BA80060D30E /* AddPeopleMyContactsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPeopleMyContactsTableViewCell.swift; sourceTree = "<group>"; };
 		A19448D91EA4D1A50060D30E /* EventDetailImagesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailImagesCollectionViewCell.swift; sourceTree = "<group>"; };
-		A19448DB1EA4F3830060D30E /* HomePageFriendsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageFriendsTableViewCell.swift; sourceTree = "<group>"; };
 		A1A92C931EA8D3B70074AAA2 /* ProfileVcImagesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVcImagesCollectionViewCell.swift; sourceTree = "<group>"; };
 		A1D063B01E97C027004BF404 /* MapViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewVC.swift; sourceTree = "<group>"; };
 		A1D063B21E97C368004BF404 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
@@ -440,7 +438,6 @@
 				A19448D51EA48B4A0060D30E /* AddPeopleMyFriendsTableViewCell.swift */,
 				A19448D71EA48BA80060D30E /* AddPeopleMyContactsTableViewCell.swift */,
 				A19448D91EA4D1A50060D30E /* EventDetailImagesCollectionViewCell.swift */,
-				A19448DB1EA4F3830060D30E /* HomePageFriendsTableViewCell.swift */,
 				A181A10D1EA5EB650092ECD0 /* HomeFriendsTableViewCell.swift */,
 				A1A92C931EA8D3B70074AAA2 /* ProfileVcImagesCollectionViewCell.swift */,
 			);
@@ -776,7 +773,6 @@
 				07254B621E6804F1009417BA /* SettingsVC.swift in Sources */,
 				07F057E11E66DF95008B8120 /* AttendingVC.swift in Sources */,
 				07254B6A1E681490009417BA /* GroupDetailVC.swift in Sources */,
-				A19448DC1EA4F3840060D30E /* HomePageFriendsTableViewCell.swift in Sources */,
 				078633EF1E6568B800680A1C /* HomePageVC.swift in Sources */,
 				07F057DD1E66D76F008B8120 /* FilterEventsVC.swift in Sources */,
 				07C34C521E810B0900A9699C /* Constant.swift in Sources */,

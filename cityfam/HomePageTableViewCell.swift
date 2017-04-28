@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol HomePageTableViewCellProtocol {
+    func exploreTabChangeStatusOfEventSegmentControl(cell: HomePageTableViewCell,sender:UIButton)
+}
+
 class HomePageTableViewCell: UITableViewCell {
 
     //MARK:- Outlets & Properties
@@ -21,6 +25,8 @@ class HomePageTableViewCell: UITableViewCell {
     @IBOutlet var acceptBtn: UIButtonCustomClass!
     @IBOutlet var declineBtn: UIButtonCustomClass!
     
+    var delegate: HomePageTableViewCellProtocol?
+    
     //MARK:- Methods
     
     override func awakeFromNib() {
@@ -31,9 +37,10 @@ class HomePageTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    //MARK:- Button Actions
+    //MARK:- Button IBAction
     
-    @IBAction func segmentControlBtnAction(_ sender: UIButton) {
+    @IBAction func changeStatusOfEventSegmentControlAction(_ sender: UIButtonCustomClass) {
+        self.delegate?.exploreTabChangeStatusOfEventSegmentControl(cell: self, sender: sender)
     }
-
+    
 }

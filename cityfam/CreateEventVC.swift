@@ -166,7 +166,7 @@ class CreateEventVC: UIViewController,UITextFieldDelegate,UIImagePickerControlle
                     "placeName": self.eventLocationLbl.text!,
                     "categories": self.categoryId,
                     "eventDescription":CommonFxns.trimString(string: self.eventDetailTxtFields.text!),
-                    "ticketLink":""
+                    "ticketLink":CommonFxns.trimString(string: self.addTicketsLinkTxtField.text!)
                     ] as [String : Any]
                 
                 print(parameters)

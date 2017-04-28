@@ -11,8 +11,6 @@ import Foundation
 //MARK:- Api's Strings
 
 let baseUrl = "http://imarkclients.com/cityfam/api/"
- 
-//let baseUrl = "http://imarkclients.com/cityfam/wp-admin/api/"
 
 // local strings
 
@@ -26,6 +24,8 @@ let successAlertTitle = "Success!"
 let oopsText = "Oops!"
 let messageText = "Message!"
 let alertText = "Alert!"
+let yesText = "Yes"
+let noText = "No"
 let publicButtonDescription = "Everyone on cityfam can see this."
 let privateButtonDescription = "Only your invited people can see this."
 let friendsButtonDescription = "Only your friends can see this."
@@ -39,6 +39,9 @@ let enterValidEmailAlert = "Enter valid Email."
 let pwdMismatchAlert = "Passowrd not matched."
 let incorrectPwdAlert = "Passowrd must be of 8 characters"
 
+//Setting screen
+ 
+ let logoutAlert = "Are you sure you want to logout?"
  
 //Forgot password screen
  

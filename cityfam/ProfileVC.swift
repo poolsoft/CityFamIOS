@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,GetUserProfileServiceAlamofire,UIImagePickerControllerDelegate,UINavigationControllerDelegate,AddPhototoToProfileServiceAlamofire {
+class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,GetUserProfileServiceAlamofire,UIImagePickerControllerDelegate,UINavigationControllerDelegate,AddPhototoToProfileServiceAlamofire,ManageFriendshipServiceAlamofire {
     
     //MARK:- Outlets & Properties
     
@@ -30,7 +30,6 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
     var profileTableViewArray = ["My Groups", "My Plans", "My Friends"]
     var imagesArray = NSArray()
     var profileInfoDict = NSDictionary()
-    
     let imagePicker = UIImagePickerController()
     var userPhotosToUpload:UIImage!
     
@@ -41,13 +40,6 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
         self.notMyFriendProfileLayoutSetup()
         imagePicker.delegate = self
 
-//        manageConnectionBtn.addTarget(self, action: #selector(ProfileVC.unfriendBtnAction(sender:)), for: .touchUpInside)
-//        editBtn.addTarget(self, action: #selector(ProfileVC.editBtnAction(sender:)), for: .touchUpInside)
-//        addBtn.addTarget(self, action: #selector(ProfileVC.addBtnAction(sender:)), for: .touchUpInside)
-//        seeAllPhotosBtn.addTarget(self, action: #selector(ProfileVC.editBtnAction(sender:)), for: .touchUpInside)
-//        addBtn.addTarget(self, action: #selector(ProfileVC.addBtnAction(sender:)), for: .touchUpInside)
-//        manageConnectionBtn.addTarget(self, action: #selector(ProfileVC.unfriendBtnAction(sender:)), for: .touchUpInside)
-        
         //adding notification observer
         NotificationCenter.default.addObserver(self, selector: #selector(ProfileVC.updateProfileNotification), name: NSNotification.Name(rawValue: "updateProfileInfoNotification"), object: nil)
         
@@ -57,10 +49,12 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
     
     //MARK:- Methods
     
+    //Update profile notification fired
     func updateProfileNotification(){
         self.getUserProfileApi()
     }
     
+    //My friends's profile screen setup
     func myFriendProfileLayoutSetup(){
         self.userLocationLbl.isHidden = false
         self.photosBgView.isHidden = false
@@ -72,6 +66,7 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
         self.settingsBtn.isHidden = true
     }
     
+    //City fam user's profile screen setup
     func notMyFriendProfileLayoutSetup(){
         self.userLocationLbl.isHidden = true
         self.photosBgView.isHidden = true
@@ -83,6 +78,7 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
         self.settingsBtn.isHidden = true
     }
     
+    //My prfile's screen setup
     func myProfileLayoutSetup(){
         self.userLocationLbl.isHidden = false
         self.photosBgView.isHidden = false
@@ -102,7 +98,7 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
         CommonFxns.showAlert(self, message: networkOperationErrorAlert, title: errorAlertTitle)
     }
     
-    //Get CityFam user list Api call
+    //Get User's Profile list Api call
     func getUserProfileApi() {
         if CommonFxns.isInternetAvailable(){
             appDelegate.showProgressHUD(view: self.view)
@@ -114,7 +110,7 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
         }
     }
     
-    //Get CityFam user list Api result
+    //Get User's Profile Api result
     func getUserProfileResult(_ result:AnyObject){
         DispatchQueue.main.async( execute: {
             appDelegate.hideProgressHUD(view: self.view)
@@ -152,13 +148,38 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
                     default:
                         break
                     }
-
             }
             else{
                 CommonFxns.showAlert(self, message: (result.value(forKey: "error") as? String)!, title: errorAlertTitle)
             }
         })
     }
+    
+    //Send Request to user(Manage Frienship) Api call
+    func manageFriendshipApi(anotherUserId:String) {
+        if CommonFxns.isInternetAvailable(){
+            appDelegate.showProgressHUD(view: self.view)
+            FriendsAlamofireIntegration.sharedInstance.manageFriendshipServiceDelegate = self
+            FriendsAlamofireIntegration.sharedInstance.manageFriendshipApi(anotherUserId: anotherUserId, status: 0)
+        }
+        else{
+            CommonFxns.showAlert(self, message: internetConnectionError, title: oopsText)
+        }
+    }
+    
+    //Send Request to user(Manage Frienship) Api Result
+    func manageFriendshipResult(_ result:AnyObject){
+        DispatchQueue.main.async( execute: {
+            appDelegate.hideProgressHUD(view: self.view)
+            if (result.value(forKey: "success")as! Int == 1){
+                _ = self.navigationController?.popViewController(animated: true)
+            }
+            else{
+                CommonFxns.showAlert(self, message: (result.value(forKey: "error") as? String)!, title: errorAlertTitle)
+            }
+        })
+    }
+    
     
     //AddPhotoToProfile Api call
     func addPhotoToProfileApi() {
@@ -249,14 +270,15 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
     }
     
     //MARK:- Button Actions
-
+    
+    //Add photos to Login user's profile
     @IBAction func addPhotosBtnAction(_ sender: Any) {
-        
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true, completion: nil)
     }
     
+    //See all photos of login user
     @IBAction func seeAllPhotosBtnAction(_ sender: Any) {
     }
     
@@ -265,6 +287,7 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
         _ = self.navigationController?.popViewController(animated: true)
     }
     
+    //Go to Profile's setting screen
     @IBAction func settingsBtnAction(_ sender: UIButton) {
         let settingsVcObj = self.storyboard?.instantiateViewController(withIdentifier: "settingsVc") as! SettingsVC
         self.navigationController?.pushViewController(settingsVcObj, animated: true)
@@ -272,7 +295,30 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
 
     //Manage Connection with this user (Unfriend)
     @IBAction func manageConnectionBtnAction(_ sender: UIButton) {
-        //Unfriend this user Api call
+        
+        let optionMenuController = UIAlertController(title: nil, message: "Choose Option from Action Sheet", preferredStyle: .actionSheet)
+        
+        // Create UIAlertAction for UIAlertController
+        
+        let unfriendAction = UIAlertAction(title: "Add", style: .default, handler: {
+            (alert: UIAlertAction!) -> Void in
+            //Unfriend this user Api call
+
+        })
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {
+            (alert: UIAlertAction!) -> Void in
+            print("Cancel")
+        })
+        
+        // Add UIAlertAction in UIAlertController
+
+        optionMenuController.addAction(unfriendAction)
+        optionMenuController.addAction(cancelAction)
+        
+        // Present UIAlertController with Action Sheet
+        
+        self.present(optionMenuController, animated: true, completion: nil)
+        
     }
     
     //Go to Edit MyProfile screen
@@ -312,6 +358,5 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
-
 
 }

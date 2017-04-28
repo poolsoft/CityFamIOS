@@ -33,22 +33,33 @@ class SettingsVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
     //Logout user profile
     @IBAction func logoutButtonAction(_ sender: Any) {
-       // UserDefaults.standard.removeObject(forKey: USER_DEFAULT_userId_Key)
-
-        let intialVcObj = self.storyboard?.instantiateViewController(withIdentifier: "logInVC") as! LogInVC
-        self.navigationController?.pushViewController(intialVcObj, animated: true)
         
-        // Clearing NSUserDefault
-        let appDomain = Bundle.main.bundleIdentifier!
-        UserDefaults.standard.removePersistentDomain(forName: appDomain)
+        
+        
+        
+        let refreshAlert = UIAlertController(title: alertText, message: logoutAlert, preferredStyle: UIAlertControllerStyle.alert)
+        refreshAlert.addAction(UIAlertAction(title: yesText, style: .default, handler: { (action: UIAlertAction!) in
+            // UserDefaults.standard.removeObject(forKey: USER_DEFAULT_userId_Key)
+            
+            let intialVcObj = self.storyboard?.instantiateViewController(withIdentifier: "logInVC") as! LogInVC
+            self.navigationController?.pushViewController(intialVcObj, animated: true)
+            
+            // Clearing NSUserDefault
+            let appDomain = Bundle.main.bundleIdentifier!
+            UserDefaults.standard.removePersistentDomain(forName: appDomain)
+            
+            // moving to login screen
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let loginVc = storyboard.instantiateViewController(withIdentifier: "logInVC") as! LogInVC
+            var vcArray = (appDelegate.window?.rootViewController as! UINavigationController).viewControllers
+            vcArray.removeAll()
+            vcArray.append(loginVc)
+            (appDelegate.window?.rootViewController as! UINavigationController).setViewControllers(vcArray, animated: false)
+        }))
+        refreshAlert.addAction(UIAlertAction(title: noText, style: .cancel, handler: { (action: UIAlertAction!) in
+        }))
+        present(refreshAlert, animated: true, completion: nil)
 
-        // moving to login screen
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let loginVc = storyboard.instantiateViewController(withIdentifier: "logInVC") as! LogInVC
-        var vcArray = (appDelegate.window?.rootViewController as! UINavigationController).viewControllers
-        vcArray.removeAll()
-        vcArray.append(loginVc)
-        (appDelegate.window?.rootViewController as! UINavigationController).setViewControllers(vcArray, animated: false)
     }
     
     //MARK: UITableView Functions

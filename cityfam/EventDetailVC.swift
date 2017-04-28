@@ -13,23 +13,25 @@ class EventDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
 
     //MARK:- Outlets & Properties
     
-    @IBOutlet var mapView: MKMapView!
+    @IBOutlet var eventTicketLbl: UILabelFontSize!
     @IBOutlet var eventTimeAndAddress: UILabelFontSize!
     @IBOutlet var eventDate: UILabelFontSize!
     @IBOutlet var eventName: UILabelFontSize!
-    @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var userRole: UILabelFontSize!
     @IBOutlet var userName: UILabelFontSize!
     @IBOutlet var userProfileImg: UIImageViewCustomClass!
     @IBOutlet var eventDesclbl: UILabelFontSize!
-    @IBOutlet var ticketsBgViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet var acceptButton: UIButtonCustomClass!
     @IBOutlet var declineButton: UIButtonCustomClass!
     @IBOutlet var interestedButton: UIButtonCustomClass!
-    @IBOutlet var shareView: UIView!
     @IBOutlet var shareEventBtn: UIButtonCustomClass!
     @IBOutlet var editEventBtn: UIButtonCustomClass!
-    
+    @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet var shareBtnTopConst: NSLayoutConstraint!
+    @IBOutlet var ticketsBgViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet var mapView: MKMapView!
+    @IBOutlet var shareView: UIView!
+
     let typeOfEventsUsersList = ["Attending","Invited","Interested","Comments"]
     var eventDetailDict = NSDictionary()
     var eventImagesArray = [String]()
@@ -58,20 +60,24 @@ class EventDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestAlwaysAuthorization()
+       // locationManager.requestAlwaysAuthorization()
     }
-    
-    func shareBtnAction(){
-        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "calenderVc") as! CalenderVC
-        self.navigationController?.pushViewController(secondViewController, animated: true)
-    }
-    
+
+    //Method to show Event's detail on Screen
     func showEventDetail(){
-        if (self.eventDetailDict.value(forKey: "userId") as! String) == UserDefaults.standard.string(forKey: "USER_DEFAULT_userId_Key"){
+        //Check Event is created by Login user or another user
+        if (self.eventDetailDict.value(forKey: "userId") as! String) == UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key)!{
             self.editEventBtn.isHidden = false
+            self.shareBtnTopConst.constant = 60+self.editEventBtn.bounds.height
         }
         else{
             self.editEventBtn.isHidden = true
+            if self.eventDetailDict.value(forKey: "canShareEvent") as! String == "1"{
+                self.shareBtnTopConst.constant = 30
+            }
+            else{
+                self.shareEventBtn.isHidden = true
+            }
         }
         //event Name, timings and location
         self.eventName.text = self.eventDetailDict.value(forKey: "eventName") as? String
@@ -99,9 +105,15 @@ class EventDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
         let latitude = Double((self.eventDetailDict.value(forKey: "latitude") as? String)!)
         let longitude = Double((self.eventDetailDict.value(forKey: "longitude") as? String)!)
 
-//        if let ticketsLink = self.eventDetailDict.value(forKey: "ticketLink"){
-//            //self.eve
-//        }
+        //Check selected event has tickets or not
+        if (self.eventDetailDict.value(forKey: "ticketLink") as? String) != "" {
+            self.ticketsBgViewHeightConstraint.constant = 50.0
+            self.eventTicketLbl.text = self.eventDetailDict.value(forKey: "ticketLink") as? String
+        }
+        else{
+            self.ticketsBgViewHeightConstraint.constant = 0.0
+        }
+        
         
         //Show eventLocation on Map
         let center = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
@@ -148,35 +160,6 @@ class EventDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
         })
     }
     
-    //    description = imark;
-    //    eventAddress = "Event Location";
-    //    eventCoverImageUrl = "";
-    //    eventEndDate = "Thursday,April 27,2017";
-    //    eventEndTime = "06:30 AM";
-    //    eventId = 68;
-    //    eventImagesUrlArray =                 (
-    //    );
-    //    eventName = "hello party";
-    //    eventStartDate = "Wednesday,April 26,2017";
-    //    eventStartTime = "01:30 AM";
-    //    latitude = "";
-    //    longitude = "";
-    //    myStatus = "No Invitation Sent.";
-    //    numberOfComments = 0;
-    //    numberOfPeopleAttending = 25;
-    //    numberOfPeopleInterested = 25;
-    //    numberOfPeopleInvited = 25;
-    //    ticketLink = "";
-    //    userId = 29;
-    //    userImageUrl = "http://0.gravatar.com/avatar/f9f5a3edac178f9f956b1239d49d2081?s=96&d=mm&r=g";
-    //    userName = "Z9nh_jai";
-    //    userRole = "Normal User";
-    //},
-    
-    //UIcollection view delagates
-    
-//    EventDetailImagesCollectionViewCell
-    
     //MARK: UICollectionView Delegates
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
@@ -207,7 +190,7 @@ class EventDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
     }
     
-    //MARK: UITableView Functions
+    //MARK: UITableView Delegates & datasource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return typeOfEventsUsersList.count
@@ -258,28 +241,40 @@ class EventDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
         }
     }
     
-     //MARK: UIButton actions
+     //MARK: UIButton Actions
 
+    //Back btnAction
     @IBAction func backButtonAction(_ sender: Any) {
         _ = self.navigationController?.popViewController(animated: true)
     }
     
+    //Share with facebook
     @IBAction func facebookBtnAction(_ sender: Any) {
     }
-    
-    @IBAction func shareButtonAction(_ sender: Any) {
-        shareView.isHidden = false
+
+    //Share event with friends
+    @IBAction func shareBtnAction(_ sender: Any) {
+        //        shareView.isHidden = false
+        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "calenderVc") as! CalenderVC
+        self.navigationController?.pushViewController(secondViewController, animated: true)
+    }
+
+    //Edit this event
+    @IBAction func editBtnAction(_ sender: Any) {
+        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "createEventVc") as! CreateEventVC
+        self.navigationController?.pushViewController(secondViewController, animated: true)
     }
     
+    //Cancel sharing with facebook and google
     @IBAction func cancelButtonAction(_ sender: Any) {
         shareView.isHidden = true
     }
     
+    //Share event with google
     @IBAction func googleBtnAction(_ sender: Any) {
     }
     
-    //("Accept/ Decline/ Interested")
-
+    //"Accept/ Decline/ Interested" Segement control btn action
     @IBAction func segmentButtonsAction(_ sender: Any) {
         let button = sender as! UIButtonCustomClass
         if button == acceptButton{
@@ -310,6 +305,5 @@ class EventDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
             self.changeStatusOfEventApi(eventId: self.eventDetailDict.value(forKey: "eventId") as! String, status: "Interested")
         }
     }
-
 
 }

@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol HomeFriendsTableViewCellProtocol {
+    func friendsTabChangeStatusOfEventSegmentControl(cell: HomeFriendsTableViewCell,sender:UIButton)
+}
+
 class HomeFriendsTableViewCell: UITableViewCell {
 
     //MARK:- Outlets & Properties
@@ -21,6 +25,8 @@ class HomeFriendsTableViewCell: UITableViewCell {
     @IBOutlet var acceptBtn: UIButtonCustomClass!
     @IBOutlet var declineBtn: UIButtonCustomClass!
     
+    var delegate:HomeFriendsTableViewCellProtocol?
+    
     //MARK:- Methods
 
     override func awakeFromNib() {
@@ -29,6 +35,12 @@ class HomeFriendsTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+    //Button Actions
+    
+    @IBAction func changeStatusOfEventSegmentControlAction(_ sender: UIButtonCustomClass) {
+        self.delegate?.friendsTabChangeStatusOfEventSegmentControl(cell: self,sender:sender)
     }
 
 }

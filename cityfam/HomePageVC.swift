@@ -10,7 +10,7 @@ import UIKit
 import SDWebImage
 import EventKit
 
-class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,GetEventsListServiceAlamofire,ChangeStatusOfEventServiceAlamofire {
+class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,GetEventsListServiceAlamofire,ChangeStatusOfEventServiceAlamofire,HomeFriendsTableViewCellProtocol,HomePageTableViewCellProtocol {
     
     //MARK:- Outlets & Properties
     
@@ -21,7 +21,6 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
     
     private let friendsTableRefreshControl = UIRefreshControl()
     private let exploreTableRefreshControl = UIRefreshControl()
-
     var filtersDataDict = ["distance": "",
                             "categories": "",
                             "daysOfWeek": "",
@@ -124,6 +123,8 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
     func ServerError(){
         appDelegate.hideProgressHUD(view: self.view)
         CommonFxns.showAlert(self, message: networkOperationErrorAlert, title: errorAlertTitle)
+        self.friendsTableRefreshControl.endRefreshing()
+        self.exploreTableRefreshControl.endRefreshing()
     }
     
     //Get Events list Result of friends or public
@@ -211,6 +212,7 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
         
         if tableView.tag == 1{
             let cell:HomeFriendsTableViewCell = tableView.dequeueReusableCell(withIdentifier: "friendsCell", for: indexPath) as! HomeFriendsTableViewCell
+            cell.delegate = self
             let dict = self.friendsEventsListArr[indexPath.row]
             cell.eventName.text = dict.value(forKey: "eventName") as? String
             cell.noOfPeopleAttendingEventCountLbl.text = dict.value(forKey: "numberOfPeopleAttending") as? String
@@ -243,6 +245,7 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
         }
         else{
            let cell = tableView.dequeueReusableCell(withIdentifier: "exploreCell", for: indexPath) as! HomePageTableViewCell
+            cell.delegate = self
             let dict = self.publicEventsListArr[indexPath.row]
             cell.eventName.text = dict.value(forKey: "eventName") as? String
             cell.noOfPeopleAttendingEventCountLbl.text = dict.value(forKey: "numberOfPeopleAttending") as? String
@@ -288,6 +291,76 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
     
     //MARK: UIButton actions
 
+    //Change Status for friends's Events
+    func friendsTabChangeStatusOfEventSegmentControl(cell: HomeFriendsTableViewCell,sender:UIButton){
+        
+        let row = self.friendsTableView.indexPath(for: cell)?.row
+        if sender.tag == 1{
+            cell.acceptBtn.isSelected = true
+            cell.acceptBtn.backgroundColor = appNavColor
+            cell.declineBtn.isSelected = false
+            cell.declineBtn.backgroundColor = UIColor.clear
+            cell.interestedBtn.isSelected = false
+            cell.interestedBtn.backgroundColor = UIColor.clear
+            self.changeStatusOfEventApi(eventId: self.friendsEventsListArr[row!].value(forKey: "eventId") as! String, status: "Accept")
+//            self.changeStatusOfEventApi(eventId: self.eventDetailDict.value(forKey: "eventId") as! String, status: "Accept")
+        }
+        else if sender.tag == 2{
+            cell.declineBtn.isSelected = true
+            cell.declineBtn.backgroundColor = appNavColor
+            cell.interestedBtn.isSelected = false
+            cell.interestedBtn.backgroundColor = UIColor.clear
+            cell.acceptBtn.isSelected = false
+            cell.acceptBtn.backgroundColor = UIColor.clear
+            self.changeStatusOfEventApi(eventId: self.friendsEventsListArr[row!].value(forKey: "eventId") as! String, status: "Decline")
+        }
+        else{
+            cell.interestedBtn.isSelected = true
+            cell.interestedBtn.backgroundColor = appNavColor
+            cell.acceptBtn.isSelected = false
+            cell.acceptBtn.backgroundColor = UIColor.clear
+            cell.declineBtn.isSelected = false
+            cell.declineBtn.backgroundColor = UIColor.clear
+            self.changeStatusOfEventApi(eventId: self.friendsEventsListArr[row!].value(forKey: "eventId") as! String, status: "Interested")
+        }
+
+    }
+    
+    //Change Status for public Events
+    func exploreTabChangeStatusOfEventSegmentControl(cell: HomePageTableViewCell,sender:UIButton){
+        
+        let row = self.exploreTableView.indexPath(for: cell)?.row
+        if sender.tag == 1{
+            cell.acceptBtn.isSelected = true
+            cell.acceptBtn.backgroundColor = appNavColor
+            cell.declineBtn.isSelected = false
+            cell.declineBtn.backgroundColor = UIColor.clear
+            cell.interestedBtn.isSelected = false
+            cell.interestedBtn.backgroundColor = UIColor.clear
+            self.changeStatusOfEventApi(eventId: self.publicEventsListArr[row!].value(forKey: "eventId") as! String, status: "Accept")
+            //            self.changeStatusOfEventApi(eventId: self.eventDetailDict.value(forKey: "eventId") as! String, status: "Accept")
+        }
+        else if sender.tag == 2{
+            cell.declineBtn.isSelected = true
+            cell.declineBtn.backgroundColor = appNavColor
+            cell.interestedBtn.isSelected = false
+            cell.interestedBtn.backgroundColor = UIColor.clear
+            cell.acceptBtn.isSelected = false
+            cell.acceptBtn.backgroundColor = UIColor.clear
+            self.changeStatusOfEventApi(eventId: self.publicEventsListArr[row!].value(forKey: "eventId") as! String, status: "Decline")
+        }
+        else{
+            cell.interestedBtn.isSelected = true
+            cell.interestedBtn.backgroundColor = appNavColor
+            cell.acceptBtn.isSelected = false
+            cell.acceptBtn.backgroundColor = UIColor.clear
+            cell.declineBtn.isSelected = false
+            cell.declineBtn.backgroundColor = UIColor.clear
+            self.changeStatusOfEventApi(eventId: self.publicEventsListArr[row!].value(forKey: "eventId") as! String, status: "Interested")
+        }
+
+    }
+    
     //UISegment handling for Top menu
     @IBAction func segmentButtonsAction(_ sender: Any) {
         let button = sender as! UIButtonCustomClass
@@ -316,6 +389,7 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
     }
     
     //Top bar Filter button Action
+    //Go to filter screen
     @IBAction func filterButtonAction(_ sender: Any) {
         let filterEventsVcObj = self.storyboard?.instantiateViewController(withIdentifier: "filterEventsVc") as! FilterEventsVC
         self.navigationController?.pushViewController(filterEventsVcObj, animated: true)
