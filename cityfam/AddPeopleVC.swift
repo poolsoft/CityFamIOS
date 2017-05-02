@@ -47,6 +47,30 @@ class AddPeopleVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UI
     
     //MARK:- Methods
     
+    func sortArrayOfString(arrOfDicts : [NSDictionary])->[String]{
+        
+        var arr = [String]()
+        
+        for i in 0..<arrOfDicts.count{
+                arr.append(arrOfDicts[i].value(forKey: "userName") as! String)
+        }
+    
+        let b = arr.map{ $0.lowercased() }
+        
+        let c = b.sorted()
+        let d = c.map{ $0[$0.startIndex]}
+        
+        var dictionary:[String:[String]] = [:]
+        _ = d.map{ initial in
+            
+            let clustered = c.filter{$0.hasPrefix("\(initial)")}
+            dictionary.updateValue(clustered, forKey:"\(initial)")
+        }
+        print("\(dictionary)")
+        
+        return arr
+    }
+    
     //Api's results
     
     //Server failure Alert
@@ -175,76 +199,50 @@ class AddPeopleVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UI
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         if tableView.tag == 1{
-            return (myFriendsListArr[section].value(forKey: "friends") as! [NSDictionary]).count
+            return self.myFriendsListArr.count
+           // return (myFriendsListArr[section].value(forKey: "friends") as! [NSDictionary]).count
         }
         else{
             return myContactsListArr.count
         }
     }
     
-    //    result =     (
-    //    {
-    //    friends =             (
-    //      {
-    //      emailId = "Ankita.mittra@imarkinfotech.com";
-    //      userId = 14;
-    //      userImageUrl = "";
-    //      userName = "Ankita Mittra";
-    //      }
-    //    );
-    //    letters = A;
-    //    },
-    //    {
-    //    friends =             (
-    //    {
-    //    emailId = "swaran.lata@imarkinfotech.com";
-    //    userId = 1;
-    //    userImageUrl = "http://imarkclients.com/cityfam/wp-content/uploads/2017/04/1492155174.png";
-    //    userName = "Swaran Lata";
-    //    }
-    //    );
-    //    letters = S;
-    //    }
-    //    );
-    //    success = 1;
-    //}
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        if tableView.tag == 1{
-            return self.myFriendsListArr.count
-        }
-        else{
-            return 1
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if tableView.tag == 1{
-            return 40
-        }
-        else{
-            return 0
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if tableView.tag == 1{
-            return self.myFriendsListArr[section].value(forKey: "letters") as? String
-        }
-        else{
-            return ""
-        }
-    }
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        if tableView.tag == 1{
+//            return self.myFriendsListArr.count
+//        }
+//        else{
+//            return 1
+//        }
+//    }
+//    
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        if tableView.tag == 1{
+//            return 40
+//        }
+//        else{
+//            return 0
+//        }
+//    }
+//    
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        if tableView.tag == 1{
+//            return self.myFriendsListArr[section].value(forKey: "letters") as? String
+//        }
+//        else{
+//            return ""
+//        }
+//    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         if tableView.tag == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "myFriendsCell", for: indexPath) as! AddPeopleMyFriendsTableViewCell
-            
-           // let dict = self.myFriendsListArr[indexPath.section].value(forKey: "friends") as? [NSDictionary][indexPath.row]
 
-            let sectionArr = self.myFriendsListArr[indexPath.section].value(forKey: "friends") as! [NSDictionary]
+            //let sectionArr = self.myFriendsListArr[indexPath.section].value(forKey: "friends") as! [NSDictionary]
             
-            let dict = sectionArr[indexPath.row]
+            //let dict = sectionArr[indexPath.row]
+            
+            let dict = self.myFriendsListArr[indexPath.row]
             
             cell.userNameLbl.text = dict.value(forKey: "userName") as? String
             

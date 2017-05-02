@@ -12,6 +12,7 @@ class FriendVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UITex
     
     //MARK:- Outlets & Properties
     
+    @IBOutlet var bgImgView: UIImageView!
     @IBOutlet var searchTxtField: UITextFieldCustomClass!
     @IBOutlet var searchTableView: UITableView!
     @IBOutlet var requestTableView: UITableView!
@@ -117,6 +118,7 @@ class FriendVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UITex
     
     //Get CityFam user list Api call
     func getCityFamUsersApi() {
+        self.bgImgView.isHidden = true
         if CommonFxns.isInternetAvailable(){
             appDelegate.showProgressHUD(view: self.view)
             FriendsAlamofireIntegration.sharedInstance.respondToRequestServiceDelegate = self
@@ -141,7 +143,6 @@ class FriendVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UITex
                     self.cityFamUserListArr  = self.cityFamUserListArr + arr
                     self.searchedCityFamUsersListArr  = self.searchedCityFamUsersListArr + arr
                 }
-
                 self.searchTableView.reloadData()
             }
             else{
@@ -171,8 +172,10 @@ class FriendVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UITex
             if (result.value(forKey: "success")as! Int == 1){
                 self.friendsRequestsListArr = result.value(forKey: "result") as! [NSDictionary]
                 self.requestTableView.reloadData()
+                self.bgImgView.isHidden = true
             }
             else{
+                self.bgImgView.isHidden = false
                 CommonFxns.showAlert(self, message: (result.value(forKey: "error") as? String)!, title: errorAlertTitle)
             }
             self.refreshControl1.endRefreshing()

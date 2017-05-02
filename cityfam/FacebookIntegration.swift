@@ -7,6 +7,7 @@ import FBSDKLoginKit
 protocol FacebookDelegate:class{
     func fbUserData(dict:NSDictionary)
 }
+
 class FacebookIntegration: NSObject {
     
     weak var delegate:FacebookDelegate?

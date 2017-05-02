@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import Google
+import GoogleSignIn
 
-class LogInVC: UIViewController, loginServiceAlamofire,RegisterationServiceAlamofire, FacebookDelegate,UITextFieldDelegate,GoogleSignInService {
+class LogInVC: UIViewController, loginServiceAlamofire,RegisterationServiceAlamofire, FacebookDelegate,UITextFieldDelegate,GoogleSignInService,GIDSignInDelegate, GIDSignInUIDelegate {
    
     //MARK:- Outlets & Properties
     
@@ -151,8 +153,12 @@ class LogInVC: UIViewController, loginServiceAlamofire,RegisterationServiceAlamo
     }
 
     @IBAction func googleBtnAction(_ sender: Any) {
-        GoogleSignInIntegration.sharedInstance.delegate = self
-        GoogleSignInIntegration.sharedInstance.callGoogleSignIn()
+        
+        GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance().signIn()
+        //GoogleSignInIntegration.sharedInstance.delegate = self
+        //GoogleSignInIntegration.sharedInstance.callGoogleSignIn()
     }
     
     @IBAction func googleViewAction(_ sender: Any) {
@@ -255,6 +261,55 @@ class LogInVC: UIViewController, loginServiceAlamofire,RegisterationServiceAlamo
         else{
             CommonFxns.showAlert(self, message: "Email not found", title: errorAlertTitle)
         }
+    }
+    
+    
+    //Google Login
+    
+    
+    
+    
+    //completed sign In
+    public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!){
+        if (error == nil) {
+            // Perform any operations on signed in user here.
+            let userId = user.userID   // For client-side use only!
+            let idToken = user.authentication.idToken // Safe to send to the server
+            let fullName = user.profile.name
+            let givenName = user.profile.givenName
+            let familyName = user.profile.familyName
+            let email = user.profile.email
+            
+            let userDataDict = [
+                "googleUserId" : userId,
+                "token" : idToken,
+                "fullName" : fullName,
+                "givenName" : givenName,
+                "familyName" : familyName,
+                "email" : email
+            ]
+            //self.delegate?.googleSignInData(userDataDict as NSDictionary)
+            GIDSignIn.sharedInstance().signOut()
+        } else {
+            let signInError = error.localizedDescription
+            //self.delegate?.googleSignInError(signInError)
+        }
+    }
+    private func signInWillDispatch(signIn: GIDSignIn!, error: NSError!) {
+        // myActivityIndicator.stopAnimating()
+    }
+    
+    // Present a view that prompts the user to sign in with Google
+    func sign(_ signIn: GIDSignIn!,
+              present viewController: UIViewController!) {
+        
+        self.present(viewController, animated: true, completion: nil)
+    }
+    
+    // Dismiss the "Sign in with Google" view
+    func sign(_ signIn: GIDSignIn!,
+              dismiss viewController: UIViewController!) {
+        self.dismiss(animated: true, completion: nil)
     }
 
 }

@@ -12,6 +12,7 @@ class InvitedVC: UIViewController,UITableViewDataSource,UITableViewDelegate,GetL
 
     //MARK:- Outlets & Properties
 
+    @IBOutlet var bgImgView: UIImageView!
     @IBOutlet var invitedTableView: UITableView!
     var invitedPeopleListArr = [NSDictionary]()
     var eventId = String()
@@ -43,8 +44,10 @@ class InvitedVC: UIViewController,UITableViewDataSource,UITableViewDelegate,GetL
             if (result.value(forKey: "success")as! Int == 1){
                 self.invitedPeopleListArr = result.value(forKey: "result") as! [NSDictionary]
                 self.invitedTableView.reloadData()
+                self.bgImgView.isHidden = true
             }
             else{
+                self.bgImgView.isHidden = false
                 CommonFxns.showAlert(self, message: (result.value(forKey: "error") as? String)!, title: errorAlertTitle)
             }
         })
@@ -54,7 +57,6 @@ class InvitedVC: UIViewController,UITableViewDataSource,UITableViewDelegate,GetL
     func getListOfPeopleInvitedToTheEventApi() {
         if CommonFxns.isInternetAvailable(){
             appDelegate.showProgressHUD(view: self.view)
-            
             EventsAlamofireIntegration.sharedInstance.getListOfPeopleInvitedToTheEventServiceDelegate = self
             EventsAlamofireIntegration.sharedInstance.getListOfPeopleInvitedToTheEventApi(eventId: eventId)
         }

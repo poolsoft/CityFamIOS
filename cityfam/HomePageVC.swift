@@ -35,11 +35,24 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
     override func viewDidLoad() {
         super.viewDidLoad()
         self.intialSetup()
+        
+        let abcStr = abc()
+        
+        print(abcStr as Any)
     
         //adding notification observer to filter events
         NotificationCenter.default.addObserver(forName:NSNotification.Name(rawValue: "filterEventsNotification"), object:nil, queue:nil, using:catchNotification)
+        
+        
+        
     }
 
+    func abc()->String?{
+        
+        let str = ""
+        return str
+    }
+    
     
     //MARK:- Methods
     
@@ -95,7 +108,6 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
         } else {
             friendsTableView.addSubview(friendsTableRefreshControl)
             exploreTableView.addSubview(exploreTableRefreshControl)
-
         }
         self.friendsTableView.isHidden = true
         self.exploreTableView.isHidden = false
@@ -221,7 +233,7 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
                 eventTimingDetail = eventTimingDetail + "Starting from " + eventStartTime
             }
             if let eventAddress = dict.value(forKey: "eventAddress") as? String{
-                eventTimingDetail = eventTimingDetail + " at" + eventAddress
+                eventTimingDetail = eventTimingDetail + " at " + eventAddress
             }
             cell.eventTimingDetail.text = eventTimingDetail
             

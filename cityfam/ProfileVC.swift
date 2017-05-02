@@ -303,6 +303,8 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
         let unfriendAction = UIAlertAction(title: "Add", style: .default, handler: {
             (alert: UIAlertAction!) -> Void in
             //Unfriend this user Api call
+            
+            self.manageFriendshipApi(anotherUserId: self.profileUserId)
 
         })
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {

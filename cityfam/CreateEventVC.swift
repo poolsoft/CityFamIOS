@@ -86,7 +86,7 @@ class CreateEventVC: UIViewController,UITextFieldDelegate,UIImagePickerControlle
         let placemark = locationDetailDict.values.first as! MKPlacemark
         
         print("placemark",placemark)
-        self.eventLocationLbl.text = locationDetailDict["address"] as? String
+        self.eventLocationLbl.text = locationDetailDict["name"] as? String
         
 //        selectedItemDetail
         let span = MKCoordinateSpanMake(0.05, 0.05)
@@ -161,8 +161,8 @@ class CreateEventVC: UIViewController,UITextFieldDelegate,UIImagePickerControlle
                     "whoCanSee":self.whoCanSeeValueLbl,
                     "privateUserList":privateUserListArr,
                     "allowGuestsToInviteOthers":allowGuestSwitchSelectedState,
-                    "latitude": longitude,
-                    "longitude": latitude,
+                    "latitude": latitude,
+                    "longitude": longitude,
                     "placeName": self.eventLocationLbl.text!,
                     "categories": self.categoryId,
                     "eventDescription":CommonFxns.trimString(string: self.eventDetailTxtFields.text!),

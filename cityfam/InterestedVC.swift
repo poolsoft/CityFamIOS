@@ -11,6 +11,7 @@ import UIKit
 class InterestedVC: UIViewController,UITableViewDataSource,UITableViewDelegate,GetListOfPeopleInterestedInEventServiceAlamofire {
 
     //MARK:- Outlets & Properties
+    @IBOutlet var bgImgView: UIImageView!
     
     @IBOutlet var interestedTableView: UITableView!
     
@@ -43,8 +44,10 @@ class InterestedVC: UIViewController,UITableViewDataSource,UITableViewDelegate,G
             if (result.value(forKey: "success")as! Int == 1){
                 self.interestedPeopleListArr = result.value(forKey: "result") as! [NSDictionary]
                 self.interestedTableView.reloadData()
+                self.bgImgView.isHidden = true
             }
             else{
+                self.bgImgView.isHidden = false
                 CommonFxns.showAlert(self, message: (result.value(forKey: "error") as? String)!, title: errorAlertTitle)
             }
         })

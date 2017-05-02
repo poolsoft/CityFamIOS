@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol InvitationsTableViewCellProtocol {
+    func changeStatusOfEventSegmentControl(cell: InvitationsScreenTableViewCell,sender:UIButton)
+}
+
 class InvitationsScreenTableViewCell: UITableViewCell {
     
     //MARK:- Outlets & Properties
@@ -20,6 +24,7 @@ class InvitationsScreenTableViewCell: UITableViewCell {
     @IBOutlet var acceptBtn: UIButtonCustomClass!
     @IBOutlet var declineBtn: UIButtonCustomClass!
     
+    var delegate:InvitationsTableViewCellProtocol?
     //MARK:- View life cycle
     
     override func awakeFromNib() {
@@ -29,5 +34,10 @@ class InvitationsScreenTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    
+    //Button Actions
 
+    @IBAction func changeEventStatusSegmeentControlAction(_ sender: UIButton) {
+        self.delegate?.changeStatusOfEventSegmentControl(cell: self,sender:sender)
+    }
 }

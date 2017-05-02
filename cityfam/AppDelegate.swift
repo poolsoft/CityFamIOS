@@ -8,22 +8,22 @@
 import UIKit
 import MBProgressHUD
 import FBSDKLoginKit
+import FacebookCore
 import Google
 import GoogleSignIn
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate,GIDSignInUIDelegate {
 
     var window: UIWindow?
     var hud:MBProgressHUD!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         
         // Initialize sign-in
-//        var configureError: NSError?
-//        GGLContext.sharedInstance().configureWithError(&configureError)
-//        assert(configureError == nil, "Error configuring Google services: \(configureError)")
+        var configureError: NSError?
+        GGLContext.sharedInstance().configureWithError(&configureError)
+        assert(configureError == nil, "Error configuring Google services: \(configureError)")
         
 
         let navController:UINavigationController = self.window?.rootViewController as! UINavigationController
@@ -37,11 +37,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             navController.pushViewController(secondViewController, animated: true)
         }
 
-       // GMSServices.provideAPIKey("AIzaSyAOVBwuZYYidkS18XYRMhbWhQgG2seVbs0")
-        
-        GIDSignIn.sharedInstance().signOut()
-        
-        GIDSignIn.sharedInstance().clientID = "59303853655-jl9hdqnu3mu5e7u2i8mbgfdsk9di5c06.apps.googleusercontent.com"
+//        GIDSignIn.sharedInstance().signOut()
+//        
+//        GIDSignIn.sharedInstance().clientID = "59303853655-jl9hdqnu3mu5e7u2i8mbgfdsk9di5c06.apps.googleusercontent.com"
         //GIDSignIn.sharedInstance().delegate = self
         
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
@@ -66,11 +64,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //    }
 
     //For iOS 10
-    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+//    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+//        
+//       // return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
+//    }
+//    
+    
+    func application(_ app: UIApplication,
+                     open url: URL,
+                     options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         
-        
-        return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
+        if(url.scheme!.isEqual("fb1080391375424219")) {
+            
+            return SDKApplicationDelegate.shared.application(app, open: url, options: options)
+            //        return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
+        }
+            
+        else {
+            return GIDSignIn.sharedInstance().handle(url as URL!,
+                                                     sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String!,
+                                                     annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+        }
     }
+    
     
     func applicationWillResignActive(_ application: UIApplication) {
         FBSDKAppEvents.activateApp()

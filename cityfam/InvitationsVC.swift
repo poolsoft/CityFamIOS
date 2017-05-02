@@ -8,10 +8,11 @@
 
 import UIKit
 
-class InvitationsVC: UIViewController,UITableViewDataSource,UITableViewDelegate,GetInvitationsServiceAlamofire {
+class InvitationsVC: UIViewController,UITableViewDataSource,UITableViewDelegate,GetInvitationsServiceAlamofire,ChangeStatusOfEventServiceAlamofire,InvitationsTableViewCellProtocol {
 
     //MARK:- Outlets & Properties
     
+    @IBOutlet var bgImgView: UIImageView!
     @IBOutlet var invitationsTableView: UITableView!
     
     var inviatationsListArr = [NSDictionary]()
@@ -23,6 +24,11 @@ class InvitationsVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
         super.viewDidLoad()
         self.getInvitationsApi()
         
+        if #available(iOS 10.0, *) {
+            invitationsTableView.refreshControl = invitationsTableRefreshControl
+        } else {
+            invitationsTableView.addSubview(invitationsTableRefreshControl)
+        }
         // Configure Refresh Control
         invitationsTableRefreshControl.addTarget(self, action: #selector(InvitationsVC.refreshData(sender:)), for: .valueChanged)
     }
@@ -52,13 +58,15 @@ class InvitationsVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
         DispatchQueue.main.async( execute: {
             appDelegate.hideProgressHUD(view: self.view)
             if (result.value(forKey: "success")as! Int == 1){
-
+                self.bgImgView.isHidden = true
                 let resultDict = result.value(forKey: "result") as! NSDictionary
                 //invitationCount
                 self.inviatationsListArr = resultDict.value(forKey: "eventDetail") as! [NSDictionary]
                 self.invitationsTableView.reloadData()
+                
             }
             else{
+                self.bgImgView.isHidden = false
                 CommonFxns.showAlert(self, message: (result.value(forKey: "error") as? String)!, title: errorAlertTitle)
             }
             self.invitationsTableRefreshControl.endRefreshing()
@@ -69,7 +77,6 @@ class InvitationsVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
     func getInvitationsApi() {
         if CommonFxns.isInternetAvailable(){
             appDelegate.showProgressHUD(view: self.view)
-            
             AlamofireIntegration.sharedInstance.getInvitationsServiceDelegate = self
             AlamofireIntegration.sharedInstance.getInvitationsApi()
         }
@@ -77,6 +84,32 @@ class InvitationsVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
             CommonFxns.showAlert(self, message: internetConnectionError, title: oopsText)
         }
     }
+    
+    
+    //ChangeStatusOfEvent Api call
+    func changeStatusOfEventApi(eventId:String, status:String) {
+        if CommonFxns.isInternetAvailable(){
+            appDelegate.showProgressHUD(view: self.view)
+            EventsAlamofireIntegration.sharedInstance.changeStatusOfEventServiceDelegate = self
+            EventsAlamofireIntegration.sharedInstance.changeStatusOfEventApi(eventId:eventId, status:status)
+        }
+        else{
+            CommonFxns.showAlert(self, message: internetConnectionError, title: oopsText)
+        }
+    }
+    
+    //ChangeStatusOfEvent Api Result
+    func changeStatusOfEventResult(_ result:AnyObject){
+        DispatchQueue.main.async( execute: {
+            appDelegate.hideProgressHUD(view: self.view)
+            if (result.value(forKey: "success")as! Int == 1){
+            }
+            else{
+                CommonFxns.showAlert(self, message: (result.value(forKey: "error") as? String)!, title: errorAlertTitle)
+            }
+        })
+    }
+    
 
     //MARK: UITableView Functions
     
@@ -86,7 +119,7 @@ class InvitationsVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! InvitationsScreenTableViewCell
-        
+        cell.delegate = self
         let dict = self.inviatationsListArr[indexPath.row]
         
         cell.eventName.text = dict.value(forKey: "eventName") as? String
@@ -121,6 +154,40 @@ class InvitationsVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
     }
     
     //MARK: UIButton actions
+    
+    //Change Status for Invited Events
+    func changeStatusOfEventSegmentControl(cell: InvitationsScreenTableViewCell,sender:UIButton){
+        
+        let row = self.invitationsTableView.indexPath(for: cell)?.row
+        if sender.tag == 1{
+            cell.acceptBtn.isSelected = true
+            cell.acceptBtn.backgroundColor = appNavColor
+            cell.declineBtn.isSelected = false
+            cell.declineBtn.backgroundColor = UIColor.clear
+            cell.interestedBtn.isSelected = false
+            cell.interestedBtn.backgroundColor = UIColor.clear
+            self.changeStatusOfEventApi(eventId: self.inviatationsListArr[row!].value(forKey: "eventId") as! String, status: "Accept")
+            //            self.changeStatusOfEventApi(eventId: self.eventDetailDict.value(forKey: "eventId") as! String, status: "Accept")
+        }
+        else if sender.tag == 2{
+            cell.declineBtn.isSelected = true
+            cell.declineBtn.backgroundColor = appNavColor
+            cell.interestedBtn.isSelected = false
+            cell.interestedBtn.backgroundColor = UIColor.clear
+            cell.acceptBtn.isSelected = false
+            cell.acceptBtn.backgroundColor = UIColor.clear
+            self.changeStatusOfEventApi(eventId: self.inviatationsListArr[row!].value(forKey: "eventId") as! String, status: "Decline")
+        }
+        else{
+            cell.interestedBtn.isSelected = true
+            cell.interestedBtn.backgroundColor = appNavColor
+            cell.acceptBtn.isSelected = false
+            cell.acceptBtn.backgroundColor = UIColor.clear
+            cell.declineBtn.isSelected = false
+            cell.declineBtn.backgroundColor = UIColor.clear
+            self.changeStatusOfEventApi(eventId: self.inviatationsListArr[row!].value(forKey: "eventId") as! String, status: "Interested")
+        }
+    }
     
     @IBAction func profileButtonAction(_ sender: Any) {
         let profileVcObj = self.storyboard?.instantiateViewController(withIdentifier: "profileVc") as! ProfileVC

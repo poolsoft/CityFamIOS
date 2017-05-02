@@ -12,6 +12,7 @@ class AttendingVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Ge
 
     //MARK:- Outlets & Properties
     
+    @IBOutlet var bgImgView: UIImageView!
     @IBOutlet var attendingTableView: UITableView!
     
     var eventAttendingPeopleListArr = [NSDictionary]()
@@ -27,7 +28,6 @@ class AttendingVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Ge
 
     //MARK:- Methods
 
-    
     //Api's results
     
     //Server failure Alert
@@ -43,8 +43,10 @@ class AttendingVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Ge
             if (result.value(forKey: "success")as! Int == 1){
                 self.eventAttendingPeopleListArr = result.value(forKey: "result") as! [NSDictionary]
                 self.attendingTableView.reloadData()
+                self.bgImgView.isHidden = true
             }
             else{
+                self.bgImgView.isHidden = false
                 CommonFxns.showAlert(self, message: (result.value(forKey: "error") as? String)!, title: errorAlertTitle)
             }
         })
