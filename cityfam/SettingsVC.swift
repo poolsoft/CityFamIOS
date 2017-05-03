@@ -86,8 +86,11 @@ class SettingsVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
             obj = self.storyboard?.instantiateViewController(withIdentifier: "manageNotificationsVc") as! ManageNotificationsVC
             self.navigationController?.pushViewController(obj, animated: true)
         case 2:
-            obj = self.storyboard?.instantiateViewController(withIdentifier: "inviteFriendsVc") as! InviteFriendsVC
-            self.navigationController?.pushViewController(obj, animated: true)
+            let myFriendsOrContactsVcObj = self.storyboard?.instantiateViewController(withIdentifier: "myFriendsOrContactsVc") as! MyFriendsOrContactsVC
+            myFriendsOrContactsVcObj.isComingFromProfileScreen = false
+            self.navigationController?.pushViewController(myFriendsOrContactsVcObj, animated: true)
+//            obj = self.storyboard?.instantiateViewController(withIdentifier: "inviteFriendsVc") as! InviteFriendsVC
+//            self.navigationController?.pushViewController(obj, animated: true)
         default:
             break
         }

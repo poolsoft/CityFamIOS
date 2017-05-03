@@ -86,12 +86,12 @@ class AttendingVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Ge
         //userId
         cell.userNameLbl.text = dict.value(forKey: "userName") as? String
         if (dict.value(forKey: "userImageUrl") as? String) != nil{
-            cell.userImg.sd_setImage(with: URL(string: (dict.value(forKey: "userImageUrl") as? String)!), placeholderImage: UIImage(named: ""))
+            cell.userImg.sd_setImage(with: URL(string: (dict.value(forKey: "userImageUrl") as? String)!), placeholderImage: UIImage(named: "user.png"))
             cell.userImg.setShowActivityIndicator(true)
             cell.userImg.setIndicatorStyle(.gray)
         }
         else{
-            cell.userImg.image = UIImage(named: "")
+            cell.userImg.image = UIImage(named: "user.png")
         }
         return cell
     }

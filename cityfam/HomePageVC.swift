@@ -160,6 +160,14 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
                 }
             }
             else{
+                if self.selectedSegmentValue == 1{
+                    self.friendsEventsListArr.removeAll()
+                    self.friendsTableView.reloadData()
+                }
+                else{
+                    self.publicEventsListArr.removeAll()
+                    self.exploreTableView.reloadData()
+                }
                 CommonFxns.showAlert(self, message: (result.value(forKey: "error") as? String)!, title: errorAlertTitle)
             }
             self.friendsTableRefreshControl.endRefreshing()

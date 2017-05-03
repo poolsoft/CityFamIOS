@@ -95,28 +95,28 @@ class InvitedVC: UIViewController,UITableViewDataSource,UITableViewDelegate,GetL
         cell.userNameLbl.text = dict.value(forKey: "userName") as? String
         switch dict.value(forKey: "response") as! String {
         case "accepted":
-            cell.userStatusLbl.backgroundColor = UIColor.red
+            cell.userStatusImgView.image = UIImage(named: "attendingUsersIcon.png")
             break
         case "declined":
-            cell.userStatusLbl.backgroundColor = UIColor.blue
+            cell.userStatusImgView.image = UIImage(named: "eventDeclinedUsersIcon.png")
             break
         case "interested":
-            cell.userStatusLbl.backgroundColor = UIColor.black
+            cell.userStatusImgView.image = UIImage(named: "interestedUsersIcon.png")
             break
         case "pending":
-            cell.userStatusLbl.backgroundColor = UIColor.yellow
+            cell.userStatusImgView.image = UIImage(named: "pendingUsersIcon.png")
             break
         default:
             break
         }
-        
+
         if (dict.value(forKey: "userImageUrl") as? String) != nil{
-            cell.userImg.sd_setImage(with: URL(string: (dict.value(forKey: "userImageUrl") as? String)!), placeholderImage: UIImage(named: ""))
+            cell.userImg.sd_setImage(with: URL(string: (dict.value(forKey: "userImageUrl") as? String)!), placeholderImage: UIImage(named: "user.png"))
             cell.userImg.setShowActivityIndicator(true)
             cell.userImg.setIndicatorStyle(.gray)
         }
         else{
-            cell.userImg.image = UIImage(named: "")
+            cell.userImg.image = UIImage(named: "user.png")
         }
         return cell
     }

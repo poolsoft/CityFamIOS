@@ -17,6 +17,7 @@ class InvitationsVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
     
     var inviatationsListArr = [NSDictionary]()
     private let invitationsTableRefreshControl = UIRefreshControl()
+    var row = Int()
     
     //MARK:- View life cycle
     
@@ -67,6 +68,9 @@ class InvitationsVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
             }
             else{
                 self.bgImgView.isHidden = false
+                self.inviatationsListArr.removeAll()
+                self.invitationsTableView.reloadData()
+                
                 CommonFxns.showAlert(self, message: (result.value(forKey: "error") as? String)!, title: errorAlertTitle)
             }
             self.invitationsTableRefreshControl.endRefreshing()
@@ -103,6 +107,8 @@ class InvitationsVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
         DispatchQueue.main.async( execute: {
             appDelegate.hideProgressHUD(view: self.view)
             if (result.value(forKey: "success")as! Int == 1){
+                self.inviatationsListArr.remove(at: self.row)
+                self.invitationsTableView.reloadData()
             }
             else{
                 CommonFxns.showAlert(self, message: (result.value(forKey: "error") as? String)!, title: errorAlertTitle)
@@ -131,7 +137,7 @@ class InvitationsVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
             eventTimingDetail = eventTimingDetail + "Starting from " + eventStartTime
         }
         if let eventAddress = dict.value(forKey: "eventAddress") as? String{
-            eventTimingDetail = eventTimingDetail + " at" + eventAddress
+            eventTimingDetail = eventTimingDetail + " at " + eventAddress
         }
         cell.eventTimingDetail.text = eventTimingDetail
         
@@ -158,7 +164,7 @@ class InvitationsVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
     //Change Status for Invited Events
     func changeStatusOfEventSegmentControl(cell: InvitationsScreenTableViewCell,sender:UIButton){
         
-        let row = self.invitationsTableView.indexPath(for: cell)?.row
+        self.row = (self.invitationsTableView.indexPath(for: cell)?.row)!
         if sender.tag == 1{
             cell.acceptBtn.isSelected = true
             cell.acceptBtn.backgroundColor = appNavColor
@@ -166,7 +172,7 @@ class InvitationsVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
             cell.declineBtn.backgroundColor = UIColor.clear
             cell.interestedBtn.isSelected = false
             cell.interestedBtn.backgroundColor = UIColor.clear
-            self.changeStatusOfEventApi(eventId: self.inviatationsListArr[row!].value(forKey: "eventId") as! String, status: "Accept")
+            self.changeStatusOfEventApi(eventId: self.inviatationsListArr[row].value(forKey: "eventId") as! String, status: "Accept")
             //            self.changeStatusOfEventApi(eventId: self.eventDetailDict.value(forKey: "eventId") as! String, status: "Accept")
         }
         else if sender.tag == 2{
@@ -176,7 +182,7 @@ class InvitationsVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
             cell.interestedBtn.backgroundColor = UIColor.clear
             cell.acceptBtn.isSelected = false
             cell.acceptBtn.backgroundColor = UIColor.clear
-            self.changeStatusOfEventApi(eventId: self.inviatationsListArr[row!].value(forKey: "eventId") as! String, status: "Decline")
+            self.changeStatusOfEventApi(eventId: self.inviatationsListArr[row].value(forKey: "eventId") as! String, status: "Decline")
         }
         else{
             cell.interestedBtn.isSelected = true
@@ -185,7 +191,7 @@ class InvitationsVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
             cell.acceptBtn.backgroundColor = UIColor.clear
             cell.declineBtn.isSelected = false
             cell.declineBtn.backgroundColor = UIColor.clear
-            self.changeStatusOfEventApi(eventId: self.inviatationsListArr[row!].value(forKey: "eventId") as! String, status: "Interested")
+            self.changeStatusOfEventApi(eventId: self.inviatationsListArr[row].value(forKey: "eventId") as! String, status: "Interested")
         }
     }
     

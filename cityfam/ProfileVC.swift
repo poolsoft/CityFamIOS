@@ -239,9 +239,9 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
             let myPlansVcObj = self.storyboard?.instantiateViewController(withIdentifier: "myPlansVc") as! MyPlansVC
             self.navigationController?.pushViewController(myPlansVcObj, animated: true)
         case 2:
-            let addPeopleVcObj = self.storyboard?.instantiateViewController(withIdentifier: "addPeopleVc") as! AddPeopleVC
-            addPeopleVcObj.isComingFromProfileScreen = true
-            self.navigationController?.pushViewController(addPeopleVcObj, animated: true)
+            let myFriendsOrContactsVcObj = self.storyboard?.instantiateViewController(withIdentifier: "myFriendsOrContactsVc") as! MyFriendsOrContactsVC
+            myFriendsOrContactsVcObj.isComingFromProfileScreen = true
+            self.navigationController?.pushViewController(myFriendsOrContactsVcObj, animated: true)
         default:
             break
         }

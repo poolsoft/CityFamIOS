@@ -75,6 +75,8 @@
 		A17D70401E9637D800D730FE /* Mark Simonson - Proxima Nova Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 07F7A10F1E60493F00448FFF /* Mark Simonson - Proxima Nova Regular.otf */; };
 		A17D70411E9637D800D730FE /* ProximaNova-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 07F7A1101E60493F00448FFF /* ProximaNova-Bold.otf */; };
 		A17D70421E9637D800D730FE /* ufonts.com_gotham-medium_0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07F7A1111E60493F00448FFF /* ufonts.com_gotham-medium_0.ttf */; };
+		A17E19FD1EB9C8EE004A4721 /* MyFriendsOrContactsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17E19FC1EB9C8ED004A4721 /* MyFriendsOrContactsVC.swift */; };
+		A17E19FF1EB9CAB4004A4721 /* MyFriendsOrContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17E19FE1EB9CAB4004A4721 /* MyFriendsOrContactsTableViewCell.swift */; };
 		A181A10E1EA5EB660092ECD0 /* HomeFriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A181A10D1EA5EB650092ECD0 /* HomeFriendsTableViewCell.swift */; };
 		A181AD1C1E9F3E6700DD53E3 /* FriendsRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A181AD1B1E9F3E6700DD53E3 /* FriendsRequestTableViewCell.swift */; };
 		A181AD1E1E9F460800DD53E3 /* FriendsAlamofireIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A181AD1D1E9F460800DD53E3 /* FriendsAlamofireIntegration.swift */; };
@@ -189,6 +191,8 @@
 		A17D70391E9624AB00D730FE /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
 		A17D703B1E9633BC00D730FE /* LocationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationVC.swift; sourceTree = "<group>"; };
 		A17D703E1E9634C000D730FE /* InvitationsScreenTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvitationsScreenTableViewCell.swift; sourceTree = "<group>"; };
+		A17E19FC1EB9C8ED004A4721 /* MyFriendsOrContactsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFriendsOrContactsVC.swift; sourceTree = "<group>"; };
+		A17E19FE1EB9CAB4004A4721 /* MyFriendsOrContactsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFriendsOrContactsTableViewCell.swift; sourceTree = "<group>"; };
 		A181A10D1EA5EB650092ECD0 /* HomeFriendsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeFriendsTableViewCell.swift; sourceTree = "<group>"; };
 		A181AD1B1E9F3E6700DD53E3 /* FriendsRequestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsRequestTableViewCell.swift; sourceTree = "<group>"; };
 		A181AD1D1E9F460800DD53E3 /* FriendsAlamofireIntegration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsAlamofireIntegration.swift; sourceTree = "<group>"; };
@@ -355,6 +359,7 @@
 				A17B65981E9B6D5A001893CF /* EventsListVC.swift */,
 				A15DA20D1E9F601A0024E5AB /* FriendVC.swift */,
 				A16DB2FF1EA9F0B2003C1C84 /* CalenderVC.swift */,
+				A17E19FC1EB9C8ED004A4721 /* MyFriendsOrContactsVC.swift */,
 			);
 			name = ViewControllerClasses;
 			sourceTree = "<group>";
@@ -440,6 +445,7 @@
 				A19448D91EA4D1A50060D30E /* EventDetailImagesCollectionViewCell.swift */,
 				A181A10D1EA5EB650092ECD0 /* HomeFriendsTableViewCell.swift */,
 				A1A92C931EA8D3B70074AAA2 /* ProfileVcImagesCollectionViewCell.swift */,
+				A17E19FE1EB9CAB4004A4721 /* MyFriendsOrContactsTableViewCell.swift */,
 			);
 			name = CustomCellClasses;
 			sourceTree = "<group>";
@@ -751,6 +757,7 @@
 				A17D703C1E9633BC00D730FE /* LocationVC.swift in Sources */,
 				07F057DA1E6694BB008B8120 /* EventDetailVC.swift in Sources */,
 				0700D9371E556DC900DC9928 /* UILabelCustomClass.swift in Sources */,
+				A17E19FD1EB9C8EE004A4721 /* MyFriendsOrContactsVC.swift in Sources */,
 				A154BB061E9CE41A00E3727F /* InterestedVcTableViewCell.swift in Sources */,
 				A181A10E1EA5EB660092ECD0 /* HomeFriendsTableViewCell.swift in Sources */,
 				A1A92C941EA8D3B80074AAA2 /* ProfileVcImagesCollectionViewCell.swift in Sources */,
@@ -800,6 +807,7 @@
 				07AE60BD1E6D9386006F39F0 /* SearchLocationVC.swift in Sources */,
 				07F057E71E66DFF1008B8120 /* CommentsVC.swift in Sources */,
 				0700D9381E556DC900DC9928 /* UIViewCustomClass.swift in Sources */,
+				A17E19FF1EB9CAB4004A4721 /* MyFriendsOrContactsTableViewCell.swift in Sources */,
 				A17B65991E9B6D5A001893CF /* EventsListVC.swift in Sources */,
 				A19448D81EA48BA80060D30E /* AddPeopleMyContactsTableViewCell.swift in Sources */,
 			);
