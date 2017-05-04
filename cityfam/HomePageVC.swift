@@ -42,9 +42,6 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
     
         //adding notification observer to filter events
         NotificationCenter.default.addObserver(forName:NSNotification.Name(rawValue: "filterEventsNotification"), object:nil, queue:nil, using:catchNotification)
-        
-        
-        
     }
 
     func abc()->String?{
@@ -261,6 +258,23 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
             else{
                 cell.userImg.image = UIImage(named: "user.png")
             }
+            if let myStatus = dict.value(forKey: "myStatus") as? String{
+                switch myStatus {
+                case "Accept":
+                    self.acceptActionPerformedOnEvent(cell: cell)
+                    break
+                case "Interested":
+                    self.interestedActionPerformedOnEvent(cell: cell)
+                    break
+                case "Decline":
+                    self.declineActionPerformedOnEvent(cell: cell)
+                    break
+                default:
+                    self.noActionPerformedOnEvent(cell: cell)
+                    break
+                }
+            }
+
             return cell
         }
         else{
@@ -274,7 +288,7 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
                 eventTimingDetail = eventTimingDetail + "Starting from " + eventStartTime
             }
             if let eventAddress = dict.value(forKey: "eventAddress") as? String{
-                eventTimingDetail = eventTimingDetail + " at" + eventAddress
+                eventTimingDetail = eventTimingDetail + " at " + eventAddress
             }
             cell.eventTimingDetail.text = eventTimingDetail
             
@@ -293,6 +307,23 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
             }
             else{
                 cell.userImg.image = UIImage(named: "user.png")
+            }
+            
+            if let myStatus = dict.value(forKey: "myStatus") as? String{
+                switch myStatus {
+                case "Accept":
+                    self.onExploreEventAcceptActionPerformed(cell: cell)
+                    break
+                case "Interested":
+                    self.onExploreEventInterestedActionPerformed(cell: cell)
+                    break
+                case "Decline":
+                    self.onExploreEventDeclineActionPerformed(cell: cell)
+                    break
+                default:
+                    self.onExploreEventNoActionPerformed(cell: cell)
+                    break
+                }
             }
             return cell
         }
@@ -316,34 +347,100 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
         
         let row = self.friendsTableView.indexPath(for: cell)?.row
         if sender.tag == 1{
-            cell.acceptBtn.isSelected = true
-            cell.acceptBtn.backgroundColor = appNavColor
-            cell.declineBtn.isSelected = false
-            cell.declineBtn.backgroundColor = UIColor.clear
-            cell.interestedBtn.isSelected = false
-            cell.interestedBtn.backgroundColor = UIColor.clear
+            self.acceptActionPerformedOnEvent(cell: cell)
             self.changeStatusOfEventApi(eventId: self.friendsEventsListArr[row!].value(forKey: "eventId") as! String, status: "Accept")
-//            self.changeStatusOfEventApi(eventId: self.eventDetailDict.value(forKey: "eventId") as! String, status: "Accept")
         }
         else if sender.tag == 2{
-            cell.declineBtn.isSelected = true
-            cell.declineBtn.backgroundColor = appNavColor
-            cell.interestedBtn.isSelected = false
-            cell.interestedBtn.backgroundColor = UIColor.clear
-            cell.acceptBtn.isSelected = false
-            cell.acceptBtn.backgroundColor = UIColor.clear
+            self.declineActionPerformedOnEvent(cell: cell)
             self.changeStatusOfEventApi(eventId: self.friendsEventsListArr[row!].value(forKey: "eventId") as! String, status: "Decline")
         }
         else{
-            cell.interestedBtn.isSelected = true
-            cell.interestedBtn.backgroundColor = appNavColor
-            cell.acceptBtn.isSelected = false
-            cell.acceptBtn.backgroundColor = UIColor.clear
-            cell.declineBtn.isSelected = false
-            cell.declineBtn.backgroundColor = UIColor.clear
+            self.interestedActionPerformedOnEvent(cell: cell)
             self.changeStatusOfEventApi(eventId: self.friendsEventsListArr[row!].value(forKey: "eventId") as! String, status: "Interested")
         }
-
+    }
+    
+    // Actions perfomed on events in Freinds tab
+    
+    //No action is performed on event
+    func noActionPerformedOnEvent(cell: HomeFriendsTableViewCell){
+        cell.interestedBtn.isSelected = false
+        cell.interestedBtn.backgroundColor = UIColor.clear
+        cell.acceptBtn.isSelected = false
+        cell.acceptBtn.backgroundColor = UIColor.clear
+        cell.declineBtn.isSelected = false
+        cell.declineBtn.backgroundColor = UIColor.clear
+    }
+    
+    //Accept action is performed on event
+    func acceptActionPerformedOnEvent(cell: HomeFriendsTableViewCell){
+        cell.acceptBtn.isSelected = true
+        cell.acceptBtn.backgroundColor = appNavColor
+        cell.declineBtn.isSelected = false
+        cell.declineBtn.backgroundColor = UIColor.clear
+        cell.interestedBtn.isSelected = false
+        cell.interestedBtn.backgroundColor = UIColor.clear
+    }
+    
+    //Decline action is performed on event
+    func declineActionPerformedOnEvent(cell: HomeFriendsTableViewCell){
+        cell.declineBtn.isSelected = true
+        cell.declineBtn.backgroundColor = appNavColor
+        cell.interestedBtn.isSelected = false
+        cell.interestedBtn.backgroundColor = UIColor.clear
+        cell.acceptBtn.isSelected = false
+        cell.acceptBtn.backgroundColor = UIColor.clear
+    }
+    
+    //Interested action is performed on event
+    func interestedActionPerformedOnEvent(cell: HomeFriendsTableViewCell){
+        cell.interestedBtn.isSelected = true
+        cell.interestedBtn.backgroundColor = appNavColor
+        cell.acceptBtn.isSelected = false
+        cell.acceptBtn.backgroundColor = UIColor.clear
+        cell.declineBtn.isSelected = false
+        cell.declineBtn.backgroundColor = UIColor.clear
+    }
+    
+    // Actions perfomed on event in Explore tab
+    //No action is performed on event
+    func onExploreEventNoActionPerformed(cell: HomePageTableViewCell){
+        cell.interestedBtn.isSelected = false
+        cell.interestedBtn.backgroundColor = UIColor.clear
+        cell.acceptBtn.isSelected = false
+        cell.acceptBtn.backgroundColor = UIColor.clear
+        cell.declineBtn.isSelected = false
+        cell.declineBtn.backgroundColor = UIColor.clear
+    }
+    
+    //Accept action is performed on event
+    func onExploreEventAcceptActionPerformed(cell: HomePageTableViewCell){
+        cell.acceptBtn.isSelected = true
+        cell.acceptBtn.backgroundColor = appNavColor
+        cell.declineBtn.isSelected = false
+        cell.declineBtn.backgroundColor = UIColor.clear
+        cell.interestedBtn.isSelected = false
+        cell.interestedBtn.backgroundColor = UIColor.clear
+    }
+    
+    //Decline action is performed on event
+    func onExploreEventDeclineActionPerformed(cell: HomePageTableViewCell){
+        cell.declineBtn.isSelected = true
+        cell.declineBtn.backgroundColor = appNavColor
+        cell.interestedBtn.isSelected = false
+        cell.interestedBtn.backgroundColor = UIColor.clear
+        cell.acceptBtn.isSelected = false
+        cell.acceptBtn.backgroundColor = UIColor.clear
+    }
+    
+    //Interested action is performed on event
+    func onExploreEventInterestedActionPerformed(cell: HomePageTableViewCell){
+        cell.interestedBtn.isSelected = true
+        cell.interestedBtn.backgroundColor = appNavColor
+        cell.acceptBtn.isSelected = false
+        cell.acceptBtn.backgroundColor = UIColor.clear
+        cell.declineBtn.isSelected = false
+        cell.declineBtn.backgroundColor = UIColor.clear
     }
     
     //Change Status for public Events
@@ -351,34 +448,17 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
         
         let row = self.exploreTableView.indexPath(for: cell)?.row
         if sender.tag == 1{
-            cell.acceptBtn.isSelected = true
-            cell.acceptBtn.backgroundColor = appNavColor
-            cell.declineBtn.isSelected = false
-            cell.declineBtn.backgroundColor = UIColor.clear
-            cell.interestedBtn.isSelected = false
-            cell.interestedBtn.backgroundColor = UIColor.clear
+            self.onExploreEventAcceptActionPerformed(cell: cell)
             self.changeStatusOfEventApi(eventId: self.publicEventsListArr[row!].value(forKey: "eventId") as! String, status: "Accept")
-            //            self.changeStatusOfEventApi(eventId: self.eventDetailDict.value(forKey: "eventId") as! String, status: "Accept")
         }
         else if sender.tag == 2{
-            cell.declineBtn.isSelected = true
-            cell.declineBtn.backgroundColor = appNavColor
-            cell.interestedBtn.isSelected = false
-            cell.interestedBtn.backgroundColor = UIColor.clear
-            cell.acceptBtn.isSelected = false
-            cell.acceptBtn.backgroundColor = UIColor.clear
+            self.onExploreEventDeclineActionPerformed(cell: cell)
             self.changeStatusOfEventApi(eventId: self.publicEventsListArr[row!].value(forKey: "eventId") as! String, status: "Decline")
         }
         else{
-            cell.interestedBtn.isSelected = true
-            cell.interestedBtn.backgroundColor = appNavColor
-            cell.acceptBtn.isSelected = false
-            cell.acceptBtn.backgroundColor = UIColor.clear
-            cell.declineBtn.isSelected = false
-            cell.declineBtn.backgroundColor = UIColor.clear
+            self.onExploreEventInterestedActionPerformed(cell: cell)
             self.changeStatusOfEventApi(eventId: self.publicEventsListArr[row!].value(forKey: "eventId") as! String, status: "Interested")
         }
-
     }
     
     //UISegment handling for Top menu

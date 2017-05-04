@@ -266,9 +266,6 @@ class LogInVC: UIViewController, loginServiceAlamofire,RegisterationServiceAlamo
     
     //Google Login
     
-    
-    
-    
     //completed sign In
     public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!){
         if (error == nil) {
@@ -280,16 +277,47 @@ class LogInVC: UIViewController, loginServiceAlamofire,RegisterationServiceAlamo
             let familyName = user.profile.familyName
             let email = user.profile.email
             
-            let userDataDict = [
-                "googleUserId" : userId,
-                "token" : idToken,
-                "fullName" : fullName,
-                "givenName" : givenName,
-                "familyName" : familyName,
-                "email" : email
-            ]
+            if CommonFxns.isInternetAvailable(){
+                appDelegate.showProgressHUD(view: self.view)
+                
+                let userDataDict = [
+                    "googleUserId" : userId,
+                    "token" : idToken,
+                    "fullName" : fullName,
+                    "givenName" : givenName,
+                    "familyName" : familyName,
+                    "email" : email
+                ]
+                print(userDataDict)
+                
+                let imgStr = ""
+                
+                let parameters = [
+                    "name": user.profile.name,
+                    "emailId": user.profile.email,
+                    "phone": "",
+                    "password": "test",
+                    "latitude": "",
+                    "longitude": "",
+                    "address": "",
+                    "deviceToken":"",
+                    "facebookId": "",
+                    "googleId": "",
+                    "deviceType":"iOS",
+                    "profilePicBase64":imgStr
+                ]
+                
+                AlamofireIntegration.sharedInstance.registerationServiceDelegate = self
+                AlamofireIntegration.sharedInstance.registerationApi(parameters as! [String : String])
+            }
+            else{
+                CommonFxns.showAlert(self, message: internetConnectionError, title: oopsText)
+            }
+            
+
             //self.delegate?.googleSignInData(userDataDict as NSDictionary)
             GIDSignIn.sharedInstance().signOut()
+            
         } else {
             let signInError = error.localizedDescription
             //self.delegate?.googleSignInError(signInError)

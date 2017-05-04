@@ -122,6 +122,9 @@ class InvitedVC: UIViewController,UITableViewDataSource,UITableViewDelegate,GetL
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let profileVcObj = self.storyboard?.instantiateViewController(withIdentifier: "profileVc") as! ProfileVC
+        profileVcObj.profileUserId = self.invitedPeopleListArr[indexPath.row].value(forKey: "userId") as! String
+        self.navigationController?.pushViewController(profileVcObj, animated: true)
     }
 
 }

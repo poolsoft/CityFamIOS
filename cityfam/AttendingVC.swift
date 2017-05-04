@@ -97,6 +97,9 @@ class AttendingVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Ge
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let profileVcObj = self.storyboard?.instantiateViewController(withIdentifier: "profileVc") as! ProfileVC
+        profileVcObj.profileUserId = self.eventAttendingPeopleListArr[indexPath.row].value(forKey: "userId") as! String
+        self.navigationController?.pushViewController(profileVcObj, animated: true)
     }
 
 }

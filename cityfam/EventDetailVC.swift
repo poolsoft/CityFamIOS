@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 
 class EventDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,ChangeStatusOfEventServiceAlamofire,CLLocationManagerDelegate {
-
+    
     //MARK:- Outlets & Properties
     
     @IBOutlet var eventTicketLbl: UILabelFontSize!
@@ -31,8 +31,8 @@ class EventDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
     @IBOutlet var ticketsBgViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet var mapView: MKMapView!
     @IBOutlet var shareView: UIView!
-
-    let typeOfEventsUsersList = ["Attending","Invited","Interested","Comments"]
+    
+    let typeOfEventsUsersList = [attendingText,invitedText,interestedText,commentsText]
     var eventDetailDict = NSDictionary()
     var eventImagesArray = [String]()
     
@@ -41,11 +41,9 @@ class EventDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("----------------",eventDetailDict)
         self.shareEventBtn.addTarget(self, action: #selector(EventDetailVC.shareBtnAction), for: .touchUpInside)
-        
         var locationManager:CLLocationManager!
-
+        
         //Map setup
         mapView.mapType = MKMapType.standard
         mapView.isZoomEnabled = true
@@ -60,9 +58,9 @@ class EventDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-       // locationManager.requestAlwaysAuthorization()
+        // locationManager.requestAlwaysAuthorization()
     }
-
+    
     //Method to show Event's detail on Screen
     func showEventDetail(){
         //Check Event is created by Login user or another user
@@ -104,7 +102,7 @@ class EventDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
         
         let latitude = Double((self.eventDetailDict.value(forKey: "latitude") as? String)!)
         let longitude = Double((self.eventDetailDict.value(forKey: "longitude") as? String)!)
-
+        
         //Check selected event has tickets or not
         if (self.eventDetailDict.value(forKey: "ticketLink") as? String) != "" {
             self.ticketsBgViewHeightConstraint.constant = 50.0
@@ -113,7 +111,6 @@ class EventDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
         else{
             self.ticketsBgViewHeightConstraint.constant = 0.0
         }
-        
         
         //Show eventLocation on Map
         let center = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
@@ -126,6 +123,23 @@ class EventDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
         myAnnotation.coordinate = CLLocationCoordinate2DMake(latitude!, longitude!);
         myAnnotation.title = self.eventDetailDict.value(forKey: "eventAddress") as? String//eventAddress
         mapView.addAnnotation(myAnnotation)
+        
+        if let myStatus = self.eventDetailDict.value(forKey: "myStatus") as? String{
+            switch myStatus {
+            case "Accept":
+                self.acceptActionPerformedOnEvent()
+                break
+            case "Interested":
+                self.interestedActionPerformedOnEvent()
+                break
+            case "Decline":
+                self.declineActionPerformedOnEvent()
+                break
+            default:
+                self.noActionPerformedOnEvent()
+                break
+            }
+        }
     }
     
     //Api's Methods
@@ -199,7 +213,7 @@ class EventDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! EventDetailTypeOfUsersTableViewCell
         cell.typeOfPeopleLbl.text = self.typeOfEventsUsersList[indexPath.row]
-
+        
         switch indexPath.row {
         case 0:
             cell.noOfPeopleCountLbl.text = self.eventDetailDict.value(forKey: "numberOfPeopleAttending") as? String
@@ -241,8 +255,8 @@ class EventDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
         }
     }
     
-     //MARK: UIButton Actions
-
+    //MARK: UIButton Actions
+    
     //Back btnAction
     @IBAction func backButtonAction(_ sender: Any) {
         _ = self.navigationController?.popViewController(animated: true)
@@ -251,14 +265,14 @@ class EventDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
     //Share with facebook
     @IBAction func facebookBtnAction(_ sender: Any) {
     }
-
+    
     //Share event with friends
     @IBAction func shareBtnAction(_ sender: Any) {
         //        shareView.isHidden = false
         let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "calenderVc") as! CalenderVC
         self.navigationController?.pushViewController(secondViewController, animated: true)
     }
-
+    
     //Edit this event
     @IBAction func editBtnAction(_ sender: Any) {
         let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "createEventVc") as! CreateEventVC
@@ -278,32 +292,66 @@ class EventDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
     @IBAction func segmentButtonsAction(_ sender: Any) {
         let button = sender as! UIButtonCustomClass
         if button == acceptButton{
-            acceptButton.isSelected = true
-            acceptButton.backgroundColor = UIColor(colorLiteralRed: 208/255, green: 74/255, blue: 88/255, alpha: 1)
-            declineButton.isSelected = false
-            declineButton.backgroundColor = UIColor.clear
-            interestedButton.isSelected = false
-            interestedButton.backgroundColor = UIColor.clear
+            self.acceptActionPerformedOnEvent()
             self.changeStatusOfEventApi(eventId: self.eventDetailDict.value(forKey: "eventId") as! String, status: "Accept")
         }
         else if button == declineButton{
-            declineButton.isSelected = true
-            declineButton.backgroundColor = UIColor(colorLiteralRed: 208/255, green: 74/255, blue: 88/255, alpha: 1)
-            interestedButton.isSelected = false
-            interestedButton.backgroundColor = UIColor.clear
-            acceptButton.isSelected = false
-            acceptButton.backgroundColor = UIColor.clear
+            self.declineActionPerformedOnEvent()
             self.changeStatusOfEventApi(eventId: self.eventDetailDict.value(forKey: "eventId") as! String, status: "Decline")
         }
         else{
-            interestedButton.isSelected = true
-            interestedButton.backgroundColor = UIColor(colorLiteralRed: 208/255, green: 74/255, blue: 88/255, alpha: 1)
-            acceptButton.isSelected = false
-            acceptButton.backgroundColor = UIColor.clear
-            declineButton.isSelected = false
-            declineButton.backgroundColor = UIColor.clear
+            self.interestedActionPerformedOnEvent()
             self.changeStatusOfEventApi(eventId: self.eventDetailDict.value(forKey: "eventId") as! String, status: "Interested")
         }
     }
-
+    
+    //Open Events's Host profile by selecteing his profile image
+    @IBAction func openHostProfileBtnAction(_ sender: UIButton) {
+        let profileVcObj = self.storyboard?.instantiateViewController(withIdentifier: "profileVc") as! ProfileVC
+        profileVcObj.profileUserId = self.eventDetailDict.value(forKey: "userId") as! String
+        self.navigationController?.pushViewController(profileVcObj, animated: true)
+    }
+    
+    //MARK:- Actions perfomed on events in Freinds tab
+    
+    //No action is performed on event
+    func noActionPerformedOnEvent(){
+        interestedButton.isSelected = false
+        interestedButton.backgroundColor = UIColor.clear
+        acceptButton.isSelected = false
+        acceptButton.backgroundColor = UIColor.clear
+        declineButton.isSelected = false
+        declineButton.backgroundColor = UIColor.clear
+    }
+    
+    //Accept action is performed on event
+    func acceptActionPerformedOnEvent(){
+        acceptButton.isSelected = true
+        acceptButton.backgroundColor = appNavColor
+        declineButton.isSelected = false
+        declineButton.backgroundColor = UIColor.clear
+        interestedButton.isSelected = false
+        interestedButton.backgroundColor = UIColor.clear
+    }
+    
+    //Decline action is performed on event
+    func declineActionPerformedOnEvent(){
+        declineButton.isSelected = true
+        declineButton.backgroundColor = appNavColor
+        interestedButton.isSelected = false
+        interestedButton.backgroundColor = UIColor.clear
+        acceptButton.isSelected = false
+        acceptButton.backgroundColor = UIColor.clear
+    }
+    
+    //Interested action is performed on event
+    func interestedActionPerformedOnEvent(){
+        interestedButton.isSelected = true
+        interestedButton.backgroundColor = appNavColor
+        acceptButton.isSelected = false
+        acceptButton.backgroundColor = UIColor.clear
+        declineButton.isSelected = false
+        declineButton.backgroundColor = UIColor.clear
+    }
+    
 }

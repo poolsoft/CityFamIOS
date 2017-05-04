@@ -92,6 +92,9 @@ class InterestedVC: UIViewController,UITableViewDataSource,UITableViewDelegate,G
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let profileVcObj = self.storyboard?.instantiateViewController(withIdentifier: "profileVc") as! ProfileVC
+        profileVcObj.profileUserId = self.interestedPeopleListArr[indexPath.row].value(forKey: "userId") as! String
+        self.navigationController?.pushViewController(profileVcObj, animated: true)
     }
     
     //MARK:- Button Actions

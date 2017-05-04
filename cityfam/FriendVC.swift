@@ -320,15 +320,16 @@ class FriendVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UITex
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //userid
-        
-        let profileVcObj = self.storyboard?.instantiateViewController(withIdentifier: "profileVc") as! ProfileVC
-        profileVcObj.profileUserId = self.searchedCityFamUsersListArr[indexPath.row].value(forKey: "userId") as! String
-        self.navigationController?.pushViewController(profileVcObj, animated: true)
-        
-//        if tableView.tag == 1 {
-//        }
-//        else{
-//        }
+        if tableView.tag == 1 {
+            let profileVcObj = self.storyboard?.instantiateViewController(withIdentifier: "profileVc") as! ProfileVC
+            profileVcObj.profileUserId = self.searchedCityFamUsersListArr[indexPath.row].value(forKey: "userId") as! String
+            self.navigationController?.pushViewController(profileVcObj, animated: true)
+        }
+        else{
+            let profileVcObj = self.storyboard?.instantiateViewController(withIdentifier: "profileVc") as! ProfileVC
+            profileVcObj.profileUserId = self.friendsRequestsListArr[indexPath.row].value(forKey: "userId") as! String
+            self.navigationController?.pushViewController(profileVcObj, animated: true)
+        }
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

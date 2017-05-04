@@ -268,8 +268,11 @@ class AddPeopleVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UI
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //        let eventDetailVcObj = self.storyboard?.instantiateViewController(withIdentifier: "eventDetailVc") as! EventDetailVC
-        //        self.navigationController?.pushViewController(eventDetailVcObj, animated: true)
+        if tableView.tag == 1{
+            let profileVcObj = self.storyboard?.instantiateViewController(withIdentifier: "profileVc") as! ProfileVC
+            profileVcObj.profileUserId = self.myFriendsListArr[indexPath.row].value(forKey: "userId") as! String
+            self.navigationController?.pushViewController(profileVcObj, animated: true)
+        }
     }
     
     //MARK:- Button Actions

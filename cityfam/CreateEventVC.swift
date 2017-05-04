@@ -86,7 +86,7 @@ class CreateEventVC: UIViewController,UITextFieldDelegate,UIImagePickerControlle
         let placemark = locationDetailDict.values.first as! MKPlacemark
         
         print("placemark",placemark)
-        self.eventLocationLbl.text = locationDetailDict["name"] as? String
+        self.eventLocationLbl.text = locationDetailDict["address"] as? String
         
 //        selectedItemDetail
         let span = MKCoordinateSpanMake(0.05, 0.05)
@@ -128,6 +128,8 @@ class CreateEventVC: UIViewController,UITextFieldDelegate,UIImagePickerControlle
                 self.addCategoriesTxtFields.isUserInteractionEnabled = true
                 self.categoryPicker.delegate = self
                 self.categoryPicker.reloadAllComponents()
+                
+                
                 self.addCategoriesTxtFields.inputView = self.categoryPicker
             }
             else{
