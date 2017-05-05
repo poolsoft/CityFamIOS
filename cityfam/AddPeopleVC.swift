@@ -264,7 +264,6 @@ class AddPeopleVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UI
             cell.userNameLbl.text = dict.value(forKey: "name") as? String
             return cell
         }
-        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -14,7 +14,6 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
     
     @IBOutlet var settingsBtn: UIButtonFontSize!
     @IBOutlet var editBtnHeightConstraint: NSLayoutConstraint!
-
     @IBOutlet var userImg: UIImageViewCustomClass!
     @IBOutlet var userNameLbl: UILabelFontSize!
     @IBOutlet var userLocationLbl: UILabelFontSize!
@@ -25,10 +24,11 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
     @IBOutlet var addPhotosBtn: UIButtonCustomClass!
     @IBOutlet var manageConnectionBtn: UIButtonCustomClass!
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var profileImagesCollectionView: UICollectionView!
     
     var profileUserId = String()
-    var profileTableViewArray = ["My Groups", "My Plans", "My Friends"]
-    var imagesArray = NSArray()
+    var profileTableViewArr = [String]()
+    var eventesImagesArr = NSArray()
     var profileInfoDict = NSDictionary()
     let imagePicker = UIImagePickerController()
     var userPhotosToUpload:UIImage!
@@ -37,15 +37,14 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.notMyFriendProfileLayoutSetup()
         imagePicker.delegate = self
 
         //adding notification observer
         NotificationCenter.default.addObserver(self, selector: #selector(ProfileVC.updateProfileNotification), name: NSNotification.Name(rawValue: "updateProfileInfoNotification"), object: nil)
-        
         self.getUserProfileApi()
     }
-
     
     //MARK:- Methods
     
@@ -64,6 +63,8 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
         self.editBtn.isHidden = true
         self.editBtnHeightConstraint.constant = 0.0
         self.settingsBtn.isHidden = true
+        self.profileTableViewArr = [(self.profileInfoDict.value(forKey: "userName") as? String)! + "'s Plans", (self.profileInfoDict.value(forKey: "userName") as? String)! + "'s Events"]
+        self.tableView.reloadData()
     }
     
     //City fam user's profile screen setup
@@ -88,6 +89,8 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
         self.editBtn.isHidden = false
         self.editBtnHeightConstraint.constant = 30.0
         self.settingsBtn.isHidden = false
+        self.profileTableViewArr = ["My Groups", "My Plans", "My Friends"]
+        self.tableView.reloadData()
     }
     
     //Api's results
@@ -127,8 +130,6 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
                     self.userImg.image = UIImage(named: "user.png")
                 }
                 
-                self.imagesArray = self.profileInfoDict.value(forKey: "userImagesArray") as! NSArray
-                
                 self.userNameLbl.text = self.profileInfoDict.value(forKey: "userName") as? String
                 
                     switch (self.profileInfoDict.value(forKey: "isMyFriend") as! Int){
@@ -148,6 +149,8 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
                     default:
                         break
                     }
+                self.eventesImagesArr = self.profileInfoDict.value(forKey: "userImagesArray") as! NSArray
+                self.profileImagesCollectionView.reloadData()
             }
             else{
                 CommonFxns.showAlert(self, message: (result.value(forKey: "error") as? String)!, title: errorAlertTitle)
@@ -179,7 +182,6 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
             }
         })
     }
-    
     
     //AddPhotoToProfile Api call
     func addPhotoToProfileApi() {
@@ -220,13 +222,13 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
     //MARK: UITableView Delagtes & Datasource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return profileTableViewArray.count
+        return profileTableViewArr.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let label = cell.viewWithTag(1) as! UILabelFontSize
-        label.text = profileTableViewArray[indexPath.row]
+        label.text = profileTableViewArr[indexPath.row]
         return cell
     }
     
@@ -250,11 +252,20 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
     //MARK: UICollectionView Delegates
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
-        return imagesArray.count
+        return eventesImagesArr.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! ProfileVcImagesCollectionViewCell
+        
+        if (self.profileInfoDict.value(forKey: "userImagesArray") as! NSArray)[indexPath.row] as? String != nil{
+            cell.userAddedImg.sd_setImage(with: URL(string: ((self.profileInfoDict.value(forKey: "userImagesArray") as! NSArray)[indexPath.row] as? String)!), placeholderImage: UIImage(named: "user.png"))
+            cell.userAddedImg.setShowActivityIndicator(true)
+            cell.userAddedImg.setIndicatorStyle(.gray)
+        }
+        else{
+            cell.userAddedImg.image = UIImage(named: "user.png")
+        }
        // let imageView = cell.viewWithTag(1) as! UIImageView
        // imageView.image = UIImage(named: imagesArray[indexPath.row])
         return cell
@@ -280,6 +291,9 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
     
     //See all photos of login user
     @IBAction func seeAllPhotosBtnAction(_ sender: Any) {
+        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "seeUserProfileImagesVc") as! SeeUserProfileImagesVC
+        secondViewController.userAllPhotosArr = self.profileInfoDict.value(forKey: "userImagesArray") as! [String]
+        self.navigationController?.pushViewController(secondViewController, animated: true)
     }
     
     //Back btn action

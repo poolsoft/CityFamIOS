@@ -80,7 +80,6 @@ class CreateEventVC: UIViewController,UITextFieldDelegate,UIImagePickerControlle
 //            annotation.subtitle = "city : \(city) state: \(state)"
 //        }
 //        
-        
         let locationDetailDict = notification.userInfo as! [String:Any]
                 
         let placemark = locationDetailDict.values.first as! MKPlacemark

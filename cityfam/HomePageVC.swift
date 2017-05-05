@@ -42,14 +42,15 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
     
         //adding notification observer to filter events
         NotificationCenter.default.addObserver(forName:NSNotification.Name(rawValue: "filterEventsNotification"), object:nil, queue:nil, using:catchNotification)
+        
+        //adding notification observer to update events
+        NotificationCenter.default.addObserver(self, selector: #selector(HomePageVC.catchUpdateEventsNotification), name: NSNotification.Name(rawValue: "updateEventsNotification"), object: nil)
     }
 
     func abc()->String?{
-        
         let str = ""
         return str
     }
-    
     
     //MARK:- Methods
     
@@ -87,7 +88,6 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
                 print("Saved Event")
             }
             else{
-                
                 print("failed to save event with error : \(error) or access not granted")
             }
         }
@@ -126,6 +126,11 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
         print(filtersDataDict)
     }
 
+    //Catch updateEventsNotification
+    func catchUpdateEventsNotification(){
+        
+    }
+    
     //Get Api's Results
     
     //Server failure Alert
@@ -189,6 +194,7 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
         DispatchQueue.main.async( execute: {
             appDelegate.hideProgressHUD(view: self.view)
             if (result.value(forKey: "success")as! Int == 1){
+                self.getEventsListApi()
             }
             else{
                 CommonFxns.showAlert(self, message: (result.value(forKey: "error") as? String)!, title: errorAlertTitle)
@@ -226,7 +232,6 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        
         if tableView.tag == 1{
             let cell:HomeFriendsTableViewCell = tableView.dequeueReusableCell(withIdentifier: "friendsCell", for: indexPath) as! HomeFriendsTableViewCell
             cell.delegate = self
@@ -274,7 +279,6 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
                     break
                 }
             }
-
             return cell
         }
         else{
