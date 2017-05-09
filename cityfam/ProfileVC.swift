@@ -233,20 +233,40 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.row {
-        case 0:
-            let myGroupVcObj = self.storyboard?.instantiateViewController(withIdentifier: "myGroupsVc") as! MyGroupsVC
-            self.navigationController?.pushViewController(myGroupVcObj, animated: true)
-        case 1:
-            let myPlansVcObj = self.storyboard?.instantiateViewController(withIdentifier: "myPlansVc") as! MyPlansVC
-            self.navigationController?.pushViewController(myPlansVcObj, animated: true)
-        case 2:
-            let myFriendsOrContactsVcObj = self.storyboard?.instantiateViewController(withIdentifier: "myFriendsOrContactsVc") as! MyFriendsOrContactsVC
-            myFriendsOrContactsVcObj.isComingFromProfileScreen = true
-            self.navigationController?.pushViewController(myFriendsOrContactsVcObj, animated: true)
-        default:
-            break
+        
+        if self.profileUserId == UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key){
+            switch indexPath.row {
+            case 0:
+                let myGroupVcObj = self.storyboard?.instantiateViewController(withIdentifier: "myGroupsVc") as! MyGroupsVC
+                self.navigationController?.pushViewController(myGroupVcObj, animated: true)
+            case 1:
+                let myPlansVcObj = self.storyboard?.instantiateViewController(withIdentifier: "myPlansVc") as! MyPlansVC
+                myPlansVcObj.anotherUserId = self.profileUserId
+                self.navigationController?.pushViewController(myPlansVcObj, animated: true)
+            case 2:
+                let myFriendsOrContactsVcObj = self.storyboard?.instantiateViewController(withIdentifier: "myFriendsOrContactsVc") as! MyFriendsOrContactsVC
+                myFriendsOrContactsVcObj.isComingFromProfileScreen = true
+                self.navigationController?.pushViewController(myFriendsOrContactsVcObj, animated: true)
+            default:
+                break
+            }
         }
+        else{
+            switch indexPath.row {
+            case 0:
+                let myPlansVcObj = self.storyboard?.instantiateViewController(withIdentifier: "myPlansVc") as! MyPlansVC
+                myPlansVcObj.anotherUserId = self.profileUserId
+                self.navigationController?.pushViewController(myPlansVcObj, animated: true)
+                break
+            case 1:
+                let myFriendsOrContactsVcObj = self.storyboard?.instantiateViewController(withIdentifier: "eventsListVc") as! EventsListVC
+                self.navigationController?.pushViewController(myFriendsOrContactsVcObj, animated: true)
+                break
+            default:
+                break
+            }
+        }
+
     }
     
     //MARK: UICollectionView Delegates

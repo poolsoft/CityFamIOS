@@ -1,30 +1,28 @@
 //
-//  AddPeopleMyFriendsTableViewCell.swift
+//  GroupDetailVcTableViewCell.swift
 //  cityfam
 //
-//  Created by i mark on 17/04/17.
+//  Created by i mark on 09/05/17.
 //  Copyright © 2017 Piyush Gupta. All rights reserved.
 //
 
 import UIKit
 
-class AddPeopleMyFriendsTableViewCell: UITableViewCell {
+class GroupDetailVcTableViewCell: UITableViewCell {
 
-    //MARK:- Outlets & Properties
+    //MARK:- Outlets
     
-    @IBOutlet var userImg: UIImageView!
-    @IBOutlet var userNameLbl: UILabel!
+    @IBOutlet var groupMemberProfileImg: UIImageViewCustomClass!
+    @IBOutlet var groupMemberNameLbl: UILabelFontSize!
     
     //MARK:- Methods
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-    
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
 
-    @IBAction func chooseContactBtnAction(_ sender: UIButton) {
-    }
 }

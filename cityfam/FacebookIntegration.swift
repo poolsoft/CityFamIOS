@@ -3,7 +3,6 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
 
-
 protocol FacebookDelegate:class{
     func fbUserData(dict:NSDictionary)
 }

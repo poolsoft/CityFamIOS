@@ -56,5 +56,7 @@
  let commentsText = "Comments"
  let invitedText = "Invited"
  
+ // My Groups screen
  
+ let createGroupValidation = "Please enter group name to create a new group"
  

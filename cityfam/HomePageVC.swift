@@ -26,7 +26,6 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
                             "daysOfWeek": "",
                             "timeOfDay": ""]
     var selectedSegmentValue = Int()
-    //var eventsListArr = [NSDictionary]()
     var friendsEventsListArr = [NSDictionary]()
     var publicEventsListArr = [NSDictionary]()
     
@@ -36,10 +35,6 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
         super.viewDidLoad()
         self.intialSetup()
         
-        let abcStr = abc()
-        
-        print(abcStr as Any)
-    
         //adding notification observer to filter events
         NotificationCenter.default.addObserver(forName:NSNotification.Name(rawValue: "filterEventsNotification"), object:nil, queue:nil, using:catchNotification)
         
@@ -47,11 +42,6 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
         NotificationCenter.default.addObserver(self, selector: #selector(HomePageVC.catchUpdateEventsNotification), name: NSNotification.Name(rawValue: "updateEventsNotification"), object: nil)
     }
 
-    func abc()->String?{
-        let str = ""
-        return str
-    }
-    
     //MARK:- Methods
     
     func setEventInDeviceCalender(){

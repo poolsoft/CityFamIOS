@@ -52,6 +52,11 @@ protocol EventsInvitationsServiceAlamofire{
     func ServerError()
 }
 
+protocol GetUserPlansServiceAlamofire{
+    func getUserPlansResult(_ result:AnyObject)
+    func ServerError()
+}
+
 //MARK:- Class
 
 class EventsAlamofireIntegration: NSObject {
@@ -73,6 +78,7 @@ class EventsAlamofireIntegration: NSObject {
     var getListOfPeopleInterestedInEventServiceDelegate:GetListOfPeopleInterestedInEventServiceAlamofire?
     var eventsInvitationsServiceDelegate:EventsInvitationsServiceAlamofire?
     var changeStatusOfEventServiceDelegate:ChangeStatusOfEventServiceAlamofire?
+    var getUserPlansServiceDelegate:GetUserPlansServiceAlamofire?
     
     //MARK:- Api's Methods
     
@@ -227,6 +233,7 @@ class EventsAlamofireIntegration: NSObject {
         }
     }
     
+    //Update event status Api
     func changeStatusOfEventApi(eventId:String, status:String){
         print("change status Api------------",eventId,"status",status,"userId",UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key)!)
         
@@ -246,6 +253,25 @@ class EventsAlamofireIntegration: NSObject {
         }
     }
     
+    //get User Plans Api
+    func getUserPlansListApi(anotherUserId:String, status:Int){
+        print("getUserPlansList------------",anotherUserId,"status",status,"userId",UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key)!)
+        
+        Alamofire.request("\(baseUrl)getUserPlans.php?userId=\(UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key)!)&anotherUserId=\(anotherUserId)&status=\(status)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+            
+            switch(response.result){
+            case .success:
+                if let json = response.result.value{
+                    print(json)
+                    self.getUserPlansServiceDelegate?.getUserPlansResult(json as AnyObject)
+                }
+                break
+            case .failure:
+                self.getUserPlansServiceDelegate?.ServerError()
+                break
+            }
+        }
+    }
 }
 
 
