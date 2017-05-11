@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddPeopleVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,GetMyFriendsListServiceAlamofire {
+class AddPeopleVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,GetMyFriendsListServiceAlamofire,MyContactsCellProtocol,MyFriendCellProtocol {
     
     //MARK:- Outlets & Propeties
     
@@ -18,14 +18,16 @@ class AddPeopleVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UI
     @IBOutlet var searchTxtField: UITextFieldCustomClass!
     @IBOutlet var myFriendsTableView: UITableView!
     @IBOutlet var myContactsTableView: UITableView!
-    
     @IBOutlet var titleLbl: UILabelFontSize!
+    
     var myFriendsListArr = [NSDictionary]()
     var myContactsListArr = [NSDictionary]()
     var selectedSegmentValue = Int()
     var isComingFromProfileScreen = Bool()
     let arrOfPhoneContacts = NSMutableArray()
-
+    
+    var listOfContactsAddToGroup = [String]()
+    
     //MARK:- View life cycle
     
     override func viewDidLoad() {
@@ -35,7 +37,6 @@ class AddPeopleVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UI
         selectedSegmentValue = 1
         self.myFriendsTableView.isHidden = false
         self.myContactsTableView.isHidden = true
-        self.tickBtn.isHidden = true
         
         if isComingFromProfileScreen{
             self.titleLbl.text = "Friends"
@@ -167,7 +168,6 @@ class AddPeopleVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UI
             //            }
             
         })
-        
     }
 
     //retreive
@@ -183,12 +183,23 @@ class AddPeopleVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UI
            // print(dict.value(forKey: "name")!)
            // print(dict.value(forKey: "email")!)
         }
-        
         print("Sorted list",dictArr)
-        
         return dictArr
     }
     
+    //Delegates
+    
+    func chooseMyContactsToAddInGroup(cell:AddPeopleMyContactsTableViewCell,sender:UIButton){
+        if cell.chooseContactBtn.imageView?.image == UIImage(named: "user.png"){
+            
+        }
+        print("my contacts cell tapped")
+    }
+
+    func chooseMyFriendsToAddInGroup(cell:AddPeopleMyFriendsTableViewCell,sender:UIButton){
+        print("my freinds cell tapped")
+    }
+
     // dismissing keyboard on pressing return key
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool{
         textField.resignFirstResponder()
@@ -237,15 +248,12 @@ class AddPeopleVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UI
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         if tableView.tag == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "myFriendsCell", for: indexPath) as! AddPeopleMyFriendsTableViewCell
-
-            //let sectionArr = self.myFriendsListArr[indexPath.section].value(forKey: "friends") as! [NSDictionary]
-            
-            //let dict = sectionArr[indexPath.row]
-            
+            cell.delegate = self
             let dict = self.myFriendsListArr[indexPath.row]
             
             cell.userNameLbl.text = dict.value(forKey: "userName") as? String
-            
+            cell.chooseFriendBtn.setImage(UIImage(named: "untickIcon.png"), for: UIControlState.normal)
+
             if (dict.value(forKey: "userImageUrl") as? String) != nil{
                 cell.userImg.sd_setImage(with: URL(string: (dict.value(forKey: "userImageUrl") as? String)!), placeholderImage: UIImage(named: "user.png"))
                 cell.userImg.setShowActivityIndicator(true)
@@ -258,21 +266,60 @@ class AddPeopleVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UI
         }
         else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "myContactsCell", for: indexPath) as! AddPeopleMyContactsTableViewCell
-            
+            cell.delegate = self
+
             let dict = self.myContactsListArr[indexPath.row]
             
             cell.userNameLbl.text = dict.value(forKey: "name") as? String
+            cell.chooseContactBtn.setImage(UIImage(named: "untickIcon.png"), for: UIControlState.normal)
+
             return cell
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView.tag == 1{
-            let profileVcObj = self.storyboard?.instantiateViewController(withIdentifier: "profileVc") as! ProfileVC
-            profileVcObj.profileUserId = self.myFriendsListArr[indexPath.row].value(forKey: "userId") as! String
-            self.navigationController?.pushViewController(profileVcObj, animated: true)
+            let cell:AddPeopleMyFriendsTableViewCell = self.myFriendsTableView.cellForRow(at: indexPath) as! AddPeopleMyFriendsTableViewCell
+            
+            if cell.chooseFriendBtn.imageView?.image == UIImage(named:"tickIcon.png"){
+                cell.chooseFriendBtn.setImage(UIImage(named: "untickIcon.png"), for: UIControlState.normal)
+                self.listOfContactsAddToGroup.append(self.myFriendsListArr[indexPath.row].value(forKey: "emailId") as! String)
+                print("inserted",listOfContactsAddToGroup)
+            }
+            else{
+                cell.chooseFriendBtn.setImage(UIImage(named: "tickIcon.png"), for: UIControlState.normal)
+                
+                self.listOfContactsAddToGroup = self.listOfContactsAddToGroup.filter{$0 != self.myFriendsListArr[indexPath.row].value(forKey: "emailId") as! String}
+                    print("removed",listOfContactsAddToGroup)
+            }
+        }
+        else{
+            let cell:AddPeopleMyContactsTableViewCell = self.myFriendsTableView.cellForRow(at: indexPath) as! AddPeopleMyContactsTableViewCell
+            if cell.chooseContactBtn.imageView?.image == UIImage(named:"tickIcon.png"){
+                cell.chooseContactBtn.setImage(UIImage(named: "untickIcon.png"), for: UIControlState.normal)
+            }
+            else{
+                cell.chooseContactBtn.setImage(UIImage(named: "tickIcon.png"), for: UIControlState.normal)
+            }
         }
     }
+    
+//    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+//        if tableView.tag == 1{
+//            let cell:AddPeopleMyFriendsTableViewCell = self.myFriendsTableView.cellForRow(at: indexPath) as! AddPeopleMyFriendsTableViewCell
+//            cell.chooseFriendBtn.setImage(UIImage(named: "untickIcon.png"), for: UIControlState.normal)
+//        }
+//        else{
+//            let cell:AddPeopleMyContactsTableViewCell = self.myFriendsTableView.cellForRow(at: indexPath) as! AddPeopleMyContactsTableViewCell
+//            cell.chooseContactBtn.setImage(UIImage(named: "untickIcon.png"), for: UIControlState.normal)
+//        }
+//    }
+    
+    //        if tableView.tag == 1{
+    //            let profileVcObj = self.storyboard?.instantiateViewController(withIdentifier: "profileVc") as! ProfileVC
+    //            profileVcObj.profileUserId = self.myFriendsListArr[indexPath.row].value(forKey: "userId") as! String
+    //            self.navigationController?.pushViewController(profileVcObj, animated: true)
+    //        }
     
     //MARK:- Button Actions
     

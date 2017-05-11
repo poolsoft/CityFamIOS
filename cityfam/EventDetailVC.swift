@@ -249,6 +249,7 @@ class EventDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
             self.navigationController?.pushViewController(secondViewController, animated: true)
         case 3:
             let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "commentsVc") as! CommentsVC
+            secondViewController.eventId = (self.eventDetailDict.value(forKey: "eventId") as? String)!
             self.navigationController?.pushViewController(secondViewController, animated: true)
         default:
             break

@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class CreateEventVC: UIViewController,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CreateEventServiceAlamofire,UIPickerViewDelegate,SearchedLocationServiceProtocol {
+class CreateEventVC: UIViewController,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CreateEventServiceAlamofire,UIPickerViewDelegate,SearchedLocationServiceProtocol,GetEventCategoryServiceAlamofire {
     
     //MARK:- Outlets & Properties
     
@@ -79,7 +79,7 @@ class CreateEventVC: UIViewController,UITextFieldDelegate,UIImagePickerControlle
 //            let state = placemark.administrativeArea {
 //            annotation.subtitle = "city : \(city) state: \(state)"
 //        }
-//        
+       
         let locationDetailDict = notification.userInfo as! [String:Any]
                 
         let placemark = locationDetailDict.values.first as! MKPlacemark
@@ -108,7 +108,7 @@ class CreateEventVC: UIViewController,UITextFieldDelegate,UIImagePickerControlle
     func getEventCategoryApi() {
         if CommonFxns.isInternetAvailable(){
             appDelegate.showProgressHUD(view: self.view)
-            EventsAlamofireIntegration.sharedInstance.createEventServiceDelegate = self
+            EventsAlamofireIntegration.sharedInstance.getEventCategoryServiceDelegate = self
             EventsAlamofireIntegration.sharedInstance.getEventCategoryApi()
         }
         else{

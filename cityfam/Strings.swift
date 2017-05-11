@@ -60,3 +60,8 @@
  
  let createGroupValidation = "Please enter group name to create a new group"
  
+ //Comments Screen
+ 
+ let postCommentValidation = "No comment to post!"
+ 
+ 

@@ -8,12 +8,19 @@
 
 import UIKit
 
+protocol MyContactsCellProtocol{
+    func chooseMyContactsToAddInGroup(cell:AddPeopleMyContactsTableViewCell,sender:UIButton)
+}
+
 class AddPeopleMyContactsTableViewCell: UITableViewCell {
 
     //MARK:- Outlets & Properties
 
     @IBOutlet var userNameLbl: UILabel!
     @IBOutlet var userImg: UIImageView!
+    @IBOutlet var chooseContactBtn: UIButton!
+    
+    var delegate:MyContactsCellProtocol?
     
     //MARK:- Methods
 
@@ -24,7 +31,11 @@ class AddPeopleMyContactsTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    
+    //MARK:- Button Action
+    
     @IBAction func chooseMyContactBtnAction(_ sender: UIButton) {
+        self.delegate?.chooseMyContactsToAddInGroup(cell: self, sender: sender)
     }
 
 }

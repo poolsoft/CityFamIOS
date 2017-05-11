@@ -9,6 +9,5 @@
 import UIKit
 
 class LargeViewForImagesCollectionViewCell: UICollectionViewCell {
-    
     @IBOutlet var largeImageview: UIImageView!
 }

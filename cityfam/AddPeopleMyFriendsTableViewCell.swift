@@ -8,12 +8,19 @@
 
 import UIKit
 
+protocol MyFriendCellProtocol{
+    func chooseMyFriendsToAddInGroup(cell:AddPeopleMyFriendsTableViewCell,sender:UIButton)
+}
+
 class AddPeopleMyFriendsTableViewCell: UITableViewCell {
 
     //MARK:- Outlets & Properties
     
+    @IBOutlet var chooseFriendBtn: UIButton!
     @IBOutlet var userImg: UIImageView!
     @IBOutlet var userNameLbl: UILabel!
+    
+    var delegate: MyFriendCellProtocol?
     
     //MARK:- Methods
     
@@ -25,6 +32,9 @@ class AddPeopleMyFriendsTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
 
+    //MARK:- Button Action
+
     @IBAction func chooseContactBtnAction(_ sender: UIButton) {
+        self.delegate?.chooseMyFriendsToAddInGroup(cell: self,sender:sender)
     }
 }

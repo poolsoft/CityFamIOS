@@ -24,4 +24,5 @@ let appDelegate = UIApplication.shared.delegate as!(AppDelegate)
 let appNavColor:UIColor = UIColor(colorLiteralRed: 208/255, green: 74/255, blue: 88/255, alpha: 1)
 
 
-
+let maxLengthOfCommentTextField = 250
+let zero = 0

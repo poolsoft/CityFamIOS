@@ -12,8 +12,12 @@ import Alamofire
 //MARK:- Protocols
 
 protocol CreateEventServiceAlamofire {
-    func getEventCategoryResult(_ result:AnyObject)
     func createEventResult(_ result: AnyObject)
+    func ServerError()
+}
+
+protocol GetEventCategoryServiceAlamofire {
+    func getEventCategoryResult(_ result:AnyObject)
     func ServerError()
 }
 
@@ -57,6 +61,12 @@ protocol GetUserPlansServiceAlamofire{
     func ServerError()
 }
 
+protocol CommentsVcServiceAlamofire{
+    func getCommentsApiResult(_ result:AnyObject)
+    func addCommentApiResult(_ result:AnyObject)
+    func ServerError()
+}
+
 //MARK:- Class
 
 class EventsAlamofireIntegration: NSObject {
@@ -79,6 +89,8 @@ class EventsAlamofireIntegration: NSObject {
     var eventsInvitationsServiceDelegate:EventsInvitationsServiceAlamofire?
     var changeStatusOfEventServiceDelegate:ChangeStatusOfEventServiceAlamofire?
     var getUserPlansServiceDelegate:GetUserPlansServiceAlamofire?
+    var commentsVcServiceDelegate:CommentsVcServiceAlamofire?
+    var getEventCategoryServiceDelegate:GetEventCategoryServiceAlamofire?
     
     //MARK:- Api's Methods
     
@@ -90,11 +102,11 @@ class EventsAlamofireIntegration: NSObject {
             case .success:
                 if let json = response.result.value {
                     print(json)
-                    self.createEventServiceDelegate?.getEventCategoryResult(json as AnyObject)
+                    self.getEventCategoryServiceDelegate?.getEventCategoryResult(json as AnyObject)
                 }
                 break
             case .failure:
-                self.createEventServiceDelegate?.ServerError()
+                self.getEventCategoryServiceDelegate?.ServerError()
                 break
             }
         }
@@ -272,6 +284,47 @@ class EventsAlamofireIntegration: NSObject {
             }
         }
     }
+    
+    //Get Comments List Api
+    func getCommentsListApi(eventId:String){
+        print("getCommentsListApi------------",eventId,"eventId","userId",UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key)!)
+        
+        Alamofire.request("\(baseUrl)getListOfCommentsOfEvent.php?userId=\(UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key)!)&eventId=\(eventId)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+            
+            switch(response.result){
+            case .success:
+                if let json = response.result.value{
+                    print(json)
+                    self.commentsVcServiceDelegate?.getCommentsApiResult(json as AnyObject)
+                }
+                break
+            case .failure:
+                self.commentsVcServiceDelegate?.ServerError()
+                break
+            }
+        }
+    }
+    
+    //Add comment Api
+    func addCommentApi(parameters: [String:Any]){
+        print("parameteres",parameters)
+        
+        Alamofire.request("\(baseUrl)addComment.php", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+            
+            switch(response.result){
+            case .success:
+                if let json = response.result.value{
+                    print(json)
+                    self.commentsVcServiceDelegate?.addCommentApiResult(json as AnyObject)
+                }
+                break
+            case .failure:
+                self.commentsVcServiceDelegate?.ServerError()
+                break
+            }
+        }
+    }
+
 }
 
 

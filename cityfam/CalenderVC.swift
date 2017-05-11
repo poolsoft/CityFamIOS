@@ -14,8 +14,9 @@ class CalenderVC: UIViewController {
 
     private let kKeychainItemName = "Google Calendar API"
     //private let kClientID = "710694110264-l6pvnqomt95d5te8vgrm2df2cluefst4.apps.googleusercontent.com"
+    private let kClientID = "710694110264-qamcqt7nlspjmhtgoe679nje1e14hevk.apps.googleusercontent.com"
     
-    private let kClientID = "835412959399-ehb642hsb952mhp9ub14atmva8kqektf.apps.googleusercontent.com"
+    //"835412959399-cd34h86derflehao0poh2mg95l3nu94b.apps.googleusercontent.com"
     
     // If modifying these scopes, delete your previously saved credentials by
     // resetting the iOS simulator or uninstall the app.
@@ -43,10 +44,6 @@ class CalenderVC: UIViewController {
             service.authorizer = auth
         }
         
-    }
-    
-    @IBAction func backBtnAction(_ sender: Any) {
-        _ = self.navigationController?.popViewController(animated: true)
     }
     
     // When the view appears, ensure that the Google Calendar API service is authorized
@@ -98,7 +95,6 @@ class CalenderVC: UIViewController {
                     from: start.date,
                     dateStyle: .short,
                     timeStyle: .short
-                    
                 )
                 eventString += "\(startString) - \(event.summary)\n"
             }
@@ -108,7 +104,7 @@ class CalenderVC: UIViewController {
         
         output.text = eventString
     }
-    //"https://www.googleapis.com/calendar/v3/calendars/email.gmail.com/events?maxResults=15&key=APIKey-here")
+    
     
     // Creates the auth controller for authorizing access to Google Calendar API
     private func createAuthController() -> GTMOAuth2ViewControllerTouch {
@@ -160,3 +156,5 @@ class CalenderVC: UIViewController {
     }
     
 }
+
+
