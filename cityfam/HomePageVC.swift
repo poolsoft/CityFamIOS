@@ -114,6 +114,7 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
         print("Catch notification")
         filtersDataDict = notification.userInfo as! [String : String]
         print(filtersDataDict)
+        self.getEventsListApi()
     }
 
     //Catch updateEventsNotification
@@ -491,7 +492,7 @@ class HomePageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
     
     //top bar Message Button Action
     @IBAction func notificationButtonAction(_ sender: Any) {
-        let notificationsVcObj = self.storyboard?.instantiateViewController(withIdentifier: "notificationsVc") as! NotificationsVC
+        let notificationsVcObj = self.storyboard?.instantiateViewController(withIdentifier: "messagesVc") as! MessagesVC
         self.navigationController?.pushViewController(notificationsVcObj, animated: true)
     }
     

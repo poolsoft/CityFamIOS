@@ -53,9 +53,7 @@ class InviteFriendsVC: UIViewController,UITextFieldDelegate,UITableViewDelegate,
     @IBAction func tickBtnAction(_ sender: UIButtonFontSize) {
     }
     
-    @IBAction func segmentControlBtnAction(_ sender: UIButton) {
-        //let button = sender as! UIButtonCustomClass
-        
+    @IBAction func segmentControlBtnAction(_ sender: UIButton) {        
         switch sender.tag {
         case 0:
             self.myFriendsBtn.isSelected = true

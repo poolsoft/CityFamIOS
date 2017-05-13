@@ -41,6 +41,16 @@ protocol GroupDetailVcServiceAlamofire {
     func ServerError()
 }
 
+protocol AddMembersToGroupServiceAlamofire {
+    func addMembersToGroupResult(_ result:AnyObject)
+    func ServerError()
+}
+
+protocol GetMyContactsWithStatusServiceAlamofire {
+    func getMyContactsWithStatusApiResult(_ result:AnyObject)
+    func ServerError()
+}
+
 //MARK:- Properties
 
 class FriendsAlamofireIntegration: NSObject {
@@ -59,6 +69,8 @@ class FriendsAlamofireIntegration: NSObject {
     var getMyFriendsListServiceDelegate:GetMyFriendsListServiceAlamofire?
     var myGroupsVcServiceDelegate:MyGroupsVcServiceAlamofire?
     var groupDetailVcServiceDelegate:GroupDetailVcServiceAlamofire?
+    var addMembersToGroupServiceDelegate:AddMembersToGroupServiceAlamofire?
+    var getMyContactsWithStatusServiceDelegate:GetMyContactsWithStatusServiceAlamofire?
     
     //MARK:- Methods
 
@@ -252,6 +264,46 @@ class FriendsAlamofireIntegration: NSObject {
                 break
             case .failure:
                 self.myGroupsVcServiceDelegate?.ServerError()
+                break
+            }
+        }
+    }
+    
+    //Add member to group Api
+    func addMemberToGroupApi(parameters: [String:Any]){
+        print("parameters", parameters)
+        
+        Alamofire.request("\(baseUrl)addMembersInGroup.php", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+            
+            switch (response.result) {
+            case .success:
+                if let json = response.result.value {
+                    print(json)
+                    self.addMembersToGroupServiceDelegate?.addMembersToGroupResult(json as AnyObject)
+                }
+                break
+            case .failure:
+                self.addMembersToGroupServiceDelegate?.ServerError()
+                break
+            }
+        }
+    }
+    
+    //getMyContactsWithStatus Api
+    func getMyContactsWithStatusApi(parameters: [String:Any]){
+        print("parameters", parameters)
+        
+        Alamofire.request("\(baseUrl)getMyContactsWithStatus.php", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+            
+            switch (response.result) {
+            case .success:
+                if let json = response.result.value {
+                    print(json)
+                    self.getMyContactsWithStatusServiceDelegate?.getMyContactsWithStatusApiResult(json as AnyObject)
+                }
+                break
+            case .failure:
+                self.getMyContactsWithStatusServiceDelegate?.ServerError()
                 break
             }
         }

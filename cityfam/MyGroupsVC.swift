@@ -16,6 +16,7 @@ class MyGroupsVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UIT
     @IBOutlet var myGroupsTableView: UITableView!
     @IBOutlet var enterGroupNameTxtField: UITextFieldCustomClass!
     
+    private let myGroupsTableRefreshControl = UIRefreshControl()
     var myGroupsListArr = [NSDictionary]()
     var row = Int()
     
@@ -25,15 +26,31 @@ class MyGroupsVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UIT
         super.viewDidLoad()
         //myGroupsTableView.tableFooterView = UIView()
         self.getMyGroupsListApi()
+        
+        if #available(iOS 10.0, *) {
+            myGroupsTableView.refreshControl = myGroupsTableRefreshControl
+            
+        } else {
+            myGroupsTableView.addSubview(myGroupsTableRefreshControl)
+        }
+        
+        // Configure Refresh Control
+        myGroupsTableRefreshControl.addTarget(self, action: #selector(MyGroupsVC.refreshData(sender:)), for: .valueChanged)
     }
     
     //MARK:- Methods
+    
+    //Pull to refresh Action
+    func refreshData(sender:UIRefreshControl){
+        self.getMyGroupsListApi()
+    }
     
     //Api's results
     //Server failure Alert
     func ServerError(){
         appDelegate.hideProgressHUD(view: self.view)
         CommonFxns.showAlert(self, message: networkOperationErrorAlert, title: errorAlertTitle)
+        self.myGroupsTableRefreshControl.endRefreshing()
     }
     
     //Get My groups Api Result
@@ -47,6 +64,7 @@ class MyGroupsVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UIT
             else{
                 CommonFxns.showAlert(self, message: (result.value(forKey: "error") as? String)!, title: errorAlertTitle)
             }
+            self.myGroupsTableRefreshControl.endRefreshing()
         })
     }
     

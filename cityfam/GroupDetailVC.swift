@@ -27,9 +27,17 @@ class GroupDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
         self.getMembersOfGroupApi()
         
         self.titleLbl.text = self.groupDetailDict.value(forKey: "groupName") as? String
+        
+        //adding notification observer to update events
+        NotificationCenter.default.addObserver(self, selector: #selector(GroupDetailVC.updateGroupDetailNotification), name: NSNotification.Name(rawValue: "updateGroupDetailNotification"), object: nil)
     }
 
     //MARK:- Methods
+    
+    //Catch notification of Update Group Detail
+    func updateGroupDetailNotification(){
+        self.getMembersOfGroupApi()
+    }
     
     //Api's results
     
@@ -101,16 +109,18 @@ class GroupDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell:GroupDetailVcTableViewCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! GroupDetailVcTableViewCell
         
-        //{
-        //    "success":1,
-        //    "result": [{
-        //    "userImageUrl": "www.aha.com",
-        //    "userName": "Marshal Mathers",
-        //    "userId": "23",
-        //    "emailId": "marshal@gmail.com"
-        //    }],
-        //    "error":"No Error Found"
-        //}
+        let dict = self.membersListOfSelectedGroupArr[indexPath.row]
+        cell.groupMemberNameLbl.text = dict.value(forKey: "userName") as? String
+        
+        if (dict.value(forKey: "userImageUrl") as? String) != nil{
+            cell.groupMemberProfileImg.sd_setImage(with: URL(string: (dict.value(forKey: "userImageUrl") as? String)!), placeholderImage: UIImage(named: "user.png"))
+            cell.groupMemberProfileImg.setShowActivityIndicator(true)
+            cell.groupMemberProfileImg.setIndicatorStyle(.gray)
+        }
+        else{
+            cell.groupMemberProfileImg.image = UIImage(named: "user.png")
+        }
+
         return cell
     }
     
@@ -131,7 +141,6 @@ class GroupDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
     }
     
     func deleteTableViewCellBtnAction(){
-        print("Delete Button Action")
     }
     
     //MARK:- Back btn action
@@ -142,7 +151,7 @@ class GroupDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
     
     @IBAction func addButtonAction(_ sender: Any) {
         let addPeopleVcObj = self.storyboard?.instantiateViewController(withIdentifier: "addPeopleVc") as! AddPeopleVC
-        addPeopleVcObj.isComingFromProfileScreen = false
+        addPeopleVcObj.groupId = self.groupDetailDict.value(forKey: "groupId") as! String
         self.navigationController?.pushViewController(addPeopleVcObj, animated: true)
     }
 

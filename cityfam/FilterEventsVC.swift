@@ -15,10 +15,10 @@ class FilterEventsVC: UIViewController,UICollectionViewDelegate,UICollectionView
     @IBOutlet var nightBtn: UIButtonCustomClass!
     @IBOutlet var dayBtn: UIButtonCustomClass!
     @IBOutlet var anyTimeBtn: UIButtonCustomClass!
-    @IBOutlet var distanceSwitchBtn: UISwitch!
     @IBOutlet var allDaysBtn: UIButtonCustomClass!
     @IBOutlet var weekendsBtn: UIButtonCustomClass!
     @IBOutlet var distanceSlider: UISlider!
+    @IBOutlet var distanceSwitchBtn: UISwitch!
     @IBOutlet var weekDaysBtn: UIButtonCustomClass!
     @IBOutlet var categoriesCollectionView: UICollectionView!
     @IBOutlet var categoriesCollectionViewHeightConst: NSLayoutConstraint!
@@ -32,6 +32,8 @@ class FilterEventsVC: UIViewController,UICollectionViewDelegate,UICollectionView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.allDaysBtnSelectedAction()
+        self.anyTimeBtnSelectedAction()
         self.getEventCategoryApi()
     }
     
@@ -105,27 +107,37 @@ class FilterEventsVC: UIViewController,UICollectionViewDelegate,UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
+//        
+//        let cell:FilterEventCategoriesCollectionViewCell = self.categoriesCollectionView.cellForItem(at: indexPath) as! FilterEventCategoriesCollectionViewCell
+//        if cell.categoryBtn.isSelected == true{
+//            cell.categoryBtn.setImage(UIImage(named: "untickIcon.png"), for: UIControlState.normal)
+//            self.listOfContactsAddToGroup = self.listOfContactsAddToGroup.filter{$0 != self.myFriendsListArr[indexPath.row].value(forKey: "emailId") as! String}
+//            print("removed",listOfContactsAddToGroup)
+//        }
+//        else{
+//            cell.chooseFriendBtn.setImage(UIImage(named: "tickIcon.png"), for: UIControlState.normal)
+//            self.listOfContactsAddToGroup.append(self.myFriendsListArr[indexPath.row].value(forKey: "emailId") as! String)
+//            print("inserted",listOfContactsAddToGroup)
+//        }
     }
     
     //MARK:- Button Actions
     
+    //
     func categoriesBtnTappedAction(sender:UIButton,cell:FilterEventCategoriesCollectionViewCell){
         for i in 0..<self.categoriesListArr.count{
-            if i == sender.tag{
-                self.selectedCategoryId = self.categoriesListArr[sender.tag].value(forKey: "categoryId") as! String
-                
-                let button = cell.categoryBtn.viewWithTag(i) as! UIButton
-                button.isSelected = true
-                button.backgroundColor = appNavColor
-            }
-            else{
-                let button = cell.categoryBtn.viewWithTag(i) as! UIButton
-                button.isSelected = false
-                button.backgroundColor = UIColor.clear
-            }
+            sender.isSelected = true
+            sender.backgroundColor = appNavColor
+//            if i == sender.tag{
+//                self.selectedCategoryId = self.categoriesListArr[sender.tag].value(forKey: "categoryId") as! String
+//                sender.isSelected = true
+//                sender.backgroundColor = appNavColor
+//            }
         }
+        //self.categoriesCollectionView.reloadData()
     }
     
+    //Distance lider value change handling
     @IBAction func distanceSwitchValueChanged(_ sender: UISwitch) {
     }
 
@@ -220,9 +232,7 @@ class FilterEventsVC: UIViewController,UICollectionViewDelegate,UICollectionView
         self.nightBtn.isSelected = false
         self.nightBtn.backgroundColor = UIColor.clear
     }
-    
-    
-    
+
 }
 
 //    override var preferredStatusBarStyle : UIStatusBarStyle {
