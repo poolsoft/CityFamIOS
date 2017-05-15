@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddPeopleVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,GetMyFriendsListServiceAlamofire,MyContactsCellProtocol,MyFriendCellProtocol,AddMembersToGroupServiceAlamofire,GetMyContactsWithStatusServiceAlamofire {
+class AddPeopleVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,GetMyFriendsListServiceAlamofire,AddMembersToGroupServiceAlamofire,GetMyContactsWithStatusServiceAlamofire {
     
     //MARK:- Outlets & Propeties
     
@@ -40,38 +40,13 @@ class AddPeopleVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UI
         self.tickBtn.addTarget(self, action: #selector(AddPeopleVC.tickBtnAction(sender:)), for: .touchUpInside)
         //Get friends list Api call
         self.getMyFriendsListApi()
+        
+        //Get Phone contacts
         self.getMyContacts()
     }
     
-    func tickBtnAction(sender:UIButton){
-        self.addMemberToGroupApi()
-    }
-    
     //MARK:- Methods
-    
-//    func sortArrayOfString(arrOfDicts : [NSDictionary])->[String]{
-//        
-//        var arr = [String]()
-//        
-//        for i in 0..<arrOfDicts.count{
-//                arr.append(arrOfDicts[i].value(forKey: "userName") as! String)
-//        }
-//    
-//        let b = arr.map{ $0.lowercased() }
-//        
-//        let c = b.sorted()
-//        let d = c.map{ $0[$0.startIndex]}
-//        
-//        var dictionary:[String:[String]] = [:]
-//        _ = d.map{ initial in
-//            
-//            let clustered = c.filter{$0.hasPrefix("\(initial)")}
-//            dictionary.updateValue(clustered, forKey:"\(initial)")
-//        }
-//        print("\(dictionary)")
-//        
-//        return arr
-//    }
+
     
     //Api's results
     
@@ -125,7 +100,14 @@ class AddPeopleVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UI
             appDelegate.hideProgressHUD(view: self.view)
             if (result.value(forKey: "success")as! Int == 1){
                 let resultArr = result.value(forKey: "result") as! [NSDictionary]
-
+                
+                var dict = NSMutableDictionary()
+                for i in 0..<resultArr.count{
+                    dict = resultArr[i].mutableCopy() as! NSMutableDictionary
+                    dict.setObject(0, forKey: "state" as NSCopying)
+                    self.myContactsListArr.append(dict)
+                }
+                self.myContactsTableView.reloadData()
             }
             else{
                 CommonFxns.showAlert(self, message: (result.value(forKey: "error") as? String)!, title: errorAlertTitle)
@@ -134,14 +116,12 @@ class AddPeopleVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UI
     }
     
     //Get My Contacts With Status Api call
-    func getMyContactsWithStatusApi() {
+    func getMyContactsWithStatusApi(dict : [NSDictionary]) {
         if CommonFxns.isInternetAvailable(){
             appDelegate.showProgressHUD(view: self.view)
             
-            let contactsArrToSend = [NSDictionary]()
-            
             let parameters = ["userId":"49",
-                              "emailId":contactsArrToSend] as [String : Any]
+                              "contactsList":dict] as [String : Any]
             FriendsAlamofireIntegration.sharedInstance.getMyContactsWithStatusServiceDelegate = self
             FriendsAlamofireIntegration.sharedInstance.getMyContactsWithStatusApi(parameters: parameters)
         }
@@ -207,6 +187,8 @@ class AddPeopleVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UI
                     
                     let arrEmail = contact.emailAddresses as NSArray
                     
+                    print("emails",arrEmail)
+                    
                     if arrEmail.count > 0 {
                         
                         let dict = NSMutableDictionary()
@@ -219,7 +201,8 @@ class AddPeopleVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UI
                             emails.add(email )
                         }
                         dict.setValue(emails, forKey: "emailId")
-                        self.arrOfPhoneContacts.add(dict) // Either retrieve only those contact who have email and store only name and email
+                        // Either retrieve only those contact who have email and store only name and email
+                        self.arrOfPhoneContacts.add(dict)
                     }
                     //self.arrContacts.add(contact) // either store all contact with all detail and simplifies later on
                     
@@ -228,9 +211,7 @@ class AddPeopleVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UI
             catch let error {
                 NSLog("Fetch contact error: \(error)")
             }
-           // print("all contacts:\(self.arrOfPhoneContacts)")
             
-            //            print(">>>> Contact list:")
             //            for contact in cnContacts {
             //                let fullName = CNContactFormatter.string(from: contact, style: .fullName) ?? "No Name"
             //                let email = contact.emailAddresses
@@ -240,8 +221,7 @@ class AddPeopleVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UI
         })
     }
 
-    //retreive
-    
+    //Retreive contacts
     func retreiveEmail()->[NSDictionary]{
         var dictArr = [NSDictionary]()
         for index in 0 ..< self.arrOfPhoneContacts.count {
@@ -250,21 +230,7 @@ class AddPeopleVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UI
             let emailArr = dict.value(forKey: "emailId")! as! Array<Any>
             dictArr.insert(["userName":dict.value(forKey: "userName")!,"emailId": (emailArr[0] as AnyObject).value(forKey: "value")!], at: index)
         }
-        //print("Sorted list",dictArr)
         return dictArr
-    }
-    
-    //Delegates
-    
-    func chooseMyContactsToAddInGroup(cell:AddPeopleMyContactsTableViewCell,sender:UIButton){
-        if cell.chooseContactBtn.imageView?.image == UIImage(named: "user.png"){
-            
-        }
-        print("my contacts cell tapped")
-    }
-
-    func chooseMyFriendsToAddInGroup(cell:AddPeopleMyFriendsTableViewCell,sender:UIButton){
-        print("my freinds cell tapped")
     }
 
     // dismissing keyboard on pressing return key
@@ -285,37 +251,9 @@ class AddPeopleVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UI
         }
     }
     
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        if tableView.tag == 1{
-//            return self.myFriendsListArr.count
-//        }
-//        else{
-//            return 1
-//        }
-//    }
-//    
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        if tableView.tag == 1{
-//            return 40
-//        }
-//        else{
-//            return 0
-//        }
-//    }
-//    
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        if tableView.tag == 1{
-//            return self.myFriendsListArr[section].value(forKey: "letters") as? String
-//        }
-//        else{
-//            return ""
-//        }
-//    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         if tableView.tag == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "myFriendsCell", for: indexPath) as! AddPeopleMyFriendsTableViewCell
-            cell.delegate = self
             let dict = self.myFriendsListArr[indexPath.row]
             
             cell.userNameLbl.text = dict.value(forKey: "userName") as? String
@@ -339,19 +277,24 @@ class AddPeopleVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UI
         }
         else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "myContactsCell", for: indexPath) as! AddPeopleMyContactsTableViewCell
-            cell.delegate = self
-
+            
             let dict = self.myContactsListArr[indexPath.row]
             
+            cell.userNameLbl.text = dict.value(forKey: "userName") as? String
+            if (dict.value(forKey: "userImageUrl") as? String) != nil{
+                cell.userImg.sd_setImage(with: URL(string: (dict.value(forKey: "userImageUrl") as? String)!), placeholderImage: UIImage(named: "user.png"))
+                cell.userImg.setShowActivityIndicator(true)
+                cell.userImg.setIndicatorStyle(.gray)
+            }
+            else{
+                cell.userImg.image = UIImage(named: "user.png")
+            }
             if dict.value(forKey: "state") as! Int == 0{
                 cell.chooseContactBtn.setImage(UIImage(named: "untickIcon.png"), for: UIControlState.normal)
             }
             else{
                 cell.chooseContactBtn.setImage(UIImage(named: "tickIcon.png"), for: UIControlState.normal)
             }
-            
-            cell.userNameLbl.text = dict.value(forKey: "userName") as? String
-
             return cell
         }
     }
@@ -372,7 +315,6 @@ class AddPeopleVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UI
                 self.myFriendsListArr[indexPath.row].setValue(1, forKey: "state")
                 print("inserted",listOfContactsAddToGroup)
             }
-            //print("-------------------",self.myFriendsListArr)
         }
         else{
             let cell:AddPeopleMyContactsTableViewCell = self.myContactsTableView.cellForRow(at: indexPath) as! AddPeopleMyContactsTableViewCell
@@ -388,29 +330,13 @@ class AddPeopleVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UI
                 self.myContactsListArr[indexPath.row].setValue(1, forKey: "state")
                 print("inserted",listOfContactsAddToGroup)
             }
-            //print("-------------------",self.myFriendsListArr)
         }
     }
-    
-//    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-//        if tableView.tag == 1{
-//            let cell:AddPeopleMyFriendsTableViewCell = self.myFriendsTableView.cellForRow(at: indexPath) as! AddPeopleMyFriendsTableViewCell
-//            cell.chooseFriendBtn.setImage(UIImage(named: "untickIcon.png"), for: UIControlState.normal)
-//        }
-//        else{
-//            let cell:AddPeopleMyContactsTableViewCell = self.myFriendsTableView.cellForRow(at: indexPath) as! AddPeopleMyContactsTableViewCell
-//            cell.chooseContactBtn.setImage(UIImage(named: "untickIcon.png"), for: UIControlState.normal)
-//        }
-//    }
-    
-    //        if tableView.tag == 1{
-    //            let profileVcObj = self.storyboard?.instantiateViewController(withIdentifier: "profileVc") as! ProfileVC
-    //            profileVcObj.profileUserId = self.myFriendsListArr[indexPath.row].value(forKey: "userId") as! String
-    //            self.navigationController?.pushViewController(profileVcObj, animated: true)
-    //        }
+
     
     //MARK:- Button Actions
     
+    //MyFirneds and MyContacts segment control action
     @IBAction func segmentControlBtnAction(_ sender: UIButton) {
         if sender.tag == 1{
             myFriendsBtn.isSelected = true
@@ -431,17 +357,10 @@ class AddPeopleVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UI
             self.myContactsTableView.isHidden = false
             
             if self.myContactsListArr.count == 0{
-                //get my contacts
                 
+           // get my contacts
                 let resultArr = self.retreiveEmail()
-
-                var dict = NSMutableDictionary()
-                for i in 0..<resultArr.count{
-                    dict = resultArr[i].mutableCopy() as! NSMutableDictionary
-                    dict.setObject(0, forKey: "state" as NSCopying)
-                    self.myContactsListArr.append(dict)
-                }
-                self.myContactsTableView.reloadData()
+                self.getMyContactsWithStatusApi(dict: resultArr)
             }
         }
     }
@@ -450,4 +369,62 @@ class AddPeopleVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UI
         _ = self.navigationController?.popViewController(animated: true)
     }
     
+    //Add Selected members to group
+    func tickBtnAction(sender:UIButton){
+        self.addMemberToGroupApi()
+    }
+    
 }
+
+
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        if tableView.tag == 1{
+//            return self.myFriendsListArr.count
+//        }
+//        else{
+//            return 1
+//        }
+//    }
+//
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        if tableView.tag == 1{
+//            return 40
+//        }
+//        else{
+//            return 0
+//        }
+//    }
+//
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        if tableView.tag == 1{
+//            return self.myFriendsListArr[section].value(forKey: "letters") as? String
+//        }
+//        else{
+//            return ""
+//        }
+//    }
+
+
+//    func sortArrayOfString(arrOfDicts : [NSDictionary])->[String]{
+//
+//        var arr = [String]()
+//
+//        for i in 0..<arrOfDicts.count{
+//                arr.append(arrOfDicts[i].value(forKey: "userName") as! String)
+//        }
+//
+//        let b = arr.map{ $0.lowercased() }
+//
+//        let c = b.sorted()
+//        let d = c.map{ $0[$0.startIndex]}
+//
+//        var dictionary:[String:[String]] = [:]
+//        _ = d.map{ initial in
+//
+//            let clustered = c.filter{$0.hasPrefix("\(initial)")}
+//            dictionary.updateValue(clustered, forKey:"\(initial)")
+//        }
+//        print("\(dictionary)")
+//
+//        return arr
+//    }

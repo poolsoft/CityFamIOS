@@ -16,6 +16,7 @@ class MessageVcPrivateTableViewCell: UITableViewCell {
     @IBOutlet var userImg: UIImageViewCustomClass!
     @IBOutlet var userNameLbl: UILabelFontSize!
     @IBOutlet var unreadMsgCountLbl: UILabelCustomClass!
+    @IBOutlet var msgLbl: UILabelFontSize!
     
     //MARK:- Methods
     

@@ -83,9 +83,12 @@ class SignupVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
             self.resetData()
             
             if (result.value(forKey: "success")as! Int == 1){
-                let userId = result.value(forKey: "result") as! String//result.value("result") as! Array
+                let resultDict = result.value(forKey: "result") as! NSDictionary
                 
-                UserDefaults.standard.set(userId, forKey: USER_DEFAULT_userId_Key)
+                UserDefaults.standard.set(resultDict.value(forKey: "userId") as! String, forKey: USER_DEFAULT_userId_Key)
+                UserDefaults.standard.set(resultDict.value(forKey: "userName") as! String, forKey: USER_DEFAULT_userName_Key)
+                UserDefaults.standard.set(resultDict.value(forKey: "userImageUrl") as! String, forKey: USER_DEFAULT_userImage_Key)
+                
                 print(UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key)!)
 
                 let tabBarControllerVcObj = self.storyboard?.instantiateViewController(withIdentifier: "tabBarControllerVc") as! TabBarControllerVC

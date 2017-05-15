@@ -13,6 +13,7 @@ let userDefault = UserDefaults.standard
 let USER_DEFAULT_userId_Key = "userID"
 let USER_DEFAULT_emailId_Key = "emailID"
 let USER_DEFAULT_userName_Key = "userName"
+let USER_DEFAULT_userImage_Key = "userImage"
 let USER_DEFAULT_LOGIN_CHECK_Key = "Login"
 let USER_DEFAULT_FireBaseToken = "fireBaseTokenId"
 

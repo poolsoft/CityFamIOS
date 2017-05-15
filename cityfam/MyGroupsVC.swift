@@ -19,6 +19,7 @@ class MyGroupsVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UIT
     private let myGroupsTableRefreshControl = UIRefreshControl()
     var myGroupsListArr = [NSDictionary]()
     var row = Int()
+    var isComingFromMyProfileVc = String()
     
     //MARK:- View life cycle
     
@@ -73,7 +74,7 @@ class MyGroupsVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UIT
         if CommonFxns.isInternetAvailable(){
             appDelegate.showProgressHUD(view: self.view)
             FriendsAlamofireIntegration.sharedInstance.myGroupsVcServiceDelegate = self
-            FriendsAlamofireIntegration.sharedInstance.getMyGroupsListApi()
+            FriendsAlamofireIntegration.sharedInstance.getMyGroupsListApi(type: isComingFromMyProfileVc)
         }
         else{
             CommonFxns.showAlert(self, message: internetConnectionError, title: oopsText)
@@ -106,12 +107,10 @@ class MyGroupsVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UIT
             if CommonFxns.isInternetAvailable(){
                 appDelegate.showProgressHUD(view: self.view)
                 
-                let parameters = ["userId":UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key)!,
+                let parameters = ["userId":UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key)!,"type":isComingFromMyProfileVc,
                                   "groupName":CommonFxns.trimString(string: self.enterGroupNameTxtField.text!)]
-                
                 FriendsAlamofireIntegration.sharedInstance.myGroupsVcServiceDelegate = self
                 FriendsAlamofireIntegration.sharedInstance.createNewGroupApi(parameters: parameters)
-                
             }
             else{
                 CommonFxns.showAlert(self, message: internetConnectionError, title: oopsText)
@@ -174,9 +173,16 @@ class MyGroupsVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UIT
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.row = indexPath.row
-        let groupDetailVcObj = self.storyboard?.instantiateViewController(withIdentifier: "groupDetailVc") as! GroupDetailVC
-        groupDetailVcObj.groupDetailDict = self.myGroupsListArr[indexPath.row]
-        self.navigationController?.pushViewController(groupDetailVcObj, animated: true)
+        if isComingFromMyProfileVc == "0"{
+            let groupDetailVcObj = self.storyboard?.instantiateViewController(withIdentifier: "groupDetailVc") as! GroupDetailVC
+            groupDetailVcObj.groupDetailDict = self.myGroupsListArr[indexPath.row]
+            self.navigationController?.pushViewController(groupDetailVcObj, animated: true)
+        }
+        else{
+            let friendsGroupChatVcObj = self.storyboard?.instantiateViewController(withIdentifier: "friendsGroupChatVc") as! FriendsGroupChatVC
+            friendsGroupChatVcObj.groupDetailDict = self.myGroupsListArr[indexPath.row]
+            self.navigationController?.pushViewController(friendsGroupChatVcObj, animated: true)
+        }
     }    
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

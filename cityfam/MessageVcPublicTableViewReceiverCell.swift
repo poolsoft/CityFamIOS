@@ -10,6 +10,13 @@ import UIKit
 
 class MessageVcPublicTableViewReceiverCell: UITableViewCell {
 
+    //MARK:- Outlets & Properties
+    
+    @IBOutlet var userImg: UIImageViewCustomClass!
+    @IBOutlet var msgLbl: UILabelFontSize!
+    
+    //MARK:- Methods
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }

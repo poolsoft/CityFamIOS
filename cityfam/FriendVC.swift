@@ -106,13 +106,13 @@ class FriendVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UITex
         return true
     }
     
-
-    
     //Api's results
     
     //Server error Alert
     func ServerError(){
         appDelegate.hideProgressHUD(view: self.view)
+        self.refreshControl1.endRefreshing()
+        self.refreshControl2.endRefreshing()
         CommonFxns.showAlert(self, message: networkOperationErrorAlert, title: errorAlertTitle)
     }
     

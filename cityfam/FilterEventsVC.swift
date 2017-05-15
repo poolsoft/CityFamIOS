@@ -12,6 +12,7 @@ class FilterEventsVC: UIViewController,UICollectionViewDelegate,UICollectionView
 
     //MARK:- Outlets & Properties
     
+    @IBOutlet var distanceValueLbl: UILabelFontSize!
     @IBOutlet var nightBtn: UIButtonCustomClass!
     @IBOutlet var dayBtn: UIButtonCustomClass!
     @IBOutlet var anyTimeBtn: UIButtonCustomClass!
@@ -72,7 +73,9 @@ class FilterEventsVC: UIViewController,UICollectionViewDelegate,UICollectionView
                 let dict = ["categoryId":"",
                             "categoryName":"All interests"]
                 
-                self.categoriesListArr.append(dict as NSDictionary)
+                self.categoriesListArr.insert(dict as NSDictionary, at: 0)
+
+                //self.categoriesListArr.append(dict as NSDictionary)
                 self.categoriesCollectionView.reloadData()
                 let height = self.categoriesCollectionView.collectionViewLayout.collectionViewContentSize.height
                 self.categoriesCollectionViewHeightConst.constant = height

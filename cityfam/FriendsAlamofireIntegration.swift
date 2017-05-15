@@ -51,6 +51,26 @@ protocol GetMyContactsWithStatusServiceAlamofire {
     func ServerError()
 }
 
+protocol SendMessageServiceAlamofire {
+    func sendmessageApiResult(_ result:AnyObject)
+    func ServerError()
+}
+
+protocol GetPrivateChatUsersListServiceAlamofire {
+    func getPrivateChatUsersListResult(_ result:AnyObject)
+    func ServerError()
+}
+
+protocol GetPublicOrFriendsChatServiceAlamofire {
+    func getPublicOrFriendsChatResult(_ result:AnyObject)
+    func ServerError()
+}
+
+protocol MessageMarkAsReadApiServiceAlamofire {
+    func messageMarkAsReadApiResult(_ result:AnyObject)
+    func ServerError()
+}
+
 //MARK:- Properties
 
 class FriendsAlamofireIntegration: NSObject {
@@ -71,6 +91,10 @@ class FriendsAlamofireIntegration: NSObject {
     var groupDetailVcServiceDelegate:GroupDetailVcServiceAlamofire?
     var addMembersToGroupServiceDelegate:AddMembersToGroupServiceAlamofire?
     var getMyContactsWithStatusServiceDelegate:GetMyContactsWithStatusServiceAlamofire?
+    var messageMarkAsReadApiServiceDelegate:MessageMarkAsReadApiServiceAlamofire?
+    var sendMessageServiceDelegate:SendMessageServiceAlamofire?
+    var getPublicOrFriendsChatServiceDelgate:GetPublicOrFriendsChatServiceAlamofire?
+    var getPrivateChatUsersListServiceDelegate:GetPrivateChatUsersListServiceAlamofire?
     
     //MARK:- Methods
 
@@ -172,9 +196,9 @@ class FriendsAlamofireIntegration: NSObject {
     }
     
     //Get My groups List Api
-    func getMyGroupsListApi(){
+    func getMyGroupsListApi(type:String){
         print("user id ---------------------",UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key)!)
-        Alamofire.request("\(baseUrl)getMyGroups.php?userId=\(UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key)!)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+        Alamofire.request("\(baseUrl)getMyGroups.php?userId=\(UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key)!)&type=\(type)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
             
             switch (response.result) {
             case .success:
@@ -308,5 +332,94 @@ class FriendsAlamofireIntegration: NSObject {
             }
         }
     }
+    
+    
+    ////////////////////////////////////////
+    
+    //Send Message Api
+    func sendMessageApi(parameters: [String:Any]){
+        print("parameters", parameters)
+        
+        Alamofire.request("\(baseUrl)sendMessage.php", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+            
+            switch (response.result) {
+            case .success:
+                if let json = response.result.value {
+                    print(json)
+                    self.sendMessageServiceDelegate?.sendmessageApiResult(json as AnyObject)
+                }
+                break
+            case .failure:
+                self.sendMessageServiceDelegate?.ServerError()
+                break
+            }
+        }
+    }
+    
+    //getPublicOrFriendsChat Api
+    func getPublicOrFriendsChatApi(type:String){
+        
+        Alamofire.request("\(baseUrl)getPublicOrFriendsChat.php?userId=\(UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key)!)&type=\(type)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+            
+            switch (response.result) {
+            case .success:
+                if let json = response.result.value {
+                    print(json)
+                    self.getPublicOrFriendsChatServiceDelgate?.getPublicOrFriendsChatResult(json as AnyObject)
+                }
+                break
+            case .failure:
+                self.getPublicOrFriendsChatServiceDelgate?.ServerError()
+                break
+            }
+        }
+    }
+    
+    //messageMarkAsRead Api
+    func messageMarkAsReadApi(type:String,opponentUserId:String){
+        
+        Alamofire.request("\(baseUrl)messageMarkAsRead.php?userId=\(UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key)!)&opponentUserId=\(opponentUserId)&type=\(type)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+            
+            switch (response.result) {
+            case .success:
+                if let json = response.result.value {
+                    print(json)
+                    self.messageMarkAsReadApiServiceDelegate?.messageMarkAsReadApiResult(json as AnyObject)
+                }
+                break
+            case .failure:
+                self.messageMarkAsReadApiServiceDelegate?.ServerError()
+                break
+            }
+        }
+    }
+    
+    //getPrivateChatUsersList Api
+    func getPrivateChatUsersListApi(){
+        
+        Alamofire.request("\(baseUrl)getPrivateChatUsersList.php?userId=\(UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key)!)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
+            
+            switch (response.result) {
+            case .success:
+                if let json = response.result.value {
+                    print(json)
+                    self.getPrivateChatUsersListServiceDelegate?.getPrivateChatUsersListResult(json as AnyObject)
+                }
+                break
+            case .failure:
+                self.getPrivateChatUsersListServiceDelegate?.ServerError()
+                break
+            }
+        }
+    }
+    
+//    {
+//    "userId" : "23",
+//    "groupId":"89",
+//    "opponentUserId" : "34"
+//    "message": "hi, how are you ?",
+//    "type":"0,1,2"
+//    }
+//
     
 }

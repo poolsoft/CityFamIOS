@@ -92,11 +92,14 @@ class LogInVC: UIViewController, loginServiceAlamofire,RegisterationServiceAlamo
             appDelegate.hideProgressHUD(view: self.view)
             
             if (result.value(forKey: "success")as! Int == 1){
-                let resultDict = result.value(forKey: "result") as! NSDictionary//result.value("result") as! Array
+                let resultDict = result.value(forKey: "result") as! NSDictionary
                 
                 //"result": { "userId": "8" , "eventsAddToCalendar": 0/1 },
 
                 UserDefaults.standard.set(resultDict.value(forKey: "userId") as! String, forKey: USER_DEFAULT_userId_Key)
+                UserDefaults.standard.set(resultDict.value(forKey: "userName") as! String, forKey: USER_DEFAULT_userName_Key)
+                UserDefaults.standard.set(resultDict.value(forKey: "userImageUrl") as! String, forKey: USER_DEFAULT_userImage_Key)
+
                 print(UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key)!)
                 
                 let tabBarControllerVcObj = self.storyboard?.instantiateViewController(withIdentifier: "tabBarControllerVc") as! TabBarControllerVC
@@ -116,9 +119,12 @@ class LogInVC: UIViewController, loginServiceAlamofire,RegisterationServiceAlamo
             self.resetData()
             
             if (result.value(forKey: "success")as! Int == 1){
-                let userId = result.value(forKey: "result") as! String//result.value("result") as! Array
+                let resultDict = result.value(forKey: "result") as! NSDictionary
                 
-                UserDefaults.standard.set(userId, forKey: USER_DEFAULT_userId_Key)
+                UserDefaults.standard.set(resultDict.value(forKey: "userId") as! String, forKey: USER_DEFAULT_userId_Key)
+                UserDefaults.standard.set(resultDict.value(forKey: "userName") as! String, forKey: USER_DEFAULT_userName_Key)
+                UserDefaults.standard.set(resultDict.value(forKey: "userImageUrl") as! String, forKey: USER_DEFAULT_userImage_Key)
+                
                 print(UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key)!)
 
                 let tabBarControllerVcObj = self.storyboard?.instantiateViewController(withIdentifier: "tabBarControllerVc") as! TabBarControllerVC

@@ -238,6 +238,7 @@ class ProfileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UICo
             switch indexPath.row {
             case 0:
                 let myGroupVcObj = self.storyboard?.instantiateViewController(withIdentifier: "myGroupsVc") as! MyGroupsVC
+                myGroupVcObj.isComingFromMyProfileVc = "0"
                 self.navigationController?.pushViewController(myGroupVcObj, animated: true)
             case 1:
                 let myPlansVcObj = self.storyboard?.instantiateViewController(withIdentifier: "myPlansVc") as! MyPlansVC
