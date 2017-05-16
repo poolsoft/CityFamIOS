@@ -6,6 +6,10 @@
 //  Copyright © 2017 Piyush Gupta. All rights reserved.
 //
 
+
+//835412959399-cd34h86derflehao0poh2mg95l3nu94b.apps.googleusercontent.com
+
+
 import UIKit
 import GoogleAPIClient
 import GTMOAuth2
@@ -14,9 +18,8 @@ class CalenderVC: UIViewController {
 
     private let kKeychainItemName = "Google Calendar API"
     //private let kClientID = "710694110264-l6pvnqomt95d5te8vgrm2df2cluefst4.apps.googleusercontent.com"
-    private let kClientID = "710694110264-qamcqt7nlspjmhtgoe679nje1e14hevk.apps.googleusercontent.com"
-    
-    //"835412959399-cd34h86derflehao0poh2mg95l3nu94b.apps.googleusercontent.com"
+    //private let kClientID = "710694110264-qamcqt7nlspjmhtgoe679nje1e14hevk.apps.googleusercontent.com"
+    private let kClientID = "835412959399-cd34h86derflehao0poh2mg95l3nu94b.apps.googleusercontent.com"
     
     // If modifying these scopes, delete your previously saved credentials by
     // resetting the iOS simulator or uninstall the app.
@@ -43,7 +46,6 @@ class CalenderVC: UIViewController {
             clientSecret: nil) {
             service.authorizer = auth
         }
-        
     }
     
     // When the view appears, ensure that the Google Calendar API service is authorized

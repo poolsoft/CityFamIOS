@@ -30,3 +30,5 @@ pod 'GTMOAuth2', '~> 1.1.0'
   end
 
 end
+
+#pod 'GoogleAPIClient/Calendar', '~> 1.0.2'

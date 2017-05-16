@@ -197,7 +197,7 @@ class FriendsAlamofireIntegration: NSObject {
     
     //Get My groups List Api
     func getMyGroupsListApi(type:String){
-        print("user id ---------------------",UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key)!)
+        print("user id ----------",UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key)!, "type:",type)
         Alamofire.request("\(baseUrl)getMyGroups.php?userId=\(UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key)!)&type=\(type)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
             
             switch (response.result) {
@@ -216,7 +216,7 @@ class FriendsAlamofireIntegration: NSObject {
     
     //Create new group Api
     func createNewGroupApi(parameters:[String:Any]){
-        print("createNewGroupApi user id ---------",UserDefaults.standard.string(forKey: USER_DEFAULT_userId_Key)!)
+        print("createNewGroupApi ---------",parameters)
         Alamofire.request("\(baseUrl)createGroup.php", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
             
             switch (response.result) {

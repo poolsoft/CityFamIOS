@@ -2,14 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>$(PRODUCT_NAME) location use</string>
-	<key>NSRemindersUsageDescription</key>
-	<string>$(PRODUCT_NAME) reminders use</string>
-	<key>NSCalendarsUsageDescription</key>
-	<string>$(PRODUCT_NAME) user your calendar</string>
-	<key>NSContactsUsageDescription</key>
-	<string>$(PRODUCT_NAME) contacts use</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -48,6 +40,14 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>fb1080391375424219</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.835412959399-cd34h86derflehao0poh2mg95l3nu94b</string>
 			</array>
 		</dict>
 	</array>
@@ -100,8 +100,18 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSCalendarsUsageDescription</key>
+	<string>$(PRODUCT_NAME) user your calendar</string>
+	<key>NSContactsUsageDescription</key>
+	<string>$(PRODUCT_NAME) contacts use</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>$(PRODUCT_NAME) location use</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This tutorial wants to use your location</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>NeedLibrary access for uploading Images</string>
+	<key>NSRemindersUsageDescription</key>
+	<string>$(PRODUCT_NAME) reminders use</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>icomoon.ttf</string>
@@ -122,7 +132,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This tutorial wants to use your location</string>
 </dict>
 </plist>

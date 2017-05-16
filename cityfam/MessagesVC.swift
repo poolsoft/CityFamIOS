@@ -31,7 +31,7 @@ class MessagesVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
         super.viewDidLoad()
         
         privateTableView.tableFooterView = UIView()
-        publicTableView.tableFooterView = UIView()
+        //publicTableView.tableFooterView = UIView()
 
         //TableView dynamic row setup
         self.publicTableView.estimatedRowHeight = 70
@@ -106,7 +106,12 @@ class MessagesVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
     //MARK: UITableView Delgates
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return privateUserChatListArr.count
+        if tableView.tag == 1{
+            return privateUserChatListArr.count
+        }
+        else{
+            return publicChatListArr.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
@@ -150,7 +155,7 @@ class MessagesVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Get
                 return senderCell
             }
             else{
-                let receiverCell = tableView.dequeueReusableCell(withIdentifier: "receiverCell", for: indexPath) as! MessageVcPublicTableViewSenderCell
+                let receiverCell = tableView.dequeueReusableCell(withIdentifier: "receiverCell", for: indexPath) as! MessageVcPublicTableViewReceiverCell
                 
                 if (dict.value(forKey: "chatUserImageUrl") as? String) != nil{
                     receiverCell.userImg.sd_setImage(with: URL(string: (dict.value(forKey: "chatUserImageUrl") as? String)!), placeholderImage: UIImage(named: "user.png"))

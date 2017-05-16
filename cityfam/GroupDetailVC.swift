@@ -110,7 +110,13 @@ class GroupDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
         let cell:GroupDetailVcTableViewCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! GroupDetailVcTableViewCell
         
         let dict = self.membersListOfSelectedGroupArr[indexPath.row]
-        cell.groupMemberNameLbl.text = dict.value(forKey: "userName") as? String
+        
+        if dict.value(forKey: "userName") as? String != ""{
+            cell.groupMemberNameLbl.text = dict.value(forKey: "userName") as? String
+        }
+        else{
+            cell.groupMemberNameLbl.text = dict.value(forKey: "emailId") as? String
+        }
         
         if (dict.value(forKey: "userImageUrl") as? String) != nil{
             cell.groupMemberProfileImg.sd_setImage(with: URL(string: (dict.value(forKey: "userImageUrl") as? String)!), placeholderImage: UIImage(named: "user.png"))

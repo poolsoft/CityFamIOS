@@ -3,15 +3,15 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>59303853655-jl9hdqnu3mu5e7u2i8mbgfdsk9di5c06.apps.googleusercontent.com</string>
+	<string>835412959399-cd34h86derflehao0poh2mg95l3nu94b.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.59303853655-jl9hdqnu3mu5e7u2i8mbgfdsk9di5c06</string>
+	<string>com.googleusercontent.apps.835412959399-cd34h86derflehao0poh2mg95l3nu94b</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.imarkinfotech.CityFam</string>
 	<key>PROJECT_ID</key>
-	<string>cityfam-e8eb6</string>
+	<string>cityfam-163805</string>
 	<key>IS_ADS_ENABLED</key>
 	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -23,6 +23,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:59303853655:ios:1a968700df64595c</string>
+	<string>1:835412959399:ios:1a968700df64595c</string>
 </dict>
 </plist>

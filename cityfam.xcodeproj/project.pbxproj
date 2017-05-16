@@ -74,13 +74,13 @@
 		A17C17A81E98A3DE0033F669 /* ContactsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A17C17A71E98A3DE0033F669 /* ContactsUI.framework */; };
 		A17C17E91E98DDEA0033F669 /* InviteFriendsTableViewcell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17C17E81E98DDEA0033F669 /* InviteFriendsTableViewcell.swift */; };
 		A17C56ED1EC4405C007D330A /* FilterEventCategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17C56EC1EC4405C007D330A /* FilterEventCategoriesCollectionViewCell.swift */; };
-		A17D70381E9617E300D730FE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A17D70371E9617E300D730FE /* GoogleService-Info.plist */; };
 		A17D703A1E9624AB00D730FE /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17D70391E9624AB00D730FE /* ForgotPasswordVC.swift */; };
 		A17D703C1E9633BC00D730FE /* LocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17D703B1E9633BC00D730FE /* LocationVC.swift */; };
 		A17D703F1E9634C000D730FE /* InvitationsScreenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17D703E1E9634C000D730FE /* InvitationsScreenTableViewCell.swift */; };
 		A17D70401E9637D800D730FE /* Mark Simonson - Proxima Nova Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 07F7A10F1E60493F00448FFF /* Mark Simonson - Proxima Nova Regular.otf */; };
 		A17D70411E9637D800D730FE /* ProximaNova-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 07F7A1101E60493F00448FFF /* ProximaNova-Bold.otf */; };
 		A17D70421E9637D800D730FE /* ufonts.com_gotham-medium_0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07F7A1111E60493F00448FFF /* ufonts.com_gotham-medium_0.ttf */; };
+		A17DC40A1ECAD3C500093B7D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A17DC4091ECAD3C500093B7D /* GoogleService-Info.plist */; };
 		A17E19FD1EB9C8EE004A4721 /* MyFriendsOrContactsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17E19FC1EB9C8ED004A4721 /* MyFriendsOrContactsVC.swift */; };
 		A17E19FF1EB9CAB4004A4721 /* MyFriendsOrContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17E19FE1EB9CAB4004A4721 /* MyFriendsOrContactsTableViewCell.swift */; };
 		A181A10E1EA5EB660092ECD0 /* HomeFriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A181A10D1EA5EB650092ECD0 /* HomeFriendsTableViewCell.swift */; };
@@ -207,10 +207,10 @@
 		A17C17A71E98A3DE0033F669 /* ContactsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ContactsUI.framework; path = System/Library/Frameworks/ContactsUI.framework; sourceTree = SDKROOT; };
 		A17C17E81E98DDEA0033F669 /* InviteFriendsTableViewcell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteFriendsTableViewcell.swift; sourceTree = "<group>"; };
 		A17C56EC1EC4405C007D330A /* FilterEventCategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterEventCategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
-		A17D70371E9617E300D730FE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A17D70391E9624AB00D730FE /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
 		A17D703B1E9633BC00D730FE /* LocationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationVC.swift; sourceTree = "<group>"; };
 		A17D703E1E9634C000D730FE /* InvitationsScreenTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvitationsScreenTableViewCell.swift; sourceTree = "<group>"; };
+		A17DC4091ECAD3C500093B7D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A17E19FC1EB9C8ED004A4721 /* MyFriendsOrContactsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFriendsOrContactsVC.swift; sourceTree = "<group>"; };
 		A17E19FE1EB9CAB4004A4721 /* MyFriendsOrContactsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFriendsOrContactsTableViewCell.swift; sourceTree = "<group>"; };
 		A181A10D1EA5EB650092ECD0 /* HomeFriendsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeFriendsTableViewCell.swift; sourceTree = "<group>"; };
@@ -273,6 +273,7 @@
 		0700D8ED1E556D2100DC9928 = {
 			isa = PBXGroup;
 			children = (
+				A17DC4091ECAD3C500093B7D /* GoogleService-Info.plist */,
 				0700D8F81E556D2200DC9928 /* cityfam */,
 				0700D90D1E556D2300DC9928 /* cityfamTests */,
 				0700D9181E556D2300DC9928 /* cityfamUITests */,
@@ -448,7 +449,6 @@
 			children = (
 				07C34C511E810B0900A9699C /* Constant.swift */,
 				0700D8F91E556D2200DC9928 /* AppDelegate.swift */,
-				A17D70371E9617E300D730FE /* GoogleService-Info.plist */,
 				A1761C631E94BAA10079E269 /* Strings.swift */,
 				A1761C651E94C14C0079E269 /* CommonFxns.swift */,
 			);
@@ -613,13 +613,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A17D70401E9637D800D730FE /* Mark Simonson - Proxima Nova Regular.otf in Resources */,
+				A17DC40A1ECAD3C500093B7D /* GoogleService-Info.plist in Resources */,
 				A17D70411E9637D800D730FE /* ProximaNova-Bold.otf in Resources */,
 				A17D70421E9637D800D730FE /* ufonts.com_gotham-medium_0.ttf in Resources */,
 				0700D9041E556D2200DC9928 /* LaunchScreen.storyboard in Resources */,
 				0700D9011E556D2200DC9928 /* Assets.xcassets in Resources */,
 				074E19451E66F93A009FC7D4 /* icomoon.ttf in Resources */,
 				0700D8FF1E556D2200DC9928 /* Main.storyboard in Resources */,
-				A17D70381E9617E300D730FE /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

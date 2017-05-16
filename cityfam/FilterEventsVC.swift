@@ -25,12 +25,13 @@ class FilterEventsVC: UIViewController,UICollectionViewDelegate,UICollectionView
     @IBOutlet var categoriesCollectionViewHeightConst: NSLayoutConstraint!
     
     var categoriesListArr = [NSDictionary]()
+    var listOfSelectedCategroies = [String]()
+
     var selectedCategoryId = ""
     var selectedTimeOfDay = ""
     var selectedWeekOfDay = ""
     
     //MARK:- View life cycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.allDaysBtnSelectedAction()
@@ -69,13 +70,19 @@ class FilterEventsVC: UIViewController,UICollectionViewDelegate,UICollectionView
         DispatchQueue.main.async( execute: {
             appDelegate.hideProgressHUD(view: self.view)
             if (result.value(forKey: "success")as! Int == 1){
-                self.categoriesListArr = result.value(forKey: "result") as! [NSDictionary]
-                let dict = ["categoryId":"",
-                            "categoryName":"All interests"]
-                
-                self.categoriesListArr.insert(dict as NSDictionary, at: 0)
+                let resultArr = result.value(forKey: "result") as! [NSDictionary]
+                let allInterestsDict = ["categoryId":"",
+                            "categoryName":"All interests",
+                            "state":1] as [String : Any]
+                self.categoriesListArr.insert(allInterestsDict as NSDictionary, at: 0)
 
-                //self.categoriesListArr.append(dict as NSDictionary)
+                var dict = NSMutableDictionary()
+                for i in 0..<resultArr.count{
+                    dict = resultArr[i].mutableCopy() as! NSMutableDictionary
+                    dict.setObject(0, forKey: "state" as NSCopying)
+                    self.categoriesListArr.append(dict)
+                }
+                
                 self.categoriesCollectionView.reloadData()
                 let height = self.categoriesCollectionView.collectionViewLayout.collectionViewContentSize.height
                 self.categoriesCollectionViewHeightConst.constant = height
@@ -95,11 +102,19 @@ class FilterEventsVC: UIViewController,UICollectionViewDelegate,UICollectionView
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FilterEventCategoriesCollectionViewCell
         cell.categoryBtn.tag = indexPath.row
-        cell.categoryBtn.addTarget(self, action: #selector(FilterEventsVC.categoriesBtnTappedAction(sender:cell:)), for: .touchUpInside)
         
         let dict = self.categoriesListArr[indexPath.row]
         
         cell.categoryBtn.setTitle(dict.value(forKey: "categoryName") as? String, for: UIControlState.normal)
+        
+        if dict.value(forKey: "state") as! Int == 1{
+            cell.categoryBtn.isSelected = true
+            cell.categoryBtn.backgroundColor = appNavColor
+        }
+        else{
+            cell.categoryBtn.isSelected = false
+            cell.categoryBtn.backgroundColor = UIColor.clear
+        }
         return cell
     }
 
@@ -110,36 +125,27 @@ class FilterEventsVC: UIViewController,UICollectionViewDelegate,UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
-//        
-//        let cell:FilterEventCategoriesCollectionViewCell = self.categoriesCollectionView.cellForItem(at: indexPath) as! FilterEventCategoriesCollectionViewCell
-//        if cell.categoryBtn.isSelected == true{
-//            cell.categoryBtn.setImage(UIImage(named: "untickIcon.png"), for: UIControlState.normal)
-//            self.listOfContactsAddToGroup = self.listOfContactsAddToGroup.filter{$0 != self.myFriendsListArr[indexPath.row].value(forKey: "emailId") as! String}
-//            print("removed",listOfContactsAddToGroup)
-//        }
-//        else{
-//            cell.chooseFriendBtn.setImage(UIImage(named: "tickIcon.png"), for: UIControlState.normal)
-//            self.listOfContactsAddToGroup.append(self.myFriendsListArr[indexPath.row].value(forKey: "emailId") as! String)
-//            print("inserted",listOfContactsAddToGroup)
-//        }
-    }
-    
-    //MARK:- Button Actions
-    
-    //
-    func categoriesBtnTappedAction(sender:UIButton,cell:FilterEventCategoriesCollectionViewCell){
-        for i in 0..<self.categoriesListArr.count{
-            sender.isSelected = true
-            sender.backgroundColor = appNavColor
-//            if i == sender.tag{
-//                self.selectedCategoryId = self.categoriesListArr[sender.tag].value(forKey: "categoryId") as! String
-//                sender.isSelected = true
-//                sender.backgroundColor = appNavColor
-//            }
+        let cell:FilterEventCategoriesCollectionViewCell = self.categoriesCollectionView.cellForItem(at: indexPath) as! FilterEventCategoriesCollectionViewCell
+
+        print("categoriesListArr",categoriesListArr)
+        if self.categoriesListArr[indexPath.row].value(forKey: "state") as! Int == 1{
+            cell.categoryBtn.isSelected = false
+            cell.categoryBtn.backgroundColor = UIColor.clear
+            self.listOfSelectedCategroies = self.listOfSelectedCategroies.filter{$0 != self.categoriesListArr[indexPath.row].value(forKey: "categoryId") as! String}
+            self.categoriesListArr[indexPath.row].setValue(0, forKey: "state")
+            print("removed",listOfSelectedCategroies)
         }
-        //self.categoriesCollectionView.reloadData()
+        else{
+            cell.categoryBtn.isSelected = true
+            cell.categoryBtn.backgroundColor = appNavColor
+            self.listOfSelectedCategroies.append(self.categoriesListArr[indexPath.row].value(forKey: "categoryId") as! String)
+            self.categoriesListArr[indexPath.row].setValue(1, forKey: "state")
+            print("inserted",listOfSelectedCategroies)
+        }
     }
     
+    //MARK: Button Actions
+
     //Distance lider value change handling
     @IBAction func distanceSwitchValueChanged(_ sender: UISwitch) {
     }
