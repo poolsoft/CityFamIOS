@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SignupVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate,RegisterationServiceAlamofire,FacebookDelegate {
+class SignupVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate,RegisterationServiceAlamofire,FacebookDelegate,GIDSignInDelegate, GIDSignInUIDelegate {
     
     //MARK:- Outlets & Properties
     
@@ -206,7 +206,6 @@ class SignupVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
             CommonFxns.showAlert(self, message: "Email not found", title: errorAlertTitle)
         }
     }
-    
 
     //MARK:- Image Picker Delegates
     
@@ -278,6 +277,73 @@ class SignupVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
         }
     }
 
+    //Google Login
+    
+    //completed sign In
+    public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!){
+        if (error == nil) {
+            // Perform any operations on signed in user here.
+            //let userId = user.userID   // For client-side use only!
+            let idToken = user.authentication.idToken // Safe to send to the server
+            let fullName = user.profile.name
+            //let givenName = user.profile.givenName
+            //let familyName = user.profile.familyName
+            let email = user.profile.email
+            
+            if CommonFxns.isInternetAvailable(){
+                appDelegate.showProgressHUD(view: self.view)
+                
+                let imgStr = ""
+                
+                let parameters = [
+                    "name": fullName,
+                    "emailId": email,
+                    "phone": "",
+                    "password": "test",
+                    "latitude": "",
+                    "longitude": "",
+                    "address": "",
+                    "deviceToken":"",
+                    "facebookId": "",
+                    "googleId": idToken,
+                    "deviceType":"iOS",
+                    "profilePicBase64":imgStr
+                ]
+                
+                AlamofireIntegration.sharedInstance.registerationServiceDelegate = self
+                AlamofireIntegration.sharedInstance.registerationApi(parameters as! [String : String])
+            }
+            else{
+                CommonFxns.showAlert(self, message: internetConnectionError, title: oopsText)
+            }
+            
+            
+            //self.delegate?.googleSignInData(userDataDict as NSDictionary)
+            GIDSignIn.sharedInstance().signOut()
+            
+        } else {
+            //let signInError = error.localizedDescription
+            //self.delegate?.googleSignInError(signInError)
+        }
+    }
+    private func signInWillDispatch(signIn: GIDSignIn!, error: NSError!) {
+        // myActivityIndicator.stopAnimating()
+    }
+    
+    // Present a view that prompts the user to sign in with Google
+    func sign(_ signIn: GIDSignIn!,
+              present viewController: UIViewController!) {
+        
+        self.present(viewController, animated: true, completion: nil)
+    }
+    
+    // Dismiss the "Sign in with Google" view
+    func sign(_ signIn: GIDSignIn!,
+              dismiss viewController: UIViewController!) {
+        self.dismiss(animated: true, completion: nil)
+    }
+
+    
     //Login Button Action
     @IBAction func alreadyAccountButtonAction(_ sender: Any) {
         _ = self.navigationController?.popViewController(animated: true)
@@ -293,11 +359,13 @@ class SignupVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
         else{
             CommonFxns.showAlert(self, message: internetConnectionError, title: oopsText)
         }
-
     }
     
     //SignUp with google button
     @IBAction func googleBtnAction(_ sender: Any) {
+        GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance().signIn()
     }
     
     //Profile image tap gesture

@@ -10,7 +10,7 @@ import UIKit
 import Google
 import GoogleSignIn
 
-class LogInVC: UIViewController, loginServiceAlamofire,RegisterationServiceAlamofire, FacebookDelegate,UITextFieldDelegate,GoogleSignInService,GIDSignInDelegate, GIDSignInUIDelegate {
+class LogInVC: UIViewController, loginServiceAlamofire,RegisterationServiceAlamofire, FacebookDelegate,UITextFieldDelegate,GIDSignInDelegate, GIDSignInUIDelegate {
    
     //MARK:- Outlets & Properties
     
@@ -167,9 +167,6 @@ class LogInVC: UIViewController, loginServiceAlamofire,RegisterationServiceAlamo
         //GoogleSignInIntegration.sharedInstance.callGoogleSignIn()
     }
     
-    @IBAction func googleViewAction(_ sender: Any) {
-    }
-    
     //login with facebook
     @IBAction func facebookBtnAction(_ sender: Any) {
         self.emailTxtField.text = ""
@@ -194,16 +191,6 @@ class LogInVC: UIViewController, loginServiceAlamofire,RegisterationServiceAlamo
     @IBAction func forgotPasswordBtnAction(_ sender: Any) {
         let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "forgotPasswordVC") as! ForgotPasswordVC
         self.navigationController?.pushViewController(secondViewController, animated: true)
-    }
-    
-    //MARK: Google sign in result
-    
-    func googleSignInData(_ result:NSDictionary){
-        print(result,"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
-    }
-    
-    func googleSignInError(_ result:String){
-        print(result,"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     }
     
     //MARK: Facebook api result
@@ -241,7 +228,6 @@ class LogInVC: UIViewController, loginServiceAlamofire,RegisterationServiceAlamo
                         }
                     }
                 }
-                
                 let parameters = [
                     "name": name,
                     "emailId": email,
@@ -268,39 +254,28 @@ class LogInVC: UIViewController, loginServiceAlamofire,RegisterationServiceAlamo
             CommonFxns.showAlert(self, message: "Email not found", title: errorAlertTitle)
         }
     }
-    
-    
+
     //Google Login
     
     //completed sign In
     public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!){
         if (error == nil) {
             // Perform any operations on signed in user here.
-            let userId = user.userID   // For client-side use only!
+            //let userId = user.userID   // For client-side use only!
             let idToken = user.authentication.idToken // Safe to send to the server
             let fullName = user.profile.name
-            let givenName = user.profile.givenName
-            let familyName = user.profile.familyName
+            //let givenName = user.profile.givenName
+            //let familyName = user.profile.familyName
             let email = user.profile.email
             
             if CommonFxns.isInternetAvailable(){
                 appDelegate.showProgressHUD(view: self.view)
                 
-                let userDataDict = [
-                    "googleUserId" : userId,
-                    "token" : idToken,
-                    "fullName" : fullName,
-                    "givenName" : givenName,
-                    "familyName" : familyName,
-                    "email" : email
-                ]
-                print(userDataDict)
-                
                 let imgStr = ""
                 
                 let parameters = [
-                    "name": user.profile.name,
-                    "emailId": user.profile.email,
+                    "name": fullName,
+                    "emailId": email,
                     "phone": "",
                     "password": "test",
                     "latitude": "",
@@ -308,7 +283,7 @@ class LogInVC: UIViewController, loginServiceAlamofire,RegisterationServiceAlamo
                     "address": "",
                     "deviceToken":"",
                     "facebookId": "",
-                    "googleId": "",
+                    "googleId": idToken,
                     "deviceType":"iOS",
                     "profilePicBase64":imgStr
                 ]
@@ -325,7 +300,7 @@ class LogInVC: UIViewController, loginServiceAlamofire,RegisterationServiceAlamo
             GIDSignIn.sharedInstance().signOut()
             
         } else {
-            let signInError = error.localizedDescription
+            //let signInError = error.localizedDescription
             //self.delegate?.googleSignInError(signInError)
         }
     }
