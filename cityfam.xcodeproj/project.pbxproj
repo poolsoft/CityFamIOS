@@ -83,6 +83,7 @@
 		A17DC40A1ECAD3C500093B7D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A17DC4091ECAD3C500093B7D /* GoogleService-Info.plist */; };
 		A17E19FD1EB9C8EE004A4721 /* MyFriendsOrContactsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17E19FC1EB9C8ED004A4721 /* MyFriendsOrContactsVC.swift */; };
 		A17E19FF1EB9CAB4004A4721 /* MyFriendsOrContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17E19FE1EB9CAB4004A4721 /* MyFriendsOrContactsTableViewCell.swift */; };
+		A180E88B1ED6BEF800025A82 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A180E88A1ED6BEF800025A82 /* GoogleService-Info.plist */; };
 		A181A10E1EA5EB660092ECD0 /* HomeFriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A181A10D1EA5EB650092ECD0 /* HomeFriendsTableViewCell.swift */; };
 		A181AD1C1E9F3E6700DD53E3 /* FriendsRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A181AD1B1E9F3E6700DD53E3 /* FriendsRequestTableViewCell.swift */; };
 		A181AD1E1E9F460800DD53E3 /* FriendsAlamofireIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A181AD1D1E9F460800DD53E3 /* FriendsAlamofireIntegration.swift */; };
@@ -213,6 +214,8 @@
 		A17DC4091ECAD3C500093B7D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A17E19FC1EB9C8ED004A4721 /* MyFriendsOrContactsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFriendsOrContactsVC.swift; sourceTree = "<group>"; };
 		A17E19FE1EB9CAB4004A4721 /* MyFriendsOrContactsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFriendsOrContactsTableViewCell.swift; sourceTree = "<group>"; };
+		A180E8891ED6BB3500025A82 /* cityfam.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = cityfam.entitlements; sourceTree = "<group>"; };
+		A180E88A1ED6BEF800025A82 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A181A10D1EA5EB650092ECD0 /* HomeFriendsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeFriendsTableViewCell.swift; sourceTree = "<group>"; };
 		A181AD1B1E9F3E6700DD53E3 /* FriendsRequestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsRequestTableViewCell.swift; sourceTree = "<group>"; };
 		A181AD1D1E9F460800DD53E3 /* FriendsAlamofireIntegration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsAlamofireIntegration.swift; sourceTree = "<group>"; };
@@ -296,6 +299,7 @@
 		0700D8F81E556D2200DC9928 /* cityfam */ = {
 			isa = PBXGroup;
 			children = (
+				A180E8891ED6BB3500025A82 /* cityfam.entitlements */,
 				A17D703D1E9633ED00D730FE /* CustomCellClasses */,
 				A1761C621E94BA390079E269 /* CommonClasses */,
 				07F7A1121E60495000448FFF /* Fonts */,
@@ -447,6 +451,7 @@
 		A1761C621E94BA390079E269 /* CommonClasses */ = {
 			isa = PBXGroup;
 			children = (
+				A180E88A1ED6BEF800025A82 /* GoogleService-Info.plist */,
 				07C34C511E810B0900A9699C /* Constant.swift */,
 				0700D8F91E556D2200DC9928 /* AppDelegate.swift */,
 				A1761C631E94BAA10079E269 /* Strings.swift */,
@@ -572,6 +577,17 @@
 						DevelopmentTeam = 854539W674;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					0700D9091E556D2300DC9928 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -614,6 +630,7 @@
 			files = (
 				A17D70401E9637D800D730FE /* Mark Simonson - Proxima Nova Regular.otf in Resources */,
 				A17DC40A1ECAD3C500093B7D /* GoogleService-Info.plist in Resources */,
+				A180E88B1ED6BEF800025A82 /* GoogleService-Info.plist in Resources */,
 				A17D70411E9637D800D730FE /* ProximaNova-Bold.otf in Resources */,
 				A17D70421E9637D800D730FE /* ufonts.com_gotham-medium_0.ttf in Resources */,
 				0700D9041E556D2200DC9928 /* LaunchScreen.storyboard in Resources */,
@@ -965,7 +982,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "deb9a6fd-b99a-4033-9844-5691c3d1a0cb";
+				PROVISIONING_PROFILE = "cda4a390-1d54-4765-bfad-5292f27e5b29";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1010,7 +1027,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "deb9a6fd-b99a-4033-9844-5691c3d1a0cb";
+				PROVISIONING_PROFILE = "cda4a390-1d54-4765-bfad-5292f27e5b29";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
@@ -1023,6 +1040,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = cityfam/cityfam.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Piyush Gupta (52M6T9CGB9)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Piyush Gupta (52M6T9CGB9)";
 				DEVELOPMENT_TEAM = 854539W674;
@@ -1031,7 +1049,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.imarkinfotech.CityFam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = GENDevProfile;
+				PROVISIONING_PROFILE = "cda4a390-1d54-4765-bfad-5292f27e5b29";
+				PROVISIONING_PROFILE_SPECIFIER = CityFamDevProvprof;
 				SWIFT_OBJC_BRIDGING_HEADER = "cityfam/cityfam-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -1044,6 +1063,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = cityfam/cityfam.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Piyush Gupta (52M6T9CGB9)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Piyush Gupta (52M6T9CGB9)";
 				DEVELOPMENT_TEAM = 854539W674;
@@ -1052,7 +1072,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.imarkinfotech.CityFam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = GENDevProfile;
+				PROVISIONING_PROFILE = "cda4a390-1d54-4765-bfad-5292f27e5b29";
+				PROVISIONING_PROFILE_SPECIFIER = CityFamDevProvprof;
 				SWIFT_OBJC_BRIDGING_HEADER = "cityfam/cityfam-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
